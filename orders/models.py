@@ -40,9 +40,21 @@ class Order(models.Model):
 
 
 class DVDOrderDetail(models.Model):
-    order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name='dvd_detail', verbose_name=_('order'))
-    address = models.CharField(_('address'), max_length=255)
-    postal_code = models.CharField(_('postal code'), max_length=20)
+    class DeliveryStatus(models.TextChoices):
+        PENDING = 'p', _('Pending')
+        SENT = 's', _('Sent')
+        REJECTED = 'r', _('Rejected')
+        CANCELED = 'c', _('Canceled')
+
+    order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name='dvd_detail', verbose_name=_('order'),)
+    address = models.CharField(_('address'), max_length=255,)
+    postal_code = models.CharField(_('postal code'), max_length=20,)
+    order_note = models.CharField(_('order note'), max_length=255, null=True, blank=True,)
+
+    delivery_status = models.CharField(_('delivery status'), max_length=1, choices=DeliveryStatus.choices,
+                                       default=DeliveryStatus.PENDING,)
+
+    date_created = models.DateTimeField(_('date created'), auto_now_add=True,)
 
     def __str__(self):
         return f'{self.order} - DVD Details'
