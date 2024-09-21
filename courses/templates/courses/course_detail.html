@@ -1,0 +1,343 @@
+{% extends '-base.html' %}
+{% load tags %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {{ course.title }}
+{% endblock %}
+
+{% block content %}
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb__area include-bg pt-150 pb-150 breadcrumb__overlay"
+             data-background="{% static 'assets/img/breadcrumb/breadcrumb-bg-1.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-12">
+                    <div class="breadcrumb__content p-relative z-index-1">
+                        <h3 class="breadcrumb__title mb-20">{% translate 'Course' %}</h3>
+                        <div class="breadcrumb__list">
+                            <span><a href="{% url 'home:home' %}">{% trans 'Home' %}</a></span>
+                            <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+                            <span><a href="{% url 'courses:course_list' %}">{% trans 'Courses' %}</a></span>
+                            <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+                            <span class="sub-page-black">{% trans 'Course Details' %}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+    <!-- course-details-area -->
+    <section class="c-details-area pt-120 pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="c-details-wrapper mr-25">
+                        <div class="c-details-thumb p-relative mb-40">
+                            <img src="{% static 'assets/img/course/c-details-bg-01.jpg' %}" alt="details-bg">
+                            <div class="c-details-ava d-md-flex align-items-center">
+                                <img src="{% static 'assets/img/course/c-details-ava-01.png' %}" alt="avata">
+                                <span>By <a href="#">Emilia Jonas</a></span>
+                            </div>
+                        </div>
+                        <div class="course-details-content mb-45">
+                            <div class="tpcourse__ava-title mb-25">
+                                <h4 class="c-details-title">{{ course.title }}</h4>
+                            </div>
+                            <div class="tpcourse__meta course-details-list">
+                                <ul class="d-flex align-items-center">
+                                    <li>
+                                        <div class="rating-gold d-flex align-items-center">
+                                            <p>4.7</p>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-ss-star"></i>
+                                            <i class="fi fi-rs-star"></i>
+                                            <span>(125)</span>
+                                        </div>
+                                    </li>
+                                    <li><img src="{% static 'assets/img/icon/c-meta-01.png' %}" alt="meta-icon">
+                                        <span>{{ course.num_videos }} {% translate 'Classes' %}</span></li>
+                                    <li><img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
+                                        <span>{{ course.num_members }} {% translate 'Students' %}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="c-details-about mb-40">
+                            <h5 class="tp-c-details-title mb-20">{% trans 'About This Course' %}</h5>
+                            <p>
+                                {{ course.description }}
+                            </p>
+                        </div>
+                        <div class="cor-details-instructor mb-40">
+                            <h4 class="tp-c-details-title mb-40">{% trans 'Instructor' %}</h4>
+                            <div class="course-instructor-details d-flex f-wrap align-items-center">
+                                <div class="course-avata mr-30 mb-20">
+                                    <img src="{% static 'assets/img/course/c-details-ava-thumb-01.jpg' %}"
+                                         alt="avata-thumb">
+                                </div>
+                                <div class="course-avatar-details mb-20">
+                                    <h5 class="c-avata-title mb-10">{{ course.instructor.full_name }}</h5>
+                                    <div class="c-details-list mb-5">
+                                        <ul class="d-flex align-items-center">
+                                            <li>
+                                                <div class="rating-gold d-flex align-items-center">
+                                                    <p>4.7</p>
+                                                    <i class="fi fi-ss-star"></i>
+                                                    <i class="fi fi-ss-star"></i>
+                                                    <i class="fi fi-ss-star"></i>
+                                                    <i class="fi fi-ss-star"></i>
+                                                    <i class="fi fi-rs-star"></i>
+                                                    <span>(125)</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>{{ course.instructor.description }}</p>
+                    </div>
+                     <div class="postbox__comment mb-65">
+                        <h3 class="postbox__comment-title">{{ course.comments.all|length }} {% trans 'Comments' %}</h3>
+                        <ul>
+                            {% for comment in course.comments.all %}
+                                {% if comment.is_parent %}
+                                   <li>
+                                      <div class="postbox__comment-box grey-bg">
+                                         <div class="postbox__comment-info d-flex">
+                                               <div class="postbox__comment-avater mr-20">
+                                                  <img src="{% static 'assets/img/blog/comments/comment-1.jpg' %}" alt="">
+                                               </div>
+                                               <div class="postbox__comment-name">
+                                                  <h5>{{ comment.user.username }}</h5>
+                                                  <span class="post-meta"> {{ comment.date_created }}</span>
+                                               </div>
+                                         </div>
+                                         <div class="postbox__comment-text ml-65">
+                                            <p>{{ comment.text }}</p>
+                                            <div class="postbox__comment-reply">
+                                               <a href="#" class="reply-link" data-id="{{ comment.id }}">{% translate 'Reply' %}</a>
+                                            </div>
+                                         </div>
+                                      </div>
+                                   </li>
+                                    {% for reply in comment.replies.all %}
+                                       <li class="children">
+                                          <div class="postbox__comment-box grey-bg">
+                                             <div class="postbox__comment-info d-flex">
+                                                   <div class="postbox__comment-avater mr-20">
+                                                      <img src="{% static 'assets/img/blog/comments/comment-2.jpg' %}" alt="">
+                                                   </div>
+                                                   <div class="postbox__comment-name">
+                                                      <h5>{{ reply.user.username}}</h5>
+                                                      <span class="post-meta"> {{ reply.date_created }}</span>
+                                                   </div>
+                                             </div>
+                                             <div class="postbox__comment-text ml-65">
+                                                <p>{{ reply.text }}</p>
+                                             </div>
+                                          </div>
+                                       </li>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                     </div>
+                     <div class="postbox__comment-form">
+                        <h3 class="postbox__comment-form-title">{% trans 'Write a comment' %}</h3>
+                        <form id="comment-form" method="post">
+                            {% csrf_token %}
+                            {{ comment_form.non_field_errors | safe }}
+                            <input type="hidden" name="parent_id" id="parent_id">
+                           <div class="row">
+                              <div class="col-xxl-12">
+                                 <div class="postbox__comment-input">
+                                     {{ comment_form.text.errors | safe }}
+                                     {{comment_form.text}}
+                                 </div>
+                              </div>
+                              <div class="col-xxl-12">
+                                 <div class="postbox__comment-btn">
+                                    <button type="submit" class="tp-btn">{% trans 'Post Comment' %}</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="c-details-sidebar">
+                            <div class="c-video-thumb p-relative mb-25">
+                                <img src="{% static 'assets/img/bg/c-details-video-bg.jpg' %}" alt="video-bg">
+                                <div class="c-video-icon">
+                                    <a class="popup-video" href="https://youtu.be/W-bgMEvrd2E"><i class="fi fi-sr-play"></i></a>
+                                </div>
+                            </div>
+                            <div class="course-details-widget">
+                                <div class="cd-video-price">
+                                    <h3 class="pricing-video text-center mb-15">
+                                        {% translate 'Toman' %}{{ course.discounted_price }}</h3>
+                                    <div class="cd-pricing-btn text-center mb-30">
+                                        <a class="tp-vp-btn" href="{% static 'course-details.html' %}">Add To Cart</a>
+                                        <a class="tp-vp-btn-green" href="{% static 'course-details.html' %}">Enroll Now</a>
+                                    </div>
+                                </div>
+                                <div class="cd-information mb-35">
+                                    <ul>
+                                        <li><i class="fa-light fa-calendars"></i> <label>{% trans 'Lesson' %}</label>
+                                            <span>{{ course.num_videos }}</span></li>
+
+                                        <li><i class="fi fi-rr-user"></i> <label>{% trans 'Students' %}</label>
+                                            <span>{{ course.num_members }}</span></li>
+                                        <li><i class="fa-light fa-clock-desk"></i> <label>{% trans 'Duration' %}</label>
+                                            <span>{{ course.duration }}</span></li>
+                                        <li><i class="fi fi-sr-stats"></i> <label>{% trans 'Age Range' %}</label>
+                                            <span>{{ course.age_range }}</span>
+                                        </li>
+                                        {% if course.certificate_status %}
+                                            <li><i class="fi fi-rs-diploma"></i> <label>{% trans 'Certificate' %}</label>
+                                                <span>{% trans 'Yes' %}</span>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <div class="c-details-social">
+                                    <h5 class="cd-social-title mb-25">{% trans 'Share Now:' %}</h5>
+                                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+    <!-- course-details-area-end -->
+
+    <!-- course-area -->
+    <section class="course-area mb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title mb-65">
+                        <h2 class="tp-section-title mb-20">{% trans 'Related Courses' %}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for course in course.instructor.courses.all %}
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="tpcourse mb-40">
+                            <div class="tpcourse__thumb p-relative w-img fix">
+                                <a href="{% url 'courses:course_detail' course.pk course.slug %}">
+                                    <img src="{% static 'assets/img/course/course-thumb-01.jpg' %}" alt="course-thumb">
+                                </a>
+                                <div class="tpcourse__tag">
+                                    <a href="{% url 'courses:course_detail' course.pk course.slug %}">
+                                        <i class="fi fi-rr-heart"></i>
+                                    </a>
+                                </div>
+                                <div class="tpcourse__img-icon">
+                                    <img src="{% static 'assets/img/icon/course-3-avata-1.png' %}" alt="course-avata">
+                                </div>
+                            </div>
+                            <div class="tpcourse__content-2">
+                                <div class="tpcourse__ava-title mb-15">
+                                    <h4 class="tpcourse__title tp-cours-title-color">
+                                        <a href="{% url 'courses:course_detail' course.pk course.slug %}">{{ course.title }}</a>
+                                    </h4>
+                                </div>
+                                <div class="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
+                                    <ul class="d-flex align-items-center">
+                                        <li>
+                                            <img {% if course.type == 'vip_package' %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
+                                                 src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
+                                                 alt="meta-icon">
+                                            <span>{% if course.type == 'vip_package' %}{{ course.num_courses }}
+                                                {% trans 'Courses' %} {% else %}{{ course.num_videos }}
+                                                {% trans 'Classes' %} {% endif %}</span>
+                                        </li>
+                                        <li>
+                                            <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
+                                            <span>{{ course.num_members }} {% trans 'Students' %}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tpcourse__rating d-flex align-items-center justify-content-between">
+                                    <div class="tpcourse__rating-icon">
+                                        <span>4.7</span>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-rs-star"></i>
+                                        <p>(125)</p>
+                                    </div>
+                                    <div class="tpcourse__pricing">
+                                        <h5 class="price-title">{% trans 'Toman' %} {{ course.discounted_price }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- course-area-end -->
+
+    <!-- counter-area -->
+    <section class="tp-counter-area theme-bg pt-90">
+        <div class="counter-b-border">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">276</span>K
+                                </h4>
+                                <p>Worldwide Students</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">23</span>+</h4>
+                                <p>Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">735</span>+
+                                </h4>
+                                <p>Professional Courses</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">4.7</span>K+
+                                </h4>
+                                <p>Beautiful Review</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- counter-area-end -->
+
+
+{% endblock %}

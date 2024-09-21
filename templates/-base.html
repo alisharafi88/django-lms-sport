@@ -1,0 +1,93 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="fa">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        {% block title %}{% endblock title %}
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/backtotop.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/ui-icon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/elegentfonts.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome-pro.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/spacing.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+</head>
+
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+
+<!-- pre loader area start -->
+{% include 'inc/preloader.html' %}
+<!-- pre loader area end -->
+
+<!-- back to top start -->
+{% include 'inc/back-to-top-start.html' %}
+<!-- back to top end -->
+
+
+<!-- header area start -->
+{% block header %}
+    {% include 'inc/header.html' %}
+{% endblock header %}
+<!-- header area end -->
+
+
+<!-- sidebar area start -->
+{% include 'inc/sidebar.html' %}
+<!-- sidebar area start -->
+
+
+<main>
+    
+    {% block content %}
+    	
+    {% endblock %}
+
+</main>
+
+<!-- footer-area -->
+{% include 'inc/footer-area.html' %}
+<!-- footer-area-end -->
+
+
+<!-- JS here -->
+<script src="{% static 'assets/js/vendor/jquery.js' %}"></script>
+<script src="{% static 'assets/js/vendor/waypoints.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap-bundle.js' %}"></script>
+<script src="{% static 'assets/js/meanmenu.js' %}"></script>
+<script src="{% static 'assets/js/slick.js' %}"></script>
+<script src="{% static 'assets/js/magnific-popup.js' %}"></script>
+<script src="{% static 'assets/js/parallax.js' %}"></script>
+<script src="{% static 'assets/js/backtotop.js' %}"></script>
+<script src="{% static 'assets/js/nice-select.js' %}"></script>
+<script src="{% static 'assets/js/counterup.js' %}"></script>
+<script src="{% static 'assets/js/wow.js' %}"></script>
+<script src="{% static 'assets/js/isotope-pkgd.js' %}"></script>
+<script src="{% static 'assets/js/imagesloaded-pkgd.js' %}"></script>
+<script src="{% static 'assets/js/ajax-form.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="{% static 'assets/js/comments.js' %}"></script>
+</body>
+
+</html>

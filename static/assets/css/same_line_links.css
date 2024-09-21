@@ -1,0 +1,16 @@
+.contact-form-input_same_line {
+    display: flex;
+    align-items: center;
+    font-family: inherit; /* Ensures the font is consistent */
+}
+
+.contact-form-input_same_line span,
+.contact-form-input_same_line a {
+    margin-right: 5px; /* Adjust spacing as needed */
+    text-decoration: none; /* Removes underline from links */
+    color: inherit; /* Ensures the color is consistent */
+}
+
+.contact-form-input_same_line a.contact-link:hover {
+    text-decoration: underline; /* Adds underline on hover */
+}

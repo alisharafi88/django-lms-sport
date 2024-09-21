@@ -1,0 +1,176 @@
+{% extends '-base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'Contact Page' %}
+{% endblock %}
+
+{% block content %}
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb__area include-bg pt-150 pb-150 breadcrumb__overlay"
+             data-background="{% static 'assets/img/breadcrumb/breadcrumb-bg-1.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-12">
+                    <div class="breadcrumb__content p-relative z-index-1">
+                        <h3 class="breadcrumb__title mb-20">{% trans 'Contact Us' %}</h3>
+                        <div class="breadcrumb__list">
+                            <span><a href="{% url 'home:home' %}">{% trans 'Home' %}</a></span>
+                            <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+                            <span class="sub-page-black">{% trans 'Contact' %}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+    <!-- location-area -->
+    <section class="location-area pt-120 pb-85">
+        <div class="container">
+            <div class="row justify-content-center">
+                {% if contact_info.phonenumber %}
+                    <div class="col-xl-4 col-md-6">
+                        <div class="location-item text-center mb-30">
+                            <div class="location-icon mb-25">
+                                <i class="fa-light fa-phone"></i>
+                            </div>
+                            <div class="location-content">
+                                <h5 class="location-title"><a
+                                        href="tell:{{ contact_info.phonenumber }}">{{ contact_info.phonenumber }}</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if contact_info.address %}
+                    <div class="col-xl-4 col-md-6">
+                        <div class="location-item text-center mb-30">
+                            <div class="location-icon mb-25">
+                                <i class="fa-light fa-location-dot"></i>
+                            </div>
+                            <div class="location-content">
+                                <h5 class="location-title">{{ contact_info.address }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if contact_info.email %}
+                    <div class="col-xl-4 col-md-6">
+                        <div class="location-item text-center mb-30">
+                            <div class="location-icon mb-25">
+                                <i class="fi fi-rr-envelope"></i>
+                            </div>
+                            <div class="location-content">
+                                <h5 class="location-title"><a
+                                        href="mailto:{{ contact_info.email }}">{{ contact_info.email }}</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- location-area-end -->
+    <!-- contact-area -->
+    <section class="contact-area pb-60">
+        <div class="container">
+            <div class="row">
+                {% if request.user.is_authenticated %}
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="contact-wrapper mr-65 mb-60">
+                            <div class="sub-contact-title">
+                                <h5 class="contact-title mb-30">{% trans 'Send Us Message' %}</h5>
+                            </div>
+                            <div class="contact-form">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="contact-form-input mb-40">
+                                                <span>{% trans 'Comments' %}</span>
+                                                {{ message_form }}
+                                            </div>
+                                            <button type="submit" class="tp-btn">{% trans 'Submit Now' %}</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="contact-bg mb-60">
+                            <img src="{% static 'assets/img/bg/contact-sub-bg-01.png' %}" alt="contact-bg">
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="contact-wrapper mr-65 mb-60">
+                            <div class="sub-contact-title">
+                                <h5 class="contact-title mb-30">{% trans 'Send Us Message' %}</h5>
+                            </div>
+                        </div>
+                        <div class="contact-form-input_same_line mb-40">
+                            <span>{% trans 'If you wanna send us message please ' %}</span>
+                            <a href="#">{% trans 'LOGIN' %}</a><span>{% trans ' or ' %}</span><a href="#">{% trans 'SIGNUP.' %}</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="contact-bg mb-60">
+                            <img src="{% static 'assets/img/bg/contact-sub-bg-01.png' %}" alt="contact-bg">
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- contact-area-end -->
+    <!-- counter-area -->
+    <section class="tp-counter-area theme-bg pt-90">
+        <div class="counter-b-border">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">276</span>K
+                                </h4>
+                                <p>Worldwide Students</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">23</span>+</h4>
+                                <p>Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">735</span>+
+                                </h4>
+                                <p>Professional Courses</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">4.7</span>K+
+                                </h4>
+                                <p>Beautiful Review</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- counter-area-end -->
+{% endblock %}
+

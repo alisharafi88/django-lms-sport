@@ -1,0 +1,316 @@
+{% extends '-base.html' %}
+{% load tags %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {{ instructor.full_name }}
+{% endblock %}
+
+{% block content %}
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb__area include-bg pt-150 pb-150 breadcrumb__overlay"
+             data-background="{% static 'assets/img/breadcrumb/breadcrumb-bg-1.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-12">
+                    <div class="breadcrumb__content p-relative z-index-1">
+                        <h3 class="breadcrumb__title mb-20">{% trans 'Instructor Profile' %}</h3>
+                        <div class="breadcrumb__list">
+                            <span><a href="{% url 'home:home' %}">{% trans 'Home' %}</a></span>
+                            <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+                            <span><a href="{% url 'instructors:instructor_list' %}">{% trans 'Instructor' %}</a></span>
+                            <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+                            <span class="sub-page-black">{% trans 'Instructor Profile' %}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+    <!-- instructor-portfolio-area -->
+    <section class="instructor-portfolio pt-120 pb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-5">
+                    <div class="instruc-sidebar mb-40">
+                        <div class="isntruc-side-thumb mb-30">
+                            <img src="{{ instructor.img.url }}" alt="instructor-thumb">
+                        </div>
+                        <div class="instructor-sidebar-widget">
+                            <div class="isntruc-side-content text-center">
+                                <h4 class="side-instructor-title mb-15">{{ instructor.full_name }}</h4>
+                                <p>{% for widjet in instructor.widjets.all %}
+                                    {{ widjet }},
+                                {% endfor %}
+                                </p>
+                            </div>
+                            <div class="cd-information instruc-profile-info mb-35">
+                                <ul>
+                                    {% if instructor.user.email %}
+                                        <li><i class="fi fi-rr-envelope"></i> <label>{% trans 'Email' %}</label>
+                                            <span>{{ instructor.user.email }}</span></li>
+                                    {% endif %}
+                                    {% if instructor.exprience %}
+                                        <li><i class="fi fi-rr-time-forward"></i>
+                                            <label>{% trans 'Experiences' %}</label>
+                                            <span>{{ instructor.exprience }}+ {% trans 'Years' %}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="c-details-social">
+                                {% if instructor.instagram_id %}
+                                    <a href="https://www.instagram.com/{{ instructor.instagram_id }}" target="_blank"><i
+                                            class="fa-brands fa-instagram"></i></a>
+                                {% endif %}
+                                {% if instructor.youtube_id %}
+                                    <a href="https://www.youtube.com/@{{ instructor.youtube_id }}" target="_blank"><i
+                                            class="fa-brands fa-youtube"></i></a>
+                                {% endif %}
+                                {% if instructor.telegram_id %}
+                                    <a href="https://t.me/{{ instructor.telegram_id }}" target="_blank"><i
+                                            class="fa-brands fa-telegram"></i></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-7">
+                    <div class="instructor-main-content ml-30 mb-40">
+                        <div class="instruc-biography mb-50">
+                            <h4 class="ins-bio-title mb-30">{% trans 'Biography' %}</h4>
+                            <p>{{ instructor.description }}</p>
+                        </div>
+                        <!-- world wide ... -->
+                        <div class="instruc-statics mb-20">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 col-md-4">
+                                    <div class="isntruc-tp-counter mb-30">
+                                        <h4 class="isntruc-tp-counter__title p-relative"><span
+                                                class="counter">276</span>K</h4>
+                                        <p>Worldwide Students</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-4">
+                                    <div class="isntruc-tp-counter mb-30">
+                                        <h4 class="isntruc-tp-counter__title p-relative"><span class="counter">35</span>+
+                                        </h4>
+                                        <p>Professional Courses</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-4">
+                                    <div class="isntruc-tp-counter mb-30">
+                                        <h4 class="isntruc-tp-counter__title p-relative"><span class="counter">47</span>K+
+                                        </h4>
+                                        <p>Beautiful Review</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end world wide ... -->
+                        {% if instructor.honors.all %}
+                            <div class="instructor-tp-course">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="instruc-biography">
+                                            <h2 class="ins-bio-title mb-35">{% trans 'Honors' %}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    {% for honor in instructor.honors.all %}
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="tpcourse mb-40">
+                                                <div class="tpcourse__thumb p-relative w-img fix">
+                                                    <img src="{{ honor.img.url }}"
+                                                         alt="course-thumb">
+                                                </div>
+                                                <div class="tpcourse__content-2">
+                                                    <div class="tpcourse__ava-title mb-15">
+                                                        <h4 class="tpcourse__title">{{ honor.text }}</h4>
+                                                    </div>
+                                                    <div class="tpcourse__rating d-flex align-items-center justify-content-between">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if instructor.courses.all|is_active %}
+                            <div class="instructor-tp-course">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="instruc-biography">
+                                            <h2 class="ins-bio-title mb-35">{% trans 'Courses' %}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    {% for course in instructor.courses.all|is_active %}
+                                        <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="tpcourse mb-40">
+                            <div class="tpcourse__thumb p-relative w-img fix">
+                                <a href="{{ course.get_absolute_url }}">
+                                    <img src="{% static 'assets/img/course/course-thumb-01.jpg' %}" alt="course-thumb">
+                                </a>
+                                <div class="tpcourse__tag">
+                                    <a href="{% url 'carts:cart_add' course.id %}">
+                                        <i class="fi fi-rr-heart"></i>
+                                    </a>
+                                </div>
+                                <div class="tpcourse__img-icon">
+                                    <img src="{% static 'assets/img/icon/course-3-avata-1.png' %}" alt="course-avata">
+                                </div>
+                            </div>
+                            <div class="tpcourse__content-2">
+                                <div class="tpcourse__ava-title mb-15">
+                                    <h4 class="tpcourse__title tp-cours-title-color">
+                                        <a href="
+                                                {{ course.get_absolute_url }}">{{ course.title }}</a>
+                                    </h4>
+                                </div>
+                                <div class="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
+                                    <ul class="d-flex align-items-center">
+                                        <li>
+                                            <img {% if course.type == 'package' %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
+                                                 src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
+                                                 alt="meta-icon">
+                                            <span>{% if course.type == 'package' %}{{ course.num_courses }}
+                                                {% trans 'Courses' %} {% else %}{{ course.num_videos }}
+                                                {% trans 'Classes' %} {% endif %}</span>
+                                        </li>
+                                        <li>
+                                            <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
+                                            <span>{{ course.num_members }} {% trans 'Students' %}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tpcourse__rating d-flex align-items-center justify-content-between">
+                                    <div class="tpcourse__rating-icon">
+                                        <span>4.7</span>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-rs-star"></i>
+                                        <p>(125)</p>
+                                    </div>
+                                    <div class="tpcourse__pricing">
+                                        <h5 class="price-title">{% trans 'Toman' %} {{ course.discounted_price }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="basic-pagination">
+                                    <nav>
+                                        <ul>
+                                            {% if page_obj.has_previous %}
+                                                <li>
+                                                    <a href="?page={{ page_obj.previous_page_number }}">
+                                                        <i class="far fa-angle-left"></i>
+                                                    </a>
+                                                </li>
+                                                {% if page_obj.number > 3 %}
+                                                    <li>
+                                                        <a href="{% static 'blog.html' %}">2</a>
+                                                    </li>
+                                                    {% if page_obj.number > 4 %}
+                                                        <span>...</span>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endif %}
+                                            {% for num in page_obj.paginator.page_range %}
+                                                {% if page_obj.number == num %}
+                                                    <li>
+                                                        <span class="current">{{ page_obj.number }}</span>
+                                                    </li>
+                                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                                    <li>
+                                                        <a href="?page={{ num }}">{{ num }}</a>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                            {% if page_obj.has_next %}
+                                                {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
+                                                    <span>...</span>
+                                                    <li>
+                                                        <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                                                    </li>
+                                                {% elif page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+                                                    <li>
+                                                        <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                                                    </li>
+                                                {% endif %}
+                                                <li>
+                                                    <a href="?page={{ page_obj.next_page_number }}">
+                                                        <i class="far fa-angle-right"></i>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- instructor-portfolio-area-end -->
+
+    <!-- counter-area -->
+    <section class="tp-counter-area theme-bg pt-90">
+        <div class="counter-b-border">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">276</span>K
+                                </h4>
+                                <p>Worldwide Students</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">23</span>+</h4>
+                                <p>Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">735</span>+
+                                </h4>
+                                <p>Professional Courses</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">4.7</span>K+
+                                </h4>
+                                <p>Beautiful Review</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- counter-area-end -->
+{% endblock %}

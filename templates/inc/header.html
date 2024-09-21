@@ -1,0 +1,102 @@
+{% load i18n %}
+{% load static %}
+ <!-- header area start -->
+   <header class="header_white_area d-none d-xl-block">
+      <div class="header__area pt-40 pb-5">
+         <div class="main-header" id="header-sticky">
+            <div class="container">
+               <div class="row align-items-center justify-content-between">
+                  <div class="col-xxl-7 col-xl-6 col-lg-6 col-md-5 col-6">
+                     <div class="logo-area d-flex align-items-center">
+                        <div class="logo">
+                           <a href="{% static 'index.html' %}">
+                              <img src="{% static 'assets/img/logo/logo-black.png' %}" alt="logo">
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xxl-5 col-lg-6 col-md-7">
+                     <div class="header-right header-right-box">
+                        <div class="header-search-box">
+                           <form action="#">
+                              <div class="search-input">
+                                 <input type="Email" placeholder="{% trans 'What you want to learn?' %}">
+                                 <button class="header-search-btn"><i class="fi fi-rs-search mr-5"></i> {% trans 'Search Now' %}</button>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-xxl-9 col-xl-9 col-lg-6 text-start">
+                     <div class="main-menu main-menu-white">
+                        <nav id="mobile-menu">
+                           <ul>
+                              <li>
+                                 <a href="{% url 'home:home' %}">{% trans 'Home' %}</a>
+                              </li>
+                              <li>
+                                 <a href="{% url 'instructors:instructor_list' %}">{% trans 'Instructor' %}</a>
+                              </li>
+                              <li>
+                                 <a href="{% url 'courses:course_list' %}">{% trans 'Course' %}</a>
+                              </li>
+                              <li>
+                                 <a href="{% url 'blogs:blog_list' %}">{% trans 'Blog' %}</a>
+
+                              </li>
+                              <li class="has-dropdown">
+                                 <a href="{% static 'about.html' %}">Pages</a>
+                                 <ul class="submenu">
+                                    <li><a href="{% static 'about.html' %}">About</a></li>
+                                    <li><a href="{% url 'contacts:contact' %}">{% trans 'Contact' %}</a></li>
+                                    <li><a href="{% static 'checkout.html' %}">Check Out</a></li>
+                                    <li><a href="{% url 'faq:question_answer' %}">{% trans 'FAQ' %}</a></li>
+                                    <li><a href="{% static 'register.html' %}">Register</a></li>
+                                    <li><a href="{% static 'sign-in.html' %}">Sign In</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+                  <div class="col-xxl-3 col-xl-3 col-lg-6 d-flex align-items-center justify-content-end">
+                     <div class="header-meta-green">
+                        <ul>
+                           <li><a href="{% static 'sign-in.html' %}"><i class="fi fi-rr-user"></i></a></li>
+                           <li><a href="{% url 'carts:cart' %}"><i class="fi fi-rr-shopping-bag"></i></a></li>
+                           <li><a href="#" class="tp-menu-toggle d-xl-none"><i class="icon_ul"></i></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+
+   <div class="mobile-header-area d-xl-none">
+      <div class="container">
+         <div class="row align-items-center">
+            <div class="col-md-6 col-5">
+               <div class="logo">
+                  <a href="{% static 'index.htm' %}">
+                     <img src="{% static 'assets/img/logo/logo-black.png' %}" alt="logo">
+                  </a>
+               </div>
+            </div>
+            <div class="col-md-6 col-7 d-flex align-items-center justify-content-end">
+               <div class="header-meta-green text-end">
+                  <ul>
+                     <li><a href="{% static 'sign-in.html' %}"><i class="fi fi-rr-user"></i></a></li>
+                     <li><a href="{% static 'cart.html' %}"><i class="fi fi-rr-shopping-bag"></i></a></li>
+                     <li><a href="#" class="tp-menu-toggle d-xl-none"><i class="icon_ul"></i></a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- header area end -->
