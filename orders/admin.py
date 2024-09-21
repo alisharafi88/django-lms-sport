@@ -1,7 +1,12 @@
 from django.contrib import admin, messages
 from django.utils.translation import gettext_lazy as _
 
-from orders.models import Order
+from orders.models import Order, OrderItem
+
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 0
 
 
 @admin.register(Order)
@@ -15,6 +20,7 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('date_created',)
     list_editable = ('status', 'access_status',)
     actions = ('status_paid', 'status_canceled', 'status_unpaid')
+    inlines = (OrderItemInline,)
 
     fieldsets = (
         (_('custome information'), {'fields': ('customer',)}),
@@ -58,3 +64,15 @@ class OrderAdmin(admin.ModelAdmin):
             _(f'{update_count} of orders status has been updated to unpaid.'),
             messages.SUCCESS
         )
+
+
+@admin.register(OrderItem)
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = ('order', 'unit_price',)
+    list_per_page = 50
+    search_fields = ('order', 'order__customer',)
+
+    fieldsets = (
+        (_('Order'), {'fields': ('order',)}),
+        (_('course information'), {'fields': ('course', 'unit_price',)}),
+    )
