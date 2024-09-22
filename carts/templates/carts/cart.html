@@ -89,7 +89,7 @@
                                         <li>{% trans 'Total price' %} <span>{% trans 'Toman' %}{{ total_price }}</span></li>
                                         <li>{% trans 'Total price after discount' %} <span>{% trans 'Toman' %}{{ total_discounted_price }}</span></li>
                                     </ul>
-                                    <a class="tp-btn" href="checkout.html">Proceed to checkout</a>
+                                    <a class="tp-btn" href="{% url 'orders:order_create' %}">{%trans 'Proceed to checkout' %}% </a>
                                 </div>
                             </div>
                         </div>

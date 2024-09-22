@@ -29,6 +29,7 @@ urlpatterns = [
     path('contact/', include('contacts.urls', namespace='contacts'),),
     path('instructors/', include('instructors.urls', namespace='instructors'),),
     path('carts/', include('carts.urls', namespace='carts'),),
+    path('orders/', include('orders.urls', namespace='orders'),),
 ] + debug_toolbar_urls()
 
 urlpatterns += [
