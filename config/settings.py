@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'django_ckeditor_5',
     'django_seed',
+    'widget_tweaks',
 
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig',

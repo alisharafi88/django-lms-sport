@@ -1,7 +1,23 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
+
+from phonenumbers import parse, is_valid_number, NumberParseException, region_code_for_number
+from phonenumber_field.modelfields import PhoneNumberField
+
 from courses.models import Course
+
+
+def phone_number_validator_for_iran(value):
+    try:
+        phone_number = parse(value, 'IR')
+        if not is_valid_number(phone_number):
+            raise ValidationError('Invalid phone number.')
+        if region_code_for_number(phone_number) != 'IR':
+            raise ValidationError('Phone number must be from Iran.')
+    except NumberParseException:
+        raise ValidationError('Invalid phone number format.')
 
 
 class Order(models.Model):
@@ -47,8 +63,14 @@ class DVDOrderDetail(models.Model):
         CANCELED = 'c', _('Canceled')
 
     order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name='dvd_detail', verbose_name=_('order'),)
+
+    city = models.CharField(_('city'), max_length=15,)
     address = models.CharField(_('address'), max_length=255,)
     postal_code = models.CharField(_('postal code'), max_length=20,)
+    first_name = models.CharField(_('first name'), max_length=20,)
+    last_name = models.CharField(_('last name'), max_length=30,)
+    email = models.EmailField(_('email'),)
+    phone_number = PhoneNumberField(_('phonenumber'), region='IR', validators=[phone_number_validator_for_iran], unique=True,)
     order_note = models.CharField(_('order note'), max_length=255, null=True, blank=True,)
 
     delivery_status = models.CharField(_('delivery status'), max_length=1, choices=DeliveryStatus.choices,
