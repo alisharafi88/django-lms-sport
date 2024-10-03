@@ -25,19 +25,24 @@ class OrderCreateView(View):
     def dispatch(self, request, *args, **kwargs):
         cart = Cart(request)
         if len(cart) == 0:
-            messages.warning(request, _('You can not proceed to checkout page because your cart is empty.'),
-                             'warnning', )
+            messages.warning(request, _('You cannot proceed to the checkout page because your cart is empty.'),
+                             'warning', )
+            logger.info('User  %s attempted to checkout with an empty cart.', request.user.username)
             return redirect('courses:course_list')
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
         cart = Cart(request)
+        logger.debug('Rendering checkout page for user %s with cart items: %s', request.user.username, cart)
         return render(request, self.template_name, {'cart': cart, 'form': self.form_class()})
 
     def post(self, request):
         cart = Cart(request)
         form = self.form_class(request.POST)
         total_price, total_discounted_price = cart.get_total_price()
+        logger.debug('User  %s is attempting to create an order with total price: %s and discounted price: %s',
+                     request.user.username, total_price, total_discounted_price)
+
         if form.is_valid():
             try:
                 with transaction.atomic():
@@ -45,7 +50,7 @@ class OrderCreateView(View):
                         customer=request.user,
                         total_price=total_discounted_price,
                     )
-                    print('order create')
+                    logger.info('Order created for user %s with order ID: %s', request.user.username, order.id)
 
                     for item in cart:
                         OrderItem.objects.create(
@@ -53,13 +58,11 @@ class OrderCreateView(View):
                             course=item['course_obj'],
                             unit_price=item['item_total_price'],
                         )
-                    print('order item create')
+                        logger.debug('OrderItem created for order ID %s: %s', order.id, item)
 
                     if form.cleaned_data['status'] == Order.AccessStatus.DVD:
-                        print('status dvd')
-                        order.status = Order.AccessStatus.DVD
+                        order.access_status = Order.AccessStatus.DVD
                         order.save()
-                        print('order save dvd status')
                         DVDOrderDetail.objects.create(
                             order=order,
                             address=form.cleaned_data['shipping_address'],
@@ -71,17 +74,18 @@ class OrderCreateView(View):
                             email=form.cleaned_data['email'],
                             order_note=form.cleaned_data['order_note']
                         )
-                        print('dvddetail created')
+                        logger.info('DVDOrderDetail created for order ID %s', order.id)
 
                     cart.clear()
-                    print('cart clear')
+                    logger.info('Cart cleared for user %s after order completion.', request.user.username)
                     messages.success(request, _('Your order was successfully completed!'), 'success')
                     return redirect('carts:cart')
             except Exception as e:
-                logger.warning('Error creating order: %s', e)
+                logger.error('Error creating order for user %s: %s', request.user.username, e, exc_info=True)
                 messages.error(request, _('Something went wrong. Please try again.'), 'error')
                 return redirect('carts:cart')
         else:
+            logger.warning('Form validation failed for user %s with errors: %s', request.user.username, form.errors)
             messages.error(request, _('Please correct the errors below:'), 'error')
             for field, errors in form.errors.items():
                 messages.error(request, f'{field}: {errors[0]}', 'error')
