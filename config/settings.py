@@ -17,7 +17,6 @@ DEBUG = env('DJANGO_DEBUG_STATUS')
 
 ALLOWED_HOSTS = []
 
-
 INSTALLED_APPS = [
     'admin_confirm',
 
@@ -132,6 +131,13 @@ INSTRUCTOR_USER_MODEL = 'instructors.Instructor'
 
 INTERNAL_IPS = [
     "127.0.0.1",
+]
+
+# auth
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "accounts.backends.PhoneAuthenticationBackend",
 ]
 
 # ckeditor
@@ -262,10 +268,7 @@ CKEDITOR_5_FILE_UPLOAD_PERMISSION = "staff"
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_5_CUSTOM_CSS = 'assets/css/ckeditor_custom.css'
 
-
 # logging
-
-# settings.py
 
 LOGGING = {
     'version': 1,
@@ -302,3 +305,9 @@ LOGGING = {
         },
     },
 }
+
+# SMS Provider API
+
+SMS_API_KEY = env('SMS_API_KEY')
+SMS_SENDER = env('SMS_SENDER')
+SMS_PATTERN_CODE = env('SMS_PATTERN_CODE')

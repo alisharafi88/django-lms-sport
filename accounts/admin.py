@@ -10,9 +10,10 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
     add_form = CustomUserCreationForm
-    list_display = ('username', 'is_staff')
+    list_display = ('phone_number', 'is_staff',)
+    ordering = ('date_joined',)
+    search_fields = ('phone_number', 'first_name', 'last_name', 'email')
     fieldsets = (
-        (None, {'fields': ('username', 'password')}),
         (_('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'phone_number', )}),
         (
             _('Permissions'),
@@ -33,7 +34,7 @@ class CustomUserAdmin(UserAdmin):
             None,
             {
                 'classes': ('wide',),
-                'fields': ('username', 'phone_number', 'password1', 'password2'),
+                'fields': ('phone_number', 'password1', 'password2'),
             },
         ),
     )

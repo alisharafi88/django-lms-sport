@@ -1,19 +1,26 @@
-from django.contrib.auth import get_user_model
+from django import forms
+from django.conf import settings
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from phonenumber_field.formfields import SplitPhoneNumberField
+from django.contrib.auth import get_user_model
 
 
 class CustomUserCreationForm(UserCreationForm):
-    phone_number = SplitPhoneNumberField(region='IR')
 
     class Meta:
         model = get_user_model()
-        fields = ('username', 'phone_number',)
+        fields = ('phone_number',)
 
 
 class CustomUserChangeForm(UserChangeForm):
-    phone_number = SplitPhoneNumberField(region='IR')
 
     class Meta:
         model = get_user_model()
-        fields = ('username', 'phone_number',)
+        fields = ('phone_number',)
+
+
+class AthenticationForm(forms.Form):
+    phone_number = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'placeholder': 'Enter your phone number'}))
+
+
+class VerificationForm(forms.Form):
+    otp = forms.CharField(max_length=6, widget=forms.TextInput(attrs={'placeholder': 'Enter OTP'}))
