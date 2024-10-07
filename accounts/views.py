@@ -20,26 +20,24 @@ class AuthenticationView(View):
     template_name = 'accounts/authentication.html'
 
     def get(self, request):
-        logger.debug("Rendering authentication form.")
+        logger.debug('Rendering authentication form.')
         return render(request, self.template_name, {'form': self.form_class()})
 
     def post(self, request):
-        logger.debug("Handling authentication form submission.")
+        logger.debug('Handling authentication form submission.')
         form = self.form_class(request.POST)
         if form.is_valid():
             phone_number = form.cleaned_data['phone_number']
-            if phone_number.startswith('09'):
-                phone_number = '+98' + phone_number[1:]
             otp = get_random_otp()
-            logger.info(f"Generated OTP {otp} for phone number {phone_number}.")
+            logger.info(f'Generated OTP {otp} for phone number {phone_number}.')
 
             if self.process_user(phone_number, otp, request):
                 messages.success(request, 'Verification code sent successfully.', 'success')
-                logger.info(f"OTP sent successfully to {phone_number}.")
+                logger.info(f'OTP sent successfully to {phone_number}.')
                 return redirect('accounts:verify_otp')
             else:
                 messages.error(request, 'Failed to send verification code. Please try again.', 'error')
-                logger.error(f"Failed to send OTP to {phone_number}.")
+                logger.error(f'Failed to send OTP to {phone_number}.')
 
         return render(request, self.template_name, {'form': form})
 
@@ -47,18 +45,17 @@ class AuthenticationView(View):
         try:
             user = User.objects.get(phone_number=phone_number)
             print(user.phone_number)
-            logger.info(f"User found for phone number {phone_number}.")
+            logger.info(f'User found for phone number {phone_number}.')
             return send_otp_save_session(request, phone_number, otp, CODE_EXPIRATION_MINUTES)
         except User.DoesNotExist:
             user = User.objects.create_user(phone_number=phone_number)
             user.is_active = False
             user.save()
-            logger.info(f"Created new user for phone number {phone_number}.")
+            logger.info(f'Created new user for phone number {phone_number}.')
             return send_otp_save_session(request, phone_number, otp, CODE_EXPIRATION_MINUTES)
         except Exception as e:
-            logger.error(f"Error processing user with phone number {phone_number}: {e}")
+            logger.error(f'Error processing user with phone number {phone_number}: {e}')
             return False
-
 
 
 class VerifyOTPView(View):
@@ -66,11 +63,11 @@ class VerifyOTPView(View):
     form_class = VerificationForm
 
     def get(self, request):
-        logger.debug("Rendering OTP verification form.")
+        logger.debug('Rendering OTP verification form.')
         return render(request, self.template_name, {'form': self.form_class()})
 
     def post(self, request):
-        logger.debug("Handling OTP verification form submission.")
+        logger.debug('Handling OTP verification form submission.')
         form = self.form_class(request.POST)
         if form.is_valid():
             otp = form.cleaned_data['otp']
@@ -80,12 +77,12 @@ class VerifyOTPView(View):
 
             if not stored_otp or not phone_number or not code_expiration:
                 messages.error(request, 'Verification process not initiated or session expired.')
-                logger.warning("Session data missing or expired during OTP verification.")
+                logger.warning('Session data missing or expired during OTP verification.')
                 return render(request, self.template_name, {'form': form})
 
             if timezone.now() > code_expiration:
                 messages.error(request, 'The verification code has expired.')
-                logger.warning(f"OTP expired for phone number {phone_number}.")
+                logger.warning(f'OTP expired for phone number {phone_number}.')
                 return render(request, self.template_name, {'form': form})
 
             if otp == stored_otp:
@@ -97,14 +94,14 @@ class VerifyOTPView(View):
                     del request.session['phone_number']
                     del request.session['code_expiration']
                     messages.success(request, 'Your phone number has been verified successfully.')
-                    logger.info(f"Phone number {phone_number} verified successfully.")
+                    logger.info(f'Phone number {phone_number} verified successfully.')
                     return redirect('home:home')
                 except User.DoesNotExist:
                     messages.error(request, 'User  does not exist.')
-                    logger.error(f"User  does not exist for phone number {phone_number}.")
+                    logger.error(f'User  does not exist for phone number {phone_number}.')
             else:
                 messages.error(request, 'Invalid verification code.')
-                logger.warning(f"Invalid OTP entered for phone number {phone_number}.")
+                logger.warning(f'Invalid OTP entered for phone number {phone_number}.')
 
         return render(request, self.template_name, {'form': form})
 
@@ -114,5 +111,5 @@ class ResendOTPView(View):
         phone_number = request.session.get('phone_number')
         if not phone_number:
             messages.error(request, 'Session expired. Please start the verification process again.')
-            logger.warning("Attempted to resend OTP with expired session.")
+            logger.warning('Attempted to resend OTP with expired session.')
             return redirect('authentication')
