@@ -1,3 +1,5 @@
+from datetime import timedelta, datetime
+
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.shortcuts import render, redirect
@@ -32,6 +34,9 @@ class AuthenticationView(View):
             logger.info(f'Generated OTP {otp} for phone number {phone_number}.')
 
             if self.process_user(phone_number, otp, request):
+                request.session['otp_code'] = otp # delete it
+                request.session['phone_number'] = phone_number # delete it
+                request.session['code_expiration'] = int((timezone.now() + timedelta(minutes=CODE_EXPIRATION_MINUTES)).timestamp()) # delete it
                 messages.success(request, 'Verification code sent successfully.', 'success')
                 logger.info(f'OTP sent successfully to {phone_number}.')
                 return redirect('accounts:verify_otp')
@@ -46,13 +51,15 @@ class AuthenticationView(View):
             user = User.objects.get(phone_number=phone_number)
             print(user.phone_number)
             logger.info(f'User found for phone number {phone_number}.')
-            return send_otp_save_session(request, phone_number, otp, CODE_EXPIRATION_MINUTES)
+            return True
+            # return send_otp_save_session(request, phone_number, otp, CODE_EXPIRATION_MINUTES)
         except User.DoesNotExist:
             user = User.objects.create_user(phone_number=phone_number)
             user.is_active = False
             user.save()
             logger.info(f'Created new user for phone number {phone_number}.')
-            return send_otp_save_session(request, phone_number, otp, CODE_EXPIRATION_MINUTES)
+            # return send_otp_save_session(request, phone_number, otp, CODE_EXPIRATION_MINUTES)
+            return True
         except Exception as e:
             logger.error(f'Error processing user with phone number {phone_number}: {e}')
             return False
@@ -73,7 +80,7 @@ class VerifyOTPView(View):
             otp = form.cleaned_data['otp']
             stored_otp = request.session.get('otp_code')
             phone_number = request.session.get('phone_number')
-            code_expiration = request.session.get('code_expiration')
+            code_expiration = timezone.make_aware(datetime.fromtimestamp(request.session['code_expiration']))
 
             if not stored_otp or not phone_number or not code_expiration:
                 messages.error(request, 'Verification process not initiated or session expired.')
@@ -101,7 +108,7 @@ class VerifyOTPView(View):
                     logger.error(f'User  does not exist for phone number {phone_number}.')
             else:
                 messages.error(request, 'Invalid verification code.')
-                logger.warning(f'Invalid OTP entered for phone number {phone_number}.')
+                logger.warning(f'Invalid OTP entered for phone number {phone_number}., otp: {stored_otp} {type(stored_otp)}, sent otp : {otp} {type(otp)}')
 
         return render(request, self.template_name, {'form': form})
 

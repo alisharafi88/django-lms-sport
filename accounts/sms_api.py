@@ -32,7 +32,7 @@ def send_otp_code(phone_number, code):
 
 
 def get_random_otp():
-    return random.randint(100000, 999999)
+    return str(random.randint(100000, 999999))
 
 
 def send_otp_save_session(request, phone_number, otp, expire):
@@ -40,6 +40,6 @@ def send_otp_save_session(request, phone_number, otp, expire):
     if response:
         request.session['otp_code'] = otp
         request.session['phone_number'] = phone_number
-        request.session['code_expiration'] = timezone.now() + timedelta(minutes=expire)
+        request.session['code_expiration'] = int((timezone.now() + timedelta(minutes=expire)).timestamp())
         return True
     return False
