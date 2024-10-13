@@ -1,0 +1,383 @@
+{% extends '-base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {% trans 'About Us' %}
+{% endblock %}
+
+{% block content %}
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb__area include-bg pt-150 pb-150 breadcrumb__overlay"
+             data-background="{% static 'assets/img/breadcrumb/breadcrumb-bg-1.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-12">
+                    <div class="breadcrumb__content p-relative z-index-1">
+                        <h3 class="breadcrumb__title mb-20">{% trans 'About Us' %}</h3>
+                        <div class="breadcrumb__list">
+                            <span><a href="{% url 'home:home' %}">{% trans 'Home' %}</a></span>
+                            <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+                            <span class="sub-page-black">{% trans 'About Us' %}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+    <!-- feature-area -->
+    <section class="tp-feature-area grey-bg pt-115 pb-90 pl-205 pr-205 bg-bottom"
+             data-background="{% static 'assets/img/bg/shape-bg-1.png' %}">
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <div class="section-title mb-60">
+                        <span class="tp-sub-title mb-20">What We Offer</span>
+                        <h2 class="tp-section-title">For Your Future Learning.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="tp-feature-cn">
+                <div class="row justify-content-center">
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="tpfea mb-30">
+                            <div class="tpfea__icon mb-25">
+                                <i class="fi fi-rr-user"></i>
+                            </div>
+                            <div class="tpfea__text">
+                                <h5 class="tpfea__title mb-20">{% trans 'Expert Trainer' %}</h5>
+                                <p>Interactively provide access world class materials for unique catalysts for change my
+                                    ocardinat.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="tpfea mb-30">
+                            <div class="tpfea__icon mb-25">
+                                <i class="fi fi-rr-document"></i>
+                            </div>
+                            <div class="tpfea__text">
+                                <h5 class="tpfea__title mb-20">{% trans 'Get Certificate' %}</h5>
+                                <p>Interactively provide access world class materials for unique catalysts for change my
+                                    ocardinat.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="tpfea mb-30">
+                            <div class="tpfea__icon mb-25">
+                                <i class="fi fi-rr-calendar"></i>
+                            </div>
+                            <div class="tpfea__text">
+                                <h5 class="tpfea__title mb-20">{% trans 'Life Time Access' %}</h5>
+                                <p>Interactively provide access world class materials for unique catalysts for change my
+                                    ocardinat.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- feature-area-end -->
+
+    <!-- about-area -->
+    <section class="tp-about-area pb-70">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xxl-7 col-xl-7 col-lg-6 col-md-12 col-12">
+                    <div class="tp-about-class p-relative pb-50">
+                        <img src="{% static 'assets/img/about/about-sub-bg-01.png' %}" alt="about-img">
+                        <div class="tp-about-class-info tp-sub-about-info d-none d-md-block">
+                            <ul>
+                                <li><span>235K</span>Worldwide Students</li>
+                                <li><span>4.7<i class="fi fi-ss-star"></i></span>Worldwide Review</li>
+                                <li><span>3.5K</span>Free Pro Courses</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-12 col-12">
+                    <div class="tp-about-class-content mb-50 ml-75">
+                        <div class="section-title mb-35">
+                            <span class="tp-sub-title-box mb-15">About Us</span>
+                            <h2 class="tp-section-title mb-25">Explore Thousands of Creative Classes.</h2>
+                            <p>Dramatically supply transparent deliverables befoe backward comp internal or "organic"
+                                sources.</p>
+                        </div>
+                        <div class="tp-about-list mb-65">
+                            <ul>
+                                <li>
+                                    <i class="fa-light fa-check"></i>Create an E-Pora account
+                                </li>
+                                <li>
+                                    <i class="fa-light fa-check"></i>Choose Your Perfect Courses
+                                </li>
+                                <li>
+                                    <i class="fa-light fa-check"></i>After Finished Courses, Get Certificate
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about-area-end -->
+
+    <!-- choose-area -->
+    <section class="choose-area bg-bottom pb-120">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-5 col-lg-6 col-md-12">
+                    <div class="tp-choose-content mb-30">
+                        <div class="section-title mb-25">
+                            <span class="tp-sub-title-box mb-15">Why Choose Us</span>
+                            <h2 class="tp-section-title mb-20">Why You Choose Our E-Pora Online learning</h2>
+                            <p>Dramatically supply transparent deliverables before & you backward comp internal or
+                                "organic" sources.</p>
+                        </div>
+                        <div class="tp-choose-list tp-choose-bg mb-60">
+                            <ul>
+                                <li>
+                                    <div class="tp-list-bg choose-sub-color">
+                                        <i class="fa-light fa-check"></i>Increasing Your Learning Skills
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tp-list-bg choose-sub-color">
+                                        <i class="fa-light fa-check"></i>High Quality Video & Audio Classes
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tp-list-bg choose-sub-color">
+                                        <i class="fa-light fa-check"></i>Finish Your Course, Get Certificate
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-6 col-md-12">
+                    <div class="tp-choose-img tp-choose-img-2 p-relative mb-30 mr-50 text-end">
+                        <img src="{% static 'assets/img/bg/choose-2-img.jpg' %}" alt="choose-img">
+                        <div class="tpchoose-img-text tp-chose-shape d-none d-md-block">
+                            <ul>
+                                <li>
+                                    <i>23+</i>
+                                    <p>Years Experiences</p>
+                                </li>
+                                <li>
+                                    <i class="fa-light fa-check"></i>
+                                    <p>Fully Safe & Secure</p>
+                                </li>
+                                <li>
+                                    <p>Fully Safe & Secure</p>
+                                    <img src="{% static 'assets/img/icon/choose-2-shape.png' %}" alt="choose-shape">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- choose-area-end -->
+
+    <!-- testimonial-area -->
+    <section class="testimonial-area bg-bottom pt-120 pb-90 " data-background="{% static 'assets/img/bg/shape-bg-1.png' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center mb-65">
+                        <span class="tp-sub-title-box mb-15">Testimonial</span>
+                        <h2 class="tp-section-title mb-20">What Our Happy Users Says</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-active-box tp-slide-space-white">
+                <div class="tp-test-s-item">
+                    <div class="tp-testi tp-testi-round p-relative">
+                        <div class="tp-testi__ava testi-ava-border d-flex align-items-center mb-20 pb-20">
+                            <img src="{% static 'assets/img/icon/test-avata--1.png' %}" alt="testi-avatar">
+                            <div class="tp-testi__avainfo ml-20">
+                                <h3 class="tp-testi__title tp-title-meta mt-5">Darrell Steward</h3>
+                                <i>President of Sales</i>
+                            </div>
+                        </div>
+                        <p>Phosfluorescently aggregate bleeding-edge channels rather than global mindshare.
+                            Monotonectally enable enterprise wide strategi theme areas for worldwide initiatives.</p>
+                        <div class="tp-testi__rating mb-5">
+                            <i class="fi fi-ss-star"></i>
+                            <i class="fi fi-ss-star"></i>
+                            <i class="fi fi-ss-star"></i>
+                            <i class="fi fi-ss-star"></i>
+                            <i class="fi fi-rs-star"></i>
+                            <span>4.5</span>
+                        </div>
+                        <div class="testi-quote">
+                            <i class="fa-solid fa-quote-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="tp-test-s-item">
+                    <div class="tp-testi p-relative">
+                        <div class="tp-testi__ava testi-ava-border d-flex align-items-center mb-20 pb-20">
+                            <img src="{% static 'assets/img/icon/testi-ava-sub-1.png' %}" alt="testi-avatar">
+                            <div class="tp-testi__avainfo ml-20">
+                                <h3 class="tp-testi__title tp-title-meta mt-5">Ralph Edwards</h3>
+                                <i>Marketing Coordinator</i>
+                            </div>
+                        </div>
+                        <p>Phosfluorescently aggregate bleeding-edge channels rather than global mindshare.
+                            Monotonectally enable enterprise wide strategi theme areas for worldwide initiatives.</p>
+                        <div class="tp-testi__rating mb-5">
+                            <i class="fi fi-ss-star"></i>
+                            <i class="fi fi-ss-star"></i>
+                            <i class="fi fi-ss-star"></i>
+                            <i class="fi fi-ss-star"></i>
+                            <i class="fi fi-rs-star"></i>
+                            <span>4.5</span>
+                        </div>
+                        <div class="testi-quote">
+                            <i class="fa-solid fa-quote-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="tp-test-s-item">
+                    <div class="tp-testi p-relative">
+                        <div class="tp-testi__ava testi-ava-border d-flex align-items-center mb-20 pb-20">
+                            <img src="{% static 'assets/img/icon/testi-ava-sub-2.png' %}" alt="testi-avatar">
+                            <div class="tp-testi__avainfo ml-20">
+                                <h3 class="tp-testi__title tp-title-meta mt-5">Courtney Henry</h3>
+                                <i>UX/UI Designer</i>
+                            </div>
+                        </div>
+                        <p>Phosfluorescently aggregate bleeding-edge channels rather than global mindshare.
+                            Monotonectally enable enterprise wide strategi theme areas for worldwide initiatives. </p>
+                        <div class="tp-testi__rating mb-5">
+                            <i class="fi fi-ss-star"></i>
+                            <i class="fi fi-ss-star"></i>
+                            <i class="fi fi-ss-star"></i>
+                            <i class="fi fi-ss-star"></i>
+                            <i class="fi fi-rs-star"></i>
+                            <span>4.5</span>
+                        </div>
+                        <div class="testi-quote">
+                            <i class="fa-solid fa-quote-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- testimonial-area-end -->
+
+    <!-- instructor-area -->
+    <section class="instructor-area pt-110 pb-110">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-8 col-md-7 col-12">
+                    <div class="section-title mb-65">
+                        <h2 class="tp-section-title mb-20">{% trans 'Instructor' %}</h2>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-4 col-md-5 col-6">
+                    <div class="tp-instruc-arrow d-flex justify-content-md-end"></div>
+                </div>
+            </div>
+            <div class="intruc-active mb-15 tp-slide-space">
+                {% for instructor in instructors %}
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="tp-instruc-item">
+                            <div class="tp-instructor text-center p-relative mb-40">
+                                <div class="tp-instructor__thumb mb-25">
+                                    <img src="{% static 'assets/img/bg/instructor-bg-01.jpg' %}" alt="instructor-profile">
+                                </div>
+                                <div class="tp-instructor__content">
+                                    <h4 class="tp-instructor__title tp-instructor__title-info p-relative mb-35 mt-5"><a
+                                            href="{{ instructor.get_absolute_url }}">{{ instructor.full_name }}</a></h4>
+                                    <div class="tp-instructor__stu-info">
+                                        <ul class="d-flex align-items-center justify-content-center">
+                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-01.png' %}"
+                                                                                       alt="meta-icon"> <i>35 Classes</i>
+                                            </li>
+                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-02.png' %}"
+                                                                                       alt="meta-icon"> <i>291+ Students</i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="tp-instructor__social">
+                                        <ul>
+                                            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="instructor-btn text-center">
+                        <a class="tp-btn" href="{% url 'instructors:instructor_list' %}">{% trans 'Instructor' %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- instructor-area-end -->
+
+    <!-- counter-area -->
+    <section class="tp-counter-area theme-bg pt-90">
+        <div class="counter-b-border">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">276</span>K
+                                </h4>
+                                <p>Worldwide Students</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">23</span>+</h4>
+                                <p>Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">735</span>+
+                                </h4>
+                                <p>Professional Courses</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter-item mb-70">
+                            <div class="counter-item__content counter-white-text">
+                                <h4 class="counter-item__title counter-left-title"><span class="counter">4.7</span>K+
+                                </h4>
+                                <p>Beautiful Review</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- counter-area-end -->
+
+{% endblock %}

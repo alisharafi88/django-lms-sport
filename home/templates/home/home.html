@@ -238,7 +238,7 @@
                                 </a>
                                 <div class="tpcourse__tag">
                                     <a href="{% url 'carts:cart_add' course.id %}">
-                                        <i class="fi fi-rr-heart"></i>
+                                        <i class="fi fi-rr-shopping-bag-add"></i>
                                     </a>
                                 </div>
                                 <div class="tpcourse__img-icon">
@@ -335,7 +335,7 @@
                             </ul>
                         </div>
                         <div class="choose-btn">
-                            <a href="about.html" class="tp-btn">Explore Courses</a>
+                            <a href="{% url 'home:about_us' %}" class="tp-btn">{% trans 'Read more' %}</a>
                         </div>
                     </div>
                 </div>
@@ -412,27 +412,39 @@
                 </div>
             </div>
             <div class="intruc-active mb-15 tp-slide-space">
-                <div class="tp-instruc-item">
-                    <div class="tp-instructor text-center p-relative mb-30">
-                        <div class="tp-instructor__thumb mb-25">
-                            <img src="{% static 'assets/img/bg/instructor-bg-01.jpg' %}" alt="instructor-profile">
-                        </div>
-                        <div class="tp-instructor__content">
-                            <h4 class="tp-instructor__title mb-20"><a href="instructor-profile.html">Devon Lane</a></h4>
-                            <span>Instructor</span>
-                            <div class="tp-instructor__social">
-                                <ul>
-                                    <li><a href="instructor-profile.html"><i class="fa-brands fa-facebook-f"></i></a>
-                                    </li>
-                                    <li><a href="instructor-profile.html"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a href="instructor-profile.html"><i class="fa-brands fa-instagram"></i></a>
-                                    </li>
-                                    <li><a href="instructor-profile.html"><i class="fa-brands fa-youtube"></i></a></li>
-                                </ul>
+                {% for instructor in instructors %}
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="tp-instruc-item">
+                            <div class="tp-instructor text-center p-relative mb-40">
+                                <div class="tp-instructor__thumb mb-25">
+                                    <img src="{% static 'assets/img/bg/instructor-bg-01.jpg' %}" alt="instructor-profile">
+                                </div>
+                                <div class="tp-instructor__content">
+                                    <h4 class="tp-instructor__title tp-instructor__title-info p-relative mb-35 mt-5"><a
+                                            href="{{ instructor.get_absolute_url }}">{{ instructor.full_name }}</a></h4>
+                                    <div class="tp-instructor__stu-info">
+                                        <ul class="d-flex align-items-center justify-content-center">
+                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-01.png' %}"
+                                                                                       alt="meta-icon"> <i>35 Classes</i>
+                                            </li>
+                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-02.png' %}"
+                                                                                       alt="meta-icon"> <i>291+ Students</i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="tp-instructor__social">
+                                        <ul>
+                                            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -498,27 +510,28 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-4 col-md-6">
-                    <div class="tp-blog mb-60">
-                        <div class="tp-blog__thumb p-relative">
-                            <div class="tp-blog__timg fix">
-                                <a href="blog-details.html"><img src="{% static 'assets/img/bg/blog-img-01.jpg' %}"
-                                                                 alt="blog-img"></a>
+                {% for blog in blogs %}
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="tp-blog tp-blog-parent mb-40">
+                            <div class="tp-blog__thumb">
+                                <div class="fix blog-round">
+                                    <a href="{{ blog.get_absolute_url }}"><img src="{{ blog.img.url }}"
+                                                                               alt="{% static 'assets/img/blog/blog-thumb-3-01.jpg' %}"></a>
+                                </div>
                             </div>
-                            <div class="tp-blog__icon"><a href="blog-details.html"><i class="fi fi-rs-angle-right"></i></a>
+                            <div class="tp-blog__content blog-edu p-relative">
+                                <div class="tp-blog__meta-list mb-10">
+                                    <span><a href="{{ blog.get_absolute_url }}"><i
+                                            class="fi fi-ss-calendar"></i>{{ blog.date_created|timesince }}</a></span>
+                                </div>
+                                <h3 class="tp-blog__title mb-15"><a
+                                        href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h3>
+                                <span><a href="{{ blog.get_absolute_url }}"><i
+                                        class="fi fi-sr-user"></i>{{ blog.author }}</a></span>
                             </div>
-                        </div>
-                        <div class="tp-blog__content">
-                            <div class="tp-blog__meta mb-10">
-                                <a href="blog-details.html">Education</a> <span>-</span>
-                                <a href="blog-details.html">Jan 21 , 2022</a>
-                            </div>
-                            <h3 class="tp-blog__title mb-15"><a href="blog-details.html">Educational Technology & Mobile
-                                Learning</a></h3>
-                            <p>Dramatically supply transparent deliverab before & you backward comp internal.</p>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="row">
                 <div class="col-lg-12">
