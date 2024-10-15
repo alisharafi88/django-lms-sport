@@ -209,7 +209,7 @@
                                 sources. Comp transparent leverage other.</p>
                         </div>
                         <div class="about-btn">
-                            <a href="about.html" class="tp-btn">Read More</a>
+                            <a href="{% url 'home:about_us' %}" class="tp-btn">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -335,7 +335,7 @@
                             </ul>
                         </div>
                         <div class="choose-btn">
-                            <a href="{% url 'home:about_us' %}" class="tp-btn">{% trans 'Read more' %}</a>
+                            <a href="{% url 'instructors:instructor_list' %}" class="tp-btn">{% trans 'Read more' %}</a>
                         </div>
                     </div>
                 </div>
@@ -417,7 +417,7 @@
                         <div class="tp-instruc-item">
                             <div class="tp-instructor text-center p-relative mb-40">
                                 <div class="tp-instructor__thumb mb-25">
-                                    <img src="{% static 'assets/img/bg/instructor-bg-01.jpg' %}" alt="instructor-profile">
+                                    <img src="{{ instructor.img }}" alt="instructor-profile">
                                 </div>
                                 <div class="tp-instructor__content">
                                     <h4 class="tp-instructor__title tp-instructor__title-info p-relative mb-35 mt-5"><a
@@ -449,7 +449,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="instructor-btn text-center">
-                        <a class="tp-btn" href="{% url 'instructors:instructor_list' %}">{% trans 'Instructor' %}</a>
+                        <a class="tp-btn" href="{% url 'instructors:instructor_list' %}">{% trans 'All Instructor' %}</a>
                     </div>
                 </div>
             </div>
