@@ -4,7 +4,7 @@ from blogs.models import Blog
 
 
 def get_top_courses():
-    return Course.objects.filter(status=True).only('title', 'parent__title', 'price', 'discount_amount', 'slug', 'id')[:3]
+    return Course.objects.filter(status=True).only('title', 'parent__title', 'img', 'price', 'discount_amount', 'slug', 'id')[:3]
 
 
 def get_featured_instructors():

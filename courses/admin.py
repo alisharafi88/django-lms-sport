@@ -20,14 +20,14 @@ class CouponAdmin(admin.ModelAdmin):
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('title', 'get_instructor', 'price', 'date_modified', 'num_of_videos', 'status',)
     list_filter = ('price', 'status', 'date_modified', 'instructor',)
-    search_fields = ('title', 'instructor',)
+    search_fields = ('title',)
     date_hierarchy = 'date_modified'
     readonly_fields = ('date_created', 'date_modified',)
     list_select_related = ('instructor__user',)
     prepopulated_fields = {'slug': ('title',)}
     filter_horizontal = ('parent', )
     fieldsets = (
-        (_('details'), {'fields': ('title', 'instructor', 'description', 'slug',)}),
+        (_('details'), {'fields': ('title', 'instructor', 'description', 'img', 'slug',)}),
         (_('specifications'), {'fields': ('parent', 'age_range', 'duration',)}),
         (_('Price information'), {'fields': ('price', 'discount_amount',)}),
         (_('Statuses'), {'fields': ('status', 'certificate_status', 'analysis_room_status', 'extra_movments_status', 'injury_prevention_status')}),
@@ -35,7 +35,7 @@ class CourseAdmin(admin.ModelAdmin):
 
     )
     add_fieldsets = (
-        (_('details'), {'fields': ('title', 'instructor', 'description', 'slug',)}),
+        (_('details'), {'fields': ('title', 'instructor', 'description', 'img', 'slug',)}),
         (_('specifications'), {'fields': ('parent', 'age_range', 'duration',)}),
         (_('Statuses'), {'fields': ('status', 'certificate_status', 'analysis_room_status', 'extra_movments_status', 'injury_prevention_status')}),
         (_('Price information'), {'fields': ('price', 'discount_amount',)}),

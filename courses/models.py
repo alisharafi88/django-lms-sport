@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from django.utils.translation import gettext as _
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Coupon(models.Model):
@@ -27,11 +28,14 @@ class Course(models.Model):
     parent = models.ManyToManyField('self', symmetrical=False, blank=True, verbose_name=_('Courses'))
 
     title = models.CharField(_('title'), max_length=100)
-    description = models.TextField(_('description'))
     slug = models.SlugField()
+    description = CKEditor5Field(verbose_name=_("description"), )
+
     age_range = models.CharField(_('age range'), max_length=50, help_text=_('Age range for users.'))
     duration = models.CharField(_('duration'), max_length=10,
                                 help_text=_('How long it takes to complete this course?.'))
+
+    img = models.ImageField(_("main img"), upload_to="courses/%Y/%m/%d", )
 
     price = models.DecimalField(_('price'), max_digits=10, decimal_places=2)
     discount_amount = models.DecimalField(_('discount amount'), max_digits=5, decimal_places=2, default=0.00,

@@ -234,15 +234,12 @@
                         <div class="tpcourse mb-40">
                             <div class="tpcourse__thumb p-relative w-img fix">
                                 <a href="{{ course.get_absolute_url }}">
-                                    <img src="{% static 'assets/img/course/course-thumb-01.jpg' %}" alt="course-thumb">
+                                    <img src="{{ course.img.url }}" alt="course-thumb">
                                 </a>
                                 <div class="tpcourse__tag">
                                     <a href="{% url 'carts:cart_add' course.id %}">
                                         <i class="fi fi-rr-shopping-bag-add"></i>
                                     </a>
-                                </div>
-                                <div class="tpcourse__img-icon">
-                                    <img src="{% static 'assets/img/icon/course-3-avata-1.png' %}" alt="course-avata">
                                 </div>
                             </div>
                             <div class="tpcourse__content-2">
@@ -417,7 +414,7 @@
                         <div class="tp-instruc-item">
                             <div class="tp-instructor text-center p-relative mb-40">
                                 <div class="tp-instructor__thumb mb-25">
-                                    <img src="{{ instructor.img }}" alt="instructor-profile">
+                                    <img src="{{ instructor.img.url }}" alt="instructor-profile">
                                 </div>
                                 <div class="tp-instructor__content">
                                     <h4 class="tp-instructor__title tp-instructor__title-info p-relative mb-35 mt-5"><a

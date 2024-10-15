@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.utils.translation import gettext as _
 
 from .models import Instructor, InstructorHonor, InstructorWidjet
@@ -24,9 +24,18 @@ class InstructorAdmin(admin.ModelAdmin):
         (_('social media info'), {'fields': ('telegram_id', 'youtube_id', 'instagram_id',)}),
         (_('status info'), {'fields': ('status',)}),
     )
-    search_fields = ('full_name',)
     list_editable = ('status',)
     inlines = (InstructorWidjetInline, InstructorHonorInline,)
+
+    # search_fields = ('full_name',)
+    def get_search_results(self, request, queryset, search_term):
+        queryset, use_distinct = super().get_search_results(request, queryset, search_term)
+        try:
+            instructors = queryset.filter(Q(user__first_name__icontains=search_term) | Q(user__last_name__icontains=search_term))
+            queryset = instructors
+        except ValueError:
+            pass
+        return queryset, use_distinct
 
     @admin.display(ordering='user__first_name')
     def full_name(self, instructor):
