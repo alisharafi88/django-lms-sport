@@ -28,7 +28,7 @@ class Instructor(models.Model):
         return f'{self.user.first_name} {self.user.last_name}'
 
     def get_absolute_url(self):
-        return reverse('instructors:instructor_detail', kwargs={'pk': self.pk, 'slug': self.slug}, )
+        return reverse('instructors:instructor_detail', kwargs={'pk': self.pk, 'slug': self.slug},)
 
     def save(self, *args, **kwargs):
         # Generate a URL-friendly slug from the instructor's full name
