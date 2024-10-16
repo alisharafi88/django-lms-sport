@@ -10,7 +10,7 @@ def get_all_instructor():
     The 'only' method was used to ensure we have access to the Instructor’s full_name property and get_absolute_url method.
     :return: queryset
     """
-    return Instructor.objects.select_related('user').only('img', 'id', 'slug', 'telegram_id', 'youtube_id',
+    return Instructor.objects.select_related('user').only('img', 'id', 'slug', 'is_master', 'telegram_id', 'youtube_id',
                                                           'instagram_id', 'user__first_name',
                                                           'user__last_name', ).filter(is_active=True)
 

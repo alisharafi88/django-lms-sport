@@ -1,9 +1,7 @@
-from django.db.models import Prefetch
-from django.shortcuts import render
 from django.views import generic
 
-from instructors.models import Instructor, InstructorHonor
-from instructors.queries import get_all_instructor, get_instructor_by_id_slug
+from .queries import get_all_instructor, get_instructor_by_id_slug
+from .utils import get_master_instructor_social_media
 
 
 class InstructorListView(generic.ListView):
@@ -18,3 +16,11 @@ class InstructorDetailView(generic.DetailView):
 
     def get_queryset(self):
         return get_instructor_by_id_slug(self.kwargs['pk'], self.kwargs['slug'])
+
+    def get_context_data(self, **kwargs):
+        context = super(InstructorDetailView, self).get_context_data(**kwargs)
+
+        master_social_media = get_master_instructor_social_media()
+        if master_social_media:
+            context.update(master_social_media)
+        return context

@@ -100,13 +100,15 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="tp-instructor__social">
-                                        <ul>
-                                            <li><a href="{{ instructor.telegram_id }}"><i class="fa-brands fa-instagram"></i></a></li>
-                                            <li><a href="{{ instructor.youtube_id }}"><i class="fa-brands fa-youtube"></i></a></li>
-                                            <li><a href="{{ instructor.telegram_id }}"><i class="fa-brands fa-telegram"></i></a></li>
-                                        </ul>
-                                    </div>
+                                    {% if instructor.is_master %}
+                                        <div class="tp-instructor__social">
+                                            <ul>
+                                                <li><a href="{{ instructor.telegram_id }}"><i class="fa-brands fa-instagram"></i></a></li>
+                                                <li><a href="{{ instructor.youtube_id }}"><i class="fa-brands fa-youtube"></i></a></li>
+                                                <li><a href="{{ instructor.telegram_id }}"><i class="fa-brands fa-telegram"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
