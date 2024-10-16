@@ -20,7 +20,7 @@ class InstructorAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'phone_number', 'num_of_courses', 'is_master', 'is_active',)
     fieldsets = (
         (None, {'fields': ('user', 'slug')}),
-        (_('instructor info'), {'fields': ('description', 'exprience', 'img',)}),
+        (_('instructor info'), {'fields': ('description', 'experience', 'img',)}),
         (_('social media info'), {'fields': ('telegram_id', 'youtube_id', 'instagram_id',)}),
         (_('status info'), {'fields': ('is_active', 'is_master',)}),
     )
