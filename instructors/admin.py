@@ -17,14 +17,14 @@ class InstructorHonorInline(admin.TabularInline):
 
 @admin.register(Instructor)
 class InstructorAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'phone_number', 'num_of_courses', 'status',)
+    list_display = ('full_name', 'phone_number', 'num_of_courses', 'is_master', 'is_active',)
     fieldsets = (
         (None, {'fields': ('user', 'slug')}),
         (_('instructor info'), {'fields': ('description', 'exprience', 'img',)}),
         (_('social media info'), {'fields': ('telegram_id', 'youtube_id', 'instagram_id',)}),
-        (_('status info'), {'fields': ('status',)}),
+        (_('status info'), {'fields': ('is_active', 'is_master',)}),
     )
-    list_editable = ('status',)
+    list_editable = ('is_active',)
     inlines = (InstructorWidjetInline, InstructorHonorInline,)
 
     # search_fields = ('full_name',)

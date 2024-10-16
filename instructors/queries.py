@@ -12,10 +12,10 @@ def get_all_instructor():
     """
     return Instructor.objects.select_related('user').only('img', 'id', 'slug', 'telegram_id', 'youtube_id',
                                                           'instagram_id', 'user__first_name',
-                                                          'user__last_name', ).filter(status=True)
+                                                          'user__last_name', ).filter(is_active=True)
 
 
 def get_instructor_by_id_slug(pk, slug):
-    return Instructor.objects.filter(pk=pk, slug=slug, status=True,)\
+    return Instructor.objects.filter(pk=pk, slug=slug, is_active=True,)\
             .select_related('user')\
-            .prefetch_related('widjets', Prefetch('honors', queryset=InstructorHonor.objects.filter(status=True)), Prefetch('courses', queryset=Course.objects.filter(status=True)))\
+            .prefetch_related('widjets', Prefetch('honors', queryset=InstructorHonor.objects.filter(status=True)), Prefetch('courses', queryset=Course.objects.filter(status=True)))

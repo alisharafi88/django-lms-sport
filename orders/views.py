@@ -60,7 +60,7 @@ class OrderCreateView(View):
                         )
                         logger.debug('OrderItem created for order ID %s: %s', order.id, item)
 
-                    if form.cleaned_data['status'] == Order.AccessStatus.DVD:
+                    if form.cleaned_data['is_active'] == Order.AccessStatus.DVD:
                         order.access_status = Order.AccessStatus.DVD
                         order.save()
                         DVDOrderDetail.objects.create(

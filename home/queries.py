@@ -8,7 +8,7 @@ def get_top_courses():
 
 
 def get_featured_instructors():
-    return Instructor.objects.select_related('user').filter(status=True).only('user__first_name', 'user__last_name', 'img', 'slug', 'id')[:3]
+    return Instructor.objects.select_related('user').filter(is_active=True).only('user__first_name', 'user__last_name', 'img', 'slug', 'id')[:3]
 
 
 def get_latest_blogs():

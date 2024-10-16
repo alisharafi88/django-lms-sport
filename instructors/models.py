@@ -16,7 +16,8 @@ class Instructor(models.Model):
 
     img = models.ImageField(upload_to='instructors/imgs/',)
 
-    status = models.BooleanField(_('status'), default=True,)
+    is_master = models.BooleanField(_('is master'), default=False, help_text=_('Check this box to set master instructor and display social media links.'))
+    is_active = models.BooleanField(_('is active'), default=True, help_text=_('Check this box to set this instructor as active.'))
 
     def __str__(self):
         return self.full_name
@@ -30,6 +31,8 @@ class Instructor(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.full_name, allow_unicode=True)
+        if self.is_master:
+            Instructor.objects.filter(is_master=True).update(is_master=False)
         super(Instructor, self).save(*args, **kwargs)
 
 
