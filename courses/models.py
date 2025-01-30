@@ -28,7 +28,7 @@ class Course(models.Model):
     parent = models.ManyToManyField('self', symmetrical=False, blank=True, verbose_name=_('Courses'))
 
     title = models.CharField(_('title'), max_length=100)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True, allow_unicode=True)
     description = CKEditor5Field(verbose_name=_("description"), )
 
     age_range = models.CharField(_('age range'), max_length=50, help_text=_('Age range for users.'))
