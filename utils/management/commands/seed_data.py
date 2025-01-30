@@ -8,7 +8,7 @@ import requests
 import os
 import time
 
-fake = Faker(['en_US', 'fa_IR'])  
+fake = Faker('fa_IR')  
 
 def get_random_image(category='education'):
     """Return a placeholder image from Lorem Picsum with retries"""
@@ -40,14 +40,39 @@ def generate_instructor_data():
         'is_active': True,
     }
 
+def generate_unique_slug(model_class, base_slug):
+    """Generate a unique slug by appending numbers if necessary"""
+    slug = base_slug
+    counter = 1
+    while model_class.objects.filter(slug=slug).exists():
+        slug = f"{base_slug}-{counter}"
+        counter += 1
+    return slug
+
 def generate_course_data():
     price = random.randint(100000, 1000000)
-    max_discount = min(price * 0.5, 99.99)  
+    max_discount = min(price * 0.5, 99.99)
+    
+ 
+    course_titles = [
+        "آموزش تکنیک‌های دریبل فوتبال",
+        "دوره جامع دروازه‌بانی",
+        "آموزش تاکتیک‌های حمله در فوتبال",
+        "تمرینات آمادگی جسمانی فوتبال",
+        "مهارت‌های پاس و شوت",
+        "اصول دفاع در فوتبال مدرن",
+        "تکنیک‌های ضربات ایستگاهی",
+        "آموزش مربیگری فوتبال پایه",
+        "تاکتیک‌های تیمی پیشرفته",
+        "روانشناسی در فوتبال"
+    ]
+    
+    title = random.choice(course_titles) + f" (سطح {random.randint(1, 3)})"
     
     return {
-        'title': fake.sentence(nb_words=4),
-        'slug': fake.slug(),
-        'description': ' '.join(fake.sentences(nb=5)),
+        'title': title,
+        'slug': generate_unique_slug(apps.get_model('courses.Course'), fake.slug()),
+        'description': "این یک دوره آموزشی جامع است که به شما کمک می‌کند مهارت‌های لازم را کسب کنید.",
         'age_range': f'{random.randint(10,18)}-{random.randint(19,50)}',
         'duration': f'{random.randint(1,12)} ماه',
         'img': get_random_image('education'),
@@ -61,20 +86,46 @@ def generate_course_data():
     }
 
 def generate_blog_data():
+    blog_titles = [
+        "تاکتیک‌های برتر در لیگ قهرمانان",
+        "بررسی عملکرد تیم ملی فوتبال",
+        "مصاحبه با ستارگان فوتبال ایران",
+        "آنالیز بازی‌های لیگ برتر",
+        "تغذیه مناسب برای فوتبالیست‌ها",
+        "پیشگیری از آسیب‌های ورزشی",
+        "تمرینات اختصاصی فوتبال",
+        "اخبار نقل و انتقالات فوتبال"
+    ]
+    
+    title = random.choice(blog_titles)
+    
     return {
-        'title': fake.sentence(),
-        'slug': fake.slug(),
-        'description': ' '.join(fake.sentences(nb=5)),
+        'title': title,
+        'slug': generate_unique_slug(apps.get_model('blogs.Blog'), fake.slug()),
+        'description': "این مقاله به بررسی جنبه‌های مختلف برنامه‌نویسی و تکنولوژی می‌پردازد.",
         'img': get_random_image('technology'),
         'status': random.choice(['p', 'r']),
         'enable_comments': True,
     }
 
 def generate_faq_data():
+    questions = [
+        "چگونه می‌توانم در دوره‌ها ثبت‌نام کنم؟",
+        "نحوه پرداخت هزینه دوره‌ها چگونه است؟",
+        "آیا مدرک معتبر ارائه می‌شود؟",
+        "دوره‌ها به چه صورت برگزار می‌شوند؟",
+        "شرایط استرداد هزینه چیست؟",
+        "آیا دسترسی به دوره‌ها دائمی است؟",
+        "پشتیبانی به چه صورت انجام می‌شود؟",
+        "آیا دوره‌ها آفلاین قابل مشاهده هستند؟"
+    ]
+    
+    question = random.choice(questions)
+    
     return {
-        'question': fake.sentence(nb_words=6) + '?',
-        'answer': fake.text(max_nb_chars=500),
-        'slug': fake.slug(),
+        'question': question,
+        'slug': generate_unique_slug(apps.get_model('faq.QuestionAnswer'), fake.slug()),
+        'answer': "این پاسخ به صورت کامل توضیح می‌دهد که چگونه می‌توانید از خدمات ما استفاده کنید.",
         'status': True,
     }
 
