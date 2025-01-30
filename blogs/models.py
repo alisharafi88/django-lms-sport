@@ -20,7 +20,7 @@ class Blog(models.Model):
         related_name='blogs',
     )
     title = models.CharField(_("Blog's title"), max_length=400, )
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True, allow_unicode=True)
     description = CKEditor5Field(verbose_name=_("blog's description"), )
 
     img = models.ImageField(_("Blog's main img"), upload_to="blogs/%Y/%m/%d", )
