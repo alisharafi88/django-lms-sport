@@ -41,7 +41,7 @@
                                         <li class="has-dropdown">
                                             <a href="#">{% trans 'Pages' %}</a>
                                             <ul class="submenu">
-                                                <li><a href="about.html">{% trans 'About' %}</a></li>
+                                                <li><a href="{% url 'home:about_us' %}">{% trans 'About' %}</a></li>
                                                 <li><a href="{% url 'contacts:contact' %}">{% trans 'Contact' %}</a>
                                                 </li>
                                                 <li><a href="checkout.html">{% trans 'Check Out' %}</a></li>

@@ -47,14 +47,14 @@
 
                               </li>
                               <li class="has-dropdown">
-                                 <a href="{% static 'about.html' %}">Pages</a>
+                                 <a href="#">{% trans 'Pages' %}</a>
                                  <ul class="submenu">
-                                    <li><a href="{% static 'about.html' %}">About</a></li>
+                                    <li><a href="{% url 'home:about_us' %}">{% trans 'About' %}</a></li>
                                     <li><a href="{% url 'contacts:contact' %}">{% trans 'Contact' %}</a></li>
-                                    <li><a href="{% static 'checkout.html' %}">Check Out</a></li>
+                                    <li><a href="{% static 'checkout.html' %}">{% trans 'Check Out' %}</a></li>
                                     <li><a href="{% url 'faq:question_answer' %}">{% trans 'FAQ' %}</a></li>
-                                    <li><a href="{% static 'register.html' %}">Register</a></li>
-                                    <li><a href="{% static 'sign-in.html' %}">Sign In</a></li>
+                                    <li><a href="{% static 'register.html' %}">{% trans 'Register' %}</a></li>
+                                    <li><a href="{% static 'sign-in.html' %}">{% trans 'Sign In' %}</a></li>
                                  </ul>
                               </li>
                            </ul>
