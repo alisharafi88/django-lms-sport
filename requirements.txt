@@ -19,7 +19,6 @@ module-name==0.6.0
 mysqlclient==2.2.4
 phonenumbers==8.13.43
 pillow==10.4.0
-psycopg2==2.9.9
 python-dateutil==2.9.0.post0
 pytz==2024.1
 requests==2.32.3

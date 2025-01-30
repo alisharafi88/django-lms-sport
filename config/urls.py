@@ -31,8 +31,13 @@ urlpatterns = [
     path('carts/', include('carts.urls', namespace='carts'),),
     path('orders/', include('orders.urls', namespace='orders'),),
     path('accounts/', include('accounts.urls', namespace='accounts')),
-] + debug_toolbar_urls()
+]
 
 urlpatterns += [
     path("ckeditor5/", include('django_ckeditor_5.urls'),),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += [
+        path('__debug__/', include('debug_toolbar.urls')),
+    ]

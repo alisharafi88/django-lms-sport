@@ -130,8 +130,16 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 INSTRUCTOR_USER_MODEL = 'instructors.Instructor'
 
 INTERNAL_IPS = [
-    "127.0.0.1",
+    '127.0.0.1',
+    'localhost',
 ]
+
+# For Docker
+if DEBUG:
+    import socket
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS += [ip[:-1] + '1' for ip in ips]
+    INTERNAL_IPS += ['172.17.0.1']  # Docker default gateway
 
 # auth
 
