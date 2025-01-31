@@ -1,0 +1,139 @@
+/* RTL styles for Persian text */
+[lang="fa"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[lang="fa"] .header__area {
+    direction: rtl;
+}
+
+[lang="fa"] .main-menu {
+    padding-right: 0;
+}
+
+/* Home header menu font size */
+[lang="fa"] .main-menu ul > li > a {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Header white area specific styles */
+[lang="fa"] .header_white_area .main-menu ul {
+    padding-right: 0;
+}
+
+[lang="fa"] .header_white_area .main-menu ul > li {
+    margin-right: 0;
+    margin-left: 28px;
+}
+
+[lang="fa"] .header_white_area .text-start {
+    text-align: right !important;
+}
+
+/* Fix search box alignment */
+[lang="fa"] .header_white_area .header-search-box {
+    direction: rtl;
+}
+
+[lang="fa"] .header_white_area .search-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #F4F7F6;
+    border-radius: 5px;
+    height: 60px;
+    padding: 5px;
+}
+
+[lang="fa"] .header_white_area .header-search-box input {
+    height: 100%;
+    background: transparent;
+    border: none;
+    padding: 0 15px;
+    font-size: 16px;
+    width: 100%;
+}
+
+[lang="fa"] .header_white_area .header-search-btn {
+    height: calc(100% - 10px);
+    background: #245D51;
+    color: #fff;
+    padding: 0 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+}
+
+[lang="fa"] .header_white_area .header-search-btn i {
+    margin-left: 5px;
+}
+
+[lang="fa"] .header-meta-green ul {
+    padding-right: 0;
+}
+
+[lang="fa"] .header-meta-green ul li {
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+[lang="fa"] .header-meta-green ul li:last-child {
+    margin-left: 0;
+}
+
+[lang="fa"] .header-meta {
+    margin-right: 25px;
+    margin-left: 0;
+}
+
+[lang="fa"] .header-meta ul li {
+    margin-left: 20px;
+}
+
+[lang="fa"] .header-meta ul li:last-child {
+    margin-left: 0;
+}
+
+[lang="fa"] .header-meta ul li a i {
+    font-size: 20px;
+}
+
+[lang="fa"] .logo {
+    margin-right: 0;
+    margin-left: 40px;
+}
+
+[lang="fa"] .row {
+    direction: rtl;
+}
+
+[lang="fa"] [class*="col-"] {
+    float: right;
+}
+
+[lang="fa"] input[type="number"],
+[lang="fa"] input[type="email"],
+[lang="fa"] code {
+    direction: ltr;
+}
+
+[lang="fa"] .dropdown-menu {
+    text-align: right;
+}
+
+[lang="fa"] .input-group {
+    flex-direction: row-reverse;
+}
+
+[lang="fa"] .badge,
+[lang="fa"] .fa,
+[lang="fa"] .fas,
+[lang="fa"] .far,
+[lang="fa"] .fal {
+    margin-right: 0;
+    margin-left: 0.5em;
+}
