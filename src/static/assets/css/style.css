@@ -2437,6 +2437,8 @@ ul.bili_circle li::before {
   background: var(--tp-common-white);
   box-shadow: 5px 15px 30px rgba(5, 13, 54, 0.06);
   border-radius: 10px;
+  flex-direction: column;
+  height: 100%;
 }
 .tpfea__icon i {
   height: 80px;
@@ -2449,10 +2451,16 @@ ul.bili_circle li::before {
   border-radius: 50px;
   font-size: 24px;
 }
+.tpfea__text {
+  display: flex; 
+  flex-direction: column; 
+  flex: 1;
+}
 .tpfea__text p {
   font-size: 16px;
   line-height: 28px;
   margin: 0;
+  flex: 1;
 }
 @media only screen and (min-width: 1400px) and (max-width: 1600px), only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px) {
   .tpfea__text p {
@@ -4044,9 +4052,11 @@ div.choose-sub-color {
   color: var(--tp-heading-primary);
   font-family: "Gordita-500";
   position: relative;
-  padding-left: 45px;
+  padding-right: 45px;
+  padding-left: 0;
   display: inline-block;
   margin-bottom: 28px;
+  direction: rtl;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px) {
   .tp-choose-list ul li {
@@ -4068,7 +4078,7 @@ div.choose-sub-color {
   display: inline-block;
   border-radius: 50px;
   position: absolute;
-  left: 0;
+  right: 0;
   font-size: 14px;
 }
 .tp-choose-list ul li:hover i {
@@ -4076,10 +4086,10 @@ div.choose-sub-color {
 }
 
 .tp-choose-bg ul li {
-  padding-left: 0px;
+  padding-right: 0px;
 }
 .tp-choose-bg ul li i {
-  left: 20px;
+  right: 20px;
   background: rgba(36, 93, 81, 0.1);
   color: var(--tp-border-2);
   font-size: 16px;
@@ -4088,7 +4098,7 @@ div.choose-sub-color {
 .tp-list-bg {
   background: var(--tp-common-white);
   position: relative;
-  padding: 10px 21px 12px 60px;
+  padding: 10px 60px 12px 21px;
   display: inline-block;
   border-radius: 5px;
   font-size: 18px;
