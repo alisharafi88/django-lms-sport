@@ -17,12 +17,13 @@ RUN apt-get update \
         default-mysql-client \
         curl \
         gcc \
+        libpq-dev \ 
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY src/ /code/
 RUN chown -R appuser:appuser /code
 
 USER appuser

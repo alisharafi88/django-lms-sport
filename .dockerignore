@@ -27,7 +27,7 @@ wheels/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-media/
+.vscode
 static/
 
 # Docker
