@@ -7,9 +7,9 @@ from django.contrib import messages
 from django.views import View
 import logging
 
-from .sms_api import get_random_otp, send_otp_save_session
-from .forms import AthenticationForm, VerificationForm
-from .models import CustomUser
+from ..sms_api import get_random_otp, send_otp_save_session
+from ..forms import AthenticationForm, VerificationForm
+from ..models import CustomUser
 User = CustomUser
 
 logger = logging.getLogger(__name__)

@@ -1,0 +1,805 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.content {
+  padding: 20px;
+  transition: margin-right 0.3s;
+  background-color: #e0e0e04f;
+}
+
+
+.toggle-btn {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color: #2770549d;
+  color: #000000;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 1001;
+  border-radius: 4px;
+}
+
+.toggle-btn i {
+  pointer-events: none;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #1e7768;
+  color: #3a3333;
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.sidebar {
+  transform: translateX(0);
+}
+
+.sidebar .profile {
+  text-align: center;
+  padding: 30px 0;
+  border-bottom: 1px solid #ff5a50;
+}
+
+.sidebar .profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #ff5a50;
+  margin-bottom: 10px;
+}
+
+.sidebar .profile h2 {
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  border-bottom: 1px solid #34495e;
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color: #bdc3c7;
+  transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background-color: #ff5a50;
+  color: #ecf0f1;
+}
+
+.sidebar ul li a i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.overlay {
+  display: none;
+}
+
+
+
+
+@media (min-width: 769px) {
+  .content {
+    margin-right: 250px;
+  }
+
+  .sidebar {
+    transform: translateX(0);
+  }
+
+  .toggle-btn {
+    display: none;
+  }
+
+  .overlay {
+    display: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .content {
+    margin-right: 0;
+  }
+
+  .sidebar {
+    width: 200px;
+    transform: translateX(100%);
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .toggle-btn {
+    display: block;
+  }
+
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(44, 62, 80, 0.7);
+    z-index: 999;
+  }
+
+  .overlay.active {
+    display: block;
+  }
+
+
+  .sidebar .profile img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .toggle-btn {
+    top: 10px;
+    left: 10px;
+  }
+
+  .sidebar ul li {
+    border-bottom: 1px solid #34495e;
+  }
+
+  .sidebar ul li a {
+    padding: 12px;
+  }
+}
+
+/* -------------------------------------------------بخش دوره های من-------------------------------- */
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  border: 2px solid #175d5300;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffffe1;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.inputs-section {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-input,
+.filter-select {
+  width: 48%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #1c796b;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  text-align: right;
+  
+}
+
+.search-input::placeholder {
+  text-align: right;
+}
+
+.element {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 15px;
+  border-bottom: 1px solid #218576;
+  
+}
+
+.element:last-child {
+  border-bottom: none;
+}
+
+.image-square {
+  width: 80px;
+  height: 80px;
+  background-color: #ccc;
+  flex-shrink: 0;
+  margin-right: 15px;
+}
+
+.number {
+  font-size: 20px;
+  color: rgb(46, 46, 46);
+  margin-left: 50px;
+}
+
+.title {
+  flex-grow: 1;
+  font-size: 22px;
+  color: #333;
+  margin-right: 15px;
+}
+
+.sort-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+  background-color: #FE5E4E;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.sort-button:hover {
+  background-color: #b94439;
+}
+
+
+@media (max-width: 600px) {
+  .inputs-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input,
+  .filter-select {
+    width: 100%;
+  }
+
+  .element {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image-square,
+  .number,
+  .title,
+  .sort-button {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .sort-button {
+    align-self: flex-end;
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-button:hover,
+.close-button:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.star-rating input[type="radio"] {
+  display: none;
+}
+
+.star-rating label {
+  font-size: 30px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type="radio"]:checked ~ label {
+  color: #f5b301;
+}
+
+#feedback-text {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  resize: vertical;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #ff5a50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.modal-button:hover {
+  background-color: #a83d37;
+}
+
+/* ---------------------------------------پایان دوره های من---------------------------------------- */
+
+
+
+/* ---------------------------------------علاقه مندی ها--------------------------------------- */
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 15px;
+  width: calc(33.333% - 30px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1px;
+  color: #175D53;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.2em;
+  flex-grow: 1;
+}
+
+.like-btn {
+  background-color: transparent;
+  border: none;
+  color: #e74c3c;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.like-btn:hover {
+  color: #c0392b;
+}
+
+.like-btn.liked {
+  color: #c0392b;
+}
+
+.like-btn:focus {
+  outline: none;
+}
+
+.like-btn i {
+  pointer-events: none;
+}
+
+.card-content p {
+  flex-grow: 1;
+  margin-bottom: 1px;
+  line-height: 1.6;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.star-rating i {
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star-rating i:not(:last-child) {
+  margin-right: 5px;
+}
+
+.star-rating i.fas {
+  color: #ffc107;
+}
+
+.star-rating i:hover,
+.star-rating i:hover ~ i {
+  color: #ffc107;
+}
+.stargocontainer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 992px) {
+  .card {
+    width: calc(50% - 30px);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    width: calc(100% - 30px);
+  }
+
+  .card-header h3 {
+    font-size: 1em;
+  }
+
+  .like-btn {
+    font-size: 22px;
+  }
+
+  .star-rating i {
+    font-size: 18px;
+  }
+}
+
+/* -------------------------------------------پایان بخش علاقه مندی ها------------------------------------ */
+
+
+
+/* -------------------------------------------بخش کامنت------------------------------------- */
+
+.commentFormContainer form,
+.commentFormContainer #responses {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.commentFormContainer input,
+.commentFormContainer textarea,
+.commentFormContainer button {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.commentFormContainer input,
+.commentFormContainer textarea {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #175D53;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.commentFormContainer button {
+  padding: 12px;
+  background-color: #175D53;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.commentFormContainer button:hover {
+  background-color: #175D53;
+}
+
+.commentFormContainer #responses {
+  margin: 40px auto;
+}
+
+.commentFormContainer .comment {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.commentFormContainer .comment img {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.commentFormContainer .comment-details {
+  flex: 1;
+}
+
+.commentFormContainer .comment-details h4 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #ff5a50;
+}
+
+.commentFormContainer .comment-details h4 .place-name {
+  display: block;
+  font-weight: normal;
+  color: #777;
+  font-size: 14px;
+}
+
+.commentFormContainer .comment-details h5 {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.commentFormContainer .comment-details p {
+  margin: 10px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+}
+
+@media screen and (max-width: 768px) {
+
+
+  .commentFormContainer .comment {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .commentFormContainer .comment img {
+    margin-bottom: 15px;
+  }
+
+  .commentFormContainer .comment-details h4,
+  .commentFormContainer .comment-details h5,
+  .commentFormContainer .comment-details p {
+    text-align: center;
+  }
+
+  .commentFormContainer button {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+
+  .commentFormContainer form,
+  .commentFormContainer #responses {
+    max-width: none;
+    margin: 10px 10px;
+  }
+
+  .commentFormContainer input,
+  .commentFormContainer textarea,
+  .commentFormContainer button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .commentFormContainer .comment {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+
+  .commentFormContainer .comment img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .commentFormContainer .comment-details {
+    width: 100%;
+  }
+
+  .commentFormContainer .comment-details h4,
+  .commentFormContainer .comment-details h5,
+  .commentFormContainer .comment-details p {
+    text-align: left;
+  }
+}
+
+/* ---------------------------------------پایان کامنت---------------------------------------- */
+
+
+
+
+
+/* -------------------------------------------بخش ادیت------------------------------------- */
+
+.profile-edit-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  color: #333333;
+}
+
+.input-group input,
+.input-group textarea {
+  padding: 12px;
+  margin-left: 10px;
+  border: 1px solid #175D53;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.input-group textarea {
+  resize: none;
+  height: 80px;
+}
+
+.input-group.full-width {
+  width: 100%;
+}
+
+.profile-image-section {
+  text-align: right;
+}
+
+.profile-image-section img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-image-section input[type="file"] {
+  display: none;
+}
+
+.profile-image-section label {
+  margin-top: 10px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ff5a50;
+  font-weight: bold;
+}
+
+button[type="submit"] {
+  padding: 14px;
+  background-color: #218071;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #15574d;
+}
+
+
+@media (max-width: 600px) {
+  .input-row {
+    flex-direction: column;
+  }
+}
+
+/* ---------------------------------------پایان ادیت---------------------------------------- */

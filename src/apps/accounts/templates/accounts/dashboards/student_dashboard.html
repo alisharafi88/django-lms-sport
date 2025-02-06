@@ -1,0 +1,556 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Responsive Webpage with Right Sidebar and Profile Section</title>
+
+    <link rel="stylesheet" href="{% static 'assets/css/student-dashboard.css' %}" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <!-- ---------------------------------بخش اصلی------------------------------------------------ -->
+    <div class="sidebar" id="sidebar">
+      <div class="profile">
+        <img src="#" alt="" />
+        <h2>Jane Doe</h2>
+      </div>
+
+      <ul>
+        <li>
+          <a href="#home"><i class="fas fa-home"></i> اصلی </a>
+        </li>
+        <li>
+          <a href="#about"><i class="fas fa-user"></i> دوره های من </a>
+        </li>
+        <li>
+          <a href="#services"
+            ><i class="fas fa-briefcase"></i> مورد علاقه ها
+          </a>
+        </li>
+        <li>
+          <a href="#contact"><i class="fas fa-envelope"> </i> اصلی </a>
+        </li>
+      </ul>
+    </div>
+    <div class="content">
+      <button class="toggle-btn" id="toggleBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- --------------------------------------بخش دوره های من------------------------------------- -->
+      <div class="inputs-section">
+        <input type="text" class="search-input" placeholder="جست و جو" />
+        <select class="filter-select">
+          <option value="" disabled selected>Select an option</option>
+          <option value="option1">Option One</option>
+          <option value="option2">Option Two</option>
+          <option value="option3">Option Three</option>
+        </select>
+      </div>
+
+      <div class="container">
+        <div class="element">
+          <div class="image-square"></div>
+          <h2 class="title">Title One</h2>
+          <span class="number">1</span>
+          <button class="sort-button">Sort</button>
+        </div>
+
+        <div class="element">
+          <div class="image-square"></div>
+          <h2 class="title">Title Two</h2>
+          <span class="number">2</span>
+          <button class="sort-button">Sort</button>
+        </div>
+
+        <div class="element">
+          <div class="image-square"></div>
+          <h2 class="title">Title Three</h2>
+          <span class="number">3</span>
+          <button class="sort-button">Sort</button>
+        </div>
+      </div>
+
+      <div id="popup-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h2>Feedback for Title</h2>
+
+          <div class="star-rating">
+            <input type="radio" id="star5" name="rating" value="5" />
+            <label for="star5" title="5 stars">&#9733;</label>
+
+            <input type="radio" id="star4" name="rating" value="4" />
+            <label for="star4" title="4 stars">&#9733;</label>
+
+            <input type="radio" id="star3" name="rating" value="3" />
+            <label for="star3" title="3 stars">&#9733;</label>
+
+            <input type="radio" id="star2" name="rating" value="2" />
+            <label for="star2" title="2 stars">&#9733;</label>
+
+            <input type="radio" id="star1" name="rating" value="1" />
+            <label for="star1" title="1 star">&#9733;</label>
+          </div>
+
+          <textarea
+            id="feedback-text"
+            placeholder="Write your feedback here..."
+          ></textarea>
+
+          <button id="submit-feedback" class="modal-button">Submit</button>
+        </div>
+      </div>
+    
+    <!-- ------------------------------------------------------پایان----------------------------------- -->
+    
+    
+    <!-- ------------------------------------------------------بخش مورد علاقه----------------------------------- -->
+     
+    <div class="cards-container">
+      <div class="card">
+        <img src="image1.jpg" alt="Card Image 1" />
+
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Card Title One</h3>
+            <button class="like-btn" aria-label="Like">
+              <i class="far fa-heart" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <p>
+            This is a brief description of the first card. It provides an
+            overview of the content.
+          </p>
+
+          <div class="stargocontainer">
+            <div class="goto"><div>simple text</div></div>
+            <div class="star-rating">
+              <i class="far fa-star" data-rating="1"></i>
+              <i class="far fa-star" data-rating="2"></i>
+              <i class="far fa-star" data-rating="3"></i>
+              <i class="far fa-star" data-rating="4"></i>
+              <i class="far fa-star" data-rating="5"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="image2.jpg" alt="Card Image 2" />
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Card Title Two</h3>
+            <button class="like-btn" aria-label="Like">
+              <i class="far fa-heart" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p>
+            This is a brief description of the second card. It offers more
+            insights.
+          </p>
+          <div class="stargocontainer">
+            <div class="goto"><div>simple text</div></div>
+            <div class="star-rating">
+              <i class="far fa-star" data-rating="1"></i>
+              <i class="far fa-star" data-rating="2"></i>
+              <i class="far fa-star" data-rating="3"></i>
+              <i class="far fa-star" data-rating="4"></i>
+              <i class="far fa-star" data-rating="5"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="image3.jpg" alt="Card Image 3" />
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Card Title Three</h3>
+            <button class="like-btn" aria-label="Like">
+              <i class="far fa-heart" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p>
+            This is a brief description of the third card. It highlights key
+            points.
+          </p>
+          <div class="stargocontainer">
+            <div class="goto"><div>simple text</div></div>
+            <div class="star-rating">
+              <i class="far fa-star" data-rating="1"></i>
+              <i class="far fa-star" data-rating="2"></i>
+              <i class="far fa-star" data-rating="3"></i>
+              <i class="far fa-star" data-rating="4"></i>
+              <i class="far fa-star" data-rating="5"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="image3.jpg" alt="Card Image 3" />
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Card Title Three</h3>
+            <button class="like-btn" aria-label="Like">
+              <i class="far fa-heart" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p>
+            This is a brief description of the third card. It highlights key
+            points.
+          </p>
+          <div class="stargocontainer">
+            <div class="goto"><div>simple text</div></div>
+            <div class="star-rating">
+              <i class="far fa-star" data-rating="1"></i>
+              <i class="far fa-star" data-rating="2"></i>
+              <i class="far fa-star" data-rating="3"></i>
+              <i class="far fa-star" data-rating="4"></i>
+              <i class="far fa-star" data-rating="5"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="image3.jpg" alt="Card Image 3" />
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Card Title Three</h3>
+            <button class="like-btn" aria-label="Like">
+              <i class="far fa-heart" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p>
+            This is a brief description of the third card. It highlights key
+            points.
+          </p>
+          <div class="stargocontainer">
+            <div class="goto"><div>simple text</div></div>
+            <div class="star-rating">
+              <i class="far fa-star" data-rating="1"></i>
+              <i class="far fa-star" data-rating="2"></i>
+              <i class="far fa-star" data-rating="3"></i>
+              <i class="far fa-star" data-rating="4"></i>
+              <i class="far fa-star" data-rating="5"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------پایان--------------------------- -->
+
+
+
+    <!-- ----------------------------------------------بخش کامنت گزاری--------------------------- -->
+
+    <div class="commentFormContainer">
+    <form id="userForm">
+      <input type="text" name="firstName" placeholder="First Name" />
+      <input type="text" name="lastName" placeholder="Last Name" />
+      <textarea name="message" placeholder="Your Message"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="responses">
+      <div class="comment">
+        <img src="profile1.jpg" alt="Profile Picture" />
+        <div class="comment-details">
+          <h4>Alex Johnson <span class="place-name">from New York</span></h4>
+          <h5>Creative Designer</h5>
+          <p>
+            Absolutely loving the new design trends this year! Minimalism with a
+            splash of color really speaks to me.
+          </p>
+        </div>
+      </div>
+
+      <div class="comment">
+        <img src="profile2.jpg" alt="Profile Picture" />
+        <div class="comment-details">
+          <h4>Sophia Martinez <span class="place-name">from London</span></h4>
+          <h5>Travel Blogger</h5>
+          <p>
+            The hidden cafés along the cobblestone streets are my favorite
+            discoveries. Each one has its own unique charm.
+          </p>
+        </div>
+      </div>
+
+      <div class="comment">
+        <img src="profile3.jpg" alt="Profile Picture" />
+        <div class="comment-details">
+          <h4>Liam Chen <span class="place-name">from Singapore</span></h4>
+          <h5>Food Enthusiast</h5>
+          <p>
+            Just tried the new fusion restaurant downtown—it's a must-visit! The
+            flavors are out of this world.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- ------------------------------------------------------پایان----------------------------------- -->
+
+    <!-- ----------------------------------------------بخش ادیت--------------------------- -->
+
+    <div class="profile-edit-container">
+      <form
+        class="profile-form"
+        action="#"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="profile-image-section">
+          <img src="../photo16826469126.jpg" alt="" id="profileImageDisplay" />
+          <input
+            type="file"
+            id="profileImageInput"
+            name="profileImage"
+            accept="image/*"
+          />
+          <label for="profileImageInput">Change Profile Picture</label>
+        </div>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label for="fullName">Full Name</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="Enter your full name"
+            />
+          </div>
+          <div class="input-group">
+            <label for="emailAddress">Email Address</label>
+            <input
+              type="email"
+              id="emailAddress"
+              name="emailAddress"
+              placeholder="Enter your email"
+            />
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              placeholder="Enter your phone number"
+            />
+          </div>
+          <div class="input-group">
+            <label for="location">Location</label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              placeholder="Enter your location"
+            />
+          </div>
+        </div>
+
+        <div class="input-group full-width">
+          <label for="bio">Bio</label>
+          <textarea
+            id="bio"
+            name="bio"
+            placeholder="Tell us about yourself"
+          ></textarea>
+        </div>
+
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+    </div>
+
+    <!-- ------------------------------------------------------پایان----------------------------------- -->
+
+
+
+
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+
+
+
+      //---------------------------------------------------شروع جاوا اسکربپت-----------------------
+      const sidebar = document.getElementById("sidebar");
+      const toggleBtn = document.getElementById("toggleBtn");
+      const overlay = document.getElementById("overlay");
+
+      toggleBtn.addEventListener("click", function () {
+        sidebar.classList.toggle("active");
+        overlay.classList.toggle("active");
+      });
+
+      overlay.addEventListener("click", function () {
+        sidebar.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+
+
+
+
+
+      //--------------------------------------بخش دوره های من--------------------------------------
+
+      const modal = document.getElementById("popup-modal");
+
+      const buttons = document.querySelectorAll(".sort-button");
+
+      const closeBtn = document.querySelector(".close-button");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          modal.style.display = "block";
+        });
+      });
+
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+
+      const submitButton = document.getElementById("submit-feedback");
+
+      submitButton.addEventListener("click", () => {
+        const rating = document.querySelector('input[name="rating"]:checked');
+        const ratingValue = rating ? rating.value : null;
+
+        const feedbackText = document
+          .getElementById("feedback-text")
+          .value.trim();
+
+        if (!ratingValue) {
+          alert("امتیاز خود را انتخاب کنید");
+          return;
+        }
+
+        if (feedbackText === "") {
+          alert("لطفا نظر خود را وارد کنید.");
+          return;
+        }
+
+        resetModalForm();
+
+        document.body.classList.remove("modal-open");
+
+        alert("بابت نظرتون متشکریم");
+      });
+
+      function resetModalForm() {
+        const checkedRating = document.querySelector(
+          'input[name="rating"]:checked'
+        );
+        if (checkedRating) {
+          checkedRating.checked = false;
+        }
+
+        document.getElementById("feedback-text").value = "";
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const element = event.target.closest(".element");
+          const title = element.querySelector(".title").textContent;
+
+          modal.querySelector("h2").textContent = `Feedback for ${title}`;
+
+          modal.style.display = "block";
+          document.body.classList.add("modal-open");
+        });
+      });
+      //------------------------------------------------پایان--------------------------------------
+
+
+
+
+      //------------------------------------------------بخش مورد علاقه ها--------------------------------------
+
+      const likeButtons = document.querySelectorAll(".like-btn");
+
+      likeButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const icon = this.querySelector("i");
+          icon.classList.toggle("far");
+          icon.classList.toggle("fas");
+          this.classList.toggle("liked");
+        });
+      });
+
+      const starRatings = document.querySelectorAll(".star-rating");
+
+      starRatings.forEach((rating) => {
+        const stars = rating.querySelectorAll("i");
+
+        stars.forEach((star) => {
+          star.addEventListener("click", function () {
+            const ratingValue = parseInt(this.getAttribute("data-rating"));
+            stars.forEach((s, index) => {
+              if (index < ratingValue) {
+                s.classList.remove("far");
+                s.classList.add("fas");
+              } else {
+                s.classList.remove("fas");
+                s.classList.add("far");
+              }
+            });
+          });
+        });
+      });
+
+      //------------------------------------------------پایان--------------------------------------
+
+
+
+
+      //-------------------------------------------------بخش کامنت-------------------------
+
+      //------------------------------------------------پایان--------------------------------------
+  
+
+
+
+      //-------------------------------------------------بخش ادیت-------------------------
+      const profileImageInput = document.getElementById("profileImageInput");
+      const profileImageDisplay = document.getElementById(
+        "profileImageDisplay"
+      );
+
+      profileImageInput.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+
+          reader.onload = function (event) {
+            profileImageDisplay.setAttribute("src", event.target.result);
+          };
+
+          reader.readAsDataURL(file);
+        }
+      });
+      //------------------------------------------------پایان--------------------------------------
+    </script>
+  </body>
+</html>

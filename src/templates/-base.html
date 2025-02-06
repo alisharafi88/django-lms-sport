@@ -11,6 +11,9 @@
     </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block head %}
+        
+    {% endblock head %}
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
@@ -28,9 +31,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/font-awesome-pro.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/spacing.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-    <!-- Add RTL stylesheet -->
     <link rel="stylesheet" href="{% static 'assets/css/rtl.css' %}">
-
 </head>
 
 <body>
@@ -92,6 +93,10 @@
 <script src="{% static 'assets/js/main.js' %}"></script>
 <script src="{% static 'assets/js/comments.js' %}"></script>
 <script src="{% static 'assets/js/orders.js' %}"></script>
+
+{% block script %}
+{% endblock %}
+
 </body>
 
 </html>
