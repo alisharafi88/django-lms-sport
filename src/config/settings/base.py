@@ -147,7 +147,7 @@ if DEBUG:
 
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
-    "accounts.backends.PhoneAuthenticationBackend",
+    "apps.accounts.backends.PhoneAuthenticationBackend",
 ]
 
 # ckeditor

@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN useradd -ms /bin/bash appuser
 
-WORKDIR /code
+WORKDIR /src
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -23,8 +23,8 @@ RUN apt-get update \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY src/ /code/
-RUN chown -R appuser:appuser /code
+COPY src/ /src/
+RUN chown -R appuser:appuser /src
 
 USER appuser
 
