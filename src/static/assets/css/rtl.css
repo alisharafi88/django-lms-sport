@@ -143,3 +143,66 @@
     margin-right: 0;
     margin-left: 0.5em;
 }
+
+[lang="fa"] .tp-testi__avainfo {
+  margin-right: 20px;
+  margin-left: 0 !important;
+}
+
+[lang="fa"] .tp-testi__rating {
+  direction: ltr;
+}
+
+[lang="fa"] .testi-quote {
+  left: 30px;
+  right: auto !important;
+}
+
+[lang="fa"] .slick-list {
+  direction: ltr;
+}
+
+[lang="fa"] .slick-slide {
+  float: right !important;
+}
+[lang="fa"] .tp-testi__rating span {
+  margin-right: 10px;
+  margin-left: 0;
+}
+[lang="fa"] .tp-testi__ava img {
+  order: 1; /* تصویر را به سمت راست منتقل میکند */
+}
+
+[lang="fa"] .tp-testi__ava {
+  flex-direction: row-reverse;
+}
+
+[lang="fa"] .ml-20 {
+  margin-right: 20px !important;
+  margin-left: 0 !important;
+}
+
+[lang="fa"] .pl-20 {
+  padding-right: 20px !important;
+  padding-left: 0 !important;
+}
+[lang="fa"] .tp-testi {
+  direction: rtl;
+  text-align: right;
+}
+
+[lang="fa"] .tp-testi p {
+  text-align: justify;
+  line-height: 1.8;
+}
+[lang="fa"] .testimonial-active-box {
+  .slick-prev {
+    right: -50px;
+    left: auto;
+  }
+
+  .slick-next {
+    left: -50px;
+    right: auto;
+  }
+}

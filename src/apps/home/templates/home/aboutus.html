@@ -34,8 +34,8 @@
             <div class="row text-center">
                 <div class="col-lg-12">
                     <div class="section-title mb-60">
-                        <span class="tp-sub-title mb-20">What We Offer</span>
-                        <h2 class="tp-section-title">For Your Future Learning.</h2>
+                        <span class="tp-sub-title mb-20">{% trans 'What We Offer' %}</span>
+                        <h2 class="tp-section-title">{% trans 'For Your Future Learning.' %}</h2>
                     </div>
                 </div>
             </div>
@@ -48,8 +48,9 @@
                             </div>
                             <div class="tpfea__text">
                                 <h5 class="tpfea__title mb-20">{% trans 'Expert Trainer' %}</h5>
-                                <p>Interactively provide access world class materials for unique catalysts for change my
-                                    ocardinat.</p>
+                                <p>مربیان تیم ما، با تجربه‌ای گسترده و دانش عمیق، همواره در تلاش‌اند تا بازیکنان را به
+                                    اوج آمادگی بدنی،تکنیکی و ذهنی و برسانند. با تعهد و پشتکاری مثال‌زدنی، آن‌ها مسیر
+                                    پیشرفت و موفقیت شما هموار میشود</p>
                             </div>
                         </div>
                     </div>
@@ -60,8 +61,7 @@
                             </div>
                             <div class="tpfea__text">
                                 <h5 class="tpfea__title mb-20">{% trans 'Get Certificate' %}</h5>
-                                <p>Interactively provide access world class materials for unique catalysts for change my
-                                    ocardinat.</p>
+                                <p>در پایان دوره شما مدرک پایان دوره آکادمی فستبال رو دریافت میکنید</p>
                             </div>
                         </div>
                     </div>
@@ -72,8 +72,7 @@
                             </div>
                             <div class="tpfea__text">
                                 <h5 class="tpfea__title mb-20">{% trans 'Life Time Access' %}</h5>
-                                <p>Interactively provide access world class materials for unique catalysts for change my
-                                    ocardinat.</p>
+                                <p>مادام العمر به این دوره دسترسی دارید و از تمامی اپدیت ها رایگان استفاده میکنید</p>
                             </div>
                         </div>
                     </div>
@@ -92,9 +91,9 @@
                         <img src="{% static 'assets/img/about/about-sub-bg-01.png' %}" alt="about-img">
                         <div class="tp-about-class-info tp-sub-about-info d-none d-md-block">
                             <ul>
-                                <li><span>235K</span>Worldwide Students</li>
-                                <li><span>4.7<i class="fi fi-ss-star"></i></span>Worldwide Review</li>
-                                <li><span>3.5K</span>Free Pro Courses</li>
+                                <li><span>235K</span>{% trans 'Worldwide Students' %}</li>
+                                <li><span>4.7<i class="fi fi-ss-star"></i></span>{% trans 'Worldwide Review' %}</li>
+                                <li><span>3.5K</span>{% trans 'Free Pro Courses' %}</li>
                             </ul>
                         </div>
                     </div>
@@ -134,26 +133,38 @@
                 <div class="col-xl-5 col-lg-6 col-md-12">
                     <div class="tp-choose-content mb-30">
                         <div class="section-title mb-25">
-                            <span class="tp-sub-title-box mb-15">Why Choose Us</span>
-                            <h2 class="tp-section-title mb-20">Why You Choose Our E-Pora Online learning</h2>
-                            <p>Dramatically supply transparent deliverables before & you backward comp internal or
-                                "organic" sources.</p>
+                            <span class="tp-sub-title-box mb-15">چرا ما</span>
+                            <h2 class="tp-section-title mb-20">چرا باید مارو انتخاب کنید؟</h2>
+                            <p>دوره ما به دلیل ترکیب آموزش‌های حرفه‌ای، تمرینات کاربردی و پشتیبانی شخصی، بهترین انتخاب
+                                برای پیشرفت سریع در فوتبال است. با شرکت در این دورهشما به طور قابل توجهی مهارت‌های خود
+                                را بهبود خواهید داد.</p>
+
                         </div>
                         <div class="tp-choose-list tp-choose-bg mb-60">
                             <ul>
                                 <li>
                                     <div class="tp-list-bg choose-sub-color">
-                                        <i class="fa-light fa-check"></i>Increasing Your Learning Skills
+                                        <i class="fa-light fa-check"></i>در هر ببخش مربی تخصصی به شما آموزش میدهد
                                     </div>
                                 </li>
                                 <li>
                                     <div class="tp-list-bg choose-sub-color">
-                                        <i class="fa-light fa-check"></i>High Quality Video & Audio Classes
+                                        <i class="fa-light fa-check"></i>بیش از ۶ هزار هنرجو موفق داریم
                                     </div>
                                 </li>
                                 <li>
                                     <div class="tp-list-bg choose-sub-color">
-                                        <i class="fa-light fa-check"></i>Finish Your Course, Get Certificate
+                                        <i class="fa-light fa-check"></i>تمامی آموزش ها با پشتیبانی انجام میشود
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tp-list-bg choose-sub-color">
+                                        <i class="fa-light fa-check"></i>آموزش ها با بالاترین کیفیت در اختیار شما قرار میگیرد
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tp-list-bg choose-sub-color">
+                                        <i class="fa-light fa-check"></i>برای همه پست ها تمرینات تخصصی داریم
                                     </div>
                                 </li>
                             </ul>
@@ -167,11 +178,11 @@
                             <ul>
                                 <li>
                                     <i>23+</i>
-                                    <p>Years Experiences</p>
+                                    <p>{% trans 'Years Experiences' %}</p>
                                 </li>
                                 <li>
                                     <i class="fa-light fa-check"></i>
-                                    <p>Fully Safe & Secure</p>
+                                    <p>{% trans 'Fully Safe & Secure' %}</p>
                                 </li>
                                 <li>
                                     <p>Fully Safe & Secure</p>
@@ -187,7 +198,8 @@
     <!-- choose-area-end -->
 
     <!-- testimonial-area -->
-    <section class="testimonial-area bg-bottom pt-120 pb-90 " data-background="{% static 'assets/img/bg/shape-bg-1.png' %}">
+    <section class="testimonial-area bg-bottom pt-120 pb-90 "
+             data-background="{% static 'assets/img/bg/shape-bg-1.png' %}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -281,7 +293,7 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-8 col-md-7 col-12">
                     <div class="section-title mb-65">
-                        <h2 class="tp-section-title mb-20">{% trans 'Instructor' %}</h2>
+                        <h2 class="tp-section-title mb-20">{% trans 'Instructors' %}</h2>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-4 col-md-5 col-6">
@@ -294,18 +306,21 @@
                         <div class="tp-instruc-item">
                             <div class="tp-instructor text-center p-relative mb-40">
                                 <div class="tp-instructor__thumb mb-25">
-                                    <img src="{% static 'assets/img/bg/instructor-bg-01.jpg' %}" alt="instructor-profile">
+                                    <img src="{% static 'assets/img/bg/instructor-bg-01.jpg' %}"
+                                         alt="instructor-profile">
                                 </div>
                                 <div class="tp-instructor__content">
                                     <h4 class="tp-instructor__title tp-instructor__title-info p-relative mb-35 mt-5"><a
                                             href="{{ instructor.get_absolute_url }}">{{ instructor.full_name }}</a></h4>
                                     <div class="tp-instructor__stu-info">
                                         <ul class="d-flex align-items-center justify-content-center">
-                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-01.png' %}"
-                                                                                       alt="meta-icon"> <i>35 Classes</i>
+                                            <li class="d-flex align-items-center"><img
+                                                    src="{% static 'assets/img/icon/c-meta-01.png' %}"
+                                                    alt="meta-icon"> <i>35 Classes</i>
                                             </li>
-                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-02.png' %}"
-                                                                                       alt="meta-icon"> <i>291+ Students</i>
+                                            <li class="d-flex align-items-center"><img
+                                                    src="{% static 'assets/img/icon/c-meta-02.png' %}"
+                                                    alt="meta-icon"> <i>291+ Students</i>
                                             </li>
                                         </ul>
                                     </div>
@@ -326,7 +341,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="instructor-btn text-center">
-                        <a class="tp-btn" href="{% url 'instructors:instructor_list' %}">{% trans 'Instructor' %}</a>
+                        <a class="tp-btn" href="{% url 'instructors:instructor_list' %}">{% trans 'Instructors' %}</a>
                     </div>
                 </div>
             </div>
