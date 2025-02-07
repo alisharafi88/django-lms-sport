@@ -1,0 +1,161 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-07 20:57+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/apps/blogs/forms.py:12
+msgid "Enter your comment ..."
+msgstr "نظر خود را وارد کنید ..."
+
+#: src/apps/blogs/models.py:13
+msgid "Published"
+msgstr "منتشر شده"
+
+#: src/apps/blogs/models.py:14
+msgid "Rejected"
+msgstr "رد شده"
+
+#: src/apps/blogs/models.py:22
+msgid "Blog's title"
+msgstr "عنوان وبلاگ"
+
+#: src/apps/blogs/models.py:24
+msgid "blog's description"
+msgstr "توضیحات وبلاگ"
+
+#: src/apps/blogs/models.py:26
+msgid "Blog's main img"
+msgstr "تصویر اصلی وبلاگ"
+
+#: src/apps/blogs/models.py:32
+msgid "Blog's status"
+msgstr "وضعیت وبلاگ"
+
+#: src/apps/blogs/models.py:34
+msgid "Enable comments on post"
+msgstr "فعال کردن نظرات در پست"
+
+#: src/apps/blogs/models.py:36
+msgid "Created at"
+msgstr "ایجاد شده در"
+
+#: src/apps/blogs/models.py:37
+msgid "Updated at"
+msgstr "به‌روزرسانی شده در"
+
+#: src/apps/blogs/models.py:40
+#: src/apps/blogs/templates/blogs/blog_detail.html:17
+#: src/apps/blogs/templates/blogs/blog_list.html:18
+msgid "Blog"
+msgstr "وبلاگ"
+
+#: src/apps/blogs/models.py:41
+#: src/apps/blogs/templates/blogs/blog_detail.html:21
+#: src/apps/blogs/templates/blogs/blog_list.html:22
+msgid "Blogs"
+msgstr "وبلاگ‌ها"
+
+#: src/apps/blogs/models.py:52
+msgid "Blog's comments"
+msgstr "نظرات وبلاگ"
+
+#: src/apps/blogs/models.py:59
+msgid "Comment's text"
+msgstr "متن نظر"
+
+#: src/apps/blogs/models.py:62
+msgid "Parent"
+msgstr "والد"
+
+#: src/apps/blogs/models.py:64
+msgid "Status"
+msgstr "وضعیت"
+
+#: src/apps/blogs/models.py:65
+msgid "If the comment is not appropriate, set it to false."
+msgstr "اگر نظر مناسب نیست، آن را به نادرست تنظیم کنید."
+
+#: src/apps/blogs/models.py:67
+msgid "created at"
+msgstr "ایجاد شده در"
+
+#: src/apps/blogs/models.py:70
+msgid "Blog comment"
+msgstr "نظر وبلاگ"
+
+#: src/apps/blogs/models.py:71
+msgid "Blog comments"
+msgstr "نظرات وبلاگ"
+
+#: src/apps/blogs/templates/blogs/blog_detail.html:19
+#: src/apps/blogs/templates/blogs/blog_list.html:20
+msgid "Home"
+msgstr "خانه"
+
+#: src/apps/blogs/templates/blogs/blog_detail.html:23
+msgid "Blog Details"
+msgstr "جزئیات وبلاگ"
+
+#: src/apps/blogs/templates/blogs/blog_detail.html:41
+msgid "Blog's cover 870x460"
+msgstr "کاور وبلاگ 870x460"
+
+#: src/apps/blogs/templates/blogs/blog_detail.html:49
+#: src/apps/blogs/templates/blogs/blog_detail.html:60
+msgid "Comments"
+msgstr "نظرات"
+
+#: src/apps/blogs/templates/blogs/blog_detail.html:69
+msgid "Blog's comment's Cover"
+msgstr "کاور نظر وبلاگ"
+
+#: src/apps/blogs/templates/blogs/blog_detail.html:80
+msgid "Reply"
+msgstr "پاسخ"
+
+#: src/apps/blogs/templates/blogs/blog_detail.html:109
+msgid "Write a comment"
+msgstr "یک نظر بنویسید"
+
+#: src/apps/blogs/templates/blog_detail.html:123
+msgid "Post Comment"
+msgstr "ارسال نظر"
+
+#: src/apps/blogs/templates/blog_detail.html:134
+msgid "Recent Post"
+msgstr "پست‌های اخیر"
+
+#: src/apps/blogs/templates/blog_list.html:6
+msgid "Blog List"
+msgstr "لیست وبلاگ‌ها"
+
+#: src/apps/blogs/templates/blog_list.html:42
+msgid "Expert Trainer"
+msgstr "مدرس متخصص"
+
+#: src/apps/blogs/templates/blog_list.html:52
+msgid "Get Certificate"
+msgstr "گواهی دریافت کنید"
+
+#: src/apps/blogs/templates/blog_list.html:62
+msgid "Life Time Access"
+msgstr "دسترسی مادام العمر"
+
+#: src/apps/blogs/templates/blog_list.html:79
+msgid "Latest Blogs"
+msgstr "آخرین وبلاگ‌ها"

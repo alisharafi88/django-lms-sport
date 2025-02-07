@@ -1,0 +1,96 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-07 20:57+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/apps/carts/templates/carts/cart.html:6
+#: src/apps/carts/templates/carts/cart.html:17
+#: src/apps/carts/templates/carts/cart.html:21
+msgid "Cart"
+msgstr "سبد خرید"
+
+#: src/apps/carts/templates/carts/cart.html:19
+msgid "Home"
+msgstr "خانه"
+
+#: src/apps/carts/templates/carts/cart.html:40
+msgid "Images"
+msgstr "تصاویر"
+
+#: src/apps/carts/templates/carts/cart.html:41
+msgid "Courses"
+msgstr "دوره‌ها"
+
+#: src/apps/carts/templates/carts/cart.html:42
+msgid "Unit Price"
+msgstr "قیمت واحد"
+
+#: src/apps/carts/templates/carts/cart.html:43
+msgid "Total"
+msgstr "جمع کل"
+
+#: src/apps/carts/templates/carts/cart.html:44
+msgid "Remove"
+msgstr "حذف"
+
+#: src/apps/carts/templates/carts/cart.html:56
+#: src/apps/carts/templates/carts/cart.html:59
+#: src/apps/carts/templates/carts/cart.html:89
+#: src/apps/carts/templates/carts/cart.html:90
+msgid "Toman"
+msgstr "تومان"
+
+#: src/apps/carts/templates/carts/cart.html:75
+msgid "Clear cart"
+msgstr "پاک کردن سبد خرید"
+
+#: src/apps/carts/templates/carts/cart.html:79
+msgid "Update cart"
+msgstr "به‌روزرسانی سبد خرید"
+
+#: src/apps/carts/templates/carts/cart.html:89
+msgid "Total price"
+msgstr "قیمت کل"
+
+#: src/apps/carts/templates/carts/cart.html:90
+msgid "Total price after discount"
+msgstr "قیمت کل پس از تخفیف"
+
+#: src/apps/carts/templates/carts/cart.html:92
+msgid "Proceed to checkout"
+msgstr "ادامه به تسویه حساب"
+
+#: src/apps/carts/templates/carts/cart.html:99
+msgid "Your cart is empty!"
+msgstr "سبد خرید شما خالی است!"
+
+#: src/apps/carts/templates/carts/cart.html:101
+msgid "Add course"
+msgstr "افزودن دوره"
+
+#: src/apps/carts/views.py:23
+msgid "Your course added to cart successfully!"
+msgstr "دوره شما با موفقیت به سبد خرید اضافه شد!"
+
+#: src/apps/carts/views.py:31
+msgid "Your course removed from cart successfully!"
+msgstr "دوره شما با موفقیت از سبد خرید حذف شد!"
+
+#: src/apps/carts/views.py:39
+msgid "Your cart cleared successfully!"
+msgstr "سبد خرید شما با موفقیت پاک شد!"

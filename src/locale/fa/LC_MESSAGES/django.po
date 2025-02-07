@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-07 20:57+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/templates/inc/header.html:23
+msgid "What you want to learn?"
+msgstr "چه چیزی می‌خواهید یاد بگیرید؟"
+
+#: src/templates/inc/header.html:24
+msgid "Search Now"
+msgstr "همین حالا جستجو کنید"
+
+#: src/templates/inc/header.html:37
+msgid "Home"
+msgstr "صفحه اصلی"
+
+#: src/templates/inc/header.html:40
+msgid "Instructor"
+msgstr "مدرس"
+
+#: src/templates/inc/header.html:43
+msgid "Course"
+msgstr "دوره"
+
+#: src/templates/inc/header.html:46
+msgid "Blog"
+msgstr "وبلاگ"
+
+#: src/templates/inc/header.html:50
+msgid "Pages"
+msgstr "صفحات"
+
+#: src/templates/inc/header.html:52
+msgid "About"
+msgstr "درباره ما"
+
+#: src/templates/inc/header.html:53
+msgid "Contact"
+msgstr "تماس با ما"
+
+#: src/templates/inc/header.html:54
+msgid "Check Out"
+msgstr "تسویه حساب"
+
+#: src/templates/inc/header.html:55
+msgid "FAQ"
+msgstr "سوالات متداول"
+
+#: src/templates/inc/header.html:56
+msgid "Register"
+msgstr "ثبت نام"
+
+#: src/templates/inc/header.html:57
+msgid "Sign In"
+msgstr "ورود"

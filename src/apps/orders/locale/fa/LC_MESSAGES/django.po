@@ -1,0 +1,245 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-DDate: 2025-02-07 20:57+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Persian <LL@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/apps/orders/admin.py:31 src/apps/orders/admin.py:37
+msgid "custome information"
+msgstr "اطلاعات مشتری"
+
+#: src/apps/orders/admin.py:32 src/apps/orders/admin.py:38
+#: src/apps/orders/models.py:40
+msgid "status"
+msgstr "وضعیت"
+
+#: src/apps/orders/admin.py:33
+msgid "date"
+msgstr "تاریخ"
+
+#: src/apps/orders/admin.py:46
+msgid "Update status to PAID"
+msgstr "به‌روزرسانی وضعیت به پرداخت شده"
+
+#: src/apps/orders/admin.py:51
+#, python-brace-format
+msgid "{update_count} of orders status has been updated to paid."
+msgstr "{update_count} سفارش به وضعیت پرداخت شده به‌روزرسانی شد."
+
+#: src/apps/orders/admin.py:55
+msgid "Update status to CANCELED"
+msgstr "به‌روزرسانی وضعیت به لغو شده"
+
+#: src/apps/orders/admin.py:60
+#, python-brace-format
+msgid "{update_count} of orders status has been updated to canceled."
+msgstr "{update_count} سفارش به وضعیت لغو شده به‌روزرسانی شد."
+
+#: src/apps/orders/admin.py:64
+msgid "Update status to UNPAID"
+msgstr "به‌روزرسانی وضعیت به پرداخت نشده"
+
+#: src/apps/orders/admin.py:69
+#, python-brace-format
+msgid "{update_count} of orders status has been updated to unpaid."
+msgstr "{update_count} سفارش به وضعیت پرداخت نشده به‌روزرسانی شد."
+
+#: src/apps/orders/admin.py:81
+msgid "Order"
+msgstr "سفارش"
+
+#: src/apps/orders/admin.py:82
+msgid "course information"
+msgstr "اطلاعات دوره"
+
+#: src/apps/orders/admin.py:98 src/apps/orders/admin.py:102
+#: src/apps/orders/models.py:65 src/apps/orders/models.py:94
+msgid "order"
+msgstr "سفارش"
+
+#: src/apps/orders/admin.py:99 src/apps/orders/admin.py:103
+msgid "delivery information"
+msgstr "اطلاعات تحویل"
+
+#: src/apps/orders/admin.py:106
+msgid "Update delivery_status to PENDING"
+msgstr "به‌روزرسانی وضعیت تحویل به در انتظار"
+
+#: src/apps/orders/admin.py:111
+#, python-brace-format
+msgid "{update_count} of orders delivery_status has been updated to pending."
+msgstr "{update_count} سفارش به وضعیت تحویل در انتظار به‌روزرسانی شد."
+
+#: src/apps/orders/admin.py:115
+msgid "Update delivery_status to SENT"
+msgstr "به‌روزرسانی وضعیت تحویل به ارسال شده"
+
+#: src/apps/orders/admin.py:120
+#, python-brace-format
+msgid "{update_count} of orders delivery_status has been updated to sent."
+msgstr "{update_count} سفارش به وضعیت تحویل ارسال شده به‌روزرسانی شد."
+
+#: src/apps/orders/admin.py:124
+msgid "Update delivery_status to REJECTD"
+msgstr "به روزرسانی وضعیت تحویل به رد شده"
+
+#: src/apps/orders/admin.py:129
+#, python-brace-format
+msgid "{update_count} of orders delivery_status has been updated to rejectd."
+msgstr "{update_count} سفارش به وضعیت تحویل رد شده به‌روزرسانی شد."
+
+#: src/apps/orders/admin.py:133
+msgid "Update delivery_status to CANCELED"
+msgstr "به‌روزرسانی وضعیت تحویل به لغو شده"
+
+#: src/apps/orders/admin.py:138
+#, python-brace-format
+msgid "{update_count} of orders delivery_status has been updated to canceled."
+msgstr "{update_count} سفارش به وضعیت تحویل لغو شده به‌روزرسانی شد."
+
+#: src/apps/orders/models.py:25
+msgid "Paid"
+msgstr "پرداخت شده"
+
+#: src/apps/orders/models.py:26
+msgid "Unpaid"
+msgstr "پرداخت نشده"
+
+#: src/apps/orders/models.py:27 src/apps/orders/models.py:63
+msgid "Canceled"
+msgstr "لغو شده"
+
+#: src/apps/orders/models.py:30
+msgid "Online"
+msgstr "آنلاین"
+
+#: src/apps/orders/models.py:31
+msgid "DVD"
+msgstr "دی‌وی‌دی"
+
+#: src/apps/orders/models.py:37
+msgid "customer"
+msgstr "مشتری"
+
+#: src/apps/orders/models.py:46
+msgid "access status"
+msgstr "وضعیت دسترسی"
+
+#: src/apps/orders/models.py:51 src/apps/orders/models.py:79
+msgid "date created"
+msgstr "تاریخ ایجاد"
+
+#: src/apps/orders/models.py:52
+msgid "total price"
+msgstr "قیمت کل"
+
+#: src/apps/orders/models.py:60
+msgid "Pending"
+msgstr "در انتظار"
+
+#: src/apps/orders/models.py:61
+msgid "Sent"
+msgstr "ارسال شده"
+
+#: src/apps/orders/models.py:62
+msgid "Rejected"
+msgstr "رد شده"
+
+#: src/apps/orders/models.py:67
+msgid "city"
+msgstr "شهر"
+
+#: src/apps/orders/models.py:68
+msgid "address"
+msgstr "آدرس"
+
+#: src/apps/orders/models.py:69
+msgid "postal code"
+msgstr "کد پستی"
+
+#: src/apps/orders/models.py:70
+msgid "first name"
+msgstr "نام"
+
+#: src/apps/orders/models.py:71
+msgid "last name"
+msgstr "نام خانوادگی"
+
+#: src/apps/orders/models.py:72
+msgid "email"
+msgstr "ایمیل"
+
+#: src/apps/orders/models.py:73
+msgid "phonenumber"
+msgstr "شماره تلفن"
+
+#: src/apps/orders/models.py:74
+msgid "order note"
+msgstr "یادداشت سفارش"
+
+#: src/apps/orders/models.py:76
+msgid "delivery status"
+msgstr "وضعیت تحویل"
+
+#: src/apps/orders/models.py:100
+msgid "course"
+msgstr "دوره"
+
+#: src/apps/orders/models.py:102
+msgid "unit price"
+msgstr "قیمت واحد"
+
+#: src/apps/orders/templates/orders/checkout.html:19
+#: src/apps/orders/templates/orders/checkout.html:23
+msgid "Checkout"
+msgstr "تسویه حساب"
+
+#: src/apps/orders/templates/orders/checkout.html:21
+msgid "Home"
+msgstr "خانه"
+
+#: src/apps/orders/templates/orders/checkout.html:71
+msgid "Product"
+msgstr "محصول"
+
+#: src/apps/orders/templates/orders/checkout.html:72
+msgid "Total"
+msgstr "جمع"
+
+#: src/apps/orders/templates/orders/checkout.html:82
+msgid "Toman"
+msgstr "تومان"
+
+#: src/apps/orders/templates/orders/checkout.html:116
+msgid "Buy DVD"
+msgstr "خرید دی‌وی‌دی"
+
+#: src/apps/orders/views.py:28
+msgid "You cannot proceed to the checkout page because your cart is empty."
+msgstr "شما نمی‌توانید به صفحه تسویه حساب بروید زیرا سبد خرید شما خالی است."
+
+#: src/apps/orders/views.py:81
+msgid "Your order was successfully completed!"
+msgstr "سفارش شما با موفقیت تکمیل شد!"
+
+#: src/apps/orders/views.py:85
+msgid "Something went wrong. Please try again."
+msgstr "مشکلی پیش آمده است. لطفاً دوباره تلاش کنید."
+
+#: src/apps/orders/views.py:89
+msgid "Please correct the errors below:"
+msgstr "لطفاً خطاهای زیر را اصلاح کنید:"

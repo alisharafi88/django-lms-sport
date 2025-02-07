@@ -1,0 +1,323 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-07 20:57+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/apps/courses/admin.py:13
+msgid "Coupon code"
+msgstr "کد کوپن"
+
+#: src/apps/courses/admin.py:14
+msgid "Discount amount"
+msgstr "مقدار تخفیف"
+
+#: src/apps/courses/admin.py:15
+msgid "Date range"
+msgstr "محدوده تاریخ"
+
+#: src/apps/courses/admin.py:16 src/apps/courses/admin.py:34
+#: src/apps/courses/admin.py:41
+msgid "Statuses"
+msgstr "وضعیت‌ها"
+
+#: src/apps/courses/admin.py:31 src/apps/courses/admin.py:39
+msgid "details"
+msgstr "جزئیات"
+
+#: src/apps/courses/admin.py:32 src/apps/courses/admin.py:40
+msgid "specifications"
+msgstr "مشخصات"
+
+#: src/apps/courses/admin.py:33 src/apps/courses/admin.py:42
+msgid "Price information"
+msgstr "اطلاعات قیمت"
+
+#: src/apps/courses/admin.py:35
+msgid "date_information"
+msgstr "اطلاعات تاریخ"
+
+#: src/apps/courses/admin.py:89 src/apps/courses/admin.py:94
+msgid "User  information"
+msgstr "اطلاعات کاربر"
+
+#: src/apps/courses/admin.py:90 src/apps/courses/admin.py:95
+msgid "Course information"
+msgstr "اطلاعات دوره"
+
+#: src/apps/courses/admin.py:91
+msgid "Date information"
+msgstr "اطلاعات تاریخ"
+
+#: src/apps/courses/forms.py:12
+msgid "Enter your comment ..."
+msgstr "نظر خود را وارد کنید ..."
+
+#: src/apps/courses/models.py:13
+msgid "code of coupon"
+msgstr "کد کوپن"
+
+#: src/apps/courses/models.py:14 src/apps/courses/models.py:41
+msgid "discount amount"
+msgstr "مقدار تخفیف"
+
+#: src/apps/courses/models.py:15
+msgid "date valid from"
+msgstr "تاریخ اعتبار از"
+
+#: src/apps/courses/models.py:16
+msgid "date valid to"
+msgstr "تاریخ اعتبار تا"
+
+#: src/apps/courses/models.py:17 src/apps/courses/models.py:47
+#: src/apps/courses/models.py:90
+msgid "status"
+msgstr "وضعیت"
+
+#: src/apps/courses/models.py:18
+msgid "max number of usage"
+msgstr "حداکثر تعداد استفاده"
+
+#: src/apps/courses/models.py:27
+msgid "instructor"
+msgstr "مدرس"
+
+#: src/apps/courses/models.py:28
+#: src/apps/courses/templates/courses/course_detail.html:22
+#: src/apps/courses/templates/courses/course_detail.html:264
+#: src/apps/courses/templates/courses/courses_list.html:20
+#: src/apps/courses/templates/courses/courses_list.html:112
+msgid "Courses"
+msgstr "دوره‌ها"
+
+#: src/apps/courses/models.py:30 src/apps/courses/models.py:81
+msgid "title"
+msgstr "عنوان"
+
+#: src/apps/courses/models.py:32
+msgid "description"
+msgstr "توضیحات"
+
+#: src/apps/courses/models.py:34
+msgid "age range"
+msgstr "محدوده سنی"
+
+#: src/apps/courses/models.py:34
+msgid "Age range for users."
+msgstr "محدوده سنی برای کاربران."
+
+#: src/apps/courses/models.py:35
+msgid "duration"
+msgstr "مدت زمان"
+
+#: src/apps/courses/models.py:36
+msgid "How long it takes to complete this course?."
+msgstr "مدت زمان لازم برای اتمام این دوره چقدر است؟"
+
+#: src/apps/courses/models.py:38
+msgid "main img"
+msgstr "تصویر اصلی"
+
+#: src/apps/courses/models.py:40
+msgid "price"
+msgstr "قیمت"
+
+#: src/apps/courses/models.py:42
+msgid "Discount amount for course."
+msgstr "مقدار تخفیف برای دوره."
+
+#: src/apps/courses/models.py:44
+msgid "date created at"
+msgstr "تاریخ ایجاد در"
+
+#: src/apps/courses/models.py:45
+msgid "date modified at"
+msgstr "تاریخ ویرایش در"
+
+#: src/apps/courses/models.py:49
+msgid "certificate"
+msgstr "گواهی"
+
+#: src/apps/courses/models.py:51
+msgid "analysis room"
+msgstr "اتاق تحلیل"
+
+#: src/apps/courses/models.py:52
+msgid "extra movments"
+msgstr "حرکات اضافی"
+
+#: src/apps/courses/models.py:53
+msgid "injury prevention"
+msgstr "پیشگیری از آسیب"
+
+#: src/apps/courses/models.py:76
+msgid "Monetary"
+msgstr "پولی"
+
+#: src/apps/courses/models.py:77
+msgid "Free"
+msgstr "رایگان"
+
+#: src/apps/courses/models.py:80
+msgid "course"
+msgstr "دوره"
+
+#: src/apps/courses/models.py:85
+msgid "Course video"
+msgstr "ویدیو دوره"
+
+#: src/apps/courses/models.py:99
+msgid "Curse membership"
+msgstr "عضویت در دوره"
+
+#: src/apps/courses/models.py:101 src/apps/courses/models.py:116
+#: src/apps/courses/templates/courses/course_detail.html:18
+#: src/apps/courses/templates/courses/courses_list.html:16
+msgid "Course"
+msgstr "دوره"
+
+#: src/apps/courses/models.py:103 src/apps/courses/models.py:118
+msgid "Created date"
+msgstr "تاریخ ایجاد"
+
+#: src/apps/courses/models.py:104
+msgid "Modified date"
+msgstr "تاریخ ویرایش"
+
+#: src/apps/courses/models.py:115
+msgid "User "
+msgstr "کاربر"
+
+#: src/apps/courses/models.py:117
+msgid "Text of the comment"
+msgstr "متن نظر"
+
+#: src/apps/courses/models.py:120
+msgid "Parent"
+msgstr "والد"
+
+#: src/apps/courses/models.py:122
+msgid "Status"
+msgstr "وضعیت"
+
+#: src/apps/courses/models.py:123
+msgid "If the comment is not appropriate, set it to false."
+msgstr "اگر نظر مناسب نیست، آن را به نادرست تنظیم کنید."
+
+#: src/apps/courses/templates/courses/course_detail.html:20
+#: src/apps/courses/templates/courses/courses_list.html:18
+msgid "Home"
+msgstr "خانه"
+
+#: src/apps/courses/templates/courses/course_detail.html:24
+msgid "Course Details"
+msgstr "جزئیات دوره"
+
+#: src/apps/courses/templates/courses/course_detail.html:64
+#: src/apps/courses/templates/courses/course_detail.html:265
+#: src/apps/courses/templates/courses/courses_list.html:113
+msgid "Classes"
+msgstr "کلاس‌ها"
+
+#: src/apps/courses/templates/courses/course_detail.html:66
+#: src/apps/courses/templates/courses/course_detail.html:195
+#: src/apps/courses/templates/courses/course_detail.html:269
+#: src/apps/courses/templates/courses/courses_list.html:117
+msgid "Students"
+msgstr "دانش‌آموزان"
+
+#: src/apps/courses/templates/courses/course_detail.html:71
+msgid "About This Course"
+msgstr "درباره این دوره"
+
+#: src/apps/courses/templates/courses/course_detail.html:77
+msgid "Instructor"
+msgstr "مدرس"
+
+#: src/apps/courses/templates/courses/course_detail.html:106
+msgid "Comments"
+msgstr "نظرات"
+
+#: src/apps/courses/templates/courses/course_detail.html:124
+msgid "Reply"
+msgstr "پاسخ"
+
+#: src/apps/courses/templates/courses/course_detail.html:152
+msgid "Write a comment"
+msgstr "نظر خود را بنویسید"
+
+#: src/apps/courses/templates/courses/course_detail.html:166
+msgid "Post Comment"
+msgstr "ارسال نظر"
+
+#: src/apps/courses/templates/courses/course_detail.html:184
+#: src/apps/courses/templates/courses/course_detail.html:284
+#: src/apps/courses/templates/courses/courses_list.html:132
+msgid "Toman"
+msgstr "تومان"
+
+#: src/apps/courses/templates/courses/course_detail.html:192
+msgid "Lesson"
+msgstr "درس"
+
+#: src/apps/courses/templates/courses/course detail.html:197
+msgid "Duration"
+msgstr "مدت زمان"
+
+#: src/apps/courses/templates/courses/course_detail.html:199
+msgid "Age Range"
+msgstr "محدوده سنی"
+
+#: src/apps/courses/templates/courses/course_detail.html:203
+msgid "Certificate"
+msgstr "گواهی"
+
+#: src/apps/courses/templates/courses/course_detail.html:204
+msgid "Yes"
+msgstr "بله"
+
+#: src/apps/courses/templates/courses/course_detail.html:210
+msgid "Share Now:"
+msgstr "همین حالا به اشتراک بگذارید:"
+
+#: src/apps/courses/templates/courses/course_detail.html:230
+msgid "Related Courses"
+msgstr "دوره‌های مرتبط"
+
+#: src/apps/courses/templates/courses/courses_list.html:6
+msgid "Course list"
+msgstr "لیست دوره‌ها"
+
+#: src/apps/courses/templates/courses/courses_list.html:40
+msgid "Expert Trainer"
+msgstr "مدرس متخصص"
+
+#: src/apps/courses/templates/courses/courses_list.html:50
+msgid "Get Certificate"
+msgstr "گواهی دریافت کنید"
+
+#: src/apps/courses/templates/courses/courses_list.html:60
+msgid "Life Time Access"
+msgstr "دسترسی مادام‌العمر"
+
+#: src/apps/courses/templates/courses/courses_list.html:76
+msgid "Our Courses"
+msgstr "دوره‌های ما"
+
+#: src/apps/courses/templates/courses/courses_list.html:77
+msgid "Explore Courses"
+msgstr "دوره‌ها را کاوش کنید"

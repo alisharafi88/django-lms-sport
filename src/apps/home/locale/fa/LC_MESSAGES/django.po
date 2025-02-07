@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-07 20:57+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Persian <LL@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/apps/home/templates/home/aboutus.html:6
+#: src/apps/home/templates/home/aboutus.html:17
+#: src/apps/home/templates/home/aboutus.html:21
+msgid "About Us"
+msgstr "درباره ما"
+
+#: src/apps/home/templates/home/aboutus.html:19
+#: src/apps/home/templates/home/home.html:30
+msgid "Home"
+msgstr "صفحه اصلی"
+
+#: src/apps/home/templates/home/aboutus.html:50
+#: src/apps/home/templates/home/home.html:142
+msgid "Expert Trainer"
+msgstr "مربی متخصص"
+
+#: src/apps/home/templates/home/aboutus.html:62
+#: src/apps/home/templates/home/home.html:153
+msgid "Get Certificate"
+msgstr "دریافت گواهی"
+
+#: src/apps/home/templates/home/aboutus.html:74
+#: src/apps/home/templates/home/home.html:164
+msgid "Life Time Access"
+msgstr "دسترسی مادام العمر"
+
+#: src/apps/home/templates/home/aboutus.html:284
+#: src/apps/home/templates/home/aboutus.html:329
+#: src/apps/home/templates/home/home.html:33
+#: src/apps/home/templates/home/home.html:399
+msgid "Instructor"
+msgstr "مدرس"
+
+#: src/apps/home/templates/home/home.html:6
+msgid "home"
+msgstr "خانه"
+
+#: src/apps/home/templates/home/home.html:36
+msgid "Course"
+msgstr "دوره"
+
+#: src/apps/home/templates/home/home.html:39
+msgid "Blog"
+msgstr "وبلاگ"
+
+#: src/apps/home/templates/home/home.html:42
+msgid "Pages"
+msgstr "صفحات"
+
+#: src/apps/home/templates/home/home.html:44
+msgid "About"
+msgstr "درباره"
+
+#: src/apps/home/templates/home/home.html:45
+msgid "Contact"
+msgstr "تماس"
+
+#: src/apps/home/templates/home/home.html:47
+msgid "Check Out"
+msgstr "بررسی"
+
+#: src/apps/home/templates/home/home.html:48
+msgid "FAQ"
+msgstr "سوالات متداول"
+
+#: src/apps/home/templates/home/home.html:49
+msgid "Register"
+msgstr "ثبت نام"
+
+#: src/apps/home/templates/home/home.html:50
+msgid "Sign In"
+msgstr "ورود"
+
+#: src/apps/home/templates/home/home.html:108
+msgid "Explore Courses"
+msgstr "دوره‌ها را کاوش کنید"
+
+#: src/apps/home/templates/home/home.html:253
+msgid "Courses"
+msgstr "دوره‌ها"
+
+#: src/apps/home/templates/home/home.html:254
+msgid "Classes"
+msgstr "کلاس‌ها"
+
+#: src/apps/home/templates/home/home.html:258
+msgid "Students"
+msgstr "دانش‌آموزان"
+
+#: src/apps/home/templates/home/home.html:273
+msgid "Toman"
+msgstr "تومان"
+
+#: src/apps/home/templates/home/home.html:284
+msgid "Browse All Courses"
+msgstr "مرور تمام دوره‌ها"
+
+#: src/apps/home/templates/home/home.html:330
+msgid "Read more"
+msgstr "بیشتر بخوانید"
+
+#: src/apps/home/templates/home/home.html:444
+msgid "All Instructor"
+msgstr "تمام مدرسین"
+
+#: src/apps/home/templates/home/home.html:459
+msgid "Our Testimonials"
+msgstr "نظرات ما"
+
+#: src/apps/home/templates/home/home.html:500
+msgid "Latest Blogs & News"
+msgstr "آخرین وبلاگ‌ها و اخبار"
+
+#: src/apps/home/templates/home/home.html:531
+msgid "All Blog"
+msgstr "تمام وبلاگ‌ها"
