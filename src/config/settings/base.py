@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 
-LANGUAGE_CODE = 'Fa'
+LANGUAGE_CODE = 'fa'
 TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True

@@ -51,7 +51,7 @@ msgstr "ثبت نام"
 #: src/apps/accounts/templates/accounts/authentication.html:19
 #: src/apps/accounts/templates/accounts/verification_otp.html:19
 msgid "Home"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: src/apps/accounts/templates/accounts/authentication.html:36
 #: src/apps/accounts/templates/accounts/verification_otp.html:36

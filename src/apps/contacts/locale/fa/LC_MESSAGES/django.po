@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-07 20:57+0330\n"
+"POT-Creation-Date: 2025-02-08 00:23+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgid "you can only have 1 primary contact"
 msgstr "شما فقط می‌توانید یک تماس اصلی داشته باشید"
 
 #: src/apps/contacts/models.py:23
-msgid "User "
+msgid "User"
 msgstr "کاربر"
 
 #: src/apps/contacts/models.py:25
@@ -61,7 +61,7 @@ msgstr "تاریخ ارسال"
 #: src/apps/contacts/templates/admin/custom_change_confirmation.html:22
 #: src/apps/contacts/templates/contact/contact.html:19
 msgid "Home"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: src/apps/contacts/templates/admin/custom_change_confirmation.html:28
 msgid "Confirm change"
@@ -73,18 +73,20 @@ msgstr "تأیید افزودن"
 
 #: src/apps/contacts/templates/admin/custom_change_confirmation.html:41
 msgid ""
-"Are you sure you don't want to set this new information\n"
+"Are yoy sure you don't want set this new information\n"
 "                        as primary?!"
 msgstr ""
 "آیا مطمئن هستید که نمی‌خواهید این اطلاعات جدید را\n"
 "                        به عنوان اصلی تنظیم کنید؟"
 
 #: src/apps/contacts/templates/admin/custom_change_confirmation.html:44
+
 msgid ""
 "Setting this new information as primary will unset\n"
-"                        other primary instances. Do you want to proceed?!"
+"                        other primary instances.Do you want to proceed?!"
 msgstr ""
-"تنظیم این اطلاعات جدید به عنوان اصلی، سایر موارد اصلی را غیر فعال می‌کند. آیا می‌خواهید ادامه دهید؟"
+"تنظیم این اطلاعات جدید به عنوان اصلی، سایر موارد اصلی را غیر فعال می‌کند. آیا "
+"می‌خواهید ادامه دهید؟"
 
 #: src/apps/contacts/templates/admin/custom_change_confirmation.html:53
 #, python-format
@@ -121,7 +123,7 @@ msgstr "تأیید مقادیر:"
 msgid "Curent primary"
 msgstr "اصلی فعلی"
 
-#: src/apps/contacts/templates /contacts/templates/admin/custom_change_data.html:12
+#: src/apps/contacts/templates/admin/custom_change_data.html:12
 #: src/apps/contacts/templates/admin/custom_change_data.html:25
 msgid "Your primary status"
 msgstr "وضعیت اصلی شما"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-07 20:57+0330\n"
+"POT-Creation-Date: 2025-02-08 00:23+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,7 +105,7 @@ msgstr "نظرات وبلاگ"
 #: src/apps/blogs/templates/blogs/blog_detail.html:19
 #: src/apps/blogs/templates/blogs/blog_list.html:20
 msgid "Home"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:23
 msgid "Blog Details"
@@ -132,30 +132,30 @@ msgstr "پاسخ"
 msgid "Write a comment"
 msgstr "یک نظر بنویسید"
 
-#: src/apps/blogs/templates/blog_detail.html:123
+#: src/apps/blogs/templates/blogs/blog_detail.html:123
 msgid "Post Comment"
 msgstr "ارسال نظر"
 
-#: src/apps/blogs/templates/blog_detail.html:134
+#: src/apps/blogs/templates/blogs/blog_detail.html:134
 msgid "Recent Post"
 msgstr "پست‌های اخیر"
 
-#: src/apps/blogs/templates/blog_list.html:6
+#: src/apps/blogs/templates/blogs/blog_list.html:6
 msgid "Blog List"
 msgstr "لیست وبلاگ‌ها"
 
-#: src/apps/blogs/templates/blog_list.html:42
+#: src/apps/blogs/templates/blogs/blog_list.html:42
 msgid "Expert Trainer"
 msgstr "مدرس متخصص"
 
-#: src/apps/blogs/templates/blog_list.html:52
+#: src/apps/blogs/templates/blogs/blog_list.html:52
 msgid "Get Certificate"
 msgstr "گواهی دریافت کنید"
 
-#: src/apps/blogs/templates/blog_list.html:62
+#: src/apps/blogs/templates/blogs/blog_list.html:62
 msgid "Life Time Access"
 msgstr "دسترسی مادام العمر"
 
-#: src/apps/blogs/templates/blog_list.html:79
+#: src/apps/blogs/templates/blogs/blog_list.html:79
 msgid "Latest Blogs"
 msgstr "آخرین وبلاگ‌ها"

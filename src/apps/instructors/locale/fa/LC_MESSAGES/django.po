@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-07 20:57+0330\n"
+"POT-Creation-Date: 2025-02-08 00:23+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,7 +76,9 @@ msgstr "آیا استاد است"
 
 #: src/apps/instructors/models.py:20
 msgid "Check this box to set master instructor and display social media links."
-msgstr "این کادر را علامت بزنید تا مدرس اصلی شود و لینک‌های شبکه‌های اجتماعی نمایش داده شود."
+msgstr ""
+"این کادر را علامت بزنید تا مدرس اصلی شود و لینک‌های شبکه‌های اجتماعی نمایش "
+"داده شود."
 
 #: src/apps/instructors/models.py:21
 msgid "is active"
@@ -87,15 +89,15 @@ msgid "Check this box to set this instructor as active."
 msgstr "این کادر را علامت بزنید تا این مدرس به عنوان فعال تنظیم شود."
 
 #: src/apps/instructors/models.py:48
-msgid "instructor widget"
+msgid "instructor widjet"
 msgstr "ویجت مدرس"
 
 #: src/apps/instructors/models.py:51
-msgid "widget"
+msgid "widjet"
 msgstr "ویجت"
 
 #: src/apps/instructors/models.py:51
-msgid "short widget"
+msgid "short Widjet"
 msgstr "ویجت کوتاه"
 
 #: src/apps/instructors/models.py:61
@@ -126,7 +128,7 @@ msgstr "پروفایل مدرس"
 #: src/apps/instructors/templates/instructors/instructor_detail.html:20
 #: src/apps/instructors/templates/instructors/instructor_list.html:19
 msgid "Home"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: src/apps/instructors/templates/instructors/instructor_detail.html:22
 #: src/apps/instructors/templates/instructors/instructor_list.html:17
@@ -162,11 +164,11 @@ msgstr "دوره‌ها"
 
 #: src/apps/instructors/templates/instructors/instructor_detail.html:182
 msgid "Classes"
-msgstr "کلاس‌ها"
+msgstr "کلاس‌"
 
 #: src/apps/instructors/templates/instructors/instructor_detail.html:186
 msgid "Students"
-msgstr "دانش‌آموزان"
+msgstr "دانش‌آموز"
 
 #: src/apps/instructors/templates/instructors/instructor_detail.html:201
 msgid "Toman"
@@ -191,3 +193,6 @@ msgstr "دسترسی مادام‌العمر"
 #: src/apps/instructors/templates/instructors/instructor_list.html:78
 msgid "Our Expert Instructor"
 msgstr "مدرسین متخصص ما"
+
+#~ msgid "widget"
+#~ msgstr "ویجت"

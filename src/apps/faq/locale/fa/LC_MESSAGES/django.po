@@ -64,7 +64,7 @@ msgstr "سوالات متداول"
 
 #: src/apps/faq/templates/faq/FAQ.html:20
 msgid "Home"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: src/apps/faq/templates/faq/FAQ.html:22
 msgid "Pages"

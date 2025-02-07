@@ -26,7 +26,7 @@ msgstr "سبد خرید"
 
 #: src/apps/carts/templates/carts/cart.html:19
 msgid "Home"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: src/apps/carts/templates/carts/cart.html:40
 msgid "Images"

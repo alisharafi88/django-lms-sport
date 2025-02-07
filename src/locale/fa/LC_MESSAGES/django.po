@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-07 20:57+0330\n"
+"POT-Creation-Date: 2025-02-08 00:23+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,54 +18,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/templates/inc/header.html:23
+#: src/templates/inc/header.html:24
+msgid "Search Now"
+msgstr "جستجو"
+
+#: src/templates/inc/header.html:25
 msgid "What you want to learn?"
 msgstr "چه چیزی می‌خواهید یاد بگیرید؟"
 
-#: src/templates/inc/header.html:24
-msgid "Search Now"
-msgstr "همین حالا جستجو کنید"
-
-#: src/templates/inc/header.html:37
+#: src/templates/inc/header.html:38
 msgid "Home"
-msgstr "صفحه اصلی"
+msgstr "صفحه‌اصلی"
 
-#: src/templates/inc/header.html:40
-msgid "Instructor"
-msgstr "مدرس"
+#: src/templates/inc/header.html:41
+msgid "Instructors"
+msgstr "مدرسین"
 
-#: src/templates/inc/header.html:43
-msgid "Course"
-msgstr "دوره"
+#: src/templates/inc/header.html:44
+msgid "Courses"
+msgstr "دوره‌ها"
 
-#: src/templates/inc/header.html:46
-msgid "Blog"
-msgstr "وبلاگ"
+#: src/templates/inc/header.html:47
+msgid "Blogs"
+msgstr "وبلاگ‌ها"
 
-#: src/templates/inc/header.html:50
+#: src/templates/inc/header.html:51
 msgid "Pages"
 msgstr "صفحات"
 
-#: src/templates/inc/header.html:52
-msgid "About"
-msgstr "درباره ما"
-
 #: src/templates/inc/header.html:53
-msgid "Contact"
-msgstr "تماس با ما"
+msgid "About Us"
+msgstr "درباره‌‌ما"
 
 #: src/templates/inc/header.html:54
-msgid "Check Out"
-msgstr "تسویه حساب"
+msgid "Contact Us"
+msgstr "تماس‌با‌ما"
 
 #: src/templates/inc/header.html:55
+msgid "Check Out"
+msgstr "تسویه‌حساب"
+
+#: src/templates/inc/header.html:56
 msgid "FAQ"
 msgstr "سوالات متداول"
 
-#: src/templates/inc/header.html:56
+#: src/templates/inc/header.html:57
 msgid "Register"
 msgstr "ثبت نام"
 
-#: src/templates/inc/header.html:57
+#: src/templates/inc/header.html:58
 msgid "Sign In"
 msgstr "ورود"

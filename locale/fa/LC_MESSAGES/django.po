@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-07 20:57+0330\n"
+"POT-Creation-Date: 2025-02-08 01:58+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr "در حال تغییر"
 #: venv/lib/python3.8/site-packages/admin_confirm/templates/admin/action_confirmation.html:20
 #: venv/lib/python3.8/site-packages/admin_confirm/templates/admin/change_confirmation.html:20
 msgid "Home"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: venv/lib/python3.8/site-packages/admin_confirm/templates/admin/action_confirmation.html:23
 msgid "Confirm Action"
@@ -80,7 +80,8 @@ msgstr "آیا مطمئن هستید که می‌خواهید %(model_name)s ر�
 #: venv/lib/python3.8/site-packages/admin_confirm/templates/admin/change_confirmation.html:37
 #, python-format
 msgid "Are you sure you want to change the %(model_name)s \"%(object_name)s\"?"
-msgstr "آیا مطمئن هستید که می‌خواهید %(model_name)s \"%(object_name)s\" را تغییر دهید؟"
+msgstr ""
+"آیا مطمئن هستید که می‌خواهید %(model_name)s \"%(object_name)s\" را تغییر دهید؟"
 
 #: venv/lib/python3.8/site-packages/admin_confirm/templates/admin/change_confirmation.html:58
 msgid "No, continue to edit"
@@ -172,7 +173,8 @@ msgstr "فقط اعداد جدا شده با کاما وارد کنید."
 #: venv/lib/python3.8/site-packages/django/core/validators.py:357
 #, python-format
 msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
-msgstr "مطمئن شوید که این مقدار %(limit_value)s است (در حال حاضر %(show_value)s است)."
+msgstr ""
+"مطمئن شوید که این مقدار %(limit_value)s است (در حال حاضر %(show_value)s است)."
 
 #: venv/lib/python3.8/site-packages/django/core/validators.py:392
 #, python-format
@@ -198,9 +200,11 @@ msgid_plural ""
 "Ensure this value has at least %(limit_value)d characters (it has "
 "%(show_value)d)."
 msgstr[0] ""
-"مطمئن شوید که این مقدار حداقل %(limit_value)d کاراکتر دارد (در حال حاضر %(show_value)d دارد)."
+"مطمئن شوید که این مقدار حداقل %(limit_value)d کاراکتر دارد (در حال حاضر "
+"%(show_value)d دارد)."
 msgstr[1] ""
-"مطمئن شوید که این مقدار حداقل %(limit_value)d کاراکتر دارد (در حال حاضر %(show_value)d دارد)."
+"مطمئن شوید که این مقدار حداقل %(limit_value)d کاراکتر دارد (در حال حاضر "
+"%(show_value)d دارد)."
 
 #: venv/lib/python3.8/site-packages/django/core/validators.py:438
 #, python-format
@@ -211,9 +215,11 @@ msgid_plural ""
 "Ensure this value has at most %(limit_value)d characters (it has "
 "%(show_value)d)."
 msgstr[0] ""
-"مطمئن شوید که این مقدار حداکثر %(limit_value)d کاراکتر دارد (در حال حاضر %(show_value)d دارد)."
+"مطمئن شوید که این مقدار حداکثر %(limit_value)d کاراکتر دارد (در حال حاضر "
+"%(show_value)d دارد)."
 msgstr[1] ""
-"مطمئن شوید که این مقدار حداکثر %(limit_value)d کاراکتر دارد (در حال حاضر %(show_value)d دارد)."
+"مطمئن شوید که این مقدار حداکثر %(limit_value)d کاراکتر دارد (در حال حاضر "
+"%(show_value)d دارد)."
 
 #: venv/lib/python3.8/site-packages/django/core/validators.py:461
 #: venv/lib/python3.8/site-packages/django/forms/fields.py:347
@@ -225,19 +231,15 @@ msgstr "یک عدد وارد کنید."
 #, python-format
 msgid "Ensure that there are no more than %(max)s digit in total."
 msgid_plural "Ensure that there are no more than %(max)s digits in total."
-msgstr[0] ""
-"مطمئن شوید که در مجموع بیش از %(max)s رقم وجود ندارد."
-msgstr[1] ""
-"مطمئن شوید که در مجموع بیش از %(max)s رقم وجود ندارد."
+msgstr[0] "مطمئن شوید که در مجموع بیش از %(max)s رقم وجود ندارد."
+msgstr[1] "مطمئن شوید که در مجموع بیش از %(max)s رقم وجود ندارد."
 
 #: venv/lib/python3.8/site-packages/django/core/validators.py:468
 #, python-format
 msgid "Ensure that there are no more than %(max)s decimal place."
 msgid_plural "Ensure that there are no more than %(max)s decimal places."
-msgstr[0] ""
-"مطمئن شوید که بیش از %(max)s رقم اعشار وجود ندارد."
-msgstr[1] ""
-"مطمئن شوید که بیش از %(max)s رقم اعشار وجود ندارد."
+msgstr[0] "مطمئن شوید که بیش از %(max)s رقم اعشار وجود ندارد."
+msgstr[1] "مطمئن شوید که بیش از %(max)s رقم اعشار وجود ندارد."
 
 #: venv/lib/python3.8/site-packages/django/core/validators.py:473
 #, python-format
@@ -245,10 +247,8 @@ msgid ""
 "Ensure that there are no more than %(max)s digit before the decimal point."
 msgid_plural ""
 "Ensure that there are no more than %(max)s digits before the decimal point."
-msgstr[0] ""
-"مطمئن شوید که بیش از %(max)s رقم قبل از نقطه اعشار وجود ندارد."
-msgstr[1] ""
-"مطمئن شوید که بیش از %(max)s رقم قبل از نقطه اعشار وجود ندارد."
+msgstr[0] "مطمئن شوید که بیش از %(max)s رقم قبل از نقطه اعشار وجود ندارد."
+msgstr[1] "مطمئن شوید که بیش از %(max)s رقم قبل از نقطه اعشار وجود ندارد."
 
 #: venv/lib/python3.8/site-packages/django/core/validators.py:544
 #, python-format
@@ -256,7 +256,8 @@ msgid ""
 "File extension “%(extension)s” is not allowed. Allowed extensions are: "
 "%(allowed_extensions)s."
 msgstr ""
-"پسوند فایل “%(extension)s” مجاز نیست. پسوند‌های مجاز عبارتند از: %(allowed_extensions)s."
+"پسوند فایل “%(extension)s” مجاز نیست. پسوند‌های مجاز عبارتند از: "
+"%(allowed_extensions)s."
 
 #: venv/lib/python3.8/site-packages/django/core/validators.py:605
 msgid "Null characters are not allowed."
@@ -302,7 +303,8 @@ msgstr "%(model_name)s با این %(field_label)s از قبل وجود دارد
 msgid ""
 "%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
 msgstr ""
-"%(field_label)s باید برای %(date_field_label)s %(lookup_type)s منحصر به فرد باشد."
+"%(field_label)s باید برای %(date_field_label)s %(lookup_type)s منحصر به فرد "
+"باشد."
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:173
 #, python-format
@@ -318,6 +320,7 @@ msgstr "مقدار “%(value)s” باید True یا False باشد."
 #, python-format
 msgid "“%(value)s” value must be either True, False, or None."
 msgstr "مقدار “%(value)s” باید True، False یا None باشد."
+
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1097
 msgid "Boolean (Either True or False)"
 msgstr "بولی (یا درست یا نادرست)"
@@ -359,14 +362,18 @@ msgstr "تاریخ (بدون زمان)"
 msgid ""
 "“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
 "uuuuuu]][TZ] format."
-msgstr "فرمت “%(value)s” نامعتبر است. باید به صورت YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ] باشد."
+msgstr ""
+"فرمت “%(value)s” نامعتبر است. باید به صورت YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ] باشد."
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1497
 #, python-format
 msgid ""
 "“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
 "[TZ]) but it is an invalid date/time."
-msgstr "فرمت “%(value)s” صحیح است (YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]) اما تاریخ/زمان نامعتبری است."
+msgstr ""
+"فرمت “%(value)s” صحیح است (YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]) اما تاریخ/"
+"زمان نامعتبری است."
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1502
 msgid "Date (with time)"
@@ -386,7 +393,8 @@ msgstr "عدد اعشاری"
 msgid ""
 "“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
 "uuuuuu] format."
-msgstr "فرمت “%(value)s” نامعتبر است. باید به صورت [DD] [[HH:]MM:]ss[.uuuuuu] باشد."
+msgstr ""
+"فرمت “%(value)s” نامعتبر است. باید به صورت [DD] [[HH:]MM:]ss[.uuuuuu] باشد."
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1793
 msgid "Duration"
@@ -400,7 +408,7 @@ msgstr "آدرس ایمیل"
 msgid "File path"
 msgstr "مسیر فایل"
 
-#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__. py:1948
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1948
 #, python-format
 msgid "“%(value)s” value must be a float."
 msgstr "مقدار “%(value)s” باید یک عدد اعشاری باشد."
@@ -467,12 +475,16 @@ msgstr "متن"
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2448
 #, python-format
-msgid "“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] format."
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
 msgstr "فرمت “%(value)s” نامعتبر است. باید به صورت HH:MM[:ss[.uuuuuu]] باشد."
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2452
 #, python-format
-msgid "“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an invalid time."
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
 msgstr "فرمت “%(value)s” صحیح است (HH:MM[:ss[.uuuuuu]]) اما زمان نامعتبری است."
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2456
@@ -488,9 +500,14 @@ msgid "Raw binary data"
 msgstr "داده‌های باینری خام"
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2653
-#, python-format
-msgid "“%(value )s” is not a valid UUID."
+#, fuzzy, python-format
+#| msgid "“%(value)s” is not a valid UUID."
+msgid "“%(value)s” is not a valid UUID."
 msgstr "“%(value )s” یک UUID معتبر نیست."
+
+#: venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2655
+msgid "Universally unique identifier"
+msgstr "شناسه منحصر به فرد جهانی"
 
 #: venv/lib/python3.8/site-packages/django/db/models/fields/files.py:232
 msgid "File"
@@ -584,20 +601,29 @@ msgstr "هیچ فایلی ارسال نشد."
 msgid "The submitted file is empty."
 msgstr "فایل ارسال شده خالی است."
 
-#: venv/lib/python3.8/site-packages/django/forms/ fields.py:625
+#: venv/lib/python3.8/site-packages/django/forms/fields.py:625
 #, python-format
 msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
-msgid_plural "Ensure this filename has at most %(max)d characters (it has %(length)d)."
-msgstr[0] "اطمینان حاصل کنید که این نام فایل حداکثر %(max)d کاراکتر دارد (در حال حاضر %(length)d)."
-msgstr[1] "اطمینان حاصل کنید که این نام فایل حداکثر %(max)d کاراکتر دارد (در حال حاضر %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+"اطمینان حاصل کنید که این نام فایل حداکثر %(max)d کاراکتر دارد (در حال حاضر "
+"%(length)d)."
+msgstr[1] ""
+"اطمینان حاصل کنید که این نام فایل حداکثر %(max)d کاراکتر دارد (در حال حاضر "
+"%(length)d)."
 
 #: venv/lib/python3.8/site-packages/django/forms/fields.py:630
 msgid "Please either submit a file or check the clear checkbox, not both."
 msgstr "لطفاً یا یک فایل ارسال کنید یا کادر پاک کردن را علامت بزنید، نه هر دو."
 
 #: venv/lib/python3.8/site-packages/django/forms/fields.py:694
-msgid "Upload a valid image. The file you uploaded was either not an image or a corrupted image."
-msgstr "یک تصویر معتبر بارگذاری کنید. فایلی که بارگذاری کرده‌اید یا تصویر نیست یا تصویر خراب است."
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+"یک تصویر معتبر بارگذاری کنید. فایلی که بارگذاری کرده‌اید یا تصویر نیست یا "
+"تصویر خراب است."
 
 #: venv/lib/python3.8/site-packages/django/forms/fields.py:857
 #: venv/lib/python3.8/site-packages/django/forms/fields.py:949
@@ -637,8 +663,13 @@ msgstr "(فیلد مخفی %(name)s) %(error)s"
 
 #: venv/lib/python3.8/site-packages/django/forms/formsets.py:63
 #, python-format
-msgid "ManagementForm data is missing or has been tampered with. Missing fields: %(field_names)s. You may need to file a bug report if the issue persists."
-msgstr "داده‌های ManagementForm گم شده یا دستکاری شده‌اند. فیلدهای گم شده: %(field_names)s. ممکن است نیاز به ارسال یک گزارش خطا داشته باشید اگر مشکل ادامه یابد."
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+"داده‌های ManagementForm گم شده یا دستکاری شده‌اند. فیلدهای گم شده: "
+"%(field_names)s. ممکن است نیاز به ارسال یک گزارش خطا داشته باشید اگر مشکل "
+"ادامه یابد."
 
 #: venv/lib/python3.8/site-packages/django/forms/formsets.py:67
 #, python-format
@@ -671,14 +702,17 @@ msgstr "لطفاً داده‌های تکراری برای %(field)s را اصل
 #: venv/lib/python3.8/site-packages/django/forms/models.py:891
 #, python-format
 msgid "Please correct the duplicate data for %(field)s, which must be unique."
-msgstr "لطفاً داده‌های تکراری برای %(field)s را اصلاح کنید، که باید منحصر به فرد باشد."
+msgstr ""
+"لطفاً داده‌های تکراری برای %(field)s را اصلاح کنید، که باید منحصر به فرد باشد."
 
 #: venv/lib/python3.8/site-packages/django/forms/models.py:898
 #, python-format
 msgid ""
 "Please correct the duplicate data for %(field_name)s which must be unique "
 "for the %(lookup)s in %(date_field)s."
-msgstr "لطفاً داده‌های تکراری برای %(field_name)s را اصلاح کنید که باید منحصر به فرد باشد برای %(lookup)s در %(date_field)s."
+msgstr ""
+"لطفاً داده‌های تکراری برای %(field_name)s را اصلاح کنید که باید منحصر به فرد "
+"باشد برای %(lookup)s در %(date_field)s."
 
 #: venv/lib/python3.8/site-packages/django/forms/models.py:907
 msgid "Please correct the duplicate values below."
@@ -703,7 +737,8 @@ msgid ""
 "%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
 "may be ambiguous or it may not exist."
 msgstr ""
-"%(datetime)s نمی‌تواند در منطقه زمانی %(current_timezone)s تفسیر شود؛ ممکن است مبهم باشد یا وجود نداشته باشد."
+"%(datetime)s نمی‌تواند در منطقه زمانی %(current_timezone)s تفسیر شود؛ ممکن "
+"است مبهم باشد یا وجود نداشته باشد."
 
 #: venv/lib/python3.8/site-packages/django/forms/widgets.py:463
 msgid "Clear"
@@ -980,28 +1015,28 @@ msgstr "ژوئیه."
 
 #: venv/lib/python3.8/site-packages/django/utils/dates.py:60
 msgctxt "abbrev. month"
-msgid "August"
-msgstr "اوت."
+msgid "Aug."
+msgstr "اوت"
 
 #: venv/lib/python3.8/site-packages/django/utils/dates.py:61
 msgctxt "abbrev. month"
-msgid "September"
-msgstr "سپتامبر."
+msgid "Sept."
+msgstr "سپتامبر"
 
 #: venv/lib/python3.8/site-packages/django/utils/dates.py:62
 msgctxt "abbrev. month"
-msgid "October"
-msgstr "اکتبر."
+msgid "Oct."
+msgstr "اکتبر"
 
 #: venv/lib/python3.8/site-packages/django/utils/dates.py:63
 msgctxt "abbrev. month"
-msgid "November"
-msgstr "نوامبر."
+msgid "Nov."
+msgstr "نوامبر"
 
 #: venv/lib/python3.8/site-packages/django/utils/dates.py:64
 msgctxt "abbrev. month"
-msgid "December"
-msgstr "دسامبر."
+msgid "Dec."
+msgstr "دسامبر"
 
 #: venv/lib/python3.8/site-packages/django/utils/dates.py:67
 msgctxt "alt. month"
@@ -1121,7 +1156,7 @@ msgstr[1] "%(num)d ساعت"
 #: venv/lib/python3.8/site-packages/django/utils/timesince.py:13
 #, python-format
 msgid "%(num)d minute"
- msgid_plural "%(num)d minutes"
+msgid_plural "%(num)d minutes"
 msgstr[0] "%(num)d دقیقه"
 msgstr[1] "%(num)d دقیقه"
 
@@ -1140,9 +1175,10 @@ msgid ""
 "required for security reasons, to ensure that your browser is not being "
 "hijacked by third parties."
 msgstr ""
-"شما این پیام را مشاهده می‌کنید زیرا این سایت HTTPS نیاز به ارسال یک “هدر Referer” "
-"توسط مرورگر شما دارد، اما هیچ‌کدام ارسال نشده است. این هدر به دلایل امنیتی "
-"ضروری است تا اطمینان حاصل شود که مرورگر شما توسط اشخاص ثالث هک نشده است."
+"شما این پیام را مشاهده می‌کنید زیرا این سایت HTTPS نیاز به ارسال یک “هدر "
+"Referer” توسط مرورگر شما دارد، اما هیچ‌کدام ارسال نشده است. این هدر به دلایل "
+"امنیتی ضروری است تا اطمینان حاصل شود که مرورگر شما توسط اشخاص ثالث هک نشده "
+"است."
 
 #: venv/lib/python3.8/site-packages/django/views/csrf.py:122
 msgid ""
@@ -1151,8 +1187,8 @@ msgid ""
 "origin” requests."
 msgstr ""
 "اگر مرورگر خود را برای غیرفعال کردن هدرهای “Referer” پیکربندی کرده‌اید، لطفاً "
-"آنها را دوباره فعال کنید، حداقل برای این سایت، یا برای اتصالات HTTPS، یا برای "
-"درخواست‌های “هم‌منشأ”."
+"آنها را دوباره فعال کنید، حداقل برای این سایت، یا برای اتصالات HTTPS، یا "
+"برای درخواست‌های “هم‌منشأ”."
 
 #: venv/lib/python3.8/site-packages/django/views/csrf.py:127
 msgid ""
@@ -1162,11 +1198,11 @@ msgid ""
 "If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
 "\" …> for links to third-party sites."
 msgstr ""
-"اگر از تگ <meta name=\"referrer\" content=\"no-referrer\"> یا هدر “Referrer-Policy: "
-"no-referrer” استفاده می‌کنید، لطفاً آنها را حذف کنید. حفاظت CSRF نیاز به هدر "
-"“Referer” برای انجام بررسی‌های دقیق referer دارد. اگر نگران حریم خصوصی هستید، "
-"از گزینه‌های جایگزین مانند <a rel=\"noreferrer\" …> برای لینک‌ها به سایت‌های "
-"سوم استفاده کنید."
+"اگر از تگ <meta name=\"referrer\" content=\"no-referrer\"> یا هدر “Referrer-"
+"Policy: no-referrer” استفاده می‌کنید، لطفاً آنها را حذف کنید. حفاظت CSRF نیاز "
+"به هدر “Referer” برای انجام بررسی‌های دقیق referer دارد. اگر نگران حریم خصوصی "
+"هستید، از گزینه‌های جایگزین مانند <a rel=\"noreferrer\" …> برای لینک‌ها به "
+"سایت‌های سوم استفاده کنید."
 
 #: venv/lib/python3.8/site-packages/django/views/csrf.py:136
 msgid ""
@@ -1175,17 +1211,16 @@ msgid ""
 "that your browser is not being hijacked by third parties."
 msgstr ""
 "شما این پیام را مشاهده می‌کنید زیرا این سایت نیاز به یک کوکی CSRF هنگام ارسال "
-"فرم‌ها دارد. این کوکی به دلایل امنیتی ضروری است تا اطمینان حاصل شود که "
-"مرورگر شما توسط اشخاص ثالث هک نشده است."
+"فرم‌ها دارد. این کوکی به دلایل امنیتی ضروری است تا اطمینان حاصل شود که مرورگر "
+"شما توسط اشخاص ثالث هک نشده است."
 
 #: venv/lib/python3.8/site-packages/django/views/csrf.py:142
 msgid ""
 "If you have configured your browser to disable cookies, please re-enable "
 "them, at least for this site, or for “same-origin” requests."
 msgstr ""
-"اگر مرورگر خود را برای غیرفعال کردن کوکی‌ها پیکربندی کرده‌اید، لطفاً "
-"آنها را دوباره فعال کنید، حداقل برای این سایت، یا برای درخواست‌های "
-"“هم‌منشأ”."
+"اگر مرورگر خود را برای غیرفعال کردن کوکی‌ها پیکربندی کرده‌اید، لطفاً آنها را "
+"دوباره فعال کنید، حداقل برای این سایت، یا برای درخواست‌های “هم‌منشأ”."
 
 #: venv/lib/python3.8/site-packages/django/views/csrf.py:148
 msgid "More information is available with DEBUG=True."
@@ -1197,7 +1232,7 @@ msgstr "سال مشخص نشده است"
 
 #: venv/lib/python3.8/site-packages/django/views/generic/dates.py:64
 #: venv/lib/python3.8/site-packages/django/views/generic/dates.py:115
-#: venv/lib/python3.8/site-packages/django/views/generic/d ates.py:214
+#: venv/lib/python3.8/site-packages/django/views/generic/dates.py:214
 msgid "Date out of range"
 msgstr "تاریخ خارج از محدوده"
 
@@ -1278,7 +1313,8 @@ msgid ""
 "target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
 msgstr ""
 "مشاهده <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
-"target=\"_blank\" rel=\"noopener\">یادداشت‌های انتشار</a> برای Django %(version)s"
+"target=\"_blank\" rel=\"noopener\">یادداشت‌های انتشار</a> برای Django "
+"%(version)s"
 
 #: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:221
 #, python-format
@@ -1288,9 +1324,10 @@ msgid ""
 "\">DEBUG=True</a> is in your settings file and you have not configured any "
 "URLs."
 msgstr ""
-"شما این صفحه را مشاهده می‌کنید زیرا <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
-"\">DEBUG=True</a> در فایل تنظیمات شما وجود دارد و شما هیچ URL‌ای پیکربندی نکرده‌اید."
+"شما این صفحه را مشاهده می‌کنید زیرا <a href=\"https://docs.djangoproject.com/"
+"en/%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
+"\">DEBUG=True</a> در فایل تنظیمات شما وجود دارد و شما هیچ URL‌ای پیکربندی "
+"نکرده‌اید."
 
 #: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:229
 msgid "Django Documentation"
@@ -1323,3 +1360,23 @@ msgstr "صفحه پیدا نشد."
 #: venv/lib/python3.8/site-packages/django_ckeditor_5/widgets.py:43
 msgid "Check the correct settings.CKEDITOR_5_CONFIGS "
 msgstr "تنظیمات صحیح CKEDITOR_5_CONFIGS را بررسی کنید."
+
+#~ msgctxt "abbrev. month"
+#~ msgid "August"
+#~ msgstr "اوت."
+
+#~ msgctxt "abbrev. month"
+#~ msgid "September"
+#~ msgstr "سپتامبر."
+
+#~ msgctxt "abbrev. month"
+#~ msgid "October"
+#~ msgstr "اکتبر."
+
+#~ msgctxt "abbrev. month"
+#~ msgid "November"
+#~ msgstr "نوامبر."
+
+#~ msgctxt "abbrev. month"
+#~ msgid "December"
+#~ msgstr "دسامبر."

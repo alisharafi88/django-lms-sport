@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-07 20:57+0330\n"
+"POT-Creation-Date: 2025-02-08 00:23+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,7 @@ msgid "date_information"
 msgstr "اطلاعات تاریخ"
 
 #: src/apps/courses/admin.py:89 src/apps/courses/admin.py:94
-msgid "User  information"
+msgid "User information"
 msgstr "اطلاعات کاربر"
 
 #: src/apps/courses/admin.py:90 src/apps/courses/admin.py:95
@@ -199,7 +199,7 @@ msgid "Modified date"
 msgstr "تاریخ ویرایش"
 
 #: src/apps/courses/models.py:115
-msgid "User "
+msgid "User"
 msgstr "کاربر"
 
 #: src/apps/courses/models.py:117
@@ -221,7 +221,7 @@ msgstr "اگر نظر مناسب نیست، آن را به نادرست تنظی
 #: src/apps/courses/templates/courses/course_detail.html:20
 #: src/apps/courses/templates/courses/courses_list.html:18
 msgid "Home"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: src/apps/courses/templates/courses/course_detail.html:24
 msgid "Course Details"
@@ -231,14 +231,14 @@ msgstr "جزئیات دوره"
 #: src/apps/courses/templates/courses/course_detail.html:265
 #: src/apps/courses/templates/courses/courses_list.html:113
 msgid "Classes"
-msgstr "کلاس‌ها"
+msgstr "کلاس‌"
 
 #: src/apps/courses/templates/courses/course_detail.html:66
 #: src/apps/courses/templates/courses/course_detail.html:195
 #: src/apps/courses/templates/courses/course_detail.html:269
 #: src/apps/courses/templates/courses/courses_list.html:117
 msgid "Students"
-msgstr "دانش‌آموزان"
+msgstr "دانش‌آموز"
 
 #: src/apps/courses/templates/courses/course_detail.html:71
 msgid "About This Course"
@@ -274,7 +274,7 @@ msgstr "تومان"
 msgid "Lesson"
 msgstr "درس"
 
-#: src/apps/courses/templates/courses/course detail.html:197
+#: src/apps/courses/templates/courses/course_detail.html:197
 msgid "Duration"
 msgstr "مدت زمان"
 
