@@ -26,29 +26,29 @@
                             <div class="main-menu d-flex justify-content-end mr-15">
                                 <nav id="mobile-menu">
                                     <ul>
-                                        <li>
-                                            <a href="{% url 'home:home' %}">{% trans 'Home' %}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'instructors:instructor_list' %}">{% trans 'Instructor' %}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'courses:course_list' %}">{% trans 'Course' %}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'blogs:blog_list' %}">{% trans 'Blog' %}</a>
-                                        </li>
                                         <li class="has-dropdown">
                                             <a href="#">{% trans 'Pages' %}</a>
                                             <ul class="submenu">
-                                                <li><a href="{% url 'home:about_us' %}">{% trans 'About' %}</a></li>
-                                                <li><a href="{% url 'contacts:contact' %}">{% trans 'Contact' %}</a>
+                                                <li><a href="{% url 'home:about_us' %}">{% trans 'About Us' %}</a></li>
+                                                <li><a href="{% url 'contacts:contact' %}">{% trans 'Contact Us' %}</a>
                                                 </li>
                                                 <li><a href="checkout.html">{% trans 'Check Out' %}</a></li>
                                                 <li><a href="{% url 'faq:question_answer' %}">{% trans 'FAQ' %}</a></li>
                                                 <li><a href="register.html">{% trans 'Register' %}</a></li>
                                                 <li><a href="sign-in.html">{% trans 'Sign In' %}</a></li>
                                             </ul>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'blogs:blog_list' %}">{% trans 'Blogs' %}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'courses:course_list' %}">{% trans 'Courses' %}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'instructors:instructor_list' %}">{% trans 'Instructors' %}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'home:home' %}">{% trans 'Home' %}</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -60,13 +60,13 @@
                                             <button class="header__search-btn">
                                                 <i class="fa-regular fa-magnifying-glass"></i>
                                             </button>
-                                            <input type="text" placeholder="Search Courses">
+                                            <input type="text" placeholder="{% trans 'Search Courses' %}">
                                         </div>
                                     </form>
                                 </div>
                                 <div class="header-meta">
                                     <ul>
-                                        <li><a href="sign-in.html" class="d-none d-md-block"><i
+                                        <li><a href="{% url 'accounts:student_dashboards' %}" class="d-none d-md-block"><i
                                                 class="fi fi-rr-user"></i></a></li>
                                         <li><a href="{% url 'carts:cart' %}" class="d-none d-md-block"><i
                                                 class="	 fi fi-rr-shopping-bag"></i></a></li>
@@ -126,8 +126,8 @@
             <div class="row text-center">
                 <div class="col-lg-12">
                     <div class="section-title mb-60">
-                        <span class="tp-sub-title mb-20">What We Offer</span>
-                        <h2 class="tp-section-title">For Your Future Learning.</h2>
+                        <span class="tp-sub-title mb-20">{% trans 'What We Offer' %}</span>
+                        <h2 class="tp-section-title">{% trans 'For Your Future Learning.' %}</h2>
                     </div>
                 </div>
             </div>
@@ -203,7 +203,7 @@
                             <p>وره فوتبالی ما با سه سطح حرفه‌ای، آماتور و متوسط طراحی شده تا به هر بازیکن با هر سطحی کمک کند علاوه بر بهبود مهارت‌ها، سرعت و قدرت خود را نیز افزایش دهد. از آموزش‌های پایه تا تکنیک‌های پیشرفته، هر مرحله شما را به یک فوتبالیست سریع‌تر و قدرتمندتر تبدیل می‌کند.</p>
                         </div>
                         <div class="about-btn">
-                            <a href="{% url 'home:about_us' %}" class="tp-btn">Read More</a>
+                            <a href="{% url 'home:about_us' %}" class="tp-btn">{% trans 'Read More' %}</a>
                         </div>
                     </div>
                 </div>
@@ -218,7 +218,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title mb-65">
-                        <h2 class="tp-section-title mb-20">Explore Popular Courses</h2>
+                        <h2 class="tp-section-title mb-20">{% trans 'Explore Popular Courses' %}</h2>
                     </div>
                 </div>
             </div>
@@ -249,13 +249,13 @@
                                             <img {% if course.type == 'package' %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
                                                  src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
                                                  alt="meta-icon">
-                                            <span>{% if course.type == 'package' %}{{ course.num_courses }}
-                                                {% trans 'Courses' %} {% else %}{{ course.num_videos }}
+                                            <span>{% if course.type == 'package' %}{{ course.num_courses|default:0 }}
+                                                {% trans 'Courses' %} {% else %}{{ course.num_videos|default:0 }}
                                                 {% trans 'Classes' %} {% endif %}</span>
                                         </li>
                                         <li>
                                             <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
-                                            <span>{{ course.num_members }} {% trans 'Students' %}</span>
+                                            <span>{{ course.num_members|default:0 }} {% trans 'Students' %}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -300,11 +300,11 @@
                             <ul>
                                 <li>
                                     <i>23+</i>
-                                    <p>Years Experiences</p>
+                                    <p>{% trans 'Years Experiences' %}</p>
                                 </li>
                                 <li>
                                     <i class="fa-light fa-check"></i>
-                                    <p>Fully Safe & Secure</p>
+                                    <p>{% trans 'Fully Safe & Secure' %}</p>
                                 </li>
                             </ul>
                         </div>
@@ -348,7 +348,7 @@
                         </div>
                         <div class="counter-item__content">
                             <h4 class="counter-item__title"><span class="counter">276</span>K</h4>
-                            <p>Worldwide Students</p>
+                            <p>{% trans 'Worldwide Students' %}</p>
                         </div>
                     </div>
                 </div>
@@ -359,7 +359,7 @@
                         </div>
                         <div class="counter-item__content">
                             <h4 class="counter-item__title"><span class="counter">23</span>+</h4>
-                            <p>Years Experience</p>
+                            <p>{% trans 'Years Experience' %}</p>
                         </div>
                     </div>
                 </div>
@@ -370,7 +370,7 @@
                         </div>
                         <div class="counter-item__content">
                             <h4 class="counter-item__title"><span class="counter">735</span>+</h4>
-                            <p>Professional Courses</p>
+                            <p>{% trans 'Professional Courses' %}</p>
                         </div>
                     </div>
                 </div>
@@ -381,7 +381,7 @@
                         </div>
                         <div class="counter-item__content">
                             <h4 class="counter-item__title"><span class="counter">4.7</span>K+</h4>
-                            <p>Beautiful Review</p>
+                            <p>{% trans 'Beautiful Review' %}</p>
                         </div>
                     </div>
                 </div>
@@ -417,10 +417,10 @@
                                     <div class="tp-instructor__stu-info">
                                         <ul class="d-flex align-items-center justify-content-center">
                                             <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-01.png' %}"
-                                                                                       alt="meta-icon"> <i>35 Classes</i>
+                                                                                       alt="meta-icon"> <i>35 {% trans 'Classes' %}</i>
                                             </li>
                                             <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-02.png' %}"
-                                                                                       alt="meta-icon"> <i>291+ Students</i>
+                                                                                       alt="meta-icon"> <i>291+ {% trans 'Students' %}</i>
                                             </li>
                                         </ul>
                                     </div>
