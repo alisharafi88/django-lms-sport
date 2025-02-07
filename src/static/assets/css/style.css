@@ -1798,16 +1798,16 @@ div.main-menu-black ul li.has-dropdown > a:hover::after {
   font-size: 16px;
   color: var(--tp-text-2);
 }
-.header-search-box .header-search-btn {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  padding: 12px 25px;
-  font-size: 16px;
-  color: #fff;
-  background-color: var(--tp-border-2);
-  border-radius: 5px;
-}
+/*.header-search-box .header-search-btn {*/
+/*  position: absolute;*/
+/*  top: 5px;*/
+/*  right: 5px;*/
+/*  padding: 12px 25px;*/
+/*  font-size: 16px;*/
+/*  color: #fff;*/
+/*  background-color: var(--tp-border-2);*/
+/*  border-radius: 5px;*/
+/*}*/
 
 .tp-sidebar-menu {
   position: fixed;
