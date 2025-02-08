@@ -142,3 +142,24 @@ class CourseComments(models.Model):
             return f'{self.user} - {self.course.title}'
         return f'{self.user} - {self.parent.user} - {self.course.title}'
 
+
+class CourseLike(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='likes', verbose_name=_('Course'))
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_('User'))
+
+    date_created = models.DateTimeField(_('Created date'))
+
+    class Meta:
+        ordering = ('-date_created',)
+        unique_together = ('course', 'user')
+
+        verbose_name = _('Course\'s Like')
+        verbose_name_plural = _('Course\'s Likes')
+
+        indexes = [
+            models.Index(fields=['course'], name='course_like_course_idx'),
+            models.Index(fields=['user'], name='course_like_user_idx'),
+            models.Index(fields=['-date_created'], name='course_like_date_created_idx'),
+        ]
+
+
