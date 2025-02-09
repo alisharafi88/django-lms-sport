@@ -1,455 +1,516 @@
+{% load i18n %}
 {% load static %}
 <!DOCTYPE html>
-<html dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Responsive Webpage with Right Sidebar and Profile Section</title>
-
-    <link rel="stylesheet" href="{% static 'assets/css/student-dashboard.css' %}" />
-
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sidebar Example</title>
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="{% static 'assets/css/student-dashboard.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/backtotop.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/ui-icon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/elegentfonts.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome-pro.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/spacing.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/rtl.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+</head>
+<body>
+<!-- Sandwich Icon -->
+<div class="sandwich-icon" id="sandwich-icon" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+</div>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body>
-    <!-- ---------------------------------بخش اصلی------------------------------------------------ -->
-    <div class="sidebar" id="sidebar">
-      <div class="profile">
-        <img src="#" alt="" />
-        <h2>Jane Doe</h2>
-      </div>
+<!-- Blur Overlay -->
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
-      <ul>
-        <li>
-          <a href="#home"><i class="fas fa-home"></i> اصلی </a>
-        </li>
-        <li>
-          <a href="#about"><i class="fas fa-user"></i> دوره های من </a>
-        </li>
-        <li>
-          <a href="#services"
-            ><i class="fas fa-briefcase"></i> مورد علاقه ها
-          </a>
-        </li>
-        <li>
-          <a href="#contact"><i class="fas fa-envelope"> </i> اصلی </a>
-        </li>
-      </ul>
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <!-- Profile Section -->
+    <div class="profile">
+        <img src="../Screenshot (12).png"/>
+        <div class="name">نام کاربری</div>
     </div>
-    <div class="content">
-      <button class="toggle-btn" id="toggleBtn">
-        <i class="fas fa-bars"></i>
-      </button>
 
-      <!-- --------------------------------------بخش دوره های من------------------------------------- -->
-      <div class="inputs-section">
-        <input type="text" class="search-input" placeholder="جست و جو" />
-        <select class="filter-select">
-          <option value="" disabled selected>Select an option</option>
-          <option value="option1">Option One</option>
-          <option value="option2">Option Two</option>
-          <option value="option3">Option Three</option>
-        </select>
-      </div>
+    <!-- Navigation Buttons -->
+    <button class="" style="color: #ff6f64 ;">
+        <i class="fas fa-home"></i> بازگشت به صفحه اصلی
+    </button>
+    <button onclick="navigateToTab('tab1')">
+        <i class="fas fa-futbol"></i> تب ۱
+    </button>
+    <button onclick="navigateToTab('tab2')">
+        <i class="fas fa-heart"></i> تب ۲
+    </button>
+    <button onclick="navigateToTab('tab3')">
+        <i class="fas fa-cog"></i> تب ۳
+    </button>
+    <button onclick="navigateToTab('tab4')">
+        <i class="fas fa-envelope"></i> تب ۴
+    </button>
 
-      <div class="container">
-        <div class="element">
-          <div class="image-square"></div>
-          <h2 class="title">Title One</h2>
-          <span class="number">1</span>
-          <button class="sort-button">Sort</button>
+    <button class="logout" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i> خروج
+    </button>
+</div>
+
+
+<div class="content" id="content">
+
+    <div class="element" id="element1">
+        <!-- --------------------------------------بخش دوره های من------------------------------------- -->
+        <div class="inputs-section">
+            <input type="text" class="search-input" placeholder="جست و جو"/>
+            <select class="filter-select">
+                <option value="" disabled selected>Select an option</option>
+                <option value="option1">Option One</option>
+                <option value="option2">Option Two</option>
+                <option value="option3">Option Three</option>
+            </select>
         </div>
 
-        <div class="element">
-          <div class="image-square"></div>
-          <h2 class="title">Title Two</h2>
-          <span class="number">2</span>
-          <button class="sort-button">Sort</button>
+        <div class="container">
+            <div class="element">
+                <div class="image-square" style="background-image:url(../Screenshot\ \(12\).png) ;">
+                </div>
+                <h2 class="title">Title One</h2>
+                <span class="number">1</span>
+                <button class="sort-button">Sort</button>
+            </div>
+
+            <div class="element">
+                <div class="image-square" style="background-image:url(../Screenshot\ \(12\).png) ;"></div>
+                <h2 class="title">Title Two</h2>
+                <span class="number">2</span>
+                <button class="sort-button">Sort</button>
+            </div>
+
+            <div class="element">
+                <div class="image-square" style="background-image:url(../Screenshot\ \(12\).png) ;"></div>
+                <h2 class="title">Title Three</h2>
+                <span class="number">3</span>
+                <button class="sort-button">Sort</button>
+            </div>
         </div>
 
-        <div class="element">
-          <div class="image-square"></div>
-          <h2 class="title">Title Three</h2>
-          <span class="number">3</span>
-          <button class="sort-button">Sort</button>
+        <div id="popup-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Feedback for Title</h2>
+
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5"/>
+                    <label for="star5" title="5 stars">&#9733;</label>
+
+                    <input type="radio" id="star4" name="rating" value="4"/>
+                    <label for="star4" title="4 stars">&#9733;</label>
+
+                    <input type="radio" id="star3" name="rating" value="3"/>
+                    <label for="star3" title="3 stars">&#9733;</label>
+
+                    <input type="radio" id="star2" name="rating" value="2"/>
+                    <label for="star2" title="2 stars">&#9733;</label>
+
+                    <input type="radio" id="star1" name="rating" value="1"/>
+                    <label for="star1" title="1 star">&#9733;</label>
+                </div>
+
+                <textarea
+                        id="feedback-text"
+                        placeholder="Write your feedback here..."
+                ></textarea>
+
+                <button id="submit-feedback" class="modal-button">Submit</button>
+            </div>
         </div>
-      </div>
+        <!-- ------------------------------------------------------پایان----------------------------------- -->
+    </div>
 
-      <div id="popup-modal" class="modal">
-        <div class="modal-content">
-          <span class="close-button">&times;</span>
-          <h2>Feedback for Title</h2>
-
-          <div class="star-rating">
-            <input type="radio" id="star5" name="rating" value="5" />
-            <label for="star5" title="5 stars">&#9733;</label>
-
-            <input type="radio" id="star4" name="rating" value="4" />
-            <label for="star4" title="4 stars">&#9733;</label>
-
-            <input type="radio" id="star3" name="rating" value="3" />
-            <label for="star3" title="3 stars">&#9733;</label>
-
-            <input type="radio" id="star2" name="rating" value="2" />
-            <label for="star2" title="2 stars">&#9733;</label>
-
-            <input type="radio" id="star1" name="rating" value="1" />
-            <label for="star1" title="1 star">&#9733;</label>
-          </div>
-
-          <textarea
-            id="feedback-text"
-            placeholder="Write your feedback here..."
-          ></textarea>
-
-          <button id="submit-feedback" class="modal-button">Submit</button>
-        </div>
-      </div>
-    
-    <!-- ------------------------------------------------------پایان----------------------------------- -->
-    
-    
     <!-- ------------------------------------------------------بخش مورد علاقه----------------------------------- -->
-     
-    <div class="cards-container">
-      <div class="card">
-        <img src="image1.jpg" alt="Card Image 1" />
-
-        <div class="card-content">
-          <div class="card-header">
-            <h3>Card Title One</h3>
-            <button class="like-btn" aria-label="Like">
-              <i class="far fa-heart" aria-hidden="true"></i>
-            </button>
-          </div>
-
-          <p>
-            This is a brief description of the first card. It provides an
-            overview of the content.
-          </p>
-
-          <div class="stargocontainer">
-            <div class="goto"><div>simple text</div></div>
-            <div class="star-rating">
-              <i class="far fa-star" data-rating="1"></i>
-              <i class="far fa-star" data-rating="2"></i>
-              <i class="far fa-star" data-rating="3"></i>
-              <i class="far fa-star" data-rating="4"></i>
-              <i class="far fa-star" data-rating="5"></i>
+    <div class="element" id="element2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center mb-65">
+                        <span class="tp-sub-title-box mb-15">{% trans 'Liked Courses' %}</span>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
+            <div class="row mb-20 justify-content-center">
+                {% for course in liked_courses %}
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="tpcourse mb-40">
+                            <div class="tpcourse__thumb p-relative w-img fix">
+                                <a href="{{ course.get_absolute_url }}">
+                                    <img src="{% static 'assets/img/course/course-thumb-01.jpg' %}" alt="course-thumb">
+                                </a>
+                                <div class="tpcourse__tag">
+                                    <a href="{% url 'carts:cart_add' course.id %}">
+                                        <i class="fi fi-rr-heart"></i>
+                                    </a>
+                                </div>
+                                <div class="tpcourse__img-icon">
+                                    <img src="{% static 'assets/img/icon/course-3-avata-1.png' %}" alt="course-avata">
+                                </div>
+                            </div>
+                            <div class="tpcourse__content-2">
+                                <div class="tpcourse__ava-title mb-15">
+                                    <h4 class="tpcourse__title tp-cours-title-color">
+                                        <a href="
+                                                {{ course.get_absolute_url }}">{{ course.title }}</a>
+                                    </h4>
+                                </div>
+                                <div class="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
+                                    <ul class="d-flex align-items-center">
+                                        <li>
+                                            <img {% if course.type == 'package' %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
+                                                 src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
+                                                 alt="meta-icon">
+                                            <span>{% if course.type == 'package' %}{{ course.num_courses|default:0 }}
+                                                {% trans 'Courses' %} {% else %}{{ course.num_videos|default:0 }}
+                                                {% trans 'Classes' %} {% endif %}</span>
+                                        </li>
+                                        <li>
+                                            <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
+                                            <span>{{ course.num_members|default:0 }} {% trans 'Students' %}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tpcourse__rating d-flex align-items-center justify-content-between">
+                                    <div class="tpcourse__rating-icon">
+                                        <span>4.7</span>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-ss-star"></i>
+                                        <i class="fi fi-rs-star"></i>
+                                        <p>(125)</p>
+                                    </div>
+                                    <div class="tpcourse__pricing">
+                                        <h5 class="price-title">{% trans 'Toman' %} {{ course.discounted_price }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
 
-      <div class="card">
-        <img src="image2.jpg" alt="Card Image 2" />
-        <div class="card-content">
-          <div class="card-header">
-            <h3>Card Title Two</h3>
-            <button class="like-btn" aria-label="Like">
-              <i class="far fa-heart" aria-hidden="true"></i>
-            </button>
-          </div>
-          <p>
-            This is a brief description of the second card. It offers more
-            insights.
-          </p>
-          <div class="stargocontainer">
-            <div class="goto"><div>simple text</div></div>
-            <div class="star-rating">
-              <i class="far fa-star" data-rating="1"></i>
-              <i class="far fa-star" data-rating="2"></i>
-              <i class="far fa-star" data-rating="3"></i>
-              <i class="far fa-star" data-rating="4"></i>
-              <i class="far fa-star" data-rating="5"></i>
             </div>
-          </div>
-        </div>
-      </div>
+            <div class="basic-pagination">
+                <nav>
+                    <ul>
+                        {% if page_obj.has_previous %}
+                            <li>
+                                <a href="?page={{ page_obj.previous_page_number }}">
+                                    <i class="far fa-angle-left"></i>
+                                </a>
+                            </li>
+                            {% if page_obj.number > 3 %}
+                                <li>
+                                    <a href="{% static 'blog.html' %}">2</a>
+                                </li>
+                                {% if page_obj.number > 4 %}
+                                    <span>...</span>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <li>
+                                    <span class="current">{{ page_obj.number }}</span>
+                                </li>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <li>
+                                    <a href="?page={{ num }}">{{ num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
 
-      <div class="card">
-        <img src="image3.jpg" alt="Card Image 3" />
-        <div class="card-content">
-          <div class="card-header">
-            <h3>Card Title Three</h3>
-            <button class="like-btn" aria-label="Like">
-              <i class="far fa-heart" aria-hidden="true"></i>
-            </button>
-          </div>
-          <p>
-            This is a brief description of the third card. It highlights key
-            points.
-          </p>
-          <div class="stargocontainer">
-            <div class="goto"><div>simple text</div></div>
-            <div class="star-rating">
-              <i class="far fa-star" data-rating="1"></i>
-              <i class="far fa-star" data-rating="2"></i>
-              <i class="far fa-star" data-rating="3"></i>
-              <i class="far fa-star" data-rating="4"></i>
-              <i class="far fa-star" data-rating="5"></i>
+                        {% if page_obj.has_next %}
+                            {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
+                                <span>...</span>
+                                <li>
+                                    <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                                </li>
+                            {% elif page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+                                <li>
+                                    <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                                </li>
+                            {% endif %}
+                            <li>
+                                <a href="?page={{ page_obj.next_page_number }}">
+                                    <i class="far fa-angle-right"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="card">
-        <img src="image3.jpg" alt="Card Image 3" />
-        <div class="card-content">
-          <div class="card-header">
-            <h3>Card Title Three</h3>
-            <button class="like-btn" aria-label="Like">
-              <i class="far fa-heart" aria-hidden="true"></i>
-            </button>
-          </div>
-          <p>
-            This is a brief description of the third card. It highlights key
-            points.
-          </p>
-          <div class="stargocontainer">
-            <div class="goto"><div>simple text</div></div>
-            <div class="star-rating">
-              <i class="far fa-star" data-rating="1"></i>
-              <i class="far fa-star" data-rating="2"></i>
-              <i class="far fa-star" data-rating="3"></i>
-              <i class="far fa-star" data-rating="4"></i>
-              <i class="far fa-star" data-rating="5"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="image3.jpg" alt="Card Image 3" />
-        <div class="card-content">
-          <div class="card-header">
-            <h3>Card Title Three</h3>
-            <button class="like-btn" aria-label="Like">
-              <i class="far fa-heart" aria-hidden="true"></i>
-            </button>
-          </div>
-          <p>
-            This is a brief description of the third card. It highlights key
-            points.
-          </p>
-          <div class="stargocontainer">
-            <div class="goto"><div>simple text</div></div>
-            <div class="star-rating">
-              <i class="far fa-star" data-rating="1"></i>
-              <i class="far fa-star" data-rating="2"></i>
-              <i class="far fa-star" data-rating="3"></i>
-              <i class="far fa-star" data-rating="4"></i>
-              <i class="far fa-star" data-rating="5"></i>
-            </div>
-          </div>
-        </div>
-      </div>
+        <!-- ----------------------------------------------پایان--------------------------- -->
     </div>
+    <div class="element" id="element3">
+        <!-- ----------------------------------------------بخش کامنت گزاری--------------------------- -->
 
-    <!-- ----------------------------------------------پایان--------------------------- -->
+        <div class="commentFormContainer">
+            <form id="userForm">
+                <input type="text" name="firstName" placeholder="First Name"/>
+                <input type="text" name="lastName" placeholder="Last Name"/>
+                <textarea name="message" placeholder="Your Message"></textarea>
+                <button type="submit">Submit</button>
+            </form>
 
+            <div id="responses">
+                <div class="comment">
+                    <img src="" alt="Profile Picture"/>
+                    <div class="comment-details">
+                        <h4>
+                            Alex Johnson <span class="place-name">from New York</span>
+                        </h4>
+                        <h5>Creative Designer</h5>
+                        <p>
+                            Absolutely loving the new design trends this year! Minimalism
+                            with a splash of color really speaks to me.
+                        </p>
+                    </div>
+                </div>
 
+                <div class="comment">
+                    <img src="../Screenshot (12).png" alt="dd "/>
+                    <div class="comment-details">
+                        <h4>
+                            Sophia Martinez <span class="place-name">from London</span>
+                        </h4>
+                        <h5>Travel Blogger</h5>
+                        <p>
+                            The hidden cafés along the cobblestone streets are my favorite
+                            discoveries. Each one has its own unique charm.
+                        </p>
+                    </div>
+                </div>
 
-    <!-- ----------------------------------------------بخش کامنت گزاری--------------------------- -->
-
-    <div class="commentFormContainer">
-    <form id="userForm">
-      <input type="text" name="firstName" placeholder="First Name" />
-      <input type="text" name="lastName" placeholder="Last Name" />
-      <textarea name="message" placeholder="Your Message"></textarea>
-      <button type="submit">Submit</button>
-    </form>
-
-    <div id="responses">
-      <div class="comment">
-        <img src="profile1.jpg" alt="Profile Picture" />
-        <div class="comment-details">
-          <h4>Alex Johnson <span class="place-name">from New York</span></h4>
-          <h5>Creative Designer</h5>
-          <p>
-            Absolutely loving the new design trends this year! Minimalism with a
-            splash of color really speaks to me.
-          </p>
+                <div class="comment">
+                    <img src="" alt="Profile Picture"/>
+                    <div class="comment-details">
+                        <h4>
+                            Liam Chen <span class="place-name">from Singapore</span>
+                        </h4>
+                        <h5>Food Enthusiast</h5>
+                        <p>
+                            Just tried the new fusion restaurant downtown—it's a
+                            must-visit! The flavors are out of this world.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="comment">
-        <img src="profile2.jpg" alt="Profile Picture" />
-        <div class="comment-details">
-          <h4>Sophia Martinez <span class="place-name">from London</span></h4>
-          <h5>Travel Blogger</h5>
-          <p>
-            The hidden cafés along the cobblestone streets are my favorite
-            discoveries. Each one has its own unique charm.
-          </p>
-        </div>
-      </div>
-
-      <div class="comment">
-        <img src="profile3.jpg" alt="Profile Picture" />
-        <div class="comment-details">
-          <h4>Liam Chen <span class="place-name">from Singapore</span></h4>
-          <h5>Food Enthusiast</h5>
-          <p>
-            Just tried the new fusion restaurant downtown—it's a must-visit! The
-            flavors are out of this world.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-    <!-- ------------------------------------------------------پایان----------------------------------- -->
-
-    <!-- ----------------------------------------------بخش ادیت--------------------------- -->
-
-    <div class="profile-edit-container">
-      <form
-        class="profile-form"
-        action="#"
-        method="post"
-        enctype="multipart/form-data"
-      >
-        <div class="profile-image-section">
-          <img src="../photo16826469126.jpg" alt="" id="profileImageDisplay" />
-          <input
-            type="file"
-            id="profileImageInput"
-            name="profileImage"
-            accept="image/*"
-          />
-          <label for="profileImageInput">Change Profile Picture</label>
-        </div>
-
-        <div class="input-row">
-          <div class="input-group">
-            <label for="fullName">Full Name</label>
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              placeholder="Enter your full name"
-            />
-          </div>
-          <div class="input-group">
-            <label for="emailAddress">Email Address</label>
-            <input
-              type="email"
-              id="emailAddress"
-              name="emailAddress"
-              placeholder="Enter your email"
-            />
-          </div>
-        </div>
-
-        <div class="input-row">
-          <div class="input-group">
-            <label for="phoneNumber">Phone Number</label>
-            <input
-              type="tel"
-              id="phoneNumber"
-              name="phoneNumber"
-              placeholder="Enter your phone number"
-            />
-          </div>
-          <div class="input-group">
-            <label for="location">Location</label>
-            <input
-              type="text"
-              id="location"
-              name="location"
-              placeholder="Enter your location"
-            />
-          </div>
-        </div>
-
-        <div class="input-group full-width">
-          <label for="bio">Bio</label>
-          <textarea
-            id="bio"
-            name="bio"
-            placeholder="Tell us about yourself"
-          ></textarea>
-        </div>
-
-        <button type="submit">Save Changes</button>
-      </form>
-    </div>
     </div>
 
     <!-- ------------------------------------------------------پایان----------------------------------- -->
 
+    <div class="element" id="element4">
+        <!-- ----------------------------------------------بخش ادیت--------------------------- -->
 
+        <div class="profile-edit-container">
+            <form
+                    class="profile-form"
+                    action="#"
+                    method="post"
+                    enctype="multipart/form-data"
+            >
+                <div class="profile-image-section">
+                    <img src="../Screenshot (12).png" alt=" profile" id="profileImageDisplay"/>
+                    <input
+                            type="file"
+                            id="profileImageInput"
+                            name="profileImage"
+                            accept="image/*"
+                    />
+                    <label for="profileImageInput">Change Profile Picture</label>
+                </div>
 
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="fullName">Full Name</label>
+                        <input
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                placeholder="Enter your full name"
+                        />
+                    </div>
+                    <div class="input-group">
+                        <label for="emailAddress">Email Address</label>
+                        <input
+                                type="email"
+                                id="emailAddress"
+                                name="emailAddress"
+                                placeholder="Enter your email"
+                        />
+                    </div>
+                </div>
 
-    <div class="overlay" id="overlay"></div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input
+                                type="tel"
+                                id="phoneNumber"
+                                name="phoneNumber"
+                                placeholder="Enter your phone number"
+                        />
+                    </div>
+                    <div class="input-group">
+                        <label for="location">Location</label>
+                        <input
+                                type="text"
+                                id="location"
+                                name="location"
+                                placeholder="Enter your location"
+                        />
+                    </div>
+                </div>
 
-    <script>
+                <div class="input-group full-width">
+                    <label for="bio">Bio</label>
+                    <textarea
+                            id="bio"
+                            name="bio"
+                            placeholder="Tell us about yourself"
+                    ></textarea>
+                </div>
 
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
 
+    <!-- ------------------------------------------------------پایان----------------------------------- -->
+</div>
 
-      //---------------------------------------------------شروع جاوا اسکربپت-----------------------
-      const sidebar = document.getElementById("sidebar");
-      const toggleBtn = document.getElementById("toggleBtn");
-      const overlay = document.getElementById("overlay");
-
-      toggleBtn.addEventListener("click", function () {
-        sidebar.classList.toggle("active");
-        overlay.classList.toggle("active");
-      });
-
-      overlay.addEventListener("click", function () {
-        sidebar.classList.remove("active");
+<script>
+    // Function to navigate between tabs
+    function navigateToTab(tab) {
+        const elements = document.querySelectorAll(".element");
+        elements.forEach((element) => element.classList.remove("active"));
+        const sidebar = document.getElementById("sidebar");
+        const content = document.getElementById("content");
+        const overlay = document.getElementById("overlay");
+        sidebar.classList.remove("open");
+        content.classList.remove("blur");
         overlay.classList.remove("active");
-      });
 
-
-
-
-
-      //--------------------------------------بخش دوره های من--------------------------------------
-
-      const modal = document.getElementById("popup-modal");
-
-      const buttons = document.querySelectorAll(".sort-button");
-
-      const closeBtn = document.querySelector(".close-button");
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          modal.style.display = "block";
-        });
-      });
-
-      closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-      });
-
-      window.addEventListener("click", (event) => {
-        if (event.target === modal) {
-          modal.style.display = "none";
+        // Show the element related to the chosen tab
+        if (tab === "main") {
+            document.getElementById("element-main").classList.add("active");
+        } else {
+            document
+                .getElementById(`element${tab.replace("tab", "")}`)
+                .classList.add("active");
         }
-      });
 
-      const submitButton = document.getElementById("submit-feedback");
+        document
+            .querySelectorAll(".sidebar button")
+            .forEach((button) => button.classList.remove("active"));
+        if (tab === "main") {
+            document
+                .querySelector(".sidebar button:first-child")
+                .classList.add("active");
+        } else {
+            document
+                .querySelector(
+                    `.sidebar button:nth-child(${tab.replace("tab", "") + 1})`
+                )
+                .classList.add("active");
+        }
+    }
 
-      submitButton.addEventListener("click", () => {
+    // Function to toggle sidebar on small screens
+    function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const content = document.getElementById("content");
+        const overlay = document.getElementById("overlay");
+        sidebar.classList.toggle("open");
+        content.classList.toggle("blur");
+        overlay.classList.toggle("active");
+    }
+
+    // Add event listener for responsive toggle
+    window.addEventListener("resize", () => {
+        if (window.innerWidth <= 768) {
+            document.getElementById("sidebar").classList.remove("open");
+            document.getElementById("content").classList.remove("blur");
+            document.getElementById("overlay").classList.remove("active");
+        } else {
+            document.getElementById("sidebar").classList.remove("closed");
+            document.getElementById("content").classList.remove("blur");
+            document.getElementById("overlay").classList.remove("active");
+        }
+    });
+
+
+    window.onload = () => {
+        if (window.innerWidth <= 768) {
+            document.getElementById("sidebar").classList.remove("open");
+            document.getElementById("content").classList.remove("blur");
+            document.getElementById("overlay").classList.remove("active");
+        }
+    };
+
+    //--------------------------------------بخش دوره های من--------------------------------------
+
+    const modal = document.getElementById("popup-modal");
+
+    const buttons = document.querySelectorAll(".sort-button");
+
+    const closeBtn = document.querySelector(".close-button");
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            modal.style.display = "block";
+        });
+    });
+
+    closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    const submitButton = document.getElementById("submit-feedback");
+
+    submitButton.addEventListener("click", () => {
         const rating = document.querySelector('input[name="rating"]:checked');
         const ratingValue = rating ? rating.value : null;
 
         const feedbackText = document
-          .getElementById("feedback-text")
-          .value.trim();
+            .getElementById("feedback-text")
+            .value.trim();
 
         if (!ratingValue) {
-          alert("امتیاز خود را انتخاب کنید");
-          return;
+            alert("امتیاز خود را انتخاب کنید");
+            return;
         }
 
         if (feedbackText === "") {
-          alert("لطفا نظر خود را وارد کنید.");
-          return;
+            alert("لطفا نظر خود را وارد کنید.");
+            return;
         }
 
         resetModalForm();
@@ -457,100 +518,87 @@
         document.body.classList.remove("modal-open");
 
         alert("بابت نظرتون متشکریم");
-      });
+    });
 
-      function resetModalForm() {
+    function resetModalForm() {
         const checkedRating = document.querySelector(
-          'input[name="rating"]:checked'
+            'input[name="rating"]:checked'
         );
         if (checkedRating) {
-          checkedRating.checked = false;
+            checkedRating.checked = false;
         }
 
         document.getElementById("feedback-text").value = "";
-      }
+    }
 
-      buttons.forEach((button) => {
+    buttons.forEach((button) => {
         button.addEventListener("click", (event) => {
-          const element = event.target.closest(".element");
-          const title = element.querySelector(".title").textContent;
+            const element = event.target.closest(".element");
+            const title = element.querySelector(".title").textContent;
 
-          modal.querySelector("h2").textContent = `Feedback for ${title}`;
+            modal.querySelector("h2").textContent = `Feedback for ${title}`;
 
-          modal.style.display = "block";
-          document.body.classList.add("modal-open");
+            modal.style.display = "block";
+            document.body.classList.add("modal-open");
         });
-      });
-      //------------------------------------------------پایان--------------------------------------
+    });
+    //------------------------------------------------پایان--------------------------------------
 
+    //------------------------------------------------بخش مورد علاقه ها--------------------------------------
 
+    const likeButtons = document.querySelectorAll(".like-btn");
 
-
-      //------------------------------------------------بخش مورد علاقه ها--------------------------------------
-
-      const likeButtons = document.querySelectorAll(".like-btn");
-
-      likeButtons.forEach((button) => {
+    likeButtons.forEach((button) => {
         button.addEventListener("click", function () {
-          const icon = this.querySelector("i");
-          icon.classList.toggle("far");
-          icon.classList.toggle("fas");
-          this.classList.toggle("liked");
+            const icon = this.querySelector("i");
+            icon.classList.toggle("far");
+            icon.classList.toggle("fas");
+            this.classList.toggle("liked");
         });
-      });
+    });
 
-      const starRatings = document.querySelectorAll(".star-rating");
+    const starRatings = document.querySelectorAll(".star-rating");
 
-      starRatings.forEach((rating) => {
+    starRatings.forEach((rating) => {
         const stars = rating.querySelectorAll("i");
 
         stars.forEach((star) => {
-          star.addEventListener("click", function () {
-            const ratingValue = parseInt(this.getAttribute("data-rating"));
-            stars.forEach((s, index) => {
-              if (index < ratingValue) {
-                s.classList.remove("far");
-                s.classList.add("fas");
-              } else {
-                s.classList.remove("fas");
-                s.classList.add("far");
-              }
+            star.addEventListener("click", function () {
+                const ratingValue = parseInt(this.getAttribute("data-rating"));
+                stars.forEach((s, index) => {
+                    if (index < ratingValue) {
+                        s.classList.remove("far");
+                        s.classList.add("fas");
+                    } else {
+                        s.classList.remove("fas");
+                        s.classList.add("far");
+                    }
+                });
             });
-          });
         });
-      });
+    });
 
-      //------------------------------------------------پایان--------------------------------------
+    //------------------------------------------------پایان--------------------------------------
 
-
-
-
-      //-------------------------------------------------بخش کامنت-------------------------
-
-      //------------------------------------------------پایان--------------------------------------
-  
-
-
-
-      //-------------------------------------------------بخش ادیت-------------------------
-      const profileImageInput = document.getElementById("profileImageInput");
-      const profileImageDisplay = document.getElementById(
+    //-------------------------------------------------بخش ادیت-------------------------
+    const profileImageInput = document.getElementById("profileImageInput");
+    const profileImageDisplay = document.getElementById(
         "profileImageDisplay"
-      );
+    );
 
-      profileImageInput.addEventListener("change", function () {
+    profileImageInput.addEventListener("change", function () {
         const file = this.files[0];
         if (file) {
-          const reader = new FileReader();
+            const reader = new FileReader();
 
-          reader.onload = function (event) {
-            profileImageDisplay.setAttribute("src", event.target.result);
-          };
+            reader.onload = function (event) {
+                profileImageDisplay.setAttribute("src", event.target.result);
+            };
 
-          reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
         }
-      });
-      //------------------------------------------------پایان--------------------------------------
-    </script>
-  </body>
+    });
+    //------------------------------------------------پایان--------------------------------------
+</script>
+</body>
 </html>
