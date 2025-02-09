@@ -1,3 +1,7 @@
+from django.urls import reverse_lazy
+from django.utils.translation import pgettext_lazy
+from django.utils.translation import gettext_lazy as _
+
 import os
 from pathlib import Path
 
@@ -5,13 +9,12 @@ import environ
 
 # Define BASE_DIR
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent  
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 ROOT_DIR = BASE_DIR.parent
 
 # Initialize environment variables
 env = environ.Env()
 env.read_env(os.path.join(ROOT_DIR, '.env'))
-
 
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 DEBUG = env('DJANGO_DEBUG_STATUS')
@@ -19,6 +22,7 @@ DEBUG = env('DJANGO_DEBUG_STATUS')
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'jazzmin',
     'admin_confirm',
 
     'django.contrib.admin',
@@ -138,7 +142,8 @@ INTERNAL_IPS = [
 # For Docker
 if DEBUG:
     import socket
-    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+
+    hostname, i, ips = socket.gethostbyname_ex(socket.gethostname())
     INTERNAL_IPS += [ip[:-1] + '1' for ip in ips]
     INTERNAL_IPS += ['172.17.0.1']  # Docker default gateway
 
@@ -320,3 +325,82 @@ LOGGING = {
 SMS_API_KEY = env('SMS_API_KEY')
 SMS_SENDER = env('SMS_SENDER')
 SMS_PATTERN_CODE = env('SMS_PATTERN_CODE')
+
+# Jazzmin
+
+JAZZMIN_SETTINGS = {
+
+    "site_rtl": True,
+    "language_chooser": False,
+
+    "site_title": _("Site Management"),
+    "site_header": _("Site Management"),
+    "site_brand": _("Admin Panel"),
+    "welcome_sign": _("Welcome to the Admin Panel"),
+
+    "topmenu_links": [
+        {"name": pgettext_lazy("Navigation", "Home"), "url": reverse_lazy("admin:index"), "permissions": ["auth.view_user"]},
+        {"name": pgettext_lazy("Action", "Logout"), "url": reverse_lazy("admin:logout"), "permissions": ["auth.view_user"]},
+    ],
+
+    "font_family": "Vazir",
+    "custom_css": "assets/css/persian-admin.css",
+
+    "icons": {
+        # Auth App
+        "auth": "fas fa-users",
+        "auth.Group": "fas fa-users",
+
+        # Accounts App
+        "accounts": "fas fa-users",
+        "accounts.CustomUser": "fas fa-id-card",
+
+        # Blogs App
+        "blogs": "fas fa-book",
+        "blogs.Blog": "fas fa-pen",
+        "blogs.BlogComment": "fas fa-comments",
+
+        # Courses App
+        "courses": "fas fa-futbol",
+        "courses.Coupon": "fas fa-ticket-alt",
+        "courses.Session": "fas fa-clock",
+        "courses.CourseVideo": "fas fa-video",
+        "courses.Course": "fas fa-chalkboard-teacher",
+        "courses.CourseMembership": "fas fa-user-check",
+        "courses.CourseComments": "fas fa-comments",
+        "courses.CourseLike": "fas fa-heart",
+
+        # Contacts App
+        "contacts": "fas fa-envelope",
+        "contacts.ContactInfo": "fas fa-address-card",
+        "contacts.Message": "fas fa-comment",
+
+        # FAQ App
+        "faq": "fas fa-question-circle",
+        "faq.QuestionAnswer": "fas fa-comment-dots",
+
+        # Instructors App
+        "instructors": "fas fa-chalkboard-teacher",
+        "instructors.Instructor": "fas fa-user-tie",
+        "instructors.InstructorWidjet": "fas fa-tools",
+        "instructors.InstructorHonor": "fas fa-award",
+
+        # Orders App
+        "orders": "fas fa-shopping-cart",
+        "orders.Order": "fas fa-receipt",
+        "orders.DVDOrderDetail": "fas fa-box",
+        "orders.OrderItem": "fas fa-list-ul",
+    },
+
+    # UI Tweaks
+    "show_ui_builder": False,
+    "changeform_format": "horizontal_tabs",
+    "navigation_expanded": False,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar": "navbar-dark bg-dark-green",
+    "sidebar": "sidebar-dark bg-dark",
+    "accent": "gold",
+    "theme": "darkly",
+}
