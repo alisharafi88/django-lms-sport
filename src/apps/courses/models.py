@@ -1,4 +1,4 @@
-from django.core.validators import FileExtensionValidator
+from django.core.validators import FileExtensionValidator, MinValueValidator, MaxValueValidator
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
@@ -115,9 +115,9 @@ class CourseComments(models.Model):
                              verbose_name=_('User'), )
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='comments', verbose_name=_('Course'))
     text = models.TextField(_('Text of the comment'), )
+    rate = models.PositiveSmallIntegerField(_('Rate'), validators=[MinValueValidator(1), MaxValueValidator(5)])
+
     date_created = models.DateTimeField(_('Created date'), auto_now_add=True, )
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name='replies', blank=True, null=True,
-                               verbose_name=_('Parent'), )
 
     status = models.BooleanField(_('Status'), default=True,
                                  help_text=_('If the comment is not appropriate, set it to false.'))
@@ -131,13 +131,5 @@ class CourseComments(models.Model):
             return True
         return False
 
-    @property
-    def is_parent(self):
-        if self.parent is None:
-            return True
-        return False
-
     def __str__(self):
-        if self.is_parent:
-            return f'{self.user} - {self.course.title}'
-        return f'{self.user} - {self.parent.user} - {self.course.title}'
+        return f'{self.user} - {self.course.title}'

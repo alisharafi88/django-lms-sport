@@ -47,95 +47,98 @@
 
     <!-- Navigation Buttons -->
     <button class="" style="color: #ff6f64 ;">
-        <i class="fas fa-home"></i> بازگشت به صفحه اصلی
+        <i class="fas fa-home"></i> {% trans 'Home Page' %}
     </button>
     <button onclick="navigateToTab('tab1')">
-        <i class="fas fa-futbol"></i> تب ۱
+        <i class="fas fa-futbol"></i> {% trans 'My Courses' %}
     </button>
     <button onclick="navigateToTab('tab2')">
         <i class="fas fa-shopping-cart"></i> {% trans 'Cart' %}
     </button>
     <button onclick="navigateToTab('tab3')">
-        <i class="fas fa-cog"></i> تب ۳
+        <i class="fas fa-cog"></i> {% trans 'Settings' %}
     </button>
     <button onclick="navigateToTab('tab4')">
-        <i class="fas fa-envelope"></i> تب ۴
+        <i class="fas fa-envelope"></i> {% trans 'Tickets' %}
     </button>
 
     <button class="logout" onclick="logout()">
-        <i class="fas fa-sign-out-alt"></i> خروج
+        <i class="fas fa-sign-out-alt"></i> {% trans 'LogOut' %}
     </button>
 </div>
 
 
 <div class="content" id="content">
 
+    <!-- --------------------------------------بخش دوره های من------------------------------------- -->
     <div class="element" id="element1">
-        <!-- --------------------------------------بخش دوره های من------------------------------------- -->
-        <div class="inputs-section">
-            <input type="text" class="search-input" placeholder="جست و جو"/>
-            <select class="filter-select">
-                <option value="" disabled selected>Select an option</option>
-                <option value="option1">Option One</option>
-                <option value="option2">Option Two</option>
-                <option value="option3">Option Three</option>
-            </select>
-        </div>
-
-        <div class="container">
-            <div class="element">
-                <div class="image-square" style="background-image:url(../Screenshot\ \(12\).png) ;">
+        <section class="breadcrumb-section py-4" style="background-color: #f9fafb;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Breadcrumb Path -->
+                    <div class="col-lg-8 col-md-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'home:home' %}"
+                                       class="text-decoration-none text-dark">{% trans 'Home' %}</a>
+                                </li>
+                                <li class="dvdr"><i class="fa-regular fa-angle-left"></i></li>
+                                <li class="active text-muted"
+                                    aria-current="page">{% trans 'Cart' %}</li>
+                            </ol>
+                        </nav>
+                    </div>
                 </div>
-                <h2 class="title">Title One</h2>
-                <span class="number">1</span>
-                <button class="sort-button">Sort</button>
+            </div>
+        </section>
+
+        <section class="cart-area pt-100 pb-100">
+            <div class="container">
+                {% for course in courses %}
+                    <div class="element" data-course-id="{{ course.id }}" data-course-title="{{ course.title }}">
+                        <img class="image-square" src="{{ course.img.url }}" alt="{{ course.title }}">
+                        <a class="title" href="{{ course.get_absolute_url }}">
+                            <h2 class="title">{{ course.title }}</h2>
+                        </a>
+                        <button class="sort-button" onclick="openModal(this)">{% trans 'Send Comment' %}</button>
+                    </div>
+                {% endfor %}
             </div>
 
-            <div class="element">
-                <div class="image-square" style="background-image:url(../Screenshot\ \(12\).png) ;"></div>
-                <h2 class="title">Title Two</h2>
-                <span class="number">2</span>
-                <button class="sort-button">Sort</button>
-            </div>
-
-            <div class="element">
-                <div class="image-square" style="background-image:url(../Screenshot\ \(12\).png) ;"></div>
-                <h2 class="title">Title Three</h2>
-                <span class="number">3</span>
-                <button class="sort-button">Sort</button>
-            </div>
-        </div>
-
-        <div id="popup-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <h2>Feedback for Title</h2>
-
-                <div class="star-rating">
-                    <input type="radio" id="star5" name="rating" value="5"/>
-                    <label for="star5" title="5 stars">&#9733;</label>
-
-                    <input type="radio" id="star4" name="rating" value="4"/>
-                    <label for="star4" title="4 stars">&#9733;</label>
-
-                    <input type="radio" id="star3" name="rating" value="3"/>
-                    <label for="star3" title="3 stars">&#9733;</label>
-
-                    <input type="radio" id="star2" name="rating" value="2"/>
-                    <label for="star2" title="2 stars">&#9733;</label>
-
-                    <input type="radio" id="star1" name="rating" value="1"/>
-                    <label for="star1" title="1 star">&#9733;</label>
+            <!-- Modal -->
+            <div id="popup-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+                <div class="modal-content" role="document">
+                    <span class="close-button" aria-label="Close" onclick="closeModal()">&times;</span>
+                    <h2 id="modal-title">Feedback for Title</h2>
+                    <form id="comment-form" method="POST">
+                        {% csrf_token %}
+                        <div id="rate-error" class="error-message"></div>
+                        <div class="star-rating" role="radiogroup" aria-label="Rating">
+                            <input type="radio" id="star5" name="rate" value="5" aria-label="5 stars">
+                            <label for="star5" title="5 stars">&#9733;</label>
+                            <input type="radio" id="star4" name="rate" value="4" aria-label="4 stars">
+                            <label for="star4" title="4 stars">&#9733;</label>
+                            <input type="radio" id="star3" name="rate" value="3" aria-label="3 stars">
+                            <label for="star3" title="3 stars">&#9733;</label>
+                            <input type="radio" id="star2" name="rate" value="2" aria-label="2 stars">
+                            <label for="star2" title="2 stars">&#9733;</label>
+                            <input type="radio" id="star1" name="rate" value="1" aria-label="1 star">
+                            <label for="star1" title="1 star">&#9733;</label>
+                        </div>
+                        <div id="text-error" class="error-message"></div>
+                        <textarea
+                                id="feedback-text"
+                                name="text"
+                                placeholder="{% trans 'Write your feedback here...' %}"
+                                aria-label="Feedback text"
+                        ></textarea>
+                        <button type="submit" class="modal-button"
+                                aria-label="Submit feedback">{% trans 'Submit' %}</button>
+                    </form>
                 </div>
-
-                <textarea
-                        id="feedback-text"
-                        placeholder="Write your feedback here..."
-                ></textarea>
-
-                <button id="submit-feedback" class="modal-button">Submit</button>
             </div>
-        </div>
+        </section>
         <!-- ------------------------------------------------------پایان----------------------------------- -->
     </div>
 
@@ -162,6 +165,7 @@
                 </div>
             </div>
         </section>
+
         <!-- End of Breadcrumb Section -->
         <!-- cart area -->
         <section class="cart-area pt-100 pb-100">
@@ -260,9 +264,30 @@
         </section>
         <!-- cart area end-->
     </div>
-        <!-- ----------------------------------------------پایان--------------------------- -->
+    <!-- ----------------------------------------------پایان--------------------------- -->
     <div class="element" id="element3">
         <!-- ----------------------------------------------بخش کامنت گزاری--------------------------- -->
+        <section class="breadcrumb-section py-4" style="background-color: #f9fafb;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Breadcrumb Path -->
+                    <div class="col-lg-8 col-md-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'home:home' %}"
+                                       class="text-decoration-none text-dark">{% trans 'Home' %}</a>
+                                </li>
+                                <li class="dvdr"><i class="fa-regular fa-angle-left"></i></li>
+                                <li class="active text-muted"
+                                    aria-current="page">{% trans 'Cart' %}</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <div class="commentFormContainer">
             <form id="userForm">
@@ -322,6 +347,27 @@
 
     <div class="element" id="element4">
         <!-- ----------------------------------------------بخش ادیت--------------------------- -->
+        <section class="breadcrumb-section py-4" style="background-color: #f9fafb;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Breadcrumb Path -->
+                    <div class="col-lg-8 col-md-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'home:home' %}"
+                                       class="text-decoration-none text-dark">{% trans 'Home' %}</a>
+                                </li>
+                                <li class="dvdr"><i class="fa-regular fa-angle-left"></i></li>
+                                <li class="active text-muted"
+                                    aria-current="page">{% trans 'Cart' %}</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <div class="profile-edit-container">
             <form
@@ -401,7 +447,6 @@
 </div>
 
 <script>
-    // Function to navigate between tabs
     function navigateToTab(tab) {
         const elements = document.querySelectorAll(".element");
         elements.forEach((element) => element.classList.remove("active"));
@@ -412,7 +457,6 @@
         content.classList.remove("blur");
         overlay.classList.remove("active");
 
-        // Show the element related to the chosen tab
         if (tab === "main") {
             document.getElementById("element-main").classList.add("active");
         } else {
@@ -437,7 +481,6 @@
         }
     }
 
-    // Function to toggle sidebar on small screens
     function toggleSidebar() {
         const sidebar = document.getElementById("sidebar");
         const content = document.getElementById("content");
@@ -447,7 +490,6 @@
         overlay.classList.toggle("active");
     }
 
-    // Add event listener for responsive toggle
     window.addEventListener("resize", () => {
         if (window.innerWidth <= 768) {
             document.getElementById("sidebar").classList.remove("open");
@@ -471,76 +513,110 @@
 
     //--------------------------------------بخش دوره های من--------------------------------------
 
-    const modal = document.getElementById("popup-modal");
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("popup-modal");
+        const modalTitle = document.getElementById("modal-title");
+        const commentForm = document.getElementById("comment-form");
+        const rateError = document.getElementById("rate-error");
+        const textError = document.getElementById("text-error");
 
-    const buttons = document.querySelectorAll(".sort-button");
+        window.openModal = function (button) {
+            const element = button.closest(".element");
+            const courseId = element.dataset.courseId;
+            const courseTitle = element.dataset.courseTitle;
 
-    const closeBtn = document.querySelector(".close-button");
+            modalTitle.textContent = `Feedback for ${courseTitle}`;
 
-    buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-            modal.style.display = "block";
-        });
-    });
+            commentForm.action = `/courses/${courseId}/`;
 
-    closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
-
-    window.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    });
-
-    const submitButton = document.getElementById("submit-feedback");
-
-    submitButton.addEventListener("click", () => {
-        const rating = document.querySelector('input[name="rating"]:checked');
-        const ratingValue = rating ? rating.value : null;
-
-        const feedbackText = document
-            .getElementById("feedback-text")
-            .value.trim();
-
-        if (!ratingValue) {
-            alert("امتیاز خود را انتخاب کنید");
-            return;
-        }
-
-        if (feedbackText === "") {
-            alert("لطفا نظر خود را وارد کنید.");
-            return;
-        }
-
-        resetModalForm();
-
-        document.body.classList.remove("modal-open");
-
-        alert("بابت نظرتون متشکریم");
-    });
-
-    function resetModalForm() {
-        const checkedRating = document.querySelector(
-            'input[name="rating"]:checked'
-        );
-        if (checkedRating) {
-            checkedRating.checked = false;
-        }
-
-        document.getElementById("feedback-text").value = "";
-    }
-
-    buttons.forEach((button) => {
-        button.addEventListener("click", (event) => {
-            const element = event.target.closest(".element");
-            const title = element.querySelector(".title").textContent;
-
-            modal.querySelector("h2").textContent = `Feedback for ${title}`;
+            rateError.textContent = "";
+            textError.textContent = "";
 
             modal.style.display = "block";
             document.body.classList.add("modal-open");
+        };
+
+        window.closeModal = function () {
+            modal.style.display = "none";
+            document.body.classList.remove("modal-open");
+        };
+
+        commentForm.addEventListener("submit", (event) => {
+            let hasErrors;
+            event.preventDefault();
+
+            rateError.textContent = "";
+            textError.textContent = "";
+
+            const rating = document.querySelector('input[name="rate"]:checked');
+            const feedbackText = document.getElementById("feedback-text").value.trim();
+
+            if (!feedbackText) {
+                textError.textContent = "{% trans 'Please enter your feedback.' %}";
+                hasErrors = true;
+            }
+            if (!rating) {
+                rateError.textContent = "{% trans 'Please select a rating.' %}";
+                hasErrors = true;
+            }
+            if (hasErrors) {
+                return;
+            }
+
+            const formData = new FormData(commentForm);
+            fetch(commentForm.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRFToken": formData.get("csrfmiddlewaretoken"),
+                },
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else if (response.status === 400) {
+                        return response.json().then((data) => {
+                            if (data.errors?.rate) {
+                                rateError.textContent = data.errors.rate[0];
+                            }
+                            if (data.errors?.text) {
+                                textError.textContent = data.errors.text[0];
+                            }
+                            throw new Error(data.errors?.rate || data.errors?.text || "{% trans 'Invalid input.' %}");
+                        });
+                    } else if (response.status === 403) {
+                        return response.json().then((data) => {
+                            throw new Error(data.message || "{% trans 'You are not authorized to perform this action.' %}");
+                        });
+                    } else {
+                        throw new Error("{% trans 'An unexpected error occurred.' %}");
+                    }
+                })
+                .then((data) => {
+                    showToast(data.message);
+                    resetModalForm();
+                    closeModal();
+                })
+                .catch((error) => {
+                    showToast(error.message);
+                });
         });
+
+        function resetModalForm() {
+            commentForm.reset();
+            rateError.textContent = "";
+            textError.textContent = "";
+        }
+
+        function showToast(message) {
+            const toast = document.createElement("div");
+            toast.className = "toast-message";
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
     });
     //------------------------------------------------پایان--------------------------------------
 

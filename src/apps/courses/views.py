@@ -1,10 +1,16 @@
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count, Prefetch, Case, CharField, Value, When
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
-
-from django.views import generic
+from django.urls import reverse
+from django.utils.decorators import method_decorator
+from django.views import generic, View
+from django.utils.translation import gettext_lazy as _
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import CourseCommentForm
-from .models import Course, CourseComments
+from .models import Course, CourseComments, CourseMembership
 
 
 class CourseListView(generic.ListView):
@@ -69,3 +75,31 @@ class CourseDetailView(generic.DetailView):
             new_comment.user = self.request.user
             new_comment.save()
             return redirect('courses:course_detail', pk=self.kwargs['pk'], slug=self.kwargs['slug'])
+
+
+class StudentCourseCommentsView(LoginRequiredMixin, View):
+    def post(self, request, *args, **kwargs):
+        course = get_object_or_404(Course, pk=self.kwargs['pk'])
+
+        if not CourseMembership.objects.filter(user=request.user, course=course).exists():
+            return JsonResponse({
+                'success': False,
+                'message': _('You must be enrolled in this course to submit a comment.')
+            }, status=403)
+
+        comment_form = CourseCommentForm(request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.user = request.user
+            new_comment.course = course
+            new_comment.save()
+
+            return JsonResponse({
+                'success': True,
+                'message': _('Your comment has been submitted successfully!')
+            })
+
+        return JsonResponse({
+            'success': False,
+            'errors': comment_form.errors
+        }, status=400)
