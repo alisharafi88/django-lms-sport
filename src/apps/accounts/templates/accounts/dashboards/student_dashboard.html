@@ -10,7 +10,7 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="{% static 'assets/css/student-dashboard.css' %}"/>
+
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
     <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/meanmenu.css' %}">
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/rtl.css' %}">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/student-dashboard.css' %}"/>
 </head>
 <body>
 <!-- Sandwich Icon -->
@@ -52,7 +53,7 @@
         <i class="fas fa-futbol"></i> تب ۱
     </button>
     <button onclick="navigateToTab('tab2')">
-        <i class="fas fa-heart"></i> تب ۲
+        <i class="fas fa-shopping-cart"></i> {% trans 'Cart' %}
     </button>
     <button onclick="navigateToTab('tab3')">
         <i class="fas fa-cog"></i> تب ۳
@@ -140,127 +141,126 @@
 
     <!-- ------------------------------------------------------بخش مورد علاقه----------------------------------- -->
     <div class="element" id="element2">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title text-center mb-65">
-                        <span class="tp-sub-title-box mb-15">{% trans 'Liked Courses' %}</span>
+        <!-- Breadcrumb Section -->
+        <section class="breadcrumb-section py-4" style="background-color: #f9fafb;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Breadcrumb Path -->
+                    <div class="col-lg-8 col-md-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'home:home' %}"
+                                       class="text-decoration-none text-dark">{% trans 'Home' %}</a>
+                                </li>
+                                <li class="dvdr"><i class="fa-regular fa-angle-left"></i></li>
+                                <li class="active text-muted"
+                                    aria-current="page">{% trans 'Cart' %}</li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
-            <div class="row mb-20 justify-content-center">
-                {% for course in liked_courses %}
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div class="tpcourse mb-40">
-                            <div class="tpcourse__thumb p-relative w-img fix">
-                                <a href="{{ course.get_absolute_url }}">
-                                    <img src="{% static 'assets/img/course/course-thumb-01.jpg' %}" alt="course-thumb">
-                                </a>
-                                <div class="tpcourse__tag">
-                                    <a href="{% url 'carts:cart_add' course.id %}">
-                                        <i class="fi fi-rr-heart-arrow"></i>
+        </section>
+        <!-- End of Breadcrumb Section -->
+        <!-- cart area -->
+        <section class="cart-area pt-100 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        {% if carts|length %}
+                            <div class="table-content table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th class="product-thumbnail">{% trans 'Images' %}</th>
+                                        <th class="cart-product-name">{% trans 'Courses' %}</th>
+                                        <th class="product-price">{% trans 'Unit Price' %}</th>
+                                        <th class="product-subtotal">{% trans 'Total' %}</th>
+                                        <th class="product-remove">{% trans 'Remove' %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in carts %}
+                                        <tr>
+                                            <td class="product-thumbnail"><a
+                                                    href="{% url 'courses:course_detail' item.course_obj.id item.course_obj.slug %}"><img
+                                                    src="{% static 'assets/img/course/course-thumb-01.jpg' %}"
+                                                    alt=""></a>
+                                            </td>
+                                            <td class="product-name"><a
+                                                    href="{% url 'courses:course_detail' item.course_obj.id item.course_obj.slug %}">{{ item.course_obj.title }}</a>
+                                            </td>
+                                            <td class="product-price"><span
+                                                    class="amount">{% trans 'Toman' %}{{ item.course_obj.price }}</span>
+                                            </td>
+                                            <td class="product-subtotal"><span
+                                                    class="amount">{% trans 'Toman' %}{{ item.item_total_price }}</span>
+                                            </td>
+                                            <td class="product-remove"><a
+                                                    href="{% url 'carts:cart_remove' item.course_obj.id %}"><i
+                                                    class="fa fa-times"></i></a></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="coupon-all">
+                                        <div class="coupon">
+                                            <input id="coupon_code" class="input-text" name="coupon_code" value=""
+                                                   placeholder="Coupon code" type="text">
+                                            <button class="tp-btn" name="apply_coupon" type="submit">Apply
+                                                coupon
+                                            </button>
+                                        </div>
+                                        <div class="coupon2">
+                                            <a href="{% url 'carts:cart_clear' %}">
+                                                <button class="tp-btn" type="submit">{% trans 'Clear cart' %}
+                                                </button>
+                                            </a>
+                                            <button class="tp-btn" name="update_cart"
+                                                    type="submit">{% trans 'Update cart' %}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-end">
+                                <div class="col-md-5 ">
+                                    <div class="cart-page-total">
+                                        <h2>Cart totals</h2>
+                                        <ul class="mb-20">
+                                            <li>{% trans 'Total price' %}
+                                                <span>{% trans 'Toman' %}{{ total_price }}</span></li>
+                                            <li>{% trans 'Total price after discount' %}
+                                                <span>{% trans 'Toman' %}{{ total_discounted_price }}</span></li>
+                                        </ul>
+                                        <a class="tp-btn"
+                                           href="{% url 'orders:order_create' %}">{% trans 'Proceed to checkout' %}% </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col_12">
+                                <div class="coupon1">
+                                    <p>{% trans 'Your cart is empty!' %}</p>
+                                    <a href="{% url 'courses:course_list' %}">
+                                        <button class="tp-btn" type="submit">{% trans 'Add course' %}
+                                        </button>
                                     </a>
                                 </div>
-                                <div class="tpcourse__img-icon">
-                                    <img src="{% static 'assets/img/icon/course-3-avata-1.png' %}" alt="course-avata">
-                                </div>
                             </div>
-                            <div class="tpcourse__content-2">
-                                <div class="tpcourse__ava-title mb-15">
-                                    <h4 class="tpcourse__title tp-cours-title-color">
-                                        <a href="
-                                                {{ course.get_absolute_url }}">{{ course.title }}</a>
-                                    </h4>
-                                </div>
-                                <div class="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
-                                    <ul class="d-flex align-items-center">
-                                        <li>
-                                            <img {% if course.type == 'package' %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
-                                                 src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
-                                                 alt="meta-icon">
-                                            <span>{% if course.type == 'package' %}{{ course.num_courses|default:0 }}
-                                                {% trans 'Courses' %} {% else %}{{ course.num_videos|default:0 }}
-                                                {% trans 'Classes' %} {% endif %}</span>
-                                        </li>
-                                        <li>
-                                            <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
-                                            <span>{{ course.num_members|default:0 }} {% trans 'Students' %}</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="tpcourse__rating d-flex align-items-center justify-content-between">
-                                    <div class="tpcourse__rating-icon">
-                                        <span>4.7</span>
-                                        <i class="fi fi-ss-star"></i>
-                                        <i class="fi fi-ss-star"></i>
-                                        <i class="fi fi-ss-star"></i>
-                                        <i class="fi fi-ss-star"></i>
-                                        <i class="fi fi-rs-star"></i>
-                                        <p>(125)</p>
-                                    </div>
-                                    <div class="tpcourse__pricing">
-                                        <h5 class="price-title">{% trans 'Toman' %} {{ course.discounted_price }}</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endif %}
                     </div>
-                {% endfor %}
-
+                </div>
             </div>
-            <div class="basic-pagination">
-                <nav>
-                    <ul>
-                        {% if page_obj.has_previous %}
-                            <li>
-                                <a href="?page={{ page_obj.previous_page_number }}">
-                                    <i class="far fa-angle-left"></i>
-                                </a>
-                            </li>
-                            {% if page_obj.number > 3 %}
-                                <li>
-                                    <a href="{% static 'blog.html' %}">2</a>
-                                </li>
-                                {% if page_obj.number > 4 %}
-                                    <span>...</span>
-                                {% endif %}
-                            {% endif %}
-                        {% endif %}
-                        {% for num in page_obj.paginator.page_range %}
-                            {% if page_obj.number == num %}
-                                <li>
-                                    <span class="current">{{ page_obj.number }}</span>
-                                </li>
-                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                                <li>
-                                    <a href="?page={{ num }}">{{ num }}</a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% if page_obj.has_next %}
-                            {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
-                                <span>...</span>
-                                <li>
-                                    <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
-                                </li>
-                            {% elif page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
-                                <li>
-                                    <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
-                                </li>
-                            {% endif %}
-                            <li>
-                                <a href="?page={{ page_obj.next_page_number }}">
-                                    <i class="far fa-angle-right"></i>
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <!-- ----------------------------------------------پایان--------------------------- -->
+        </section>
+        <!-- cart area end-->
     </div>
+        <!-- ----------------------------------------------پایان--------------------------- -->
     <div class="element" id="element3">
         <!-- ----------------------------------------------بخش کامنت گزاری--------------------------- -->
 

@@ -6,15 +6,15 @@ class Cart:
 
     def __init__(self, request):
         """
-        Initialize the cart for courses
+        Initialize the cart for courses.
         """
         self.request = request
         self.session = request.session
-
         cart = self.session.get(self.CART_SESSION_ID)
         if not cart:
             cart = self.session[self.CART_SESSION_ID] = []
         self.cart = cart
+        self.courses = None  # Cache for course objects
 
     def add(self, course):
         """
@@ -33,27 +33,36 @@ class Cart:
 
     def remove(self, course):
         """
-        Remove a course from the cart
+        Remove a course from the cart.
         """
         course_id = str(course.id)
         if course_id in self.cart:
             self.cart.remove(course_id)
             self.save()
 
+    def load_courses(self):
+        """
+        Load all course objects into memory using `in_bulk()` to avoid redundant queries.
+        """
+        if self.courses is None:
+            course_ids = [int(course_id) for course_id in self.cart]
+            if course_ids:
+                self.courses = Course.objects.in_bulk(course_ids)
+            else:
+                self.courses = {}
+
     def __iter__(self):
         """
         Iterate over the course IDs in the cart and yield the total price of each course.
         """
-        course_ids = list(self.cart)
-        courses = Course.objects.filter(id__in=course_ids)
-        cart = {course_id: {} for course_id in course_ids}
-
-        for course in courses:
-            cart[str(course.id)]['course_obj'] = course
-
-        for item in cart.values():
-            item['item_total_price'] = item['course_obj'].discounted_price()
-            yield item
+        self.load_courses()
+        for course_id in self.cart:
+            course = self.courses.get(int(course_id))
+            if course:
+                yield {
+                    'course_obj': course,
+                    'item_total_price': course.discounted_price(),
+                }
 
     def __len__(self):
         """
@@ -63,7 +72,7 @@ class Cart:
 
     def clear(self):
         """
-        Clear the cart
+        Clear the cart.
         """
         del self.session[self.CART_SESSION_ID]
         self.save()
@@ -72,8 +81,9 @@ class Cart:
         """
         Calculate the total price of all courses in the cart.
         """
-        course_ids = list(self.cart)
-        courses = Course.objects.filter(id__in=course_ids)
-        total_price = sum(course.price for course in courses)
-        total_discounted_price = sum(course.discounted_price() for course in courses)
+        self.load_courses()
+        total_price = sum(course.price for course in self.courses.values())
+        total_discounted_price = sum(
+            course.discounted_price() for course in self.courses.values()
+        )
         return total_price, total_discounted_price

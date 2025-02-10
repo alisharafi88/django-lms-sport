@@ -3,17 +3,20 @@ from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from apps.courses.models import Course, CourseLike
+from apps.carts.carts import Cart
 
 
 class StudentsDashboard(LoginRequiredMixin, View):
     template_name = 'accounts/dashboards/student_dashboard.html'
     
     def get(self, request):
-        liked_course_queryset = Course.objects.filter(id__in=Subquery(CourseLike.objects.filter(user_id=request.user.id).values('course')))
+        cart = Cart(request)
+        total_price, total_discounted_price = cart.get_total_price()
 
         context = {
-            'liked_courses': liked_course_queryset,
+            'carts': cart,
+            'total_price': total_price,
+            'total_discounted_price': total_discounted_price,
         }
 
         return render(
