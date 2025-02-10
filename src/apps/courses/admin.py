@@ -3,7 +3,7 @@ from django.contrib.admin import DateFieldListFilter
 from django.db.models import Count
 from django.utils.translation import gettext as _
 
-from .models import Course, Coupon, CourseVideo, CourseMembership, CourseComments, CourseLike
+from .models import Course, Coupon, CourseVideo, CourseMembership, CourseComments
 
 
 @admin.register(Coupon)
@@ -102,34 +102,34 @@ class CourseMembershipAdmin(admin.ModelAdmin):
         return super().get_fieldsets(request, obj)
 
 
-@admin.register(CourseLike)
-class CourseLikeAdmin(admin.ModelAdmin):
-    list_display = ('course', 'date_created')
-    list_filter = ('course', ('date_created', DateFieldListFilter),)
-    date_hierarchy = 'date_created'
-    fieldsets = (
-        (_('Course'), {'fields': ('course',)}),
-        (_('Who liked'), {'fields': ('user',)}),
-        (_('Date information'), {
-            'fields': ('date_created',),
-            'classes': ('collapse',),
-            'description': _('Automatically set dates')
-        }),
-    )
-    autocomplete_fields = ('course', 'user')
-    readonly_fields = ('date_created',)
-    search_fields = (
-        'course__title',
-        'user__first_name',
-        'user__last_name',
-        'user__phone_number',
-        'course__instructor__user__first_name',
-        'course__instructor__user__last_name',
-        'course__instructor__user__email',
-        'course__instructor__user__phone_number',
-    )
-    list_per_page = 10
-    show_full_result_count = False
+# @admin.register(CourseLike)
+# class CourseLikeAdmin(admin.ModelAdmin):
+#     list_display = ('course', 'date_created')
+#     list_filter = ('course', ('date_created', DateFieldListFilter),)
+#     date_hierarchy = 'date_created'
+#     fieldsets = (
+#         (_('Course'), {'fields': ('course',)}),
+#         (_('Who liked'), {'fields': ('user',)}),
+#         (_('Date information'), {
+#             'fields': ('date_created',),
+#             'classes': ('collapse',),
+#             'description': _('Automatically set dates')
+#         }),
+#     )
+#     autocomplete_fields = ('course', 'user')
+#     readonly_fields = ('date_created',)
+#     search_fields = (
+#         'course__title',
+#         'user__first_name',
+#         'user__last_name',
+#         'user__phone_number',
+#         'course__instructor__user__first_name',
+#         'course__instructor__user__last_name',
+#         'course__instructor__user__email',
+#         'course__instructor__user__phone_number',
+#     )
+#     list_per_page = 10
+#     show_full_result_count = False
     save_on_top = True
 
     list_select_related = ('course', 'user')
