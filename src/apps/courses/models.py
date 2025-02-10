@@ -147,7 +147,7 @@ class CourseLike(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='likes', verbose_name=_('Course'))
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_('User'))
 
-    date_created = models.DateTimeField(_('Created date'))
+    date_created = models.DateTimeField(_('Created date'), auto_now_add=True)
 
     class Meta:
         ordering = ('-date_created',)
