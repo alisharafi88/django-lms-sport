@@ -9,4 +9,5 @@ urlpatterns = [
     path('verify_otp/', authentication_views.VerifyOTPView.as_view(), name='verify_otp'),
     
     path('student_dashboards/', studentsdashboards_views.StudentsDashboard.as_view(), name='student_dashboards'),
+    path('student_dashboards/edit_profile', studentsdashboards_views.StudentEditProfileView.as_view(), name='student_edit_profile'),
 ]

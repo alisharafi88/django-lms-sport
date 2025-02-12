@@ -3,6 +3,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext as _
+from django.templatetags.static import static
 
 from phonenumbers import parse, is_valid_number, NumberParseException, region_code_for_number
 from phonenumber_field.modelfields import PhoneNumberField
@@ -43,9 +44,17 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(phone_number, password, **extra_fields)
 
 
+def upload_user_profle_photo_path(instance, filename):
+    return f'user/profile-photo/{instance.phone_number}/{filename}'
+
+
 class CustomUser(AbstractUser):
     phone_number = PhoneNumberField(_('phonenumber'), region='IR', validators=[phone_number_validator_for_iran], unique=True,)
     username = None
+
+    profile_photo = models.ImageField(upload_to=upload_user_profle_photo_path, blank=True, null=True)
+
+    bio = models.TextField(blank=True, null=True)
 
     USERNAME_FIELD = 'phone_number'
     REQUIRED_FIELDS = []
@@ -54,3 +63,10 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return str(self.phone_number)
+
+    @property
+    def get_photo_url(self):
+        if self.profile_photo and self.profile_photo.url:
+            return self.profile_photo.url
+
+        return static('assets/img/avatar/default-avatar-icon.jpg')

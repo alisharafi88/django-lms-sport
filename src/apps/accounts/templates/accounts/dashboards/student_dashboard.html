@@ -269,8 +269,8 @@
         <!-- cart area end-->
     </div>
     <!-- ----------------------------------------------پایان--------------------------- -->
+    <!-- ----------------------------------------------بخش کامنت گزاری--------------------------- -->
     <div class="element" id="element3">
-        <!-- ----------------------------------------------بخش کامنت گزاری--------------------------- -->
         <section class="breadcrumb-section py-4" style="background-color: #f9fafb;">
             <div class="container">
                 <div class="row align-items-center">
@@ -354,8 +354,8 @@
 
     <!-- ------------------------------------------------------پایان----------------------------------- -->
 
+    <!-- ----------------------------------------------بخش ادیت--------------------------- -->
     <div class="element" id="element4">
-        <!-- ----------------------------------------------بخش ادیت--------------------------- -->
         <section class="breadcrumb-section py-4" style="background-color: #f9fafb;">
             <div class="container">
                 <div class="row align-items-center">
@@ -384,73 +384,98 @@
             <div class="profile-edit-container">
                 <form
                         class="profile-form"
-                        action="#"
+                        action="{% url 'accounts:student_edit_profile' %}"
                         method="post"
                         enctype="multipart/form-data"
+                        id="editProfileForm"
                 >
+                    {% csrf_token %}
+                    {{ edit_profile_form.non_field_errors }}
                     <div class="profile-image-section">
-                        <img src="../Screenshot (12).png" alt=" profile" id="profileImageDisplay"/>
+                        <img src="{{ request.user.get_photo_url }}"
+                             alt="Profile"
+                             id="profileImageDisplay"
+                             data-default-avatar="{% static 'assets/img/avatar/default-avatar-icon.jpg' %}"/>
                         <input
                                 type="file"
                                 id="profileImageInput"
-                                name="profileImage"
+                                name="profile_photo"
                                 accept="image/*"
                         />
-                        <label for="profileImageInput">Change Profile Picture</label>
-                    </div>
+                        <div>
+                            <label for="profileImageInput">{% trans 'Change Profile Picture' %}</label>
+                            <br>
+                            <button type="button"
+                                    id="removeProfilePhotoButton"
+                                    class="remove-button"
+                                    style="display: none;">
+                                {% trans 'Remove Profile Picture' %}
+                            </button>
+                            <input type="hidden" id="remove_profile_photo" name="remove_profile_photo" value="false">
 
+                        </div>
+                        {{ edit_profile_form.profile_photo.errors }}
+                    </div>
                     <div class="input-row">
                         <div class="input-group">
-                            <label for="fullName">Full Name</label>
+                            <label for="id_first_name">{% trans 'First Name' %}</label>
                             <input
                                     type="text"
-                                    id="fullName"
-                                    name="fullName"
-                                    placeholder="Enter your full name"
+                                    id="id_first_name"
+                                    name="first_name"
+                                    value="{{ edit_profile_form.first_name.value|default_if_none:request.user.first_name }}"
+                                    placeholder="{% trans 'Enter your first name' %}"
                             />
+                            {{ edit_profile_form.first_name.errors }}
                         </div>
                         <div class="input-group">
-                            <label for="emailAddress">Email Address</label>
+                            <label for="id_last_name">{% trans 'Last Name' %}</label>
                             <input
-                                    type="email"
-                                    id="emailAddress"
-                                    name="emailAddress"
-                                    placeholder="Enter your email"
+                                    type="text"
+                                    id="id_last_name"
+                                    name="last_name"
+                                    value="{{ edit_profile_form.last_name.value|default_if_none:request.user.last_name }}"
+                                    placeholder="{% trans 'Enter your last name' %}"
                             />
+                            {{ edit_profile_form.last_name.errors }}
                         </div>
                     </div>
-
                     <div class="input-row">
                         <div class="input-group">
-                            <label for="phoneNumber">Phone Number</label>
+                            <label for="phoneNumber">{% trans 'Phone Number' %}</label>
                             <input
                                     type="tel"
                                     id="phoneNumber"
-                                    name="phoneNumber"
-                                    placeholder="Enter your phone number"
+                                    name="phone_number"
+                                    value="{{ edit_profile_form.phone_number.value|default_if_none:request.user.phone_number }}"
+                                    placeholder="{% trans 'Enter your phone number' %}"
+                                    readonly
+
                             />
+                            {{ edit_profile_form.phone_number.errors }}
                         </div>
                         <div class="input-group">
-                            <label for="location">Location</label>
+                            <label for="emailaddress">{% trans 'Email' %}</label>
                             <input
-                                    type="text"
-                                    id="location"
-                                    name="location"
-                                    placeholder="Enter your location"
+                                    type="email"
+                                    id="emailaddress"
+                                    name="email"
+                                    value="{{ edit_profile_form.email.value|default_if_none:request.user.email }}"
+                                    placeholder="{% trans 'Enter your email' %}"
                             />
+                            {{ edit_profile_form.email.errors }}
                         </div>
                     </div>
-
                     <div class="input-group full-width">
-                        <label for="bio">Bio</label>
+                        <label for="bio">{% trans 'Bio' %}</label>
                         <textarea
                                 id="bio"
                                 name="bio"
-                                placeholder="Tell us about yourself"
-                        ></textarea>
+                                placeholder="{% trans 'Tell us about yourself' %}"
+                        >{{ edit_profile_form.bio.value|default_if_none:"" }}</textarea>
+                        {{ edit_profile_form.bio.errors }}
                     </div>
-
-                    <button type="submit">Save Changes</button>
+                    <button type="submit">{% trans 'Save Changes' %}</button>
                 </form>
             </div>
         </section>
@@ -671,23 +696,101 @@
     //------------------------------------------------پایان--------------------------------------
 
     //-------------------------------------------------بخش ادیت-------------------------
+    document.addEventListener("DOMContentLoaded", function () {
+    const editProfileForm = document.getElementById("editProfileForm");
     const profileImageInput = document.getElementById("profileImageInput");
-    const profileImageDisplay = document.getElementById(
-        "profileImageDisplay"
-    );
+    const profileImageDisplay = document.getElementById("profileImageDisplay");
+    const removeProfilePhotoButton = document.getElementById("removeProfilePhotoButton");
+    const removeProfilePhotoInput = document.getElementById("remove_profile_photo");
+
+    const defaultAvatarUrl = profileImageDisplay.dataset.defaultAvatar;
+
+    function normalizeUrl(url) {
+        return new URL(url, window.location.origin).href;
+    }
+
+    let hasUploadedPhoto = normalizeUrl(profileImageDisplay.src) !== normalizeUrl(defaultAvatarUrl);
+
+    function toggleRemoveButtonVisibility() {
+        if (hasUploadedPhoto) {
+            removeProfilePhotoButton.style.display = "inline-block";
+            removeProfilePhotoButton.textContent = "{% trans 'Remove Profile Picture' %}";
+            removeProfilePhotoButton.style.backgroundColor = "#dc3545";
+        } else {
+            removeProfilePhotoButton.style.display = "none";
+        }
+    }
 
     profileImageInput.addEventListener("change", function () {
         const file = this.files[0];
         if (file) {
             const reader = new FileReader();
-
             reader.onload = function (event) {
                 profileImageDisplay.setAttribute("src", event.target.result);
+                hasUploadedPhoto = true;
+                toggleRemoveButtonVisibility();
             };
-
             reader.readAsDataURL(file);
+            removeProfilePhotoInput.value = "false";
         }
     });
+
+    removeProfilePhotoButton.addEventListener("click", function () {
+        if (removeProfilePhotoInput.value === "false") {
+            removeProfilePhotoInput.value = "true";
+            profileImageDisplay.setAttribute("src", defaultAvatarUrl);
+            profileImageInput.value = "";
+            hasUploadedPhoto = false;
+            removeProfilePhotoButton.textContent = "{% trans 'Undo Remove Profile Picture' %}";
+            removeProfilePhotoButton.style.backgroundColor = "#28a745";
+            removeProfilePhotoButton.style.display = "inline-block";
+        } else {
+            removeProfilePhotoInput.value = "false";
+            profileImageDisplay.setAttribute("src", "{{ request.user.get_photo_url }}");
+            hasUploadedPhoto = true;
+            removeProfilePhotoButton.textContent = "{% trans 'Remove Profile Picture' %}";
+            removeProfilePhotoButton.style.backgroundColor = "#dc3545";
+            toggleRemoveButtonVisibility();
+        }
+    });
+
+    editProfileForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        fetch("{% url 'accounts:student_edit_profile' %}", {
+            method: "POST",
+            body: formData,
+            headers: {
+                "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    alert(data.message);
+                    if (data.profile_photo_url) {
+                        profileImageDisplay.setAttribute("src", data.profile_photo_url);
+                    } else {
+                        profileImageDisplay.setAttribute("src", defaultAvatarUrl);
+                    }
+                    hasUploadedPhoto = data.has_uploaded_photo;
+                    removeProfilePhotoInput.value = "false";
+                    removeProfilePhotoButton.textContent = "{% trans 'Remove Profile Picture' %}";
+                    removeProfilePhotoButton.style.backgroundColor = "#dc3545";
+                    toggleRemoveButtonVisibility();
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("An unexpected error occurred. Please try again.");
+            });
+    });
+
+    toggleRemoveButtonVisibility();
+});
     //------------------------------------------------پایان--------------------------------------
 </script>
 </body>

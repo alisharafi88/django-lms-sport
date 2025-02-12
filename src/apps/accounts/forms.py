@@ -40,3 +40,13 @@ class AthenticationForm(forms.Form):
 
 class VerificationForm(forms.Form):
     otp = forms.CharField(max_length=6, widget=forms.TextInput(attrs={'placeholder': 'Enter OTP'}))
+
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = get_user_model()
+        fields = ('profile_photo', 'first_name', 'last_name', 'email', 'phone_number', 'bio')
+        readonly_fields = ('phone_number',)
+        labels = {
+            'profile_photo': 'Profile Picture',
+        }

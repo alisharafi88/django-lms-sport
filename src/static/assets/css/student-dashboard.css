@@ -820,4 +820,46 @@ button.tp-btn {
     margin-top: 5px;
 }
 
+.profile-image-section {
+    text-align: center;
+}
+
+#profileImageDisplay {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.upload-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.upload-button:hover {
+    background-color: #0056b3;
+}
+
+.remove-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.remove-button:hover {
+    background-color: #a71d2a;
+}
+
 /* ---------------------------------------پایان ادیت---------------------------------------- */

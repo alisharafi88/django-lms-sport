@@ -14,7 +14,7 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('date_joined',)
     search_fields = ('phone_number', 'first_name', 'last_name', 'email')
     fieldsets = (
-        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'phone_number', )}),
+        (_('Personal info'), {'fields': ('profile_photo', 'first_name', 'last_name', 'email', 'phone_number', 'bio')}),
         (
             _('Permissions'),
             {
