@@ -53,11 +53,13 @@ class StudentEditProfileView(LoginRequiredMixin, View):
             edit_profile_form.save()
 
             profile_photo_url = request.user.profile_photo.url if request.user.profile_photo else None
+            full_name = request.user.get_full_name() if request.user.first_name or request.user.last_name else request.user.phone_number
             return JsonResponse({
                 "success": True,
                 "message": _("Your changes have been saved."),
                 "profile_photo_url": profile_photo_url,
                 "has_uploaded_photo": bool(request.user.profile_photo),
+                "full_name": full_name,
             })
 
         return JsonResponse({

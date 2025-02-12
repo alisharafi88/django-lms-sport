@@ -41,8 +41,8 @@
 <div class="sidebar" id="sidebar">
     <!-- Profile Section -->
     <div class="profile">
-        <img src="../Screenshot (12).png"/>
-        <div class="name">نام کاربری</div>
+        <img src="{{ user.get_photo_url }}" alt="" id="sidebarProfileImage"/>
+        <div class="name" id="sidebarProfileName">{{ user.get_name }}</div>
     </div>
 
     <!-- Navigation Buttons -->
@@ -697,100 +697,111 @@
 
     //-------------------------------------------------بخش ادیت-------------------------
     document.addEventListener("DOMContentLoaded", function () {
-    const editProfileForm = document.getElementById("editProfileForm");
-    const profileImageInput = document.getElementById("profileImageInput");
-    const profileImageDisplay = document.getElementById("profileImageDisplay");
-    const removeProfilePhotoButton = document.getElementById("removeProfilePhotoButton");
-    const removeProfilePhotoInput = document.getElementById("remove_profile_photo");
+        const editProfileForm = document.getElementById("editProfileForm");
+        const profileImageInput = document.getElementById("profileImageInput");
+        const profileImageDisplay = document.getElementById("profileImageDisplay");
+        const removeProfilePhotoButton = document.getElementById("removeProfilePhotoButton");
+        const removeProfilePhotoInput = document.getElementById("remove_profile_photo");
 
-    const defaultAvatarUrl = profileImageDisplay.dataset.defaultAvatar;
+        const sidebarProfileImage = document.getElementById("sidebarProfileImage");
+        const sidebarProfileName = document.getElementById("sidebarProfileName");
 
-    function normalizeUrl(url) {
-        return new URL(url, window.location.origin).href;
-    }
+        const defaultAvatarUrl = profileImageDisplay.dataset.defaultAvatar;
 
-    let hasUploadedPhoto = normalizeUrl(profileImageDisplay.src) !== normalizeUrl(defaultAvatarUrl);
-
-    function toggleRemoveButtonVisibility() {
-        if (hasUploadedPhoto) {
-            removeProfilePhotoButton.style.display = "inline-block";
-            removeProfilePhotoButton.textContent = "{% trans 'Remove Profile Picture' %}";
-            removeProfilePhotoButton.style.backgroundColor = "#dc3545";
-        } else {
-            removeProfilePhotoButton.style.display = "none";
+        function normalizeUrl(url) {
+            return new URL(url, window.location.origin).href;
         }
-    }
 
-    profileImageInput.addEventListener("change", function () {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                profileImageDisplay.setAttribute("src", event.target.result);
-                hasUploadedPhoto = true;
-                toggleRemoveButtonVisibility();
-            };
-            reader.readAsDataURL(file);
-            removeProfilePhotoInput.value = "false";
+        let hasUploadedPhoto = normalizeUrl(profileImageDisplay.src) !== normalizeUrl(defaultAvatarUrl);
+
+        function toggleRemoveButtonVisibility() {
+            if (hasUploadedPhoto) {
+                removeProfilePhotoButton.style.display = "inline-block";
+                removeProfilePhotoButton.textContent = "{% trans 'Remove Profile Picture' %}";
+                removeProfilePhotoButton.style.backgroundColor = "#dc3545";
+            } else {
+                removeProfilePhotoButton.style.display = "none";
+            }
         }
-    });
 
-    removeProfilePhotoButton.addEventListener("click", function () {
-        if (removeProfilePhotoInput.value === "false") {
-            removeProfilePhotoInput.value = "true";
-            profileImageDisplay.setAttribute("src", defaultAvatarUrl);
-            profileImageInput.value = "";
-            hasUploadedPhoto = false;
-            removeProfilePhotoButton.textContent = "{% trans 'Undo Remove Profile Picture' %}";
-            removeProfilePhotoButton.style.backgroundColor = "#28a745";
-            removeProfilePhotoButton.style.display = "inline-block";
-        } else {
-            removeProfilePhotoInput.value = "false";
-            profileImageDisplay.setAttribute("src", "{{ request.user.get_photo_url }}");
-            hasUploadedPhoto = true;
-            removeProfilePhotoButton.textContent = "{% trans 'Remove Profile Picture' %}";
-            removeProfilePhotoButton.style.backgroundColor = "#dc3545";
-            toggleRemoveButtonVisibility();
-        }
-    });
-
-    editProfileForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-
-        fetch("{% url 'accounts:student_edit_profile' %}", {
-            method: "POST",
-            body: formData,
-            headers: {
-                "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.success) {
-                    alert(data.message);
-                    if (data.profile_photo_url) {
-                        profileImageDisplay.setAttribute("src", data.profile_photo_url);
-                    } else {
-                        profileImageDisplay.setAttribute("src", defaultAvatarUrl);
-                    }
-                    hasUploadedPhoto = data.has_uploaded_photo;
-                    removeProfilePhotoInput.value = "false";
-                    removeProfilePhotoButton.textContent = "{% trans 'Remove Profile Picture' %}";
-                    removeProfilePhotoButton.style.backgroundColor = "#dc3545";
+        profileImageInput.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    profileImageDisplay.setAttribute("src", event.target.result);
+                    hasUploadedPhoto = true;
                     toggleRemoveButtonVisibility();
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-                alert("An unexpected error occurred. Please try again.");
-            });
-    });
+                };
+                reader.readAsDataURL(file);
+                removeProfilePhotoInput.value = "false";
+            }
+        });
 
-    toggleRemoveButtonVisibility();
-});
+        removeProfilePhotoButton.addEventListener("click", function () {
+            if (removeProfilePhotoInput.value === "false") {
+                removeProfilePhotoInput.value = "true";
+                profileImageDisplay.setAttribute("src", defaultAvatarUrl);
+                profileImageInput.value = "";
+                hasUploadedPhoto = false;
+                removeProfilePhotoButton.textContent = "{% trans 'Undo Remove Profile Picture' %}";
+                removeProfilePhotoButton.style.backgroundColor = "#28a745";
+                removeProfilePhotoButton.style.display = "inline-block";
+            } else {
+                removeProfilePhotoInput.value = "false";
+                profileImageDisplay.setAttribute("src", "{{ request.user.get_photo_url }}");
+                hasUploadedPhoto = true;
+                removeProfilePhotoButton.textContent = "{% trans 'Remove Profile Picture' %}";
+                removeProfilePhotoButton.style.backgroundColor = "#dc3545";
+                toggleRemoveButtonVisibility();
+            }
+        });
+
+        editProfileForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            fetch("{% url 'accounts:student_edit_profile' %}", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        alert(data.message);
+
+                        if (data.profile_photo_url) {
+                            profileImageDisplay.setAttribute("src", data.profile_photo_url);
+                            sidebarProfileImage.setAttribute("src", data.profile_photo_url);
+                        } else {
+                            profileImageDisplay.setAttribute("src", defaultAvatarUrl);
+                            sidebarProfileImage.setAttribute("src", defaultAvatarUrl);
+                        }
+
+                        if (data.full_name) {
+                            sidebarProfileName.textContent = data.full_name;
+                        }
+
+                        hasUploadedPhoto = data.has_uploaded_photo;
+                        removeProfilePhotoInput.value = "false";
+                        removeProfilePhotoButton.textContent = "{% trans 'Remove Profile Picture' %}";
+                        removeProfilePhotoButton.style.backgroundColor = "#dc3545";
+                        toggleRemoveButtonVisibility();
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    alert("An unexpected error occurred. Please try again.");
+                });
+        });
+
+        toggleRemoveButtonVisibility();
+    });
     //------------------------------------------------پایان--------------------------------------
 </script>
 </body>

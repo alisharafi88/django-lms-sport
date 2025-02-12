@@ -70,3 +70,9 @@ class CustomUser(AbstractUser):
             return self.profile_photo.url
 
         return static('assets/img/avatar/default-avatar-icon.jpg')
+
+    @property
+    def get_name(self):
+        if self.first_name or self.last_name:
+            return self.get_full_name()
+        return self.phone_number
