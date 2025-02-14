@@ -63,9 +63,12 @@
         <i class="fas fa-cog"></i> {% trans 'Settings' %}
     </button>
 
-    <button class="logout" onclick="logout()">
-        <i class="fas fa-sign-out-alt"></i> {% trans 'LogOut' %}
-    </button>
+    <form method="post" action="{% url 'accounts:logout' %}" class="logout-form">
+        {% csrf_token %}
+        <button type="submit" class="logout">
+            <i class="fas fa-sign-out-alt"></i> {% trans 'LogOut' %}
+        </button>
+    </form>
 </div>
 
 

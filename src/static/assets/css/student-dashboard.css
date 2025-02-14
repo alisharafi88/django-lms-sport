@@ -112,6 +112,13 @@ body {
 .sidebar .logout:hover {
     background-color: #e74c3c;
 }
+.logout-form {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    display: block;
+}
 
 .content {
     margin-right: 270px;

@@ -1,10 +1,15 @@
 from datetime import timedelta, datetime
 
 from django.contrib.auth import get_user_model
+from django.contrib.auth.views import LogoutView
+from django.http import HttpResponseNotAllowed
+from django.urls import reverse_lazy
 from django.utils import timezone
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views import View
+from django.utils.translation import gettext_lazy as _
+
 import logging
 
 from ..sms_api import get_random_otp, send_otp_save_session
@@ -120,3 +125,14 @@ class ResendOTPView(View):
             messages.error(request, 'Session expired. Please start the verification process again.')
             logger.warning('Attempted to resend OTP with expired session.')
             return redirect('authentication')
+
+
+class CustomLogoutView(LogoutView):
+    next_page = reverse_lazy('home:home')
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.method.lower() != 'post':
+            return HttpResponseNotAllowed(['POST'])
+
+        messages.success(request, _('You have been successfully logged out.'))
+        return super().dispatch(request, *args, **kwargs)
