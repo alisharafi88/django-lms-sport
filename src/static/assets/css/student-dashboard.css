@@ -862,4 +862,65 @@ button.tp-btn {
     background-color: #a71d2a;
 }
 
+/* General styling for tickets */
+.ticket {
+    margin-bottom: 20px; /* Space between tickets */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: right; /* Align text to the right */
+}
+
+.ticket-details {
+    margin-bottom: 15px; /* Space between ticket details and replies */
+}
+
+.ticket h4 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.ticket h5 {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.ticket p {
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Styling for replies */
+.replies {
+    margin-right: 20px; /* Indent replies from the right */
+    padding-right: 10px;
+    border-right: 2px solid #ccc; /* Visual separator for replies */
+    text-align: right; /* Align replies to the right */
+}
+
+.reply {
+    margin-bottom: 10px; /* Space between individual replies */
+}
+
+.reply-details p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.reply-details small {
+    font-size: 12px;
+    color: #888;
+    display: block;
+    margin-top: 5px;
+}
+
+.no-replies {
+    font-style: italic;
+    color: #888;
+    margin-right: 20px; /* Align with replies */
+    text-align: right; /* Align text to the right */
+}
+
 /* ---------------------------------------پایان ادیت---------------------------------------- */

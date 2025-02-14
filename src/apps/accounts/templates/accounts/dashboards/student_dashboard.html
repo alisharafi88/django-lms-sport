@@ -296,57 +296,41 @@
 
 
         <section class="cart-area pt-100 pb-100">
-
             <div class="commentFormContainer">
                 <form id="userForm">
-                    <input type="text" name="firstName" placeholder="First Name"/>
-                    <input type="text" name="lastName" placeholder="Last Name"/>
-                    <textarea name="message" placeholder="Your Message"></textarea>
-                    <button type="submit">Submit</button>
+                    {% csrf_token %}
+                    <input type="text" name="firstName" placeholder="{% trans 'First Name' %}"
+                           value="{{ user.first_name }}"/>
+                    <input type="text" name="lastName" placeholder="{% trans 'Last Name' %}"
+                           value="{{ user.last_name }}"/>
+                    <input type="text" name="subject" placeholder="{% trans 'Subject' %}"/>
+                    <textarea name="message" placeholder="{% trans 'Your Message' %}"></textarea>
+                    <button type="submit">{% trans 'Submit' %}</button>
                 </form>
-
                 <div id="responses">
-                    <div class="comment">
-                        <img src="" alt="Profile Picture"/>
-                        <div class="comment-details">
-                            <h4>
-                                Alex Johnson <span class="place-name">from New York</span>
-                            </h4>
-                            <h5>Creative Designer</h5>
-                            <p>
-                                Absolutely loving the new design trends this year! Minimalism
-                                with a splash of color really speaks to me.
-                            </p>
+                    {% for ticket in tickets %}
+                        <div class="ticket">
+                            <div class="comment-details">
+                                <h4>{{ ticket.subject }} <span class="place-name">{{ ticket.date_updated }}</span></h4>
+                                <h5>{{ ticket.get_status_display }}</h5>
+                                <p>{{ ticket.message }}</p>
+                            </div>
+                            <div class="replies">
+                                {% for reply in ticket.replies.all %}
+                                    <div class="reply">
+                                        <div class="reply-details">
+                                            <p>{{ reply.message }}</p>
+                                            <small>{{ reply.date_created }}</small>
+                                        </div>
+                                    </div>
+                                {% empty %}
+                                    <p class="no-replies">{% trans 'No replies yet.' %}</p>
+                                {% endfor %}
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="comment">
-                        <img src="../Screenshot (12).png" alt="dd "/>
-                        <div class="comment-details">
-                            <h4>
-                                Sophia Martinez <span class="place-name">from London</span>
-                            </h4>
-                            <h5>Travel Blogger</h5>
-                            <p>
-                                The hidden cafés along the cobblestone streets are my favorite
-                                discoveries. Each one has its own unique charm.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="comment">
-                        <img src="" alt="Profile Picture"/>
-                        <div class="comment-details">
-                            <h4>
-                                Liam Chen <span class="place-name">from Singapore</span>
-                            </h4>
-                            <h5>Food Enthusiast</h5>
-                            <p>
-                                Just tried the new fusion restaurant downtown—it's a
-                                must-visit! The flavors are out of this world.
-                            </p>
-                        </div>
-                    </div>
+                    {% empty %}
+                        <p>{% trans 'No tickets found.' %}</p>
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -695,17 +679,15 @@
 
     //------------------------------------------------پایان--------------------------------------
 
-    //-------------------------------------------------بخش ادیت-------------------------
     document.addEventListener("DOMContentLoaded", function () {
+        //-------------------------------------------------بخش ادیت-------------------------
         const editProfileForm = document.getElementById("editProfileForm");
         const profileImageInput = document.getElementById("profileImageInput");
         const profileImageDisplay = document.getElementById("profileImageDisplay");
         const removeProfilePhotoButton = document.getElementById("removeProfilePhotoButton");
         const removeProfilePhotoInput = document.getElementById("remove_profile_photo");
-
         const sidebarProfileImage = document.getElementById("sidebarProfileImage");
         const sidebarProfileName = document.getElementById("sidebarProfileName");
-
         const defaultAvatarUrl = profileImageDisplay.dataset.defaultAvatar;
 
         function normalizeUrl(url) {
@@ -760,7 +742,6 @@
         editProfileForm.addEventListener("submit", function (e) {
             e.preventDefault();
             const formData = new FormData(this);
-
             fetch("{% url 'accounts:student_edit_profile' %}", {
                 method: "POST",
                 body: formData,
@@ -772,7 +753,6 @@
                 .then((data) => {
                     if (data.success) {
                         alert(data.message);
-
                         if (data.profile_photo_url) {
                             profileImageDisplay.setAttribute("src", data.profile_photo_url);
                             sidebarProfileImage.setAttribute("src", data.profile_photo_url);
@@ -780,11 +760,9 @@
                             profileImageDisplay.setAttribute("src", defaultAvatarUrl);
                             sidebarProfileImage.setAttribute("src", defaultAvatarUrl);
                         }
-
                         if (data.full_name) {
                             sidebarProfileName.textContent = data.full_name;
                         }
-
                         hasUploadedPhoto = data.has_uploaded_photo;
                         removeProfilePhotoInput.value = "false";
                         removeProfilePhotoButton.textContent = "{% trans 'Remove Profile Picture' %}";
@@ -801,8 +779,94 @@
         });
 
         toggleRemoveButtonVisibility();
+        //------------------------------------------------پایان--------------------------------------
+
+        const userForm = document.getElementById("userForm");
+        if (userForm) {
+            userForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(userForm);
+                const csrftoken = getCookie("csrftoken");
+
+                fetch("{% url 'accounts:student_create_ticket' %}", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "X-CSRFToken": csrftoken,
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.success) {
+                            userForm.reset();
+
+                            const noTicketsMessage = document.querySelector("#responses > p");
+                            if (noTicketsMessage && noTicketsMessage.textContent.trim() === "{% trans 'No tickets found.' %}") {
+                                noTicketsMessage.remove();
+                            }
+
+                            const ticket = data.ticket;
+                            const newTicketElement = document.createElement("div");
+                            newTicketElement.className = "ticket";
+
+                            // Comment Details
+                            const commentDetails = document.createElement("div");
+                            commentDetails.className = "comment-details";
+
+                            const h4 = document.createElement("h4");
+                            h4.innerHTML = `${ticket.subject} <span class="place-name">${ticket.date_updated}</span>`;
+
+                            const h5 = document.createElement("h5");
+                            h5.textContent = ticket.status;
+
+                            const p = document.createElement("p");
+                            p.textContent = ticket.message;
+
+                            commentDetails.appendChild(h4);
+                            commentDetails.appendChild(h5);
+                            commentDetails.appendChild(p);
+
+                            const repliesDiv = document.createElement("div");
+                            repliesDiv.className = "replies";
+
+                            const noReplies = document.createElement("p");
+                            noReplies.className = "no-replies";
+                            noReplies.textContent = "{% trans 'No replies yet.' %}";
+
+                            repliesDiv.appendChild(noReplies);
+
+                            newTicketElement.appendChild(commentDetails);
+                            newTicketElement.appendChild(repliesDiv);
+
+                            document.getElementById("responses").prepend(newTicketElement);
+
+                            alert(data.message);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                        alert("{% trans 'An error occurred while submitting the form.' %}");
+                    });
+            });
+        }
+
+        // Function to get CSRF token from cookies
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== "") {
+                const cookies = document.cookie.split(";");
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === name + "=") {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
     });
-    //------------------------------------------------پایان--------------------------------------
 </script>
 </body>
 </html>
