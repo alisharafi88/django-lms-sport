@@ -51,7 +51,7 @@ class Ticket(models.Model):
     class Meta:
         verbose_name = _('Ticket')
         verbose_name_plural = _('Tickets')
-        ordering = ('date_updated', '-date_created')
+        ordering = ('-date_updated', '-date_created')
 
         indexes = [
             models.Index(fields=['date_updated', 'date_created'], name='date_idx'),
@@ -82,7 +82,7 @@ class TicketReply(models.Model):
     class Meta:
         verbose_name = _('Reply')
         verbose_name_plural = _('Replies')
-        ordering = ('date_created',)
+        ordering = ('-date_created',)
         indexes = [
             models.Index(fields=['ticket'], name='replies_ticket_idx'),
             models.Index(fields=['date_created'], name='replies_date_idx'),
