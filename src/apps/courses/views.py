@@ -49,11 +49,12 @@ class CourseDetailView(generic.DetailView):
 
         return Course.objects.filter(pk=course.pk) \
             .select_related('instructor__user', ) \
-            .prefetch_related(Prefetch('comments', queryset=CourseComments.objects.filter(status=True)
-                                       .select_related('user', 'parent')
-                                       .prefetch_related('replies__user'),
-                                       ),
-                              ) \
+            .prefetch_related(
+            Prefetch(
+                'comments',
+                queryset=CourseComments.objects.filter(status=True).select_related('user')
+            )
+        ) \
             .annotate(
             num_videos=Count('videos'),
             num_members=Count('members'),
@@ -62,16 +63,8 @@ class CourseDetailView(generic.DetailView):
     def post(self, request, *args, **kwargs):
         coment_form = CourseCommentForm(request.POST)
         if coment_form.is_valid():
-            parent_id = request.POST.get('parent_id')
-            parent_comment = None
-            if parent_id:
-                try:
-                    parent_comment = CourseComments.objects.get(id=parent_id)
-                except CourseComments.DoesNotExist:
-                    parent_comment = None
             new_comment = coment_form.save(commit=False)
             new_comment.course = self.get_object()
-            new_comment.parent = parent_comment
             new_comment.user = self.request.user
             new_comment.save()
             return redirect('courses:course_detail', pk=self.kwargs['pk'], slug=self.kwargs['slug'])
