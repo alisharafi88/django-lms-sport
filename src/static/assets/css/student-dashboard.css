@@ -44,7 +44,9 @@ body {
 }
 
 /* Sidebar Buttons */
-.sidebar button {
+/* Updated CSS for both buttons and anchor links */
+.sidebar button,
+.sidebar a.nav-link {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -59,16 +61,42 @@ body {
     font-size: 16px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    text-decoration: none; /* Remove underline from links */
+
+    /* Fix for anchor tag specific behaviors */
+    font-family: inherit; /* Match button font */
+    -webkit-appearance: none; /* Remove iOS styling */
 }
 
-.sidebar button:hover {
+/* For proper button alignment in flex container */
+.sidebar a.nav-link {
+    justify-content: flex-start;
+}
+
+/* Hover states */
+.sidebar button:hover,
+.sidebar a.nav-link:hover {
     background-color: rgba(255, 255, 255, 0.2);
+    text-decoration: none; /* Ensure no underline on hover */
 }
 
-.sidebar button.active {
+/* Active state */
+.sidebar button.active,
+.sidebar a.nav-link.active {
     background-color: #fe5c4f;
 }
 
+/* Focus states for accessibility */
+.sidebar button:focus,
+.sidebar a.nav-link:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.3);
+    outline-offset: 2px;
+}
+
+/* Keyboard navigation support */
+.sidebar a.nav-link:focus-visible {
+    box-shadow: 0 0 0 3px rgba(254, 92, 79, 0.5);
+}
 .sidebar .logout {
     margin-top: 50px;
     background-color: #fe5c4f;
@@ -921,6 +949,22 @@ button.tp-btn {
     color: #888;
     margin-right: 20px; /* Align with replies */
     text-align: right; /* Align text to the right */
+}
+
+.button-style {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #ffffff;
+    border: 1px solid #ff6f64;
+    color: #ff6f64 !important;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.button-style:hover {
+    background: #ff6f64;
+    color: white !important;
 }
 
 /* ---------------------------------------پایان ادیت---------------------------------------- */

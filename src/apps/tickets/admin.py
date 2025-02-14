@@ -26,7 +26,7 @@ class TicketAdmin(admin.ModelAdmin):
 
     @admin.action(description=_('Mark selected tickets as Resolved'))
     def mark_as_resolved(self, request, queryset):
-        update_count = queryset.update(status=Ticket.StatusChoices.RESOLVED, resolved_date=timezone.now())
+        update_count = queryset.update(status=Ticket.StatusChoices.RESOLVED)
         self.message_user(
             request,
             _(f'{update_count} of tickets status has been updated to pending.'),
@@ -35,7 +35,7 @@ class TicketAdmin(admin.ModelAdmin):
 
     @admin.action(description=_('Mark selected tickets as Closed'))
     def mark_as_closed(self, request, queryset):
-        update_count = queryset.update(status=Ticket.StatusChoices.CLOSED, resolved_date=timezone.now())
+        update_count = queryset.update(status=Ticket.StatusChoices.CLOSED)
         self.message_user(
             request,
             _(f'{update_count} of tickets status has been updated to closed.'),

@@ -119,5 +119,4 @@ class TicketCreateView(LoginRequiredMixin, generic.CreateView):
                 }
             })
         except Exception as e:
-            print(e)
             return JsonResponse({'success': False, 'message': str(e)})
