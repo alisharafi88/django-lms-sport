@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Count, Prefetch, Case, CharField, Value, When
+from django.contrib.contenttypes.models import ContentType
+from django.db.models import Count, Prefetch, Case, CharField, Value, When, IntegerField, Q, ExpressionWrapper, F
+from django.db.models.functions import Cast, Coalesce
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
@@ -9,29 +11,44 @@ from django.views import generic, View
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 
+from itertools import chain
+
 from .forms import CourseCommentForm
-from .models import Course, CourseComments, CourseMembership
+from .models import Course, CourseComments, CourseMembership, Package
 
 
 class CourseListView(generic.ListView):
     model = Course
     template_name = 'courses/courses_list.html'
     paginate_by = 3
-    context_object_name = 'courses'
+    context_object_name = 'products'
 
     def get_queryset(self):
-        queryset_courses = Course.objects.filter(status=True).annotate(num_members=Count('members'),
-                                                                       num_videos=Count('videos'),
-                                                                       type=Case(
-                                                                           When(parent__isnull=False,
-                                                                                then=Value('package')),
-                                                                           default=Value('course'),
-                                                                           output_field=CharField(),
-                                                                       ),
-                                                                       num_courses=Count('parent'),
-                                                                       )
+        course_content_type = ContentType.objects.get_for_model(Course)
+        package_content_type = ContentType.objects.get_for_model(Package)
 
-        return queryset_courses
+        # Queryset for courses
+        courses_queryset = Course.objects.filter(status=True).annotate(
+            num_members=Count('memberships', filter=Q(memberships__content_type=course_content_type)),
+            num_videos=Count('videos'),
+            product_type=Cast(Value(1), output_field=IntegerField()),  # 1 = course
+            num_courses=Value(0, output_field=IntegerField()),
+            discounted_price=F('price') - F('discount_amount')
+        ).defer('coach', 'duration')
+
+        # Queryset for packages
+        packages_queryset = Package.objects.filter(status=True).annotate(
+            num_members=Count('memberships', filter=Q(memberships__content_type=package_content_type)),
+            num_videos=Value(0, output_field=IntegerField()),
+            product_type=Cast(Value(2), output_field=IntegerField()),  # 2 = package
+            num_courses=Count('courses'),
+            discounted_price=F('price') - F('discount_amount')
+        )
+
+        # Combine the two querysets using union
+        combined_queryset = courses_queryset.union(packages_queryset, all=True,).order_by('-date_created', '-date_modified')
+
+        return combined_queryset
 
 
 class CourseDetailView(generic.DetailView):

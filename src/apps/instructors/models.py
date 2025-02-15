@@ -15,8 +15,6 @@ class Instructor(models.Model):
     youtube_id = models.CharField(max_length=50, blank=True, null=True, help_text=_('Enter your YouTube ID to display on your profile.'),)
     instagram_id = models.CharField(max_length=50, blank=True, null=True, help_text=_('Enter your Instagram ID to display on your profile.'),)
 
-    img = models.ImageField(upload_to='instructors/imgs/',)
-
     is_master = models.BooleanField(_('is master'), default=False, help_text=_('Check this box to set master instructor and display social media links.'),)
     is_active = models.BooleanField(_('is active'), default=True, help_text=_('Check this box to set this instructor as active.'),)
 
