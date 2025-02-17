@@ -1,21 +1,21 @@
 from django.shortcuts import render
 from django.views import View
 
-from .queries import get_top_courses, get_featured_instructors, get_latest_blogs
+from .queries import get_top_products, get_featured_instructors, get_latest_blogs
 
 
 class HomeView(View):
     template_name = 'home/home.html'
 
     def get(self, request):
-        top_courses_query = get_top_courses()
+        top_courses_query = get_top_products()
         featured_instructors_query = get_featured_instructors()
         latest_blogs_query = get_latest_blogs()
         return render(
             request,
             self.template_name,
             {
-                'courses': top_courses_query,
+                'products': top_courses_query,
                 'instructors': featured_instructors_query,
                 'blogs': latest_blogs_query,
             }

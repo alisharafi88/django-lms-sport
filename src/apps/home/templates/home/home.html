@@ -103,9 +103,12 @@
                         <div class="hero-content">
                             <span>فستبال پر مخاطب ترین صفحه آموزشی فوتبال کشور</span>
                             <h2 class="hero-title mb-35">از زمین مجازی تا زمین واقع؛فوتبالیست <i>شو</i>.</h2>
-                            <p>دوره آنلاین فوتبال ما به شما کمک می‌کند تا از پایه تا تکنیک‌های پیشرفته را به‌صورت گام‌به‌گام و حرفه‌ای بیاموزید. با تمرینات متنوع و پشتیبانی مربیان مجرب، فوتبالتان را به سطح جدیدی ببرید و در هر زمان و مکانی پیشرفت کنید!</p>
+                            <p>دوره آنلاین فوتبال ما به شما کمک می‌کند تا از پایه تا تکنیک‌های پیشرفته را به‌صورت
+                                گام‌به‌گام و حرفه‌ای بیاموزید. با تمرینات متنوع و پشتیبانی مربیان مجرب، فوتبالتان را به
+                                سطح جدیدی ببرید و در هر زمان و مکانی پیشرفت کنید!</p>
                             <div class="tp-banner-btn">
-                                <a href="{% url 'courses:course_list' %}" class="tp-btn">{% trans 'Explore Courses' %}</a>
+                                <a href="{% url 'courses:course_list' %}"
+                                   class="tp-btn">{% trans 'Explore Courses' %}</a>
                             </div>
                         </div>
                     </div>
@@ -140,7 +143,9 @@
                             </div>
                             <div class="tpfea__text">
                                 <h5 class="tpfea__title mb-20">{% trans 'Expert Trainer' %}</h5>
-                                <p>مربیان تیم ما، با تجربه‌ای گسترده و دانش عمیق، همواره در تلاش‌اند تا بازیکنان را به اوج آمادگی بدنی،تکنیکی و ذهنی و برسانند. با تعهد و پشتکاری مثال‌زدنی، آن‌ها مسیر پیشرفت و موفقیت شما هموار میشود</p>
+                                <p>مربیان تیم ما، با تجربه‌ای گسترده و دانش عمیق، همواره در تلاش‌اند تا بازیکنان را به
+                                    اوج آمادگی بدنی،تکنیکی و ذهنی و برسانند. با تعهد و پشتکاری مثال‌زدنی، آن‌ها مسیر
+                                    پیشرفت و موفقیت شما هموار میشود</p>
                             </div>
                         </div>
                     </div>
@@ -199,8 +204,11 @@
                     <div class="tp-about-content pb-30 ml-80">
                         <div class="section-title mb-55">
                             <span class="tp-sub-title mb-20">دوره های ما</span>
-                            <h2 class="tp-section-title mb-15">این دوره با سه سطح حرفه‌ای، آماتور و متوسط، شما را در هر مرحله به اوج مهارت‌های فوتبالی‌تان می‌رساند.</h2>
-                            <p>وره فوتبالی ما با سه سطح حرفه‌ای، آماتور و متوسط طراحی شده تا به هر بازیکن با هر سطحی کمک کند علاوه بر بهبود مهارت‌ها، سرعت و قدرت خود را نیز افزایش دهد. از آموزش‌های پایه تا تکنیک‌های پیشرفته، هر مرحله شما را به یک فوتبالیست سریع‌تر و قدرتمندتر تبدیل می‌کند.</p>
+                            <h2 class="tp-section-title mb-15">این دوره با سه سطح حرفه‌ای، آماتور و متوسط، شما را در هر
+                                مرحله به اوج مهارت‌های فوتبالی‌تان می‌رساند.</h2>
+                            <p>وره فوتبالی ما با سه سطح حرفه‌ای، آماتور و متوسط طراحی شده تا به هر بازیکن با هر سطحی کمک
+                                کند علاوه بر بهبود مهارت‌ها، سرعت و قدرت خود را نیز افزایش دهد. از آموزش‌های پایه تا
+                                تکنیک‌های پیشرفته، هر مرحله شما را به یک فوتبالیست سریع‌تر و قدرتمندتر تبدیل می‌کند.</p>
                         </div>
                         <div class="about-btn">
                             <a href="{% url 'home:about_us' %}" class="tp-btn">{% trans 'Read More' %}</a>
@@ -223,39 +231,47 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                {% for course in courses %}
+                {% for product in products %}
                     <div class="col-xl-4 col-lg-6 col-md-6">
                         <div class="tpcourse mb-40">
                             <div class="tpcourse__thumb p-relative w-img fix">
-                                <a href="{{ course.get_absolute_url }}">
-                                    <img src="{{ course.img.url }}" alt="course-thumb">
+                                <a href="{{ product.get_absolute_url }}">
+                                    <img src="{{ product.img.url }}" alt="course-thumb">
                                 </a>
                                 <div class="tpcourse__tag">
-                                    <a href="{% url 'carts:cart_add' course.id %}">
-                                        <i class="fi fi-rr-shopping-bag-add"></i>
+                                    <a href="{% url 'carts:cart_add' product.id %}">
+                                        <i class="fi fi-rr-heart"></i>
                                     </a>
                                 </div>
+                                {#                                {% if product.product_type == 1 %}#}
+                                {#                                    <div class="tpcourse__img-icon">#}
+                                {#                                        <img src="{{ product.coach.user.get_photo_url }}" alt="course-avata">#}
+                                {#                                    </div>#}
+                                {#                                {% endif %}#}
+                                {#                                <div class="tpcourse__img-icon">#}
+                                {#                                    <img src="{% static 'assets/img/icon/course-3-avata-1.png' %}" alt="course-avata">#}
+                                {#                                </div>#}
                             </div>
                             <div class="tpcourse__content-2">
                                 <div class="tpcourse__ava-title mb-15">
                                     <h4 class="tpcourse__title tp-cours-title-color">
                                         <a href="
-                                                {{ course.get_absolute_url }}">{{ course.title }}</a>
+                                                {{ product.get_absolute_url }}">{{ product.title }}</a>
                                     </h4>
                                 </div>
                                 <div class="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
                                     <ul class="d-flex align-items-center">
                                         <li>
-                                            <img {% if course.type == 'package' %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
+                                            <img {% if product.product_type == 2 %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
                                                  src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
                                                  alt="meta-icon">
-                                            <span>{% if course.type == 'package' %}{{ course.num_courses|default:0 }}
-                                                {% trans 'Courses' %} {% else %}{{ course.num_videos|default:0 }}
+                                            <span>{% if product.product_type == 2 %}{{ product.num_courses|default:0 }}
+                                                {% trans 'Courses' %} {% else %}{{ product.num_videos }}
                                                 {% trans 'Classes' %} {% endif %}</span>
                                         </li>
                                         <li>
                                             <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
-                                            <span>{{ course.num_members|default:0 }} {% trans 'Students' %}</span>
+                                            <span>{{ product.num_members }} {% trans 'Students' %}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -270,7 +286,7 @@
                                         <p>(125)</p>
                                     </div>
                                     <div class="tpcourse__pricing">
-                                        <h5 class="price-title">{% trans 'Toman' %} {{ course.discounted_price }}</h5>
+                                        <h5 class="price-title">{% trans 'Toman' %} {{ product.discounted_price }}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -315,14 +331,18 @@
                         <div class="section-title mb-25">
                             <span class="tp-sub-title mb-25">چرا ما</span>
                             <h2 class="tp-section-title mb-20">چرا باید مارو انتخاب کنید؟</h2>
-                            <p>دوره ما به دلیل ترکیب آموزش‌های حرفه‌ای، تمرینات کاربردی و پشتیبانی شخصی، بهترین انتخاب برای پیشرفت سریع در فوتبال است.  با شرکت در این دورهشما به طور قابل توجهی مهارت‌های خود را بهبود خواهید داد.</p>
+                            <p>دوره ما به دلیل ترکیب آموزش‌های حرفه‌ای، تمرینات کاربردی و پشتیبانی شخصی، بهترین انتخاب
+                                برای پیشرفت سریع در فوتبال است. با شرکت در این دورهشما به طور قابل توجهی مهارت‌های خود
+                                را بهبود خواهید داد.</p>
                         </div>
                         <div class="tp-choose-list mb-35">
                             <ul>
                                 <li><i class="fa-light fa-check"></i>در هر ببخش مربی تخصصی به شما آموزش میدهد</li>
                                 <li><i class="fa-light fa-check"></i>بیش از ۶ هزار هنرجو موفق داریم</li>
                                 <li><i class="fa-light fa-check"></i>تمامی آموزش ها با پشتیبانی انجام میشود</li>
-                                <li><i class="fa-light fa-check"></i>آموزش ها با بالاترین کیفیت در اختیار شما قرار میگیرد</li>
+                                <li><i class="fa-light fa-check"></i>آموزش ها با بالاترین کیفیت در اختیار شما قرار
+                                    میگیرد
+                                </li>
                                 <li><i class="fa-light fa-check"></i>برای همه پست ها تمرینات تخصصی داریم</li>
                             </ul>
                         </div>
@@ -409,18 +429,20 @@
                         <div class="tp-instruc-item">
                             <div class="tp-instructor text-center p-relative mb-40">
                                 <div class="tp-instructor__thumb mb-25">
-                                    <img src="{{ instructor.img.url }}" alt="instructor-profile">
+                                    <img src="{{ instructor.user.get_photo_url }}" alt="instructor-profile">
                                 </div>
                                 <div class="tp-instructor__content">
                                     <h4 class="tp-instructor__title tp-instructor__title-info p-relative mb-35 mt-5"><a
                                             href="{{ instructor.get_absolute_url }}">{{ instructor.full_name }}</a></h4>
                                     <div class="tp-instructor__stu-info">
                                         <ul class="d-flex align-items-center justify-content-center">
-                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-01.png' %}"
-                                                                                       alt="meta-icon"> <i>35 {% trans 'Classes' %}</i>
+                                            <li class="d-flex align-items-center"><img
+                                                    src="{% static 'assets/img/icon/c-meta-01.png' %}"
+                                                    alt="meta-icon"> <i>35 {% trans 'Classes' %}</i>
                                             </li>
-                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-02.png' %}"
-                                                                                       alt="meta-icon"> <i>291+ {% trans 'Students' %}</i>
+                                            <li class="d-flex align-items-center"><img
+                                                    src="{% static 'assets/img/icon/c-meta-02.png' %}"
+                                                    alt="meta-icon"> <i>291+ {% trans 'Students' %}</i>
                                             </li>
                                         </ul>
                                     </div>
@@ -441,7 +463,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="instructor-btn text-center">
-                        <a class="tp-btn" href="{% url 'instructors:instructor_list' %}">{% trans 'All Instructor' %}</a>
+                        <a class="tp-btn"
+                           href="{% url 'instructors:instructor_list' %}">{% trans 'All Instructor' %}</a>
                     </div>
                 </div>
             </div>
