@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import TemplateView
 
 from .queries import get_top_products, get_featured_instructors, get_latest_blogs
 
@@ -28,3 +29,7 @@ class AboutUsView(View):
     def get(self, request):
         featured_instructors_query = get_featured_instructors()
         return render(request, self.template_name, {'instructors': featured_instructors_query})
+
+
+class BMIView(TemplateView):
+    template_name = 'BMI/BMI.html'

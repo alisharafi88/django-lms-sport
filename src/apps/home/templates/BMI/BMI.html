@@ -1,8 +1,13 @@
 {% extends '-base.html' %}
+{% load static %}
 {% load i18n %}
 
 {% block title %}
     {% trans 'BMI Test' %}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'assets/css/BMI.css' %}"/>
 {% endblock %}
 
 {% block content %}
