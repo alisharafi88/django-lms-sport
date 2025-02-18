@@ -7,6 +7,10 @@
     {{ course.title }}
 {% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" href="{% static 'assets/css/accordion.css' %}">
+{% endblock %}
+
 {% block content %}
     <!-- breadcrumb-area -->
     <section class="breadcrumb__area include-bg pt-150 pb-150 breadcrumb__overlay"
@@ -70,8 +74,37 @@
                         <div class="c-details-about mb-40">
                             <h5 class="tp-c-details-title mb-20">{% trans 'About This Course' %}</h5>
                             <p>
-                                {{ course.description }}
+                                {{ course.description | safe }}
                             </p>
+                        </div>
+                        <div class="accordion">
+                            <h4 class="tp-c-details-title mb-40">{% trans 'Lectures' %}</h4>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h2>مقدمة في HTML</h2>
+                                    <span class="icon">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <ul>
+                                        <li data-id="html1">علامات أساسية</li>
+                                        <li data-id="html2">هيكل الصفحة</li>
+                                        <li data-id="html3">النماذج والمدخلات</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h2>البدء مع CSS</h2>
+                                    <span class="icon">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <ul>
+                                        <li data-id="css1">المحددات والأهمية</li>
+                                        <li data-id="css2">نموذج الصندوق</li>
+                                        <li data-id="css3">فليكس بوكس والشبكة</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         <div class="cor-details-instructor mb-40">
                             <h4 class="tp-c-details-title mb-40">{% trans 'Instructor' %}</h4>
@@ -81,7 +114,7 @@
                                          alt="avata-thumb">
                                 </div>
                                 <div class="course-avatar-details mb-20">
-                                    <h5 class="c-avata-title mb-10">{{ course.instructor.full_name }}</h5>
+                                    <h5 class="c-avata-title mb-10">{{ course.coach.full_name }}</h5>
                                     <div class="c-details-list mb-5">
                                         <ul class="d-flex align-items-center">
                                             <li>
@@ -100,7 +133,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p>{{ course.instructor.description }}</p>
+                        <p>{{ course.coach.description }}</p>
                     </div>
                     <div class="postbox__comment mb-65">
                         <h3 class="postbox__comment-title">{{ course.comments.all|length }} {% trans 'Comments' %}</h3>
@@ -188,7 +221,7 @@
                 </div>
             </div>
             <div class="row">
-                {% for course in course.instructor.courses.all %}
+                {% for course in course.coach.courses.all %}
                     <div class="col-xl-4 col-lg-6 col-md-6">
                         <div class="tpcourse mb-40">
                             <div class="tpcourse__thumb p-relative w-img fix">
@@ -296,4 +329,56 @@
     <!-- counter-area-end -->
 
 
+{% endblock %}
+
+{% block script %}
+    <script>
+        let subcoursesViewedStatus =
+            JSON.parse(localStorage.getItem("subcoursesViewedStatus")) || {};
+
+
+        const subcourseItems = document.querySelectorAll(".accordion-content li");
+        subcourseItems.forEach((item) => {
+            item.addEventListener("click", () => {
+                const id = item.getAttribute("data-id");
+
+                subcoursesViewedStatus[id] = true;
+
+                localStorage.setItem(
+                    "subcoursesViewedStatus",
+                    JSON.stringify(subcoursesViewedStatus)
+                );
+
+            });
+        });
+
+
+        const accordionItems = document.querySelectorAll(".accordion-item");
+
+        accordionItems.forEach((item) => {
+            const header = item.querySelector(".accordion-header");
+            const icon = header.querySelector(".icon");
+            const content = item.querySelector(".accordion-content");
+
+            header.addEventListener("click", () => {
+                const openItem = document.querySelector(".accordion-item.active");
+
+                if (openItem && openItem !== item) {
+                    openItem.classList.remove("active");
+                    openItem.querySelector(".accordion-content").style.maxHeight = 0;
+                    openItem.querySelector(".icon").textContent = "+";
+                }
+
+                item.classList.toggle("active");
+
+                if (item.classList.contains("active")) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.textContent = "×";
+                } else {
+                    content.style.maxHeight = 0;
+                    icon.textContent = "+";
+                }
+            });
+        });
+    </script>
 {% endblock %}

@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import gettext as _
 
-from .models import CourseComments
+from .models import CourseComments, CourseSeason, CourseVideo
 
 
 class CourseCommentForm(forms.ModelForm):
@@ -30,5 +30,3 @@ class CourseCommentForm(forms.ModelForm):
                 'required': _('Please enter your feedback.'),
             },
         }
-
-

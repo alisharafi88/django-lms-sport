@@ -99,29 +99,63 @@ class Package(Product):
     #     return reverse('courses:package_detail', kwargs={'pk': self.pk, 'slug': self.slug})
 
 
-class CourseVideo(models.Model):
-    VIDEO_STATUS_NOT_FREE = 'm'
-    VIDEO_STATUS_FREE = 'f'
-    VIDEO_STATUS_CHOICES = (
-        (VIDEO_STATUS_NOT_FREE, _('Monetary')),
-        (VIDEO_STATUS_FREE, _('Free')),
+class CourseSeason(models.Model):
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        verbose_name=_('Course'),
+        related_name='seasons',
     )
 
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='videos', verbose_name=_('course'), )
-    title = models.CharField(_('title'), max_length=100, )
-    slug = models.SlugField(blank=True, null=True, )
-    video = models.FileField(
-        upload_to='course_videos',
-        verbose_name=_('Course video'),
-        help_text='Valid video formats: mp4, mkv, wmv, 3gp, f4v, avi, mp3',
-        validators=[FileExtensionValidator(['mp4', 'mkv', 'wmv', '3gp', 'f4v', 'avi', 'mp3', ])],
-    )
+    title = models.CharField(_('Title'), max_length=100)
 
-    status = models.CharField(_('status'), max_length=1, choices=VIDEO_STATUS_CHOICES, default=VIDEO_STATUS_NOT_FREE,
-                              help_text='Show that this video is free or not.', )
+    created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('Updated at'), auto_now=True)
 
     def __str__(self):
-        return str(self.title)
+        return f'{self.course} - {self.title}'
+
+    class Meta:
+        verbose_name = _('Season')
+        verbose_name_plural = _('Seasons')
+        ordering = ('created_at',)
+
+
+class CourseVideo(models.Model):
+    class VideoStatus(models.TextChoices):
+        FREE = 'f', _('Free')
+        MONETARY = 'm', _('Monetary')
+
+    season = models.ForeignKey(
+        CourseSeason,
+        on_delete=models.CASCADE,
+        verbose_name=_('Season'),
+        related_name='videos',
+    )
+
+    title = models.CharField(_('title'), max_length=100, )
+
+    status = models.CharField(
+        _('Status'), max_length=1,
+        choices=VideoStatus.choices,
+        default=VideoStatus.MONETARY,
+        help_text='Show that this video is free or not.',
+    )
+
+    created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('Updated at'), auto_now=True)
+
+    def __str__(self):
+        return f'{self.season} - {self.title}'
+
+    class Meta:
+        verbose_name = _('Video')
+        verbose_name_plural = _('Videos')
+        ordering = ('created_at',)
+        indexes = (
+            models.Index(fields=['season'], name='courses_video_season_idx'),
+            models.Index(fields=['created_at'], name='courses_video_created_at_idx'),
+        )
 
 
 class CourseMembership(models.Model):

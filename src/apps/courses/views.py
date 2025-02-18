@@ -65,7 +65,7 @@ class CourseDetailView(generic.DetailView):
         course = get_object_or_404(Course, pk=self.kwargs['pk'], slug=self.kwargs['slug'])
 
         return Course.objects.filter(pk=course.pk) \
-            .select_related('instructor__user', ) \
+            .select_related('coach__user', ) \
             .prefetch_related(
             Prefetch(
                 'comments',
@@ -74,7 +74,7 @@ class CourseDetailView(generic.DetailView):
         ) \
             .annotate(
             num_videos=Count('videos'),
-            num_members=Count('members'),
+            num_members=Count('memberships'),
         )
 
     def post(self, request, *args, **kwargs):
