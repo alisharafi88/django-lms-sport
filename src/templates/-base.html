@@ -11,9 +11,6 @@
     </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block head %}
-
-    {% endblock head %}
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
@@ -32,6 +29,9 @@
     <link rel="stylesheet" href="{% static 'assets/css/spacing.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/rtl.css' %}">
+    {% block head %}
+
+    {% endblock head %}
 </head>
 
 <body>

@@ -3,21 +3,26 @@ body {
     text-align: right !important;
     font-family: Vazir, Tahoma !important;
 }
+
 .bg-dark-green {
     background-color: #1e4d2b !important;
     color: #ffffff !important;
 }
+
 .navbar-dark .navbar-nav .nav-link {
     color: #ff8c00 !important;
 }
+
 .navbar-dark .navbar-nav .nav-link:hover {
     color: #ffa500 !important;
 }
+
 .main-header {
     width: 100% !important;
     margin-right: 0 !important;
     margin-left: 0 !important;
 }
+
 .main-footer {
     width: 100% !important;
     margin-right: 0 !important;
@@ -25,6 +30,7 @@ body {
     text-align: center;
     padding: 20px !important;
 }
+
 .main-sidebar {
     position: fixed !important;
     top: 56px;
@@ -34,19 +40,39 @@ body {
     z-index: 1030;
     border-left: 1px solid #4b545c !important;
 }
+
 .main-sidebar.collapsed {
     width: 80px !important;
 }
+
 .main-sidebar.collapsed .nav-sidebar .nav-link p {
     display: none;
 }
+
 .main-sidebar.collapsed .nav-sidebar .nav-icon {
     margin-right: 0 !important;
 }
+
 .content-wrapper {
     margin-top: 56px;
     margin-right: 250px;
     padding: 30px !important;
     font-size: 16px !important;
     line-height: 1.6 !important;
+}
+
+@media (min-width: 768px) {
+    body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .content-wrapper, body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-footer, body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-header {
+        transition: margin-left .3s ease-in-out;
+        margin-right: 250px;
+        margin-left: 0px;
+    !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .main-footer, .sidebar-mini.sidebar-collapse .main-header {
+        margin-right: 4.6rem !important;
+        margin-left: 0px !important;
+    }
 }

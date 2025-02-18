@@ -73,7 +73,7 @@ class CourseDetailView(generic.DetailView):
             )
         ) \
             .annotate(
-            num_videos=Count('videos'),
+            # num_videos=Count('videos'),
             num_members=Count('memberships'),
         )
 
