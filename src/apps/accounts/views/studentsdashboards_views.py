@@ -17,7 +17,7 @@ class StudentsDashboard(LoginRequiredMixin, View):
     
     def get(self, request):
         # Student Courses
-        courses_queryset = Course.objects.filter(members__user=request.user.id, status=True)
+        courses_queryset = Course.objects.filter(memberships__user=request.user.id, status=True)
 
         # Cart
         cart = Cart(request)

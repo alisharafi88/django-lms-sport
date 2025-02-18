@@ -11,6 +11,7 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
 
+    <link rel="stylesheet" href="{% static 'assets/css/student-dashboard.css' %}"/>
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
     <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/meanmenu.css' %}">
@@ -26,7 +27,6 @@
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/rtl.css' %}">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/student-dashboard.css' %}"/>
 </head>
 <body>
 <!-- Sandwich Icon -->
@@ -98,7 +98,7 @@
         </section>
 
         <section class="cart-area pt-100 pb-100">
-            <div class="container">
+            <div class="container_content">
                 <div class="course-items">
                     {% for course in courses %}
                         <div class="element" data-course-id="{{ course.id }}" data-course-title="{{ course.title }}">

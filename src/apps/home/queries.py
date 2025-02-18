@@ -13,7 +13,7 @@ def get_top_products():
     # Queryset for courses
     courses_queryset = Course.objects.filter(status=True).annotate(
         num_members=Count('memberships', filter=Q(memberships__content_type=course_content_type)),
-        num_videos=Count('videos'),
+        # num_videos=Count('seasons.videos'),
         product_type=Value(1, output_field=IntegerField()),  # 1 = course
         num_courses=Value(0, output_field=IntegerField()),
         discounted_price=F('price') - F('discount_amount')
@@ -22,7 +22,7 @@ def get_top_products():
     # Queryset for packages
     packages_queryset = Package.objects.filter(status=True).annotate(
         num_members=Count('memberships', filter=Q(memberships__content_type=package_content_type)),
-        num_videos=Value(0, output_field=IntegerField()),
+        # num_videos=Value(0, output_field=IntegerField()),
         product_type=Value(2, output_field=IntegerField()),  # 2 = package
         num_courses=Count('courses'),
         discounted_price=F('price') - F('discount_amount')
