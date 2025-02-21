@@ -3144,7 +3144,7 @@ div.choose-sub-color {
 .tpcourse__tag {
   position: absolute;
   top: 25px;
-  right: 25px;
+  left: 25px;
 }
 .tpcourse__tag i {
   display: inline-block;
@@ -3669,6 +3669,17 @@ div.choose-sub-color {
 }
 .c-details-ava span a:hover {
   color: var(--tp-heading-secondary);
+}
+.course-image {
+    max-width: 100%; /* Ensure the course image is responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.c-details-ava img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .c-details-title {

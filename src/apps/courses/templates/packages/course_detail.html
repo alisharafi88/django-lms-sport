@@ -19,13 +19,13 @@
             <div class="row">
                 <div class="col-xxl-12">
                     <div class="breadcrumb__content p-relative z-index-1">
-                        <h3 class="breadcrumb__title mb-20">{% translate 'Course' %}</h3>
+                        <h3 class="breadcrumb__title mb-20">{{ course.title }}</h3>
                         <div class="breadcrumb__list">
                             <span><a href="{% url 'home:home' %}">{% trans 'Home' %}</a></span>
-                            <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
-                            <span><a href="{% url 'courses:course_list' %}">{% trans 'Courses' %}</a></span>
-                            <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
-                            <span class="sub-page-black">{% trans 'Course Details' %}</span>
+                            <span class="dvdr"><i class="fa-regular fa-angle-left"></i></span>
+                            <span><a href="{% url 'courses:course_list' %}">{% trans 'Products' %}</a></span>
+                            <span class="dvdr"><i class="fa-regular fa-angle-left"></i></span>
+                            <span class="sub-page-black">{{ course.title }}</span>
                         </div>
                     </div>
                 </div>
@@ -41,10 +41,12 @@
                 <div class="col-lg-8 col-md-12">
                     <div class="c-details-wrapper mr-25">
                         <div class="c-details-thumb p-relative mb-40">
-                            <img src="{% static 'assets/img/course/c-details-bg-01.jpg' %}" alt="details-bg">
-                            <div class="c-details-ava d-md-flex align-items-center">
-                                <img src="{% static 'assets/img/course/c-details-ava-01.png' %}" alt="avata">
-                                <span>By <a href="#">Emilia Jonas</a></span>
+                            <img src="{{ course.img.url }}" alt="details-bg" class="course-image">
+                            <div class="c-details-ava d-flex align-items-center">
+                                <img src="{{ course.coach.user.get_photo_url }}" alt="avatar" class="coach-image">
+                                <span>
+                                    <a href="{{ course.coach.get_absolute_url }}">{{ course.coach.full_name }}</a>
+                                </span>
                             </div>
                         </div>
                         <div class="course-details-content mb-45">
@@ -79,38 +81,27 @@
                         </div>
                         <div class="accordion">
                             <h4 class="tp-c-details-title mb-40">{% trans 'Lectures' %}</h4>
-                            <div class="accordion-item">
-                                <div class="accordion-header">
-                                    <h2>مقدمة في HTML</h2>
-                                    <span class="icon">+</span>
+                            {% for season in course.seasons.all %}
+                                <div class="accordion-item">
+                                    <div class="accordion-header">
+                                        <h2>{{ season.title }}</h2>
+                                        <span class="icon">+</span>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <ul>
+                                            {% for video in season.videos.all %}
+                                                <li data-id="{{ video.title }}">{{ video.title }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="accordion-content">
-                                    <ul>
-                                        <li data-id="html1">علامات أساسية</li>
-                                        <li data-id="html2">هيكل الصفحة</li>
-                                        <li data-id="html3">النماذج والمدخلات</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <div class="accordion-header">
-                                    <h2>البدء مع CSS</h2>
-                                    <span class="icon">+</span>
-                                </div>
-                                <div class="accordion-content">
-                                    <ul>
-                                        <li data-id="css1">المحددات والأهمية</li>
-                                        <li data-id="css2">نموذج الصندوق</li>
-                                        <li data-id="css3">فليكس بوكس والشبكة</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                         <div class="cor-details-instructor mb-40">
-                            <h4 class="tp-c-details-title mb-40">{% trans 'Instructor' %}</h4>
+                            <h4 class="tp-c-details-title mb-40">{% trans 'Coach' %}</h4>
                             <div class="course-instructor-details d-flex f-wrap align-items-center">
                                 <div class="course-avata mr-30 mb-20">
-                                    <img src="{% static 'assets/img/course/c-details-ava-thumb-01.jpg' %}"
+                                    <img src="{{ course.coach.user.get_photo_url }}"
                                          alt="avata-thumb">
                                 </div>
                                 <div class="course-avatar-details mb-20">
@@ -161,36 +152,39 @@
                 </div>
                 <div class="col-lg-4 col-md-12">
                     <div class="c-details-sidebar">
-                        <div class="c-video-thumb p-relative mb-25">
-                            <img src="{% static 'assets/img/bg/c-details-video-bg.jpg' %}" alt="video-bg">
-                            <div class="c-video-icon">
-                                <a class="popup-video" href="https://youtu.be/W-bgMEvrd2E"><i class="fi fi-sr-play"></i></a>
+                        {% if course.introduce_video_url %}
+                            <div class="c-video-thumb p-relative mb-25">
+                                <img src="{{ course.introduce_video_cover.url }}" alt="video-bg">
+                                <div class="c-video-icon">
+                                    <a class="popup-video" href="{{ course.introduce_video_url }}"><i
+                                            class="fi fi-sr-play"></i></a>
+                                </div>
                             </div>
-                        </div>
+                        {% endif %}
                         <div class="course-details-widget">
                             <div class="cd-video-price">
                                 <h3 class="pricing-video text-center mb-15">
                                     {% translate 'Toman' %}{{ course.discounted_price }}</h3>
                                 <div class="cd-pricing-btn text-center mb-30">
-                                    <a class="tp-vp-btn" href="{% static 'course-details.html' %}">Add To Cart</a>
-                                    <a class="tp-vp-btn-green" href="{% static 'course-details.html' %}">Enroll Now</a>
+                                    <a class="tp-vp-btn" href="{% url 'carts:cart_add' course.pk %}">{% trans 'Add To Cart' %}</a>
+                                    <a class="tp-vp-btn-green" href="{% static 'course-details.html' %}">{% trans 'Enroll Now' %}</a>
                                 </div>
                             </div>
                             <div class="cd-information mb-35">
                                 <ul>
                                     <li><i class="fa-light fa-calendars"></i> <label>{% trans 'Lesson' %}</label>
-                                        <span>{{ course.num_videos }}</span></li>
+                                        <span class="value-left">{{ course.num_videos }}</span></li>
 
                                     <li><i class="fi fi-rr-user"></i> <label>{% trans 'Students' %}</label>
-                                        <span>{{ course.num_members }}</span></li>
+                                        <span class="value-left">{{ course.num_members }}</span></li>
                                     <li><i class="fa-light fa-clock-desk"></i> <label>{% trans 'Duration' %}</label>
-                                        <span>{{ course.duration }}</span></li>
+                                        <span class="value-left">{{ course.duration }}</span></li>
                                     <li><i class="fi fi-sr-stats"></i> <label>{% trans 'Age Range' %}</label>
-                                        <span>{{ course.age_range }}</span>
+                                        <span class="value-left">{{ course.age_range }}</span>
                                     </li>
                                     {% if course.certificate_status %}
                                         <li><i class="fi fi-rs-diploma"></i> <label>{% trans 'Certificate' %}</label>
-                                            <span>{% trans 'Yes' %}</span>
+                                            <span class="value-left">{% trans 'Yes' %}</span>
                                         </li>
                                     {% endif %}
                                 </ul>
@@ -226,15 +220,15 @@
                         <div class="tpcourse mb-40">
                             <div class="tpcourse__thumb p-relative w-img fix">
                                 <a href="{{ course.get_absolute_url }}">
-                                    <img src="{% static 'assets/img/course/course-thumb-01.jpg' %}" alt="course-thumb">
+                                    <img src="{{ course.img.url }}" alt="course-thumb">
                                 </a>
                                 <div class="tpcourse__tag">
-                                    <a href="{{ course.get_absolute_url }}">
+                                    <a href="{% url 'carts:cart_add' course.id %}">
                                         <i class="fi fi-rr-heart"></i>
                                     </a>
                                 </div>
                                 <div class="tpcourse__img-icon">
-                                    <img src="{% static 'assets/img/icon/course-3-avata-1.png' %}" alt="course-avata">
+                                    <img src="{{ course.coach.user.get_photo_url }}" alt="course-avata">
                                 </div>
                             </div>
                             <div class="tpcourse__content-2">
@@ -246,12 +240,9 @@
                                 <div class="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
                                     <ul class="d-flex align-items-center">
                                         <li>
-                                            <img {% if course.type == 'vip_package' %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
-                                                 src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
+                                            <img src="{% static 'assets/img/icon/c-meta-01.png' %}"
                                                  alt="meta-icon">
-                                            <span>{% if course.type == 'vip_package' %}{{ course.num_courses }}
-                                                {% trans 'Courses' %} {% else %}{{ course.num_videos }}
-                                                {% trans 'Classes' %} {% endif %}</span>
+                                            <span>{{ course.num_videos }}{% trans 'Classes' %}</span>
                                         </li>
                                         <li>
                                             <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">

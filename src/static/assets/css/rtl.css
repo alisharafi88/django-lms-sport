@@ -239,3 +239,62 @@
 .rating-gold span {
     margin-right: 5px;
 }
+
+.c-details-thumb {
+    position: relative;
+    display: inline-block;
+}
+
+.course-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.c-details-ava {
+    position: absolute;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.c-details-ava img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 7px;
+}
+
+.c-details-ava span {
+    color: var(--tp-common-white);
+    font-weight: 500;
+    font-family: "Gordita-500";
+}
+
+.c-details-ava span a:hover {
+    color: var(--tp-heading-secondary);
+}
+
+.tpcourse__img-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 70px;
+    height: 70px;
+    border: 2px solid var(--tp-common-white);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tpcourse__img-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+

@@ -31,23 +31,22 @@ class CourseListView(generic.ListView):
         # Queryset for packages
         courses_queryset = Course.objects.filter(status=True).annotate(
             num_members=Count('memberships', filter=Q(memberships__content_type=course_content_type)),
-            num_videos=Count('videos'),
+            num_videos=Count('seasons__videos'),
             product_type=Cast(Value(1), output_field=IntegerField()),  # 1 = course
             num_courses=Value(0, output_field=IntegerField()),
             discounted_price=F('price') - F('discount_amount')
-        ).defer('coach', 'duration')
+        ).defer('coach')
 
         # Queryset for packages
         packages_queryset = Package.objects.filter(status=True).annotate(
             num_members=Count('memberships', filter=Q(memberships__content_type=package_content_type)),
             num_videos=Value(0, output_field=IntegerField()),
             product_type=Cast(Value(2), output_field=IntegerField()),  # 2 = package
-            num_courses=Count('packages'),
+            num_courses=Count('courses'),
             discounted_price=F('price') - F('discount_amount')
         )
 
-        combined_queryset = courses_queryset.union(packages_queryset, all=True, ).order_by('-date_created',
-                                                                                           '-date_modified')
+        combined_queryset = courses_queryset.union(packages_queryset, all=True, ).order_by('-date_created', '-date_modified')
 
         return combined_queryset
 
@@ -107,11 +106,33 @@ class CourseDetailView(generic.DetailView):
                 Prefetch(
                     'comments',
                     queryset=CourseComments.objects.filter(status=True).select_related('user'),
+                ), Prefetch(
+                    'seasons',
+                    CourseSeason.objects.prefetch_related(
+                        'videos',
+                    )
+                ), Prefetch(
+                    'coach__courses',
+                    queryset=Course.objects.filter(
+                        status=True
+                    ).annotate(
+                        num_videos=Count('seasons__videos'),
+                        num_members=Count(
+                            'memberships',
+                            filter=Q(memberships__content_type=ContentType.objects.get_for_model(Course)),
+                            distinct=True
+                        ),
+
+                    )
+
                 )
             ) \
             .annotate(
                 num_videos=Count('seasons__videos'),
-                num_members=Count('memberships'),
+                num_members=Count('memberships', distinct=True),
+            ) \
+            .prefetch_related(
+
             )
 
         return queryset
@@ -143,7 +164,7 @@ class PackageDetailView(generic.DetailView):
                           CourseSeason.objects.prefetch_related(
                                   'videos',
                           )
-                      ),
+                      )
                   )
                 ),
             )
