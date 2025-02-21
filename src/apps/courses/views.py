@@ -1,8 +1,10 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.db.models import Count, Prefetch, Case, CharField, Value, When, IntegerField, Q, ExpressionWrapper, F, Avg
-from django.db.models.functions import Cast, Coalesce
+from django.db.models.functions import Cast, Coalesce, Concat
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
@@ -27,27 +29,51 @@ class CourseListView(generic.ListView):
     def get_queryset(self):
         course_content_type = ContentType.objects.get_for_model(Course)
         package_content_type = ContentType.objects.get_for_model(Package)
+        default_avatar_url = staticfiles_storage.url('assets/img/avatar/default-avatar-icon.jpg')
 
-        # Queryset for packages
+        # Queryset for courses
         courses_queryset = Course.objects.filter(status=True).annotate(
-            num_members=Count('memberships', filter=Q(memberships__content_type=course_content_type)),
+            coach_profile=Case(
+                    When(
+                        coach__user__profile_photo__isnull=False,
+                        then=Concat(
+                            Value(settings.MEDIA_URL),
+                            F("coach__user__profile_photo"),
+                            output_field=CharField(),
+                        ),
+                    ),
+                    default=Value(default_avatar_url),
+                    output_field=CharField(),
+                ),
+            num_members=Count('memberships', filter=Q(memberships__content_type=course_content_type), distinct=True),
             num_videos=Count('seasons__videos'),
-            product_type=Cast(Value(1), output_field=IntegerField()),  # 1 = course
+            product_type=Value(1, output_field=IntegerField()),  # 1 = course
             num_courses=Value(0, output_field=IntegerField()),
-            discounted_price=F('price') - F('discount_amount')
-        ).defer('coach')
+            discounted_price=F('price') - F('discount_amount'),
+            avg_rate=Avg('comments__rate', default=0),
+            num_comment=Count('comments', distinct=True),
+        ).values(
+            'id', 'title', 'coach_profile', 'num_members', 'num_videos', 'product_type',
+            'num_courses', 'discounted_price', 'avg_rate', 'num_comment', 'date_created', 'date_modified', 'img'
+        )
 
         # Queryset for packages
         packages_queryset = Package.objects.filter(status=True).annotate(
-            num_members=Count('memberships', filter=Q(memberships__content_type=package_content_type)),
+            coach_profile=Value(None, output_field=CharField()),
+            num_members=Count('memberships', filter=Q(memberships__content_type=package_content_type), distinct=True),
             num_videos=Value(0, output_field=IntegerField()),
-            product_type=Cast(Value(2), output_field=IntegerField()),  # 2 = package
+            product_type=Value(2, output_field=IntegerField()),  # 2 = package
             num_courses=Count('courses'),
-            discounted_price=F('price') - F('discount_amount')
+            discounted_price=F('price') - F('discount_amount'),
+            avg_rate=Avg('courses__comments__rate', default=0),
+            num_comment=Count('courses__comments', distinct=True),
+        ).values(
+            'id', 'title', 'coach_profile', 'num_members', 'num_videos', 'product_type',
+            'num_courses', 'discounted_price', 'avg_rate', 'num_comment', 'date_created', 'date_modified', 'img'
         )
 
-        combined_queryset = courses_queryset.union(packages_queryset, all=True, ).order_by('-date_created', '-date_modified')
-
+        # Combine the querysets
+        combined_queryset = courses_queryset.union(packages_queryset, all=True).order_by('-date_created', '-date_modified')
         return combined_queryset
 
 

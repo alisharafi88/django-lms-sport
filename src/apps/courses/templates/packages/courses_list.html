@@ -84,21 +84,18 @@
                         <div class="tpcourse mb-40">
                             <div class="tpcourse__thumb p-relative w-img fix">
                                 <a href="{{ product.get_absolute_url }}">
-                                    <img src="{{ product.img.url }}" alt="course-thumb">
+                                    <img src="{% get_media_prefix %}{{ product.img }}" alt="course-thumb">
                                 </a>
                                 <div class="tpcourse__tag">
                                     <a href="{% url 'carts:cart_add' product.id %}">
                                         <i class="fi fi-rr-heart"></i>
                                     </a>
                                 </div>
-{#                                {% if product.product_type == 1 %}#}
-{#                                    <div class="tpcourse__img-icon">#}
-{#                                        <img src="{{ product.coach.user.get_photo_url }}" alt="course-avata">#}
-{#                                    </div>#}
-{#                                {% endif %}#}
-{#                                <div class="tpcourse__img-icon">#}
-{#                                    <img src="{% static 'assets/img/icon/course-3-avata-1.png' %}" alt="course-avata">#}
-{#                                </div>#}
+                                {% if product.product_type == 1 and product.coach_profile %}
+                                    <div class="tpcourse__img-icon">
+                                        <img src="{{ product.coach_profile }}" alt="course-avata">
+                                    </div>
+                                {% endif %}
                             </div>
                             <div class="tpcourse__content-2">
                                 <div class="tpcourse__ava-title mb-15">
@@ -125,13 +122,15 @@
                                 </div>
                                 <div class="tpcourse__rating d-flex align-items-center justify-content-between">
                                     <div class="tpcourse__rating-icon">
-                                        <span>4.7</span>
-                                        <i class="fi fi-ss-star"></i>
-                                        <i class="fi fi-ss-star"></i>
-                                        <i class="fi fi-ss-star"></i>
-                                        <i class="fi fi-ss-star"></i>
-                                        <i class="fi fi-rs-star"></i>
-                                        <p>(125)</p>
+                                        <span>{{ product.avg_rate|default:0 }}</span>
+                                        {% for i in "54321" %}
+                                            {% if product.avg_rate >= i|add:"0" %}
+                                                <i class="fi fi-ss-star"></i>
+                                            {% else %}
+                                                <i class="fi fi-rs-star"></i>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <p>({{ product.num_comment }})</p>
                                     </div>
                                     <div class="tpcourse__pricing">
                                         <h5 class="price-title">{% trans 'Toman' %} {{ product.discounted_price }}</h5>
