@@ -57,13 +57,15 @@
                                 <ul class="d-flex align-items-center">
                                     <li>
                                         <div class="rating-gold d-flex align-items-center">
-                                            <p>4.7</p>
-                                            <i class="fi fi-ss-star"></i>
-                                            <i class="fi fi-ss-star"></i>
-                                            <i class="fi fi-ss-star"></i>
-                                            <i class="fi fi-ss-star"></i>
-                                            <i class="fi fi-rs-star"></i>
-                                            <span>(125)</span>
+                                            <p>{{ course.avg_rate|default:0 }}</p>
+                                            {% for _ in "12345" %}
+                                                {% if course.avg_rate >= forloop.counter %}
+                                                    <i class="fi fi-ss-star"></i>
+                                                {% else %}
+                                                    <i class="fi fi-rs-star"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                            <span>({{ course.comments.count }})</span>
                                         </div>
                                     </li>
                                     <li><img src="{% static 'assets/img/icon/c-meta-01.png' %}" alt="meta-icon">
@@ -166,8 +168,10 @@
                                 <h3 class="pricing-video text-center mb-15">
                                     {% translate 'Toman' %}{{ course.discounted_price }}</h3>
                                 <div class="cd-pricing-btn text-center mb-30">
-                                    <a class="tp-vp-btn" href="{% url 'carts:cart_add' course.pk %}">{% trans 'Add To Cart' %}</a>
-                                    <a class="tp-vp-btn-green" href="{% static 'course-details.html' %}">{% trans 'Enroll Now' %}</a>
+                                    <a class="tp-vp-btn"
+                                       href="{% url 'carts:cart_add' course.pk %}">{% trans 'Add To Cart' %}</a>
+                                    <a class="tp-vp-btn-green"
+                                       href="{% static 'course-details.html' %}">{% trans 'Enroll Now' %}</a>
                                 </div>
                             </div>
                             <div class="cd-information mb-35">
@@ -252,13 +256,15 @@
                                 </div>
                                 <div class="tpcourse__rating d-flex align-items-center justify-content-between">
                                     <div class="tpcourse__rating-icon">
-                                        <span>4.7</span>
-                                        <i class="fi fi-ss-star"></i>
-                                        <i class="fi fi-ss-star"></i>
-                                        <i class="fi fi-ss-star"></i>
-                                        <i class="fi fi-ss-star"></i>
-                                        <i class="fi fi-rs-star"></i>
-                                        <p>(125)</p>
+                                        <span>{{ course.avg_rate|default:0 }}</span>
+                                        {% for i in "54321" %}
+                                            {% if course.avg_rate >= i|add:"0" %}
+                                                <i class="fi fi-ss-star"></i>
+                                            {% else %}
+                                                <i class="fi fi-rs-star"></i>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <p>({{ course.comments.count }})</p>
                                     </div>
                                     <div class="tpcourse__pricing">
                                         <h5 class="price-title">{% trans 'Toman' %} {{ course.discounted_price }}</h5>

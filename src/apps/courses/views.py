@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.contenttypes.models import ContentType
-from django.db.models import Count, Prefetch, Case, CharField, Value, When, IntegerField, Q, ExpressionWrapper, F
+from django.db.models import Count, Prefetch, Case, CharField, Value, When, IntegerField, Q, ExpressionWrapper, F, Avg
 from django.db.models.functions import Cast, Coalesce
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
@@ -122,14 +122,16 @@ class CourseDetailView(generic.DetailView):
                             filter=Q(memberships__content_type=ContentType.objects.get_for_model(Course)),
                             distinct=True
                         ),
+                        avg_rate=Avg('comments__rate', default=0)
 
-                    )
+                    ).prefetch_related('comments')
 
                 )
             ) \
             .annotate(
                 num_videos=Count('seasons__videos'),
                 num_members=Count('memberships', distinct=True),
+                avg_rate=Avg('comments__rate', default=0)
             ) \
             .prefetch_related(
 
