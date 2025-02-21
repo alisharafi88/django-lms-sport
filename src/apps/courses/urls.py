@@ -6,6 +6,7 @@ app_name = 'courses'
 
 urlpatterns = [
     path('', views.CourseListView.as_view(), name='course_list',),
-    path('<int:pk>/<slug:slug>/', views.CourseDetailView.as_view(), name='course_detail',),
+    path('course/<slug:slug>/', views.CourseDetailView.as_view(), name='course_detail'),
+    path('package/<slug:slug>/', views.PackageDetailView.as_view(), name='package_detail'),
     path('<int:pk>/', views.StudentCourseCommentsView.as_view(), name='course_add_comment',),
 ]

@@ -101,7 +101,9 @@ class PackageAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
     fieldsets = (
-        (_('Details'), {'fields': ('title', 'description', 'img', 'slug',)}),
+        (_('Details'), {'fields': ('title', 'description', 'slug')}),
+        (_('Media'), {'fields': ('img', 'introduce_video_url', 'introduce_video_cover')}),
+        (_('Specifications'), {'fields': ('age_range', 'duration',)}),
         (_('Courses'), {'fields': ('courses',)}),
         (_('Price Information'), {'fields': ('price', 'discount_amount',)}),
         (_('Statuses'), {'fields': (

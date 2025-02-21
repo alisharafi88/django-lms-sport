@@ -1,4 +1,4 @@
-/* RTL styles for Persian text */
+
 [lang="fa"] {
     direction: rtl;
     text-align: right;
@@ -12,13 +12,13 @@
     padding-right: 0;
 }
 
-/* Home header menu font size */
+
 [lang="fa"] .main-menu ul > li > a {
     font-size: 18px;
     font-weight: 500;
 }
 
-/* Header white area specific styles */
+
 [lang="fa"] .header_white_area .main-menu ul {
     padding-right: 0;
 }
@@ -170,7 +170,7 @@
   margin-left: 0;
 }
 [lang="fa"] .tp-testi__ava img {
-  order: 1; /* تصویر را به سمت راست منتقل میکند */
+  order: 1;
 }
 
 [lang="fa"] .tp-testi__ava {
@@ -205,4 +205,37 @@
     left: -50px;
     right: auto;
   }
+}
+
+[lang="fa"] .cd-information ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+[lang="fa"] .cd-information ul li i {
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+[lang="fa"] .cd-information ul li label {
+    margin-right: 5px;
+    text-align: left;
+}
+
+[lang="fa"] .cd-information ul li .value-left {
+    margin-left: auto;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.tpcourse__meta li img {
+    margin-left: 8px;
+}
+
+.rating-gold p {
+    margin-left: 5px;
+}
+.rating-gold span {
+    margin-right: 5px;
 }

@@ -225,11 +225,11 @@
                     <div class="col-xl-4 col-lg-6 col-md-6">
                         <div class="tpcourse mb-40">
                             <div class="tpcourse__thumb p-relative w-img fix">
-                                <a href="{% url 'courses:course_detail' course.pk course.slug %}">
+                                <a href="{{ course.get_absolute_url }}">
                                     <img src="{% static 'assets/img/course/course-thumb-01.jpg' %}" alt="course-thumb">
                                 </a>
                                 <div class="tpcourse__tag">
-                                    <a href="{% url 'courses:course_detail' course.pk course.slug %}">
+                                    <a href="{{ course.get_absolute_url }}">
                                         <i class="fi fi-rr-heart"></i>
                                     </a>
                                 </div>
@@ -240,7 +240,7 @@
                             <div class="tpcourse__content-2">
                                 <div class="tpcourse__ava-title mb-15">
                                     <h4 class="tpcourse__title tp-cours-title-color">
-                                        <a href="{% url 'courses:course_detail' course.pk course.slug %}">{{ course.title }}</a>
+                                        <a href="{{ course.get_absolute_url }}">{{ course.title }}</a>
                                     </h4>
                                 </div>
                                 <div class="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">

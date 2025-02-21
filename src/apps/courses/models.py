@@ -12,6 +12,10 @@ def upload_introduce_video_path(instance, filename):
     return f'course/introduce/videos/{instance.slug}/{filename}'
 
 
+def upload_introduce_video_cover_path(instance, filename):
+    return f'course/introduce/videos/covers/{instance.slug}/{filename}'
+
+
 def upload_introduce_image_path(instance, filename):
     return f'course/introduce/image/{instance.slug}/{filename}'
 
@@ -47,10 +51,13 @@ class Product(models.Model):
         help_text=_('Discount amount for this product.'),
     )
 
-    img = models.ImageField(_("Main img"), upload_to=upload_introduce_image_path, )
-    introduce_video = models.FileField(_('Introduce Video'), upload_to=upload_introduce_video_path, blank=True, null=True)
+    img = models.ImageField(_("Main img"), upload_to=upload_introduce_image_path)
 
-    age_range = models.CharField(_('Age range'), max_length=50, help_text=_('Age range for users.'))
+    introduce_video_cover = models.ImageField(_('Cover'), help_text=_('Cover of introduce video'), upload_to=upload_introduce_video_cover_path, blank=True, null=True)
+    introduce_video_url = models.URLField(_('Introduce Video URL'), blank=True, null=True)
+
+    age_range = models.CharField(_('Age range'), max_length=12, help_text=_('Age range for users.'))
+    duration = models.CharField(_('Duration'), max_length=10, help_text=_('How long it takes to complete this course?.'))
 
     date_created = models.DateTimeField(_('Date created at'), auto_now_add=True)
     date_modified = models.DateTimeField(_('Date modified at'), auto_now=True)
@@ -82,12 +89,10 @@ class Course(Product):
         verbose_name=_('Coach'),
     )
 
-    duration = models.CharField(_('Duration'), max_length=10, help_text=_('How long it takes to complete this course?.'))
-
     memberships = GenericRelation('CourseMembership', related_query_name='course')
 
     def get_absolute_url(self):
-        return reverse('courses:course_detail', kwargs={'pk': self.pk, 'slug': self.slug})
+        return reverse('courses:course_detail', kwargs={'slug': self.slug})
 
 
 class Package(Product):
@@ -95,8 +100,8 @@ class Package(Product):
 
     memberships = GenericRelation('CourseMembership', related_query_name='package')
 
-    # def get_absolute_url(self):
-    #     return reverse('courses:package_detail', kwargs={'pk': self.pk, 'slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('courses:package_detail', kwargs={'slug': self.slug})
 
 
 class CourseSeason(models.Model):

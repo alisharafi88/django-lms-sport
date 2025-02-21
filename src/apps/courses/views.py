@@ -14,12 +14,13 @@ from django.views.decorators.csrf import csrf_exempt
 from itertools import chain
 
 from .forms import CourseCommentForm
-from .models import Course, CourseComments, CourseMembership, Package
+from .models import Course, CourseComments, CourseMembership, Package, CourseSeason, CourseVideo
+from ..instructors.models import Instructor
 
 
 class CourseListView(generic.ListView):
     model = Course
-    template_name = 'courses/courses_list.html'
+    template_name = 'packages/courses_list.html'
     paginate_by = 3
     context_object_name = 'products'
 
@@ -27,7 +28,7 @@ class CourseListView(generic.ListView):
         course_content_type = ContentType.objects.get_for_model(Course)
         package_content_type = ContentType.objects.get_for_model(Package)
 
-        # Queryset for courses
+        # Queryset for packages
         courses_queryset = Course.objects.filter(status=True).annotate(
             num_members=Count('memberships', filter=Q(memberships__content_type=course_content_type)),
             num_videos=Count('videos'),
@@ -41,50 +42,118 @@ class CourseListView(generic.ListView):
             num_members=Count('memberships', filter=Q(memberships__content_type=package_content_type)),
             num_videos=Value(0, output_field=IntegerField()),
             product_type=Cast(Value(2), output_field=IntegerField()),  # 2 = package
-            num_courses=Count('courses'),
+            num_courses=Count('packages'),
             discounted_price=F('price') - F('discount_amount')
         )
 
-        # Combine the two querysets using union
-        combined_queryset = courses_queryset.union(packages_queryset, all=True,).order_by('-date_created', '-date_modified')
+        combined_queryset = courses_queryset.union(packages_queryset, all=True, ).order_by('-date_created',
+                                                                                           '-date_modified')
 
         return combined_queryset
 
 
+# class ProductDetailView(generic.DetailView):
+#     model = Course
+#     template_name = 'packages/course_detail.html'
+#     context_object_name = 'course'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(ProductDetailView, self).get_context_data(**kwargs)
+#         context['comment_form'] = CourseCommentForm()
+#         return context
+#
+#     def get_queryset(self, queryset=None):
+#         course = get_object_or_404(Course, pk=self.kwargs['pk'], slug=self.kwargs['slug'])
+#
+#         return Course.objects.filter(pk=course.pk) \
+#             .select_related('coach__user', ) \
+#             .prefetch_related(
+#             Prefetch(
+#                 'comments',
+#                 queryset=CourseComments.objects.filter(status=True).select_related('user')
+#             )
+#         ) \
+#             .annotate(
+#             # num_videos=Count('videos'),
+#             num_members=Count('memberships'),
+#         )
+#
+#     def post(self, request, *args, **kwargs):
+#         coment_form = CourseCommentForm(request.POST)
+#         if coment_form.is_valid():
+#             new_comment = coment_form.save(commit=False)
+#             new_comment.course = self.get_object()
+#             new_comment.user = self.request.user
+#             new_comment.save()
+#             return redirect('packages:course_detail', pk=self.kwargs['pk'], slug=self.kwargs['slug'])
+
+
 class CourseDetailView(generic.DetailView):
     model = Course
-    template_name = 'courses/course_detail.html'
+    template_name = 'packages/course_detail.html'
     context_object_name = 'course'
 
-    def get_context_data(self, **kwargs):
-        context = super(CourseDetailView, self).get_context_data(**kwargs)
-        context['comment_form'] = CourseCommentForm()
-        return context
+    def get_queryset(self):
+        queryset = super().get_queryset()
 
-    def get_queryset(self, queryset=None):
-        course = get_object_or_404(Course, pk=self.kwargs['pk'], slug=self.kwargs['slug'])
-
-        return Course.objects.filter(pk=course.pk) \
-            .select_related('coach__user', ) \
+        queryset = queryset \
+            .filter(
+                status=True,
+            ) \
+            .select_related(
+                'coach__user',
+            ) \
             .prefetch_related(
-            Prefetch(
-                'comments',
-                queryset=CourseComments.objects.filter(status=True).select_related('user')
-            )
-        ) \
+                Prefetch(
+                    'comments',
+                    queryset=CourseComments.objects.filter(status=True).select_related('user'),
+                )
+            ) \
             .annotate(
-            # num_videos=Count('videos'),
-            num_members=Count('memberships'),
-        )
+                num_videos=Count('seasons__videos'),
+                num_members=Count('memberships'),
+            )
 
-    def post(self, request, *args, **kwargs):
-        coment_form = CourseCommentForm(request.POST)
-        if coment_form.is_valid():
-            new_comment = coment_form.save(commit=False)
-            new_comment.course = self.get_object()
-            new_comment.user = self.request.user
-            new_comment.save()
-            return redirect('courses:course_detail', pk=self.kwargs['pk'], slug=self.kwargs['slug'])
+        return queryset
+
+
+class PackageDetailView(generic.DetailView):
+    model = Package
+    template_name = 'packages/package_detail.html'
+    context_object_name = 'package'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        queryset = queryset \
+            .filter(
+                status=True,
+            ) \
+            .annotate(
+                num_courses=Count('courses', distinct=True),
+                num_members=Count('memberships'),
+                num_videos=Count('courses__seasons__videos')
+            ) \
+            .prefetch_related(
+                Prefetch(
+                  'courses',
+                  queryset=Course.objects.prefetch_related(
+                      Prefetch(
+                          'seasons',
+                          CourseSeason.objects.prefetch_related(
+                                  'videos',
+                          )
+                      ),
+                  )
+                ),
+            )
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['coaches'] = Instructor.objects.filter(courses__in=self.object.courses.all()).select_related('user').distinct()
+        return context
 
 
 class StudentCourseCommentsView(LoginRequiredMixin, View):
