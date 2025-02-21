@@ -51,42 +51,6 @@ class CourseListView(generic.ListView):
         return combined_queryset
 
 
-# class ProductDetailView(generic.DetailView):
-#     model = Course
-#     template_name = 'packages/course_detail.html'
-#     context_object_name = 'course'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(ProductDetailView, self).get_context_data(**kwargs)
-#         context['comment_form'] = CourseCommentForm()
-#         return context
-#
-#     def get_queryset(self, queryset=None):
-#         course = get_object_or_404(Course, pk=self.kwargs['pk'], slug=self.kwargs['slug'])
-#
-#         return Course.objects.filter(pk=course.pk) \
-#             .select_related('coach__user', ) \
-#             .prefetch_related(
-#             Prefetch(
-#                 'comments',
-#                 queryset=CourseComments.objects.filter(status=True).select_related('user')
-#             )
-#         ) \
-#             .annotate(
-#             # num_videos=Count('videos'),
-#             num_members=Count('memberships'),
-#         )
-#
-#     def post(self, request, *args, **kwargs):
-#         coment_form = CourseCommentForm(request.POST)
-#         if coment_form.is_valid():
-#             new_comment = coment_form.save(commit=False)
-#             new_comment.course = self.get_object()
-#             new_comment.user = self.request.user
-#             new_comment.save()
-#             return redirect('packages:course_detail', pk=self.kwargs['pk'], slug=self.kwargs['slug'])
-
-
 class CourseDetailView(generic.DetailView):
     model = Course
     template_name = 'packages/course_detail.html'
