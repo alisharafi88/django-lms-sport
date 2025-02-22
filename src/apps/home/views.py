@@ -2,14 +2,15 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 
-from .queries import get_top_products, get_featured_instructors, get_latest_blogs
+from .queries import get_featured_instructors, get_latest_blogs
+from ..courses.queries import get_combined_course_package_queryset
 
 
 class HomeView(View):
     template_name = 'home/home.html'
 
     def get(self, request):
-        top_courses_query = get_top_products()
+        top_courses_query = get_combined_course_package_queryset()
         featured_instructors_query = get_featured_instructors()
         latest_blogs_query = get_latest_blogs()
         return render(

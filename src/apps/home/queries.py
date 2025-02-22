@@ -6,33 +6,6 @@ from apps.instructors.models import Instructor
 from apps.blogs.models import Blog
 
 
-def get_top_products():
-    course_content_type = ContentType.objects.get_for_model(Course)
-    package_content_type = ContentType.objects.get_for_model(Package)
-
-    # Queryset for courses
-    courses_queryset = Course.objects.filter(status=True).annotate(
-        num_members=Count('memberships', filter=Q(memberships__content_type=course_content_type)),
-        num_videos=Count('seasons__videos'),
-        product_type=Value(1, output_field=IntegerField()),  # 1 = course
-        num_courses=Value(0, output_field=IntegerField()),
-        discounted_price=F('price') - F('discount_amount')
-    ).defer('coach')
-
-    # Queryset for packages
-    packages_queryset = Package.objects.filter(status=True).annotate(
-        num_members=Count('memberships', filter=Q(memberships__content_type=package_content_type)),
-        num_videos=Value(0, output_field=IntegerField()),
-        product_type=Value(2, output_field=IntegerField()),  # 2 = package
-        num_courses=Count('courses'),
-        discounted_price=F('price') - F('discount_amount')
-    )
-
-    # Combine the two querysets using union
-    combined_queryset = courses_queryset.union(packages_queryset, all=True).order_by('-date_created', '-date_modified')[:3]
-    return combined_queryset
-
-
 def get_featured_instructors():
     return Instructor.objects.select_related(
         'user'
