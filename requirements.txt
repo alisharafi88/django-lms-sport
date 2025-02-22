@@ -4,6 +4,7 @@ backports.zoneinfo==0.2.1
 certifi==2024.8.30
 charset-normalizer==3.3.2
 Django==4.2.15
+django-cleanup==9.0.0
 django-admin-confirm==1.0.0
 django-ckeditor-5==0.2.13
 django-debug-toolbar==4.4.6

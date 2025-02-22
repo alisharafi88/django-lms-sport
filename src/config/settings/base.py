@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django_ckeditor_5',
     'django_seed',
     'widget_tweaks',
+    'django_cleanup.apps.CleanupConfig',
 
     'apps.home.apps.HomeConfig',
     'apps.accounts.apps.AccountsConfig',
