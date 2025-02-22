@@ -100,15 +100,26 @@
         <section class="cart-area pt-100 pb-100">
             <div class="container_content">
                 <div class="course-items">
-                    {% for course in courses %}
-                        <div class="element" data-course-id="{{ course.id }}" data-course-title="{{ course.title }}">
-                            <img class="image-square" src="{{ course.img.url }}" alt="{{ course.title }}">
-                            <a class="title" href="{{ course.get_absolute_url }}">
-                                <h2 class="title">{{ course.title }}</h2>
+                    {% if courses %}
+                        {% for course in courses %}
+                            <div class="element" data-course-id="{{ course.id }}"
+                                 data-course-title="{{ course.title }}">
+                                <img class="image-square" src="{{ course.img.url }}" alt="{{ course.title }}">
+                                <a class="title" href="{{ course.get_absolute_url }}">
+                                    <h2 class="title">{{ course.title }}</h2>
+                                </a>
+                                <button class="sort-button"
+                                        onclick="openModal(this)">{% trans 'Send Comment' %}</button>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="no-courses-message">
+                            <p>{% trans "You haven't purchased any courses yet." %}</p>
+                            <a href="{% url 'courses:course_list' %}" class="tp-btn">
+                                {% trans 'Browse Courses' %}
                             </a>
-                            <button class="sort-button" onclick="openModal(this)">{% trans 'Send Comment' %}</button>
                         </div>
-                    {% endfor %}
+                    {% endif %}
                 </div>
             </div>
 
@@ -186,7 +197,7 @@
                                     <thead>
                                     <tr>
                                         <th class="product-thumbnail">{% trans 'Images' %}</th>
-                                        <th class="cart-product-name">{% trans 'Courses' %}</th>
+                                        <th class="cart-product-name">{% trans 'Products' %}</th>
                                         <th class="product-price">{% trans 'Unit Price' %}</th>
                                         <th class="product-subtotal">{% trans 'Total' %}</th>
                                         <th class="product-remove">{% trans 'Remove' %}</th>
@@ -195,40 +206,36 @@
                                     <tbody>
                                     {% for item in carts %}
                                         <tr>
-                                            <td class="product-thumbnail"><a
-                                                    href="{% url 'courses:course_detail' item.course_obj.id item.course_obj.slug %}"><img
-                                                    src="{% static 'assets/img/course/course-thumb-01.jpg' %}"
-                                                    alt=""></a>
+                                            <td class="product-thumbnail">
+                                                <a href="{% if item.product_obj.type == 'course' %}{% url 'courses:course_detail'  item.product_obj.slug %}{% else %}{% url 'courses:package_detail' item.product_obj.slug %}{% endif %}">
+                                                    <img src="{{ item.product_obj.img.url }}"
+                                                         alt="{{ item.product_obj.title }}">
+                                                </a>
                                             </td>
-                                            <td class="product-name"><a
-                                                    href="{% url 'courses:course_detail' item.course_obj.id item.course_obj.slug %}">{{ item.course_obj.title }}</a>
+                                            <td class="product-name">
+                                                <a href="{% if item.product_obj.type == 'course' %}{% url 'courses:course_detail'  item.product_obj.slug %}{% else %}{% url 'courses:package_detail' item.product_obj.slug %}{% endif %}">
+                                                    {{ item.product_obj.title }}
+                                                </a>
                                             </td>
-                                            <td class="product-price"><span
-                                                    class="amount">{% trans 'Toman' %}{{ item.course_obj.price }}</span>
+                                            <td class="product-price">
+                                                <span class="amount">{% trans 'Toman' %}{{ item.product_obj.price }}</span>
                                             </td>
-                                            <td class="product-subtotal"><span
-                                                    class="amount">{% trans 'Toman' %}{{ item.item_total_price }}</span>
+                                            <td class="product-subtotal">
+                                                <span class="amount">{% trans 'Toman' %}{{ item.item_total_price }}</span>
                                             </td>
-                                            <td class="product-remove"><a
-                                                    href="{% url 'carts:cart_remove' item.course_obj.id %}"><i
-                                                    class="fa fa-times"></i></a></td>
+                                            <td class="product-remove">
+                                                <a href="{% url 'carts:cart_remove' item.product_obj.id item.type %}">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     {% endfor %}
-
                                     </tbody>
                                 </table>
-
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="coupon-all">
-                                        <div class="coupon">
-                                            <input id="coupon_code" class="input-text" name="coupon_code" value=""
-                                                   placeholder="Coupon code" type="text">
-                                            <button class="tp-btn" name="apply_coupon" type="submit">Apply
-                                                coupon
-                                            </button>
-                                        </div>
                                         <div class="coupon2">
                                             <a href="{% url 'carts:cart_clear' %}">
                                                 <button class="tp-btn" type="submit">{% trans 'Clear cart' %}
@@ -246,12 +253,13 @@
                                         <h2>Cart totals</h2>
                                         <ul class="mb-20">
                                             <li>{% trans 'Total price' %}
-                                                <span>{% trans 'Toman' %}{{ total_price }}</span></li>
+                                                <span>{% trans 'Toman' %}{{ total_price }}</span>
+                                            </li>
                                             <li>{% trans 'Total price after discount' %}
                                                 <span>{% trans 'Toman' %}{{ total_discounted_price }}</span></li>
                                         </ul>
                                         <a class="tp-btn"
-                                           href="{% url 'orders:order_create' %}">{% trans 'Proceed to checkout' %}% </a>
+                                           href="{% url 'orders:order_create' %}">{% trans 'Proceed to checkout' %}</a>
                                     </div>
                                 </div>
                             </div>
