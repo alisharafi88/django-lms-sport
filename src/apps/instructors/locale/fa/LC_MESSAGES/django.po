@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-08 00:23+0330\n"
+"POT-Creation-Date: 2025-02-23 10:00+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,53 +70,53 @@ msgstr "شناسه یوتیوب خود را برای نمایش در پروفا�
 msgid "Enter your Instagram ID to display on your profile."
 msgstr "شناسه اینستاگرام خود را برای نمایش در پروفایل وارد کنید."
 
-#: src/apps/instructors/models.py:20
+#: src/apps/instructors/models.py:18
 msgid "is master"
 msgstr "آیا استاد است"
 
-#: src/apps/instructors/models.py:20
+#: src/apps/instructors/models.py:18
 msgid "Check this box to set master instructor and display social media links."
 msgstr ""
 "این کادر را علامت بزنید تا مدرس اصلی شود و لینک‌های شبکه‌های اجتماعی نمایش "
 "داده شود."
 
-#: src/apps/instructors/models.py:21
+#: src/apps/instructors/models.py:19
 msgid "is active"
 msgstr "آیا فعال است"
 
-#: src/apps/instructors/models.py:21
+#: src/apps/instructors/models.py:19
 msgid "Check this box to set this instructor as active."
 msgstr "این کادر را علامت بزنید تا این مدرس به عنوان فعال تنظیم شود."
 
-#: src/apps/instructors/models.py:48
+#: src/apps/instructors/models.py:46
 msgid "instructor widjet"
 msgstr "ویجت مدرس"
 
-#: src/apps/instructors/models.py:51
+#: src/apps/instructors/models.py:49
 msgid "widjet"
 msgstr "ویجت"
 
-#: src/apps/instructors/models.py:51
+#: src/apps/instructors/models.py:49
 msgid "short Widjet"
 msgstr "ویجت کوتاه"
 
-#: src/apps/instructors/models.py:61
+#: src/apps/instructors/models.py:59
 msgid "instructor"
 msgstr "مدرس"
 
-#: src/apps/instructors/models.py:63
+#: src/apps/instructors/models.py:61
 msgid "add your honor here, with one related photo"
 msgstr "افتخارات خود را اینجا اضافه کنید، با یک عکس مرتبط"
 
-#: src/apps/instructors/models.py:65
+#: src/apps/instructors/models.py:63
 msgid "honor"
 msgstr "افتخار"
 
-#: src/apps/instructors/models.py:66
+#: src/apps/instructors/models.py:64
 msgid "photo"
 msgstr "عکس"
 
-#: src/apps/instructors/models.py:68
+#: src/apps/instructors/models.py:66
 msgid "status"
 msgstr "وضعیت"
 
@@ -151,7 +151,7 @@ msgstr "سال‌ها"
 
 #: src/apps/instructors/templates/instructors/instructor_detail.html:83
 msgid "Biography"
-msgstr "زندگی‌نامه"
+msgstr "بیوگرافی"
 
 #: src/apps/instructors/templates/instructors/instructor_detail.html:118
 msgid "Honors"

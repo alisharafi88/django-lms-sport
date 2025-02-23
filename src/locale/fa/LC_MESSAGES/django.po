@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-08 00:23+0330\n"
+"POT-Creation-Date: 2025-02-23 10:16+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/config/settings/development.py:338
+#: src/config/settings/development.py:339
+msgid "Site Management"
+msgstr ""
+
+#: src/config/settings/development.py:340 src/templates/admin/base_site.html:87
+msgid "Admin Panel"
+msgstr ""
+
+#: src/config/settings/development.py:341
+msgid "Welcome to the Admin Panel"
+msgstr ""
+
+#: src/config/settings/development.py:344
+#, fuzzy
+#| msgid "Home"
+msgctxt "Navigation"
+msgid "Home"
+msgstr "صفحه‌اصلی"
+
+#: src/config/settings/development.py:345
+msgctxt "Action"
+msgid "Logout"
+msgstr ""
 
 #: src/templates/inc/header.html:24
 msgid "Search Now"
@@ -43,29 +68,33 @@ msgid "Blogs"
 msgstr "وبلاگ‌ها"
 
 #: src/templates/inc/header.html:51
+msgid "BMI"
+msgstr ""
+
+#: src/templates/inc/header.html:54
 msgid "Pages"
 msgstr "صفحات"
 
-#: src/templates/inc/header.html:53
+#: src/templates/inc/header.html:56
 msgid "About Us"
 msgstr "درباره‌‌ما"
 
-#: src/templates/inc/header.html:54
+#: src/templates/inc/header.html:57
 msgid "Contact Us"
 msgstr "تماس‌با‌ما"
 
-#: src/templates/inc/header.html:55
+#: src/templates/inc/header.html:58
 msgid "Check Out"
 msgstr "تسویه‌حساب"
 
-#: src/templates/inc/header.html:56
+#: src/templates/inc/header.html:59
 msgid "FAQ"
 msgstr "سوالات متداول"
 
-#: src/templates/inc/header.html:57
+#: src/templates/inc/header.html:60
 msgid "Register"
 msgstr "ثبت نام"
 
-#: src/templates/inc/header.html:58
+#: src/templates/inc/header.html:61
 msgid "Sign In"
 msgstr "ورود"

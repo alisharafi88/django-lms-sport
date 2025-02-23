@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-08 00:23+0330\n"
+"POT-Creation-Date: 2025-02-23 10:00+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -144,18 +144,15 @@ msgstr "پست‌های اخیر"
 msgid "Blog List"
 msgstr "لیست وبلاگ‌ها"
 
-#: src/apps/blogs/templates/blogs/blog_list.html:42
-msgid "Expert Trainer"
-msgstr "مدرس متخصص"
-
-#: src/apps/blogs/templates/blogs/blog_list.html:52
-msgid "Get Certificate"
-msgstr "گواهی دریافت کنید"
-
-#: src/apps/blogs/templates/blogs/blog_list.html:62
-msgid "Life Time Access"
-msgstr "دسترسی مادام العمر"
-
-#: src/apps/blogs/templates/blogs/blog_list.html:79
+#: src/apps/blogs/templates/blogs/blog_list.html:37
 msgid "Latest Blogs"
 msgstr "آخرین وبلاگ‌ها"
+
+#~ msgid "Expert Trainer"
+#~ msgstr "مدرس متخصص"
+
+#~ msgid "Get Certificate"
+#~ msgstr "گواهی دریافت کنید"
+
+#~ msgid "Life Time Access"
+#~ msgstr "دسترسی مادام العمر"

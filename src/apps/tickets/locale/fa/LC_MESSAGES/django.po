@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-23 10:16+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/apps/tickets/admin.py:12 src/apps/tickets/models.py:83
+msgid "Reply"
+msgstr "پاسخ"
+
+#: src/apps/tickets/admin.py:13 src/apps/tickets/models.py:84
+msgid "Replies"
+msgstr "پاسخ‌ها"
+
+#: src/apps/tickets/admin.py:27
+msgid "Mark selected tickets as Resolved"
+msgstr "تیکت‌های انتخاب شده را به عنوان حل شده علامت‌گذاری کنید"
+
+#: src/apps/tickets/admin.py:32
+#, python-brace-format
+msgid "{update_count} of tickets status has been updated to pending."
+msgstr "{update_count} از وضعیت تیکت‌ها به حالت معلق تغییر یافته است."
+
+#: src/apps/tickets/admin.py:36
+msgid "Mark selected tickets as Closed"
+msgstr "تیکت‌های انتخاب شده را به عنوان بسته شده علامت‌گذاری کنید"
+
+#: src/apps/tickets/admin.py:41
+#, python-brace-format
+msgid "{update_count} of tickets status has been updated to closed."
+msgstr "{update_count} از وضعیت تیکت‌ها به حالت بسته شده تغییر یافته است."
+
+#: src/apps/tickets/models.py:9
+msgid "Pending"
+msgstr "معلق"
+
+#: src/apps/tickets/models.py:10
+msgid "Resolved"
+msgstr "حل شده"
+
+#: src/apps/tickets/models.py:11
+msgid "Closed"
+msgstr "بسته شده"
+
+#: src/apps/tickets/models.py:19
+msgid "User "
+msgstr "کاربر"
+
+#: src/apps/tickets/models.py:23
+msgid "Subject"
+msgstr "موضوع"
+
+#: src/apps/tickets/models.py:28 src/apps/tickets/models.py:71
+msgid "Message"
+msgstr "پیام"
+
+#: src/apps/tickets/models.py:32
+msgid "Status"
+msgstr "وضعیت"
+
+#: src/apps/tickets/models.py:39 src/apps/tickets/models.py:75
+msgid "Date Created"
+msgstr "تاریخ ایجاد"
+
+#: src/apps/tickets/models.py:44
+msgid "Date Updated"
+msgstr "تاریخ به‌روزرسانی"
+
+#: src/apps/tickets/models.py:52 src/apps/tickets/models.py:67
+msgid "Ticket"
+msgstr "تیکت"
+
+#: src/apps/tickets/models.py:53
+msgid "Tickets"
+msgstr "تیکت‌ها"
