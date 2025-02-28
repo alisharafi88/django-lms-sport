@@ -8,25 +8,27 @@ import requests
 import os
 import time
 
-fake = Faker('fa_IR')  
+fake = Faker('fa_IR')
+
 
 def get_random_image(category='education'):
     """Return a placeholder image from Lorem Picsum with retries"""
     width, height = 800, 600
     max_retries = 3
-    
+
     for _ in range(max_retries):
-        image_id = random.randint(1, 1000) 
+        image_id = random.randint(1, 1000)
         image_url = f'https://picsum.photos/id/{image_id}/{width}/{height}'
-        
+
         try:
             response = requests.get(image_url, timeout=10)
             if response.status_code == 200:
                 return ContentFile(response.content, name=f'image_{fake.uuid4()}.jpg')
         except (requests.RequestException, TimeoutError):
             continue
-    
+
     return None
+
 
 def generate_instructor_data():
     return {
@@ -35,10 +37,10 @@ def generate_instructor_data():
         'telegram_id': fake.user_name(),
         'youtube_id': fake.user_name(),
         'instagram_id': fake.user_name(),
-        'img': get_random_image('people'),
         'is_master': random.choice([True, False]),
         'is_active': True,
     }
+
 
 def generate_unique_slug(model_class, base_slug):
     """Generate a unique slug by appending numbers if necessary"""
@@ -49,11 +51,11 @@ def generate_unique_slug(model_class, base_slug):
         counter += 1
     return slug
 
+
 def generate_course_data():
     price = random.randint(100000, 1000000)
     max_discount = min(price * 0.5, 99.99)
-    
- 
+
     course_titles = [
         "آموزش تکنیک‌های دریبل فوتبال",
         "دوره جامع دروازه‌بانی",
@@ -66,15 +68,15 @@ def generate_course_data():
         "تاکتیک‌های تیمی پیشرفته",
         "روانشناسی در فوتبال"
     ]
-    
+
     title = random.choice(course_titles) + f" (سطح {random.randint(1, 3)})"
-    
+
     return {
         'title': title,
         'slug': generate_unique_slug(apps.get_model('courses.Course'), fake.slug()),
-        'description': "این یک دوره آموزشی جامع است که به شما کمک می‌کند مهارت‌های لازم را کسب کنید.",
-        'age_range': f'{random.randint(10,18)}-{random.randint(19,50)}',
-        'duration': f'{random.randint(1,12)} ماه',
+        'description': ' '.join(fake.sentences(nb=3)),
+        'age_range': f'{random.randint(10, 18)}-{random.randint(19, 50)}',
+        'duration': f'{random.randint(1, 12)} ماه',
         'img': get_random_image('education'),
         'price': price,
         'discount_amount': round(random.uniform(0, max_discount), 2),
@@ -84,6 +86,7 @@ def generate_course_data():
         'extra_movments_status': random.choice([True, False]),
         'injury_prevention_status': random.choice([True, False]),
     }
+
 
 def generate_blog_data():
     blog_titles = [
@@ -96,17 +99,18 @@ def generate_blog_data():
         "تمرینات اختصاصی فوتبال",
         "اخبار نقل و انتقالات فوتبال"
     ]
-    
+
     title = random.choice(blog_titles)
-    
+
     return {
         'title': title,
         'slug': generate_unique_slug(apps.get_model('blogs.Blog'), fake.slug()),
-        'description': "این مقاله به بررسی جنبه‌های مختلف برنامه‌نویسی و تکنولوژی می‌پردازد.",
+        'description': ' '.join(fake.sentences(nb=5)),
         'img': get_random_image('technology'),
         'status': random.choice(['p', 'r']),
         'enable_comments': True,
     }
+
 
 def generate_faq_data():
     questions = [
@@ -119,9 +123,9 @@ def generate_faq_data():
         "پشتیبانی به چه صورت انجام می‌شود؟",
         "آیا دوره‌ها آفلاین قابل مشاهده هستند؟"
     ]
-    
+
     question = random.choice(questions)
-    
+
     return {
         'question': question,
         'slug': generate_unique_slug(apps.get_model('faq.QuestionAnswer'), fake.slug()),
@@ -129,14 +133,17 @@ def generate_faq_data():
         'status': True,
     }
 
+
 list_of_models = {
     'accounts.CustomUser': {
-        'count': 20,
+        'count': 200,
         'fields': {
             'first_name': lambda x: fake.first_name(),
             'last_name': lambda x: fake.last_name(),
             'email': lambda x: fake.email(),
+            'profile_photo': get_random_image('people'),
             'phone_number': lambda x: f'+98{fake.numerify(text="##########")}',
+            'bio': ' '.join(fake.sentences(nb=1))
         }
     },
     'instructors.Instructor': {
@@ -157,6 +164,7 @@ list_of_models = {
     }
 }
 
+
 class Command(BaseCommand):
     help = 'Seed database with sample data'
 
@@ -168,7 +176,7 @@ class Command(BaseCommand):
             os.path.join(settings.MEDIA_ROOT, 'courses'),
             os.path.join(settings.MEDIA_ROOT, 'blogs'),
         ]
-        
+
         for directory in media_dirs:
             if not os.path.exists(directory):
                 os.makedirs(directory, exist_ok=True)
@@ -178,11 +186,11 @@ class Command(BaseCommand):
         """Wait for database to be available"""
         self.stdout.write('Waiting for database...')
         max_retries = 10
-        retry_interval = 3 
-        
+        retry_interval = 3
+
         for attempt in range(max_retries):
             try:
-               
+
                 apps.get_model('accounts.CustomUser').objects.first()
                 self.stdout.write(self.style.SUCCESS('Database available!'))
                 return True
@@ -191,16 +199,16 @@ class Command(BaseCommand):
                     self.stdout.write(f'Database unavailable, retrying in {retry_interval} seconds...')
                     time.sleep(retry_interval)
                 continue
-        
+
         raise Exception('Could not connect to database')
 
     def handle(self, *args, **options):
         try:
-            
+
             self.wait_for_db()
-            
+
             self.ensure_media_dirs()
-            
+
             # Clear existing data
             self.stdout.write("Deleting old data...")
             for model_name in reversed(list_of_models.keys()):
@@ -212,7 +220,6 @@ class Command(BaseCommand):
                 except Exception as e:
                     self.stdout.write(self.style.WARNING(f'Error deleting {model_name}: {str(e)}'))
 
-       
             try:
                 User = apps.get_model('accounts.CustomUser')
                 user_config = list_of_models['accounts.CustomUser']
@@ -229,7 +236,6 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.ERROR(f'Error creating users: {str(e)}'))
                 return
 
-           
             instructor_config = list_of_models['instructors.Instructor']
             Instructor = apps.get_model('instructors.Instructor')
             self.stdout.write(f'Creating {instructor_config["count"]} instructors...')
@@ -243,18 +249,16 @@ class Command(BaseCommand):
                 created_instructors.append(instructor)
             self.stdout.write(self.style.SUCCESS(f'Created {len(created_instructors)} instructors'))
 
-           
             Course = apps.get_model('courses.Course')
             course_config = list_of_models['courses.Course']
             self.stdout.write(f'Creating {course_config["count"]} courses...')
             for _ in range(course_config['count']):
                 Course.objects.create(
-                    instructor=random.choice(created_instructors),
+                    coach=random.choice(created_instructors),
                     **course_config['fields']()
                 )
             self.stdout.write(self.style.SUCCESS(f'Created {course_config["count"]} courses'))
 
-           
             Blog = apps.get_model('blogs.Blog')
             blog_config = list_of_models['blogs.Blog']
             self.stdout.write(f'Creating {blog_config["count"]} blogs...')
@@ -263,9 +267,7 @@ class Command(BaseCommand):
                     author=random.choice(created_instructors),
                     **blog_config['fields']()
                 )
-            
 
-            
             FAQ = apps.get_model('faq.QuestionAnswer')
             faq_config = list_of_models['faq.QuestionAnswer']
             self.stdout.write(f'Creating {faq_config["count"]} FAQs...')
@@ -274,6 +276,6 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(f'Created {faq_config["count"]} FAQs'))
 
             self.stdout.write(self.style.SUCCESS('Successfully seeded database'))
-            
+
         except Exception as e:
             self.stdout.write(self.style.ERROR(f'Error seeding database: {str(e)}'))

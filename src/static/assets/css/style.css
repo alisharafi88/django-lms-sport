@@ -416,7 +416,7 @@ img {
   display: inline-block;
 }
 .basic-pagination ul li:not(:last-child) {
-  margin-right: 15px;
+  margin-left: 5px;
 }
 .basic-pagination ul li a, .basic-pagination ul li span {
   display: inline-block;
