@@ -1,0 +1,25 @@
+{
+    "app": "fastball-test",
+    "port": 8000,
+    "platform": "docker",
+
+    "build": {
+        "location":"iran",
+        "dockerfile": "./Dockerfile"
+    },
+
+    "docker": {
+        "timezone": "Asia/Tehran"
+    },
+
+    "disks": [
+        {
+            "name": "src",
+            "mountTo": "/src"
+        },
+        {
+            "name": "mediapath",
+            "mountTo": "/media"
+        }
+    ]
+}

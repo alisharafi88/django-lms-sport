@@ -8,6 +8,7 @@ RUN useradd -ms /bin/bash appuser
 
 WORKDIR /src
 
+
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         default-libmysqlclient-dev \
@@ -17,7 +18,7 @@ RUN apt-get update \
         default-mysql-client \
         curl \
         gcc \
-        libpq-dev \ 
+        libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
@@ -26,6 +27,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src/ /src/
 RUN chown -R appuser:appuser /src
 
+
+
 USER appuser
 
 EXPOSE 8000
+
+CMD ["python3","manage.py","runserver","0.0.0.0:8000"]
