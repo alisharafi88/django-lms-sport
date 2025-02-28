@@ -8,7 +8,6 @@ RUN useradd -ms /bin/bash appuser
 
 WORKDIR /src
 
-
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         default-libmysqlclient-dev \
@@ -24,13 +23,15 @@ RUN apt-get update \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN apt-get purge -y build-essential gcc \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY src/ /src/
 RUN chown -R appuser:appuser /src
-
-
 
 USER appuser
 
 EXPOSE 8000
 
-CMD ["python3","manage.py","runserver","0.0.0.0:8000"]
+CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn --bind 0.0.0.0:8000 config.wsgi:application"]
