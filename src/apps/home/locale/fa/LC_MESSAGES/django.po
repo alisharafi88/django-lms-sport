@@ -140,7 +140,7 @@ msgstr "بیشتر بخوانید"
 
 #: src/apps/home/templates/home/home.html:232
 msgid "Explore Popular Courses"
-msgstr "دوره‌های محبوب را کاوش کنید"
+msgstr "دوره‌های تخصصی مجموعه‌ما"
 
 #: src/apps/home/templates/home/home.html:270
 #: src/apps/home/templates/home/home.html:443
@@ -158,7 +158,7 @@ msgstr "تومان"
 
 #: src/apps/home/templates/home/home.html:302
 msgid "Browse All Courses"
-msgstr "مرور تمام دوره‌ها"
+msgstr "مشاهده دوره‌ها"
 
 #: src/apps/home/templates/home/home.html:352
 msgid "Read more"
