@@ -12,14 +12,11 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 ROOT_DIR = BASE_DIR.parent
 
-# Initialize environment variables
-env = environ.Env()
-env.read_env(os.path.join(ROOT_DIR, '.env'))
 
-SECRET_KEY = env('DJANGO_SECRET_KEY')
-DEBUG = env('DJANGO_DEBUG_STATUS')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -54,6 +51,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # it should remove
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -88,11 +86,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'USER': env('DB_USER'),
-        'NAME': env('DB_NAME'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
+        'USER': os.getenv('DB_USER'),
+        'NAME': os.getenv('DB_NAME'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 
@@ -125,6 +123,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -324,9 +324,9 @@ LOGGING = {
 
 # SMS Provider API
 
-SMS_API_KEY = env('SMS_API_KEY')
-SMS_SENDER = env('SMS_SENDER')
-SMS_PATTERN_CODE = env('SMS_PATTERN_CODE')
+SMS_API_KEY = os.getenv('SMS_API_KEY')
+SMS_SENDER = os.getenv('SMS_SENDER')
+SMS_PATTERN_CODE = os.getenv('SMS_PATTERN_CODE')
 
 # Jazzmin
 

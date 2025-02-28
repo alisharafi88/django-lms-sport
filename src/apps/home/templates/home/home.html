@@ -26,6 +26,22 @@
                             <div class="main-menu d-flex justify-content-end mr-15">
                                 <nav id="mobile-menu">
                                     <ul>
+
+                                        <li>
+                                            <a href="{% url 'home:home' %}">{% trans 'Home' %}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'courses:course_list' %}">{% trans 'Courses' %}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'blogs:blog_list' %}">{% trans 'Blogs' %}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'instructors:instructor_list' %}">{% trans 'Instructors' %}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'home:BMI' %}">{% trans 'BMI' %}</a>
+                                        </li>
                                         <li class="has-dropdown">
                                             <a href="#">{% trans 'Pages' %}</a>
                                             <ul class="submenu">
@@ -37,21 +53,6 @@
                                                 <li><a href="register.html">{% trans 'Register' %}</a></li>
                                                 <li><a href="sign-in.html">{% trans 'Sign In' %}</a></li>
                                             </ul>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'home:BMI' %}">{% trans 'BMI' %}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'blogs:blog_list' %}">{% trans 'Blogs' %}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'courses:course_list' %}">{% trans 'Courses' %}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'instructors:instructor_list' %}">{% trans 'Instructors' %}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'home:home' %}">{% trans 'Home' %}</a>
                                         </li>
                                     </ul>
                                 </nav>

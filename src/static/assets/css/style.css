@@ -1553,11 +1553,11 @@ img {
   position: relative;
   list-style: none;
   display: inline-block;
-  margin-right: 27px;
+  margin-left: 27px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .main-menu ul > li {
-    margin-right: 20px;
+    margin-left: 20px;
   }
 }
 .main-menu ul > li > a {

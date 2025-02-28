@@ -26,7 +26,9 @@ class CourseListView(generic.ListView):
     template_name = 'packages/courses_list.html'
     paginate_by = 3
     context_object_name = 'products'
-    queryset = get_combined_course_package_queryset()
+
+    def get_queryset(self):
+        return get_combined_course_package_queryset()
 
 
 class CourseDetailView(generic.DetailView):
