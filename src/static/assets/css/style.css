@@ -2117,6 +2117,7 @@ ul.bili_circle li::before {
   position: absolute;
   bottom: 0;
   right: 214px;
+  border-radius: 30px;
 }
 @media only screen and (min-width: 1601px) and (max-width: 1800px) {
   .b-shape {
@@ -2494,7 +2495,7 @@ ul.bili_circle li::before {
 /*----------------------------------------*/
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .tp-about-content {
-    margin-left: 90px;
+    margin-right: 90px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
@@ -2512,13 +2513,13 @@ ul.bili_circle li::before {
 .tp-about-shape .a-shape-one {
   position: absolute;
   top: 105px;
-  right: 20px;
+  right: 505px;
   animation: ab2animation 5s infinite linear alternate;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .tp-about-shape .a-shape-one {
-    top: 80px;
-    right: -75px;
+    top: 0;
+    left: -195px;
     width: 220px;
     height: auto;
   }
@@ -2526,12 +2527,13 @@ ul.bili_circle li::before {
 .tp-about-shape .a-shape-two {
   position: absolute;
   bottom: 85px;
-  right: -70px;
+  right: 509px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .tp-about-shape .a-shape-two {
     width: 180px;
     height: auto;
+    left: -195px;
   }
 }
 
@@ -2566,7 +2568,7 @@ ul.bili_circle li::before {
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .tp-about-line-shape .tp-aline-two {
-    left: -45px;
+    right: -95px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
