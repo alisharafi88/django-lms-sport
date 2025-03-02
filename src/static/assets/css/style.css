@@ -1938,6 +1938,11 @@ ul.bili_circle li::before {
 
 .hero-content {
   padding-top: 350px;
+  position: relative;
+  z-index: 1;
+}
+.banner-shape {
+    flex: 0 0 auto;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 767px) {
   .hero-content {
