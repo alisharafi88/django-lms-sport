@@ -2512,15 +2512,14 @@ ul.bili_circle li::before {
 
 .tp-about-shape .a-shape-one {
   position: absolute;
-  top: 105px;
-  right: 505px;
+  top: 55px;
+  right: 515px;
   animation: ab2animation 5s infinite linear alternate;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .tp-about-shape .a-shape-one {
-    top: 0;
     left: -195px;
-    width: 220px;
+    width: 140px;
     height: auto;
   }
 }
@@ -4022,23 +4021,21 @@ div.choose-sub-color {
   font-family: "Gordita-500";
 }
 .tpchoose-img-text ul li:nth-child(1) {
-  left: -85px;
   top: 150px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .tpchoose-img-text ul li:nth-child(1) {
-    left: 0;
+    right: 0;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .tpchoose-img-text ul li:nth-child(1) {
     top: 80px;
-    left: 20px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .tpchoose-img-text ul li:nth-child(1) {
-    left: 0px;
+    left: 0;
   }
 }
 .tpchoose-img-text ul li:nth-child(1) i {
@@ -4047,12 +4044,12 @@ div.choose-sub-color {
 }
 .tpchoose-img-text ul li:nth-child(2) {
   top: 335px;
-  right: 35px;
+  left: 35px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .tpchoose-img-text ul li:nth-child(2) {
     top: 275px;
-    right: 20px;
+    left: 20px;
   }
 }
 .tpchoose-img-text ul li:nth-child(2) i {
@@ -5022,7 +5019,7 @@ div.choose-sub-color {
   font-weight: 500;
 }
 .blog-edu span i {
-  margin-right: 3px;
+  margin-left: 3px;
 }
 .blog-edu span:hover {
   color: var(--tp-heading-secondary);
@@ -5034,16 +5031,16 @@ div.choose-sub-color {
   line-height: 1;
   font-family: "Gordita-500";
   font-weight: 500;
-  margin-right: 30px;
+  margin-left: 30px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .tp-blog__meta-list span {
-    margin-right: 20px;
+    margin-left: 20px;
   }
 }
 @media (max-width: 767px) {
   .tp-blog__meta-list span {
-    margin-right: 15px;
+    margin-left: 15px;
   }
 }
 .tp-blog__meta-list span i {
