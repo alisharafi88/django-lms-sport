@@ -1,4 +1,5 @@
 import os
+import socket
 
 DEBUG = True
 # For Docker
@@ -6,12 +7,10 @@ INTERNAL_IPS = [
     '127.0.0.1',
     'localhost',
 ]
-if DEBUG:
-    import socket
 
-    hostname, i, ips = socket.gethostbyname_ex(socket.gethostname())
-    INTERNAL_IPS += [ip[:-1] + '1' for ip in ips]
-    INTERNAL_IPS += ['172.17.0.1']  # Docker default gateway
+hostname, i, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS += [ip[:-1] + '1' for ip in ips]
+INTERNAL_IPS += ['172.17.0.1']  # Docker default gateway
 
 ALLOWED_HOSTS = ["*"]
 

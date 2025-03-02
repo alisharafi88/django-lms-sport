@@ -10,7 +10,7 @@ class HomeView(View):
     template_name = 'home/home.html'
 
     def get(self, request):
-        top_courses_query = get_combined_course_package_queryset()
+        top_courses_query = get_combined_course_package_queryset()[:6]
         featured_instructors_query = get_featured_instructors()
         latest_blogs_query = get_latest_blogs()
         return render(
