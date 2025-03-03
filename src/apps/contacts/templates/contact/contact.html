@@ -6,6 +6,10 @@
     {% trans 'Contact Page' %}
 {% endblock %}
 
+{% block head %}
+	<link rel="stylesheet" href="{% static 'assets/css/same_line_links.css' %}">
+{% endblock %}
+
 {% block content %}
     <!-- breadcrumb-area -->
     <section class="breadcrumb__area include-bg pt-150 pb-150 breadcrumb__overlay"
@@ -17,7 +21,7 @@
                         <h3 class="breadcrumb__title mb-20">{% trans 'Contact Us' %}</h3>
                         <div class="breadcrumb__list">
                             <span><a href="{% url 'home:home' %}">{% trans 'Home' %}</a></span>
-                            <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+                            <span class="dvdr"><i class="fa-regular fa-angle-left"></i></span>
                             <span class="sub-page-black">{% trans 'Contact' %}</span>
                         </div>
                     </div>
@@ -39,7 +43,8 @@
                             </div>
                             <div class="location-content">
                                 <h5 class="location-title"><a
-                                        href="tell:{{ contact_info.phonenumber }}">{{ contact_info.phonenumber }}</a></h5>
+                                        href="tell:{{ contact_info.phonenumber }}">{{ contact_info.phonenumber }}</a>
+                                </h5>
                             </div>
                         </div>
                     </div>
@@ -100,11 +105,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-12">
-                        <div class="contact-bg mb-60">
-                            <img src="{% static 'assets/img/bg/contact-sub-bg-01.png' %}" alt="contact-bg">
-                        </div>
-                    </div>
                 {% else %}
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="contact-wrapper mr-65 mb-60">
@@ -114,15 +114,16 @@
                         </div>
                         <div class="contact-form-input_same_line mb-40">
                             <span>{% trans 'If you wanna send us message please ' %}</span>
-                            <a href="#">{% trans 'LOGIN' %}</a><span>{% trans ' or ' %}</span><a href="#">{% trans 'SIGNUP.' %}</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-12">
-                        <div class="contact-bg mb-60">
-                            <img src="{% static 'assets/img/bg/contact-sub-bg-01.png' %}" alt="contact-bg">
+                            <a href="#">{% trans 'LOGIN' %}</a><span>{% trans ' or ' %}</span><a
+                                href="#">{% trans 'SIGNUP.' %}</a>
                         </div>
                     </div>
                 {% endif %}
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="contact-bg mb-60">
+                        <img src="{% static 'assets/img/bg/contactus-02.jpg' %}" alt="contact-bg">
+                    </div>
+                </div>
             </div>
         </div>
     </section>

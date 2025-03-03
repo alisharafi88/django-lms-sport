@@ -169,7 +169,7 @@ msgstr "اگر می‌خواهید برای ما پیامی ارسال کنید 
 
 #: src/apps/contacts/templates/contact/contact.html:117
 msgid "LOGIN"
-msgstr "ورود"
+msgstr "وارد شوید"
 
 #: src/apps/contacts/templates/contact/contact.html:117
 msgid " or "
@@ -177,7 +177,7 @@ msgstr " یا "
 
 #: src/apps/contacts/templates/contact/contact.html:117
 msgid "SIGNUP."
-msgstr "ثبت‌نام."
+msgstr "ثبت نام کنید."
 
 #: src/apps/contacts/views.py:29
 msgid "Your message sent successfully!"
