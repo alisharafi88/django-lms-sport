@@ -2801,7 +2801,8 @@ ul.bili_circle li::before {
   font-family: "Gordita-500";
   font-weight: 500;
   position: relative;
-  padding-left: 50px;
+  padding-left: 0;
+  padding-right: 60px;
   display: flex;
   align-items: center;
 }
@@ -2820,7 +2821,7 @@ ul.bili_circle li::before {
   display: inline-block;
   border-radius: 50px;
   position: absolute;
-  left: 0;
+  right: 0;
   font-size: 18px;
 }
 .tp-about-list ul li:not(:last-child) {

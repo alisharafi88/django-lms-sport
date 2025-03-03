@@ -9,7 +9,7 @@
 {% block content %}
     <!-- breadcrumb-area -->
     <section class="breadcrumb__area include-bg pt-150 pb-150 breadcrumb__overlay"
-             data-background="{% static 'assets/img/breadcrumb/breadcrumb-bg-1.jpg' %}">
+             data-background="{% static 'assets/img/breadcrumb/about.jpg' %}">
         <div class="container">
             <div class="row">
                 <div class="col-xxl-12">
@@ -17,7 +17,7 @@
                         <h3 class="breadcrumb__title mb-20">{% trans 'About Us' %}</h3>
                         <div class="breadcrumb__list">
                             <span><a href="{% url 'home:home' %}">{% trans 'Home' %}</a></span>
-                            <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+                            <span class="dvdr"><i class="fa-regular fa-angle-left"></i></span>
                             <span class="sub-page-black">{% trans 'About Us' %}</span>
                         </div>
                     </div>
@@ -41,13 +41,14 @@
             </div>
             <div class="tp-feature-cn">
                 <div class="row justify-content-center">
+
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <div class="tpfea mb-30">
                             <div class="tpfea__icon mb-25">
                                 <i class="fi fi-rr-user"></i>
                             </div>
                             <div class="tpfea__text">
-                                <h5 class="tpfea__title mb-20">{% trans 'Expert Trainer' %}</h5>
+                                <h5 class="tpfea__title mb-20">مربی متخصص</h5>
                                 <p>مربیان تیم ما، با تجربه‌ای گسترده و دانش عمیق، همواره در تلاش‌اند تا بازیکنان را به
                                     اوج آمادگی بدنی،تکنیکی و ذهنی و برسانند. با تعهد و پشتکاری مثال‌زدنی، آن‌ها مسیر
                                     پیشرفت و موفقیت شما هموار میشود</p>
@@ -60,7 +61,7 @@
                                 <i class="fi fi-rr-document"></i>
                             </div>
                             <div class="tpfea__text">
-                                <h5 class="tpfea__title mb-20">{% trans 'Get Certificate' %}</h5>
+                                <h5 class="tpfea__title mb-20">دریافت گواهی</h5>
                                 <p>در پایان دوره شما مدرک پایان دوره آکادمی فستبال رو دریافت میکنید</p>
                             </div>
                         </div>
@@ -71,8 +72,19 @@
                                 <i class="fi fi-rr-calendar"></i>
                             </div>
                             <div class="tpfea__text">
-                                <h5 class="tpfea__title mb-20">{% trans 'Life Time Access' %}</h5>
+                                <h5 class="tpfea__title mb-20">دسترسی مادام العمر</h5>
                                 <p>مادام العمر به این دوره دسترسی دارید و از تمامی اپدیت ها رایگان استفاده میکنید</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="tpfea mb-30">
+                            <div class="tpfea__icon mb-25">
+                                <i class="fi fi-rr-football"></i>
+                            </div>
+                            <div class="tpfea__text">
+                                <h5 class="tpfea__title mb-20">معرفی به تیم</h5>
+                                <p>در صورت داشتن آمادگی بدنی و تکنیکی شمارا به تیم های پایه تهران معرفی میکنیم</p>
                             </div>
                         </div>
                     </div>
@@ -88,7 +100,7 @@
             <div class="row align-items-center">
                 <div class="col-xxl-7 col-xl-7 col-lg-6 col-md-12 col-12">
                     <div class="tp-about-class p-relative pb-50">
-                        <img src="{% static 'assets/img/about/about-sub-bg-01.png' %}" alt="about-img">
+                        <img src="{% static 'assets/img/about/aboutus-02.jpg' %}" alt="about-img">
                         <div class="tp-about-class-info tp-sub-about-info d-none d-md-block">
                             <ul>
                                 <li><span>235K</span>{% trans 'Worldwide Students' %}</li>
@@ -101,21 +113,27 @@
                 <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-12 col-12">
                     <div class="tp-about-class-content mb-50 ml-75">
                         <div class="section-title mb-35">
-                            <span class="tp-sub-title-box mb-15">About Us</span>
-                            <h2 class="tp-section-title mb-25">Explore Thousands of Creative Classes.</h2>
-                            <p>Dramatically supply transparent deliverables befoe backward comp internal or "organic"
-                                sources.</p>
+                            <span class="tp-sub-title-box mb-15">درباره ما</span>
+                            <h2 class="tp-section-title mb-25">جایی که فوتبالت متحول میشه! ⚽️🔥</h2>
+                            <p>اینجا زمین بازی توئه! ما اومدیم تا بهت کمک کنیم مثل حرفه‌ای‌ها فوتبال بازی کنی. اگه عاشق فوتبال هستی، اگه همیشه دنبال پیشرفت توی تکنیک، بدنسازی فوتبال و هوش بازی بودی، این دوره آموزشی برای تو ساخته شده!</p>
                         </div>
                         <div class="tp-about-list mb-65">
                             <ul>
                                 <li>
-                                    <i class="fa-light fa-check"></i>Create an E-Pora account
+                                    <i class="fa-light fa-check"></i>
+                                    مهارت‌های تکنیکی: کنترل توپ، دریبل، پاس و شوت‌زنی
+                                    مثل حرفه‌ای‌ها
                                 </li>
                                 <li>
-                                    <i class="fa-light fa-check"></i>Choose Your Perfect Courses
+                                    <i class="fa-light fa-check"></i>
+                                    تاکتیک‌های بازی: تصمیم‌گیری سریع، جاگیری درست و
+                                    خواندن حرکات حریف
                                 </li>
                                 <li>
-                                    <i class="fa-light fa-check"></i>After Finished Courses, Get Certificate
+                                    تمرینات بدنی و ذهنی: افزایش استقامت، قدرت و تمرکز
+                                    در زمین بازی
+                                    آنالیز و تحلیل فوتبالی و…
+                                    <i class="fa-light fa-check"></i>
                                 </li>
                             </ul>
                         </div>
@@ -159,7 +177,8 @@
                                 </li>
                                 <li>
                                     <div class="tp-list-bg choose-sub-color">
-                                        <i class="fa-light fa-check"></i>آموزش ها با بالاترین کیفیت در اختیار شما قرار میگیرد
+                                        <i class="fa-light fa-check"></i>آموزش ها با بالاترین کیفیت در اختیار شما قرار
+                                        میگیرد
                                     </div>
                                 </li>
                                 <li>
@@ -173,7 +192,7 @@
                 </div>
                 <div class="col-xl-7 col-lg-6 col-md-12">
                     <div class="tp-choose-img tp-choose-img-2 p-relative mb-30 mr-50 text-end">
-                        <img src="{% static 'assets/img/bg/choose-2-img.jpg' %}" alt="choose-img">
+                        <img src="{% static 'assets/img/about/aboutus-03.jpg' %}" alt="choose-img">
                         <div class="tpchoose-img-text tp-chose-shape d-none d-md-block">
                             <ul>
                                 <li>
