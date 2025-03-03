@@ -69,15 +69,15 @@
                         {% if page_obj.has_previous %}
                             <li>
                                 <a href="?page={{ page_obj.previous_page_number }}">
-                                    <i class="far fa-angle-left"></i>
+                                    <i class="far fa-angle-right"></i>
                                 </a>
                             </li>
                             {% if page_obj.number > 3 %}
                                 <li>
-                                    <a href="{% static 'blog.html' %}">2</a>
+                                    <a href="?page=1">1</a>
                                 </li>
                                 {% if page_obj.number > 4 %}
-                                    <span>...</span>
+                                    <li><span>...</span></li>
                                 {% endif %}
                             {% endif %}
                         {% endif %}
@@ -95,7 +95,7 @@
 
                         {% if page_obj.has_next %}
                             {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
-                                <span>...</span>
+                                <li><span>...</span></li>
                                 <li>
                                     <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
                                 </li>
@@ -106,7 +106,7 @@
                             {% endif %}
                             <li>
                                 <a href="?page={{ page_obj.next_page_number }}">
-                                    <i class="far fa-angle-right"></i>
+                                    <i class="far fa-angle-left"></i>
                                 </a>
                             </li>
                         {% endif %}
