@@ -4070,7 +4070,7 @@ div.choose-sub-color {
   position: relative;
   padding-right: 45px;
   padding-left: 0;
-  display: inline-block;
+  display: block;
   margin-bottom: 28px;
   direction: rtl;
 }
@@ -4093,8 +4093,8 @@ div.choose-sub-color {
   background: var(--tp-border-2);
   display: inline-block;
   border-radius: 50px;
-  position: absolute;
   right: 0;
+  margin: 0 10px;
   font-size: 14px;
 }
 .tp-choose-list ul li:hover i {
@@ -4114,7 +4114,7 @@ div.choose-sub-color {
 .tp-list-bg {
   background: var(--tp-common-white);
   position: relative;
-  padding: 10px 60px 12px 21px;
+  padding: 10px 0 12px 21px;
   display: inline-block;
   border-radius: 5px;
   font-size: 18px;
@@ -4140,7 +4140,7 @@ div.choose-sub-color {
   top: 195px;
   left: 125px;
   right: auto;
-  text-align: left;
+  text-align: center;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .tp-chose-shape ul li:nth-child(2) {
@@ -4156,7 +4156,11 @@ div.choose-sub-color {
 }
 .tp-chose-shape ul li:nth-child(3) p {
   margin-top: 0;
-  margin-bottom: 20px;
+  text-align: center;
+}
+.tpchoose-img-text ul li:nth-child(3) i {
+    background: #3f22dd;
+    color: var(--tp-common-white);
 }
 
 .tp-big-bg img {
