@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-23 10:00+0330\n"
+"POT-Creation-Date: 2025-03-09 00:11+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,13 +59,13 @@ msgid "Updated at"
 msgstr "به‌روزرسانی شده در"
 
 #: src/apps/blogs/models.py:40
-#: src/apps/blogs/templates/blogs/blog_detail.html:17
+#: src/apps/blogs/templates/blogs/blog_detail.html:20
 #: src/apps/blogs/templates/blogs/blog_list.html:18
 msgid "Blog"
 msgstr "وبلاگ"
 
 #: src/apps/blogs/models.py:41
-#: src/apps/blogs/templates/blogs/blog_detail.html:21
+#: src/apps/blogs/templates/blogs/blog_detail.html:24
 #: src/apps/blogs/templates/blogs/blog_list.html:22
 msgid "Blogs"
 msgstr "وبلاگ‌ها"
@@ -102,41 +102,48 @@ msgstr "نظر وبلاگ"
 msgid "Blog comments"
 msgstr "کامنت وبلاگ"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:19
-#: src/apps/blogs/templates/blogs/blog_list.html:20
+#: src/apps/blogs/templates/blogs/blog_detail.html:22
 msgid "Home"
 msgstr "خانه"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:23
-msgid "Blog Details"
-msgstr "جزئیات وبلاگ"
-
-#: src/apps/blogs/templates/blogs/blog_detail.html:41
-msgid "Blog's cover 870x460"
-msgstr "کاور وبلاگ 870x460"
-
-#: src/apps/blogs/templates/blogs/blog_detail.html:49
-#: src/apps/blogs/templates/blogs/blog_detail.html:60
+#: src/apps/blogs/templates/blogs/blog_detail.html:52
+#: src/apps/blogs/templates/blogs/blog_detail.html:63
 msgid "Comments"
 msgstr "کامنت"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:69
+#: src/apps/blogs/templates/blogs/blog_detail.html:72
 msgid "Blog's comment's Cover"
 msgstr "کاور نظر وبلاگ"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:80
+#: src/apps/blogs/templates/blogs/blog_detail.html:84
 msgid "Reply"
 msgstr "پاسخ"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:109
+#: src/apps/blogs/templates/blogs/blog_detail.html:115
 msgid "Write a comment"
 msgstr "یک کامنت بنویسید"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:123
+#: src/apps/blogs/templates/blogs/blog_detail.html:130
 msgid "Post Comment"
 msgstr "ارسال کامنت"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:134
+#: src/apps/blogs/templates/blogs/blog_detail.html:137
+msgid "If you wanna send commnet please "
+msgstr ""
+
+#: src/apps/blogs/templates/blogs/blog_detail.html:138
+msgid "LOGIN"
+msgstr ""
+
+#: src/apps/blogs/templates/blogs/blog_detail.html:138
+msgid " or "
+msgstr ""
+
+#: src/apps/blogs/templates/blogs/blog_detail.html:139
+msgid "SIGNUP."
+msgstr ""
+
+#: src/apps/blogs/templates/blogs/blog_detail.html:148
 msgid "Recent Post"
 msgstr "پست‌های اخیر"
 
@@ -144,9 +151,19 @@ msgstr "پست‌های اخیر"
 msgid "Blog List"
 msgstr "لیست وبلاگ‌ها"
 
+#: src/apps/blogs/templates/blogs/blog_list.html:20
+msgid "HomePage"
+msgstr "خانه"
+
 #: src/apps/blogs/templates/blogs/blog_list.html:37
 msgid "Latest Blogs"
 msgstr "آخرین وبلاگ‌ها"
+
+#~ msgid "Blog Details"
+#~ msgstr "جزئیات وبلاگ"
+
+#~ msgid "Blog's cover 870x460"
+#~ msgstr "کاور وبلاگ 870x460"
 
 #~ msgid "Expert Trainer"
 #~ msgstr "مدرس متخصص"

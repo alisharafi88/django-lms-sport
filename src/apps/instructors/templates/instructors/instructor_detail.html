@@ -15,13 +15,13 @@
             <div class="row">
                 <div class="col-xxl-12">
                     <div class="breadcrumb__content p-relative z-index-1">
-                        <h3 class="breadcrumb__title mb-20">{% trans 'Instructor Profile' %}</h3>
+                        <h3 class="breadcrumb__title mb-20">{{ instructor.full_name }}</h3>
                         <div class="breadcrumb__list">
-                            <span><a href="{% url 'home:home' %}">{% trans 'Home' %}</a></span>
+                            <span><a href="{% url 'home:home' %}">{% trans 'HomePage' %}</a></span>
                             <span class="dvdr"><i class="fa-regular fa-angle-left"></i></span>
-                            <span><a href="{% url 'instructors:instructor_list' %}">{% trans 'Instructor' %}</a></span>
+                            <span><a href="{% url 'instructors:instructor_list' %}">{% trans 'Coachs' %}</a></span>
                             <span class="dvdr"><i class="fa-regular fa-angle-left"></i></span>
-                            <span class="sub-page-black">{% trans 'Instructor Profile' %}</span>
+                            <span class="sub-page-black">{% trans 'Coach Profile' %}</span>
                         </div>
                     </div>
                 </div>

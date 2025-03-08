@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-23 10:16+0330\n"
+"POT-Creation-Date: 2025-03-09 00:11+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/config/settings/development.py:338
-#: src/config/settings/development.py:339
+#: src/config/settings/base.py:306 src/config/settings/base.py:307
 msgid "Site Management"
 msgstr ""
 
-#: src/config/settings/development.py:340 src/templates/admin/base_site.html:87
+#: src/config/settings/base.py:308 src/templates/admin/base_site.html:87
 msgid "Admin Panel"
 msgstr ""
 
-#: src/config/settings/development.py:341
+#: src/config/settings/base.py:309
 msgid "Welcome to the Admin Panel"
 msgstr ""
 
-#: src/config/settings/development.py:344
+#: src/config/settings/base.py:312
 #, fuzzy
 #| msgid "Home"
 msgctxt "Navigation"
 msgid "Home"
 msgstr "خانه"
 
-#: src/config/settings/development.py:345
+#: src/config/settings/base.py:314
 msgctxt "Action"
 msgid "Logout"
 msgstr ""
@@ -52,12 +51,12 @@ msgid "What you want to learn?"
 msgstr "چه چیزی می‌خواهید یاد بگیرید؟"
 
 #: src/templates/inc/header.html:38
-msgid "Home"
+msgid "HomePage"
 msgstr "خانه"
 
 #: src/templates/inc/header.html:41
-msgid "Instructors"
-msgstr "مدرسین"
+msgid "Coches"
+msgstr "مربی‌ها"
 
 #: src/templates/inc/header.html:44
 msgid "Courses"
@@ -98,3 +97,6 @@ msgstr "ثبت نام"
 #: src/templates/inc/header.html:61
 msgid "Sign In"
 msgstr "ورود"
+
+#~ msgid "Instructors"
+#~ msgstr "مدرسین"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-08 00:23+0330\n"
+"POT-Creation-Date: 2025-03-09 00:11+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,7 +59,6 @@ msgid "Date sent"
 msgstr "تاریخ ارسال"
 
 #: src/apps/contacts/templates/admin/custom_change_confirmation.html:22
-#: src/apps/contacts/templates/contact/contact.html:19
 msgid "Home"
 msgstr "خانه"
 
@@ -80,7 +79,6 @@ msgstr ""
 "                        به عنوان اصلی تنظیم کنید؟"
 
 #: src/apps/contacts/templates/admin/custom_change_confirmation.html:44
-
 msgid ""
 "Setting this new information as primary will unset\n"
 "                        other primary instances.Do you want to proceed?!"
@@ -142,24 +140,28 @@ msgstr "نادرست"
 msgid "Contact Page"
 msgstr "صفحه تماس"
 
-#: src/apps/contacts/templates/contact/contact.html:17
+#: src/apps/contacts/templates/contact/contact.html:21
 msgid "Contact Us"
 msgstr "با ما تماس بگیرید"
 
-#: src/apps/contacts/templates/contact/contact.html:21
+#: src/apps/contacts/templates/contact/contact.html:23
+msgid "HomePage"
+msgstr "خانه"
+
+#: src/apps/contacts/templates/contact/contact.html:25
 msgid "Contact"
 msgstr "تماس"
 
-#: src/apps/contacts/templates/contact/contact.html:85
+#: src/apps/contacts/templates/contact/contact.html:90
 #: src/apps/contacts/templates/contact/contact.html:112
 msgid "Send Us Message"
 msgstr "پیام خود را برای ما ارسال کنید"
 
-#: src/apps/contacts/templates/contact/contact.html:93
+#: src/apps/contacts/templates/contact/contact.html:98
 msgid "Comments"
 msgstr "نظرات"
 
-#: src/apps/contacts/templates/contact/contact.html:96
+#: src/apps/contacts/templates/contact/contact.html:101
 msgid "Submit Now"
 msgstr "همین حالا ارسال کنید"
 
@@ -175,7 +177,7 @@ msgstr "وارد شوید"
 msgid " or "
 msgstr " یا "
 
-#: src/apps/contacts/templates/contact/contact.html:117
+#: src/apps/contacts/templates/contact/contact.html:118
 msgid "SIGNUP."
 msgstr "ثبت نام کنید."
 

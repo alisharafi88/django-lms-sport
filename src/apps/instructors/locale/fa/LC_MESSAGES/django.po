@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-23 10:00+0330\n"
+"POT-Creation-Date: 2025-03-09 00:11+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,22 +120,18 @@ msgstr "عکس"
 msgid "status"
 msgstr "وضعیت"
 
-#: src/apps/instructors/templates/instructors/instructor_detail.html:18
-#: src/apps/instructors/templates/instructors/instructor_detail.html:24
-msgid "Instructor Profile"
-msgstr "پروفایل مدرس"
-
 #: src/apps/instructors/templates/instructors/instructor_detail.html:20
 #: src/apps/instructors/templates/instructors/instructor_list.html:19
-msgid "Home"
+msgid "HomePage"
 msgstr "خانه"
 
 #: src/apps/instructors/templates/instructors/instructor_detail.html:22
-#: src/apps/instructors/templates/instructors/instructor_list.html:17
-#: src/apps/instructors/templates/instructors/instructor_list.html:21
-#: src/apps/instructors/templates/instructors/instructor_list.html:77
-msgid "Instructor"
-msgstr "مدرس"
+msgid "Coach"
+msgstr "مربی"
+
+#: src/apps/instructors/templates/instructors/instructor_detail.html:24
+msgid "Coach Profile"
+msgstr "پروفایل مربی"
 
 #: src/apps/instructors/templates/instructors/instructor_detail.html:53
 msgid "Email"
@@ -158,25 +154,25 @@ msgid "Honors"
 msgstr "افتخارات"
 
 #: src/apps/instructors/templates/instructors/instructor_detail.html:149
-#: src/apps/instructors/templates/instructors/instructor_detail.html:181
 msgid "Courses"
 msgstr "دوره‌ها"
 
-#: src/apps/instructors/templates/instructors/instructor_detail.html:182
+#: src/apps/instructors/templates/instructors/instructor_detail.html:179
 msgid "Classes"
 msgstr "کلاس‌"
 
-#: src/apps/instructors/templates/instructors/instructor_detail.html:186
+#: src/apps/instructors/templates/instructors/instructor_detail.html:184
 msgid "Students"
 msgstr "دانش‌آموز"
-
-#: src/apps/instructors/templates/instructors/instructor_detail.html:201
-msgid "Toman"
-msgstr "تومان"
 
 #: src/apps/instructors/templates/instructors/instructor_list.html:6
 msgid "Instructor List"
 msgstr "لیست مدرسین"
+
+#: src/apps/instructors/templates/instructors/instructor_list.html:17
+#: src/apps/instructors/templates/instructors/instructor_list.html:21
+msgid "Coaches"
+msgstr ""
 
 #: src/apps/instructors/templates/instructors/instructor_list.html:41
 msgid "Expert Trainer"
@@ -190,9 +186,19 @@ msgstr "گواهی دریافت کنید"
 msgid "Life Time Access"
 msgstr "دسترسی مادام‌العمر"
 
+#: src/apps/instructors/templates/instructors/instructor_list.html:77
+msgid "Instructor"
+msgstr "مدرس"
+
 #: src/apps/instructors/templates/instructors/instructor_list.html:78
 msgid "Our Expert Instructor"
 msgstr "مدرسین متخصص ما"
+
+#~ msgid "Instructor Profile"
+#~ msgstr "پروفایل مدرس"
+
+#~ msgid "Toman"
+#~ msgstr "تومان"
 
 #~ msgid "widget"
 #~ msgstr "ویجت"
