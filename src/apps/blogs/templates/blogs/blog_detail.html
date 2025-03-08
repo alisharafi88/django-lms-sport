@@ -3,7 +3,10 @@
 {% load static %}
 
 {% block title %}
-	{{ blog.title }}
+    {{ blog.title }}
+{% endblock %}
+{% block head %}
+	<link rel="stylesheet" href="{% static 'assets/css/same_line_links.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -37,16 +40,16 @@
                     <div class="postbox__wrapper pr-20">
                         <article class="postbox__item format-image mb-60 transition-3">
                             <div class="postbox__thumb w-img mb-30">
-                                <a href="blog-details.html">
-                                    <img src="{{blog.img.url}}" alt="{% trans "Blog's cover 870x460" %}">
-                                </a>
+                                <img src="{{ blog.img.url }}" alt="">
                             </div>
                             <div class="postbox__content">
                                 <div class="postbox__meta">
                                     <span><i class="fi fi-rr-calendar"></i> {{ blog.date_created|timesince }} </span>
-                                    <span><a href="#"><i class="fi fi-rr-user"></i> {{ blog.author }}</a></span>
-                                    <span><a href="#"><i
-                                            class="fi fi-rr-comments"></i> {{ blog.comments.all|length }} {% trans 'Comments' %}</a></span>
+                                    <span><a
+                                            href="{% url 'instructors:instructor_detail' blog.author.id blog.author.slug %}"><i
+                                            class="fi fi-rr-user"></i> {{ blog.author }}</a></span>
+                                    <span><i
+                                            class="fi fi-rr-comments"></i>{{ blog.comments.all|length }} {% trans 'Comments' %}</span>
                                 </div>
                                 <h3 class="postbox__title">
                                     {{ blog.title }}
@@ -75,10 +78,12 @@
                                                 </div>
                                                 <div class="postbox__comment-text ml-65">
                                                     <p>{{ comment.text }}</p>
-                                                    <div class="postbox__comment-reply">
-                                                        <a href="#" class="reply-link"
-                                                           data-id="{{ comment.id }}">{% translate 'Reply' %}</a>
-                                                    </div>
+                                                    {% if user.is_authenticated %}
+                                                        <div class="postbox__comment-reply">
+                                                            <a href="#" class="reply-link"
+                                                               data-id="{{ comment.id }}">{% translate 'Reply' %}</a>
+                                                        </div>
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                         </li>
@@ -105,26 +110,35 @@
                                 {% endfor %}
                             </ul>
                         </div>
+
                         <div class="postbox__comment-form">
                             <h3 class="postbox__comment-form-title">{% trans 'Write a comment' %}</h3>
-                            <form id="comment-form" method="post">
-                                {% csrf_token %}
-                                {{ comment_form.non_field_errors | safe }}
-                                <input type="hidden" name="parent_id" id="parent_id">
-                                <div class="row">
-                                    <div class="col-xxl-12">
-                                        <div class="postbox__comment-input">
-                                            {{ comment_form.text.errors | safe }}
-                                            {{ comment_form.text }}
+                            {% if user.is_authenticated %}
+                                <form id="comment-form" method="post">
+                                    {% csrf_token %}
+                                    {{ comment_form.non_field_errors | safe }}
+                                    <input type="hidden" name="parent_id" id="parent_id">
+                                    <div class="row">
+                                        <div class="col-xxl-12">
+                                            <div class="postbox__comment-input">
+                                                {{ comment_form.text.errors | safe }}
+                                                {{ comment_form.text }}
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-12">
+                                            <div class="postbox__comment-btn">
+                                                <button type="submit" class="tp-btn">{% trans 'Post Comment' %}</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-xxl-12">
-                                        <div class="postbox__comment-btn">
-                                            <button type="submit" class="tp-btn">{% trans 'Post Comment' %}</button>
-                                        </div>
-                                    </div>
+                                </form>
+                            {% else %}
+                                <div class="contact-form-input_same_line mb-40">
+                                    <span>{% trans 'If you wanna send commnet please ' %}</span>
+                                    <a href="#">{% trans 'LOGIN' %}</a><span>{% trans ' or ' %}</span><a
+                                        href="#">{% trans 'SIGNUP.' %}</a>
                                 </div>
-                            </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -137,13 +151,13 @@
                                     {% for post in recent_posts %}
                                         <div class="rc__post mb-20 d-flex align-items-center">
                                             <div class="rc__post-thumb">
-                                                <a href="{{ blog.get_absolute_url  }}"><img
+                                                <a href="{{ blog.get_absolute_url }}"><img
                                                         src="{% get_media_prefix %}{{ post.img }}"
                                                         alt="blog-sidebar"></a>
                                             </div>
                                             <div class="rc__post-content">
                                                 <h3 class="rc__post-title">
-                                                    <a href="{{ blog.get_absolute_url  }}">{{ post.title }}</a>
+                                                    <a href="{{ blog.get_absolute_url }}">{{ post.title }}</a>
                                                 </h3>
                                                 <div class="rc__meta">
                                                     <span>{{ post.date_created|timesince }}</span>

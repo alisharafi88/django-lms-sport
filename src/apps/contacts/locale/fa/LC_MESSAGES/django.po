@@ -61,7 +61,7 @@ msgstr "تاریخ ارسال"
 #: src/apps/contacts/templates/admin/custom_change_confirmation.html:22
 #: src/apps/contacts/templates/contact/contact.html:19
 msgid "Home"
-msgstr "صفحه‌اصلی"
+msgstr "خانه"
 
 #: src/apps/contacts/templates/admin/custom_change_confirmation.html:28
 msgid "Confirm change"

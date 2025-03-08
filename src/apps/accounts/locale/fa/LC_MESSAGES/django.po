@@ -55,7 +55,7 @@ msgstr "ثبت نام"
 #: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:364
 #: src/apps/accounts/templates/accounts/verification_otp.html:19
 msgid "Home"
-msgstr "صفحه‌اصلی"
+msgstr "خانه"
 
 #: src/apps/accounts/templates/accounts/authentication.html:36
 #: src/apps/accounts/templates/accounts/verification_otp.html:36
@@ -78,7 +78,7 @@ msgstr "پنل‌دانشجو"
 
 #: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:51
 msgid "Home Page"
-msgstr "صفحه‌اصلی"
+msgstr "خانه"
 
 #: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:54
 #: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:92

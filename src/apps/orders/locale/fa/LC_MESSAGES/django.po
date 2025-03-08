@@ -211,7 +211,7 @@ msgstr "تسویه حساب"
 
 #: src/apps/orders/templates/orders/checkout.html:21
 msgid "Home"
-msgstr "صفحه‌اصلی"
+msgstr "خانه"
 
 #: src/apps/orders/templates/orders/checkout.html:71
 msgid "Product"

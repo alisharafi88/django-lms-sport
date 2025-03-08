@@ -33,7 +33,7 @@ msgstr "درباره‌‌ما"
 #: src/apps/home/templates/home/home.html:6
 #: src/apps/home/templates/home/home.html:54
 msgid "Home"
-msgstr "صفحه‌اصلی"
+msgstr "خانه"
 
 #: src/apps/home/templates/home/aboutus.html:37
 #: src/apps/home/templates/home/home.html:135
@@ -197,7 +197,7 @@ msgid "All Blog"
 msgstr "تمام وبلاگ‌ها"
 
 #~ msgid "home"
-#~ msgstr "صفحه‌اصلی"
+#~ msgstr "خانه"
 
 #~ msgid "Course"
 #~ msgstr "دوره"

@@ -20,7 +20,7 @@ msgstr ""
 
 #: src/apps/blogs/forms.py:12
 msgid "Enter your comment ..."
-msgstr "نظر خود را وارد کنید ..."
+msgstr "کامنت خود را بنوسید ..."
 
 #: src/apps/blogs/models.py:13
 msgid "Published"
@@ -48,7 +48,7 @@ msgstr "وضعیت وبلاگ"
 
 #: src/apps/blogs/models.py:34
 msgid "Enable comments on post"
-msgstr "فعال کردن نظرات در پست"
+msgstr "فعال کردن کامنت در پست"
 
 #: src/apps/blogs/models.py:36
 msgid "Created at"
@@ -72,11 +72,11 @@ msgstr "وبلاگ‌ها"
 
 #: src/apps/blogs/models.py:52
 msgid "Blog's comments"
-msgstr "نظرات وبلاگ"
+msgstr "کامنت‌های وبلاگ"
 
 #: src/apps/blogs/models.py:59
 msgid "Comment's text"
-msgstr "متن نظر"
+msgstr "متن کامنت"
 
 #: src/apps/blogs/models.py:62
 msgid "Parent"
@@ -100,12 +100,12 @@ msgstr "نظر وبلاگ"
 
 #: src/apps/blogs/models.py:71
 msgid "Blog comments"
-msgstr "نظرات وبلاگ"
+msgstr "کامنت وبلاگ"
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:19
 #: src/apps/blogs/templates/blogs/blog_list.html:20
 msgid "Home"
-msgstr "صفحه‌اصلی"
+msgstr "خانه"
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:23
 msgid "Blog Details"
@@ -118,7 +118,7 @@ msgstr "کاور وبلاگ 870x460"
 #: src/apps/blogs/templates/blogs/blog_detail.html:49
 #: src/apps/blogs/templates/blogs/blog_detail.html:60
 msgid "Comments"
-msgstr "نظرات"
+msgstr "کامنت"
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:69
 msgid "Blog's comment's Cover"
@@ -130,11 +130,11 @@ msgstr "پاسخ"
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:109
 msgid "Write a comment"
-msgstr "یک نظر بنویسید"
+msgstr "یک کامنت بنویسید"
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:123
 msgid "Post Comment"
-msgstr "ارسال نظر"
+msgstr "ارسال کامنت"
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:134
 msgid "Recent Post"

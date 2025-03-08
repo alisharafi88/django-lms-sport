@@ -29,7 +29,7 @@ msgstr "در حال تغییر"
 #: venv/lib/python3.8/site-packages/admin_confirm/templates/admin/action_confirmation.html:20
 #: venv/lib/python3.8/site-packages/admin_confirm/templates/admin/change_confirmation.html:20
 msgid "Home"
-msgstr "صفحه‌اصلی"
+msgstr "خانه"
 
 #: venv/lib/python3.8/site-packages/admin_confirm/templates/admin/action_confirmation.html:23
 msgid "Confirm Action"

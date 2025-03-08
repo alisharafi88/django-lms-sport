@@ -128,7 +128,7 @@ msgstr "پروفایل مدرس"
 #: src/apps/instructors/templates/instructors/instructor_detail.html:20
 #: src/apps/instructors/templates/instructors/instructor_list.html:19
 msgid "Home"
-msgstr "صفحه‌اصلی"
+msgstr "خانه"
 
 #: src/apps/instructors/templates/instructors/instructor_detail.html:22
 #: src/apps/instructors/templates/instructors/instructor_list.html:17

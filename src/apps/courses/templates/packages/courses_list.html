@@ -110,8 +110,9 @@
                             <div class="tpcourse__content-2">
                                 <div class="tpcourse__ava-title mb-15">
                                     <h4 class="tpcourse__title tp-cours-title-color">
-                                        <a href="
-                                                {{ product.get_absolute_url }}">{{ product.title }}</a>
+                                        <a href={% if product.product_type == 1 %}{% url 'courses:course_detail' slug=product.slug %}{% else %}{% url 'courses:package_detail' product.slug %}{% endif %} >
+                                            {{ product.title }}
+                                        </a>
                                     </h4>
                                 </div>
                                 <div class="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">

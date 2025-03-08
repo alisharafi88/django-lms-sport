@@ -73,7 +73,7 @@ def generate_course_data():
 
     return {
         'title': title,
-        'slug': generate_unique_slug(apps.get_model('courses.Course'), fake.slug()),
+        'slug': generate_unique_slug(apps.get_model('courses.Course'), 'course'),
         'description': ' '.join(fake.sentences(nb=3)),
         'age_range': f'{random.randint(10, 18)}-{random.randint(19, 50)}',
         'duration': f'{random.randint(1, 12)} ماه',
@@ -104,7 +104,7 @@ def generate_blog_data():
 
     return {
         'title': title,
-        'slug': generate_unique_slug(apps.get_model('blogs.Blog'), fake.slug()),
+        'slug': generate_unique_slug(apps.get_model('blogs.Blog'), 'blog'),
         'description': ' '.join(fake.sentences(nb=5)),
         'img': get_random_image('technology'),
         'status': random.choice(['p', 'r']),
@@ -128,7 +128,7 @@ def generate_faq_data():
 
     return {
         'question': question,
-        'slug': generate_unique_slug(apps.get_model('faq.QuestionAnswer'), fake.slug()),
+        'slug': generate_unique_slug(apps.get_model('faq.QuestionAnswer'), 'سوال'),
         'answer': "این پاسخ به صورت کامل توضیح می‌دهد که چگونه می‌توانید از خدمات ما استفاده کنید.",
         'status': True,
     }

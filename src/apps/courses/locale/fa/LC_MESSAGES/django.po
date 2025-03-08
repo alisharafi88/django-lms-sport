@@ -333,7 +333,7 @@ msgstr "اگر نظر مناسب نیست، آن را به نادرست تنظی
 #: src/apps/courses/templates/packages/courses_list.html:18
 #: src/apps/courses/templates/packages/package_detail.html:24
 msgid "Home"
-msgstr "صفحه‌اصلی"
+msgstr "خانه"
 
 #: src/apps/courses/templates/packages/course_detail.html:26
 #: src/apps/courses/templates/packages/package_detail.html:26

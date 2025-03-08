@@ -25,7 +25,7 @@ def get_courses_queryset():
         avg_rate=Avg('comments__rate'),
         num_comment=Count('comments', distinct=True),
     ).values(
-        'id', 'title', 'coach_profile', 'num_members', 'num_videos', 'product_type',
+        'id', 'title', 'coach_profile', 'num_members', 'num_videos', 'product_type', 'slug',
         'num_courses', 'discounted_price', 'avg_rate', 'num_comment', 'date_created', 'date_modified', 'img'
     )
 
@@ -47,7 +47,7 @@ def get_packages_queryset():
         avg_rate=Avg('courses__comments__rate'),
         num_comment=Count('courses__comments', distinct=True),
     ).values(
-        'id', 'title', 'coach_profile', 'num_members', 'num_videos', 'product_type',
+        'id', 'title', 'coach_profile', 'num_members', 'num_videos', 'product_type', 'slug',
         'num_courses', 'discounted_price', 'avg_rate', 'num_comment', 'date_created', 'date_modified', 'img'
     )
 

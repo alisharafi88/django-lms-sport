@@ -5141,37 +5141,52 @@ div.choose-sub-color {
   color: var(--tp-theme-1);
 }
 .postbox__meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   margin-bottom: 15px;
 }
+
 .postbox__meta span {
   font-size: 13px;
   font-weight: 600;
   color: var(--tp-text-2);
-  display: inline-block;
-  margin-right: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  margin-left: 0;
 }
+
 .postbox__meta span:last-child {
-  margin-right: 0;
+  margin-left: 0;
 }
+
 .postbox__meta span i {
   color: var(--tp-heading-secondary);
-  margin-right: 3px;
+  margin-left: 3px;
 }
+
 .postbox__meta span:hover {
   color: var(--tp-heading-secondary);
 }
+
 .postbox__meta span:hover i {
   color: var(--tp-heading-secondary);
 }
+
 .postbox__text img {
   max-width: 100%;
 }
+
 .postbox__text p {
   margin-bottom: 28px;
 }
+
 .postbox__text-single p {
   margin-bottom: 15px;
 }
+
 .postbox__slider .slick-arrow {
   position: absolute;
   left: 50px;
@@ -5191,57 +5206,69 @@ div.choose-sub-color {
   border-radius: 50%;
   line-height: 55px;
 }
+
 .postbox__slider .slick-arrow:hover {
   background-color: var(--tp-heading-secondary);
   color: var(--tp-common-white);
 }
+
 .postbox__slider .slick-arrow.slick-next {
   left: auto;
   right: 50px;
 }
+
 @media (max-width: 767px) {
   .postbox__slider .slick-arrow.slick-next {
     right: 10px;
   }
 }
+
 @media (max-width: 767px) {
   .postbox__slider .slick-arrow {
     left: 10px;
   }
 }
+
 .postbox__comment ul li {
   margin-bottom: 10px;
   list-style: none;
 }
+
 .postbox__comment ul li.children {
-  margin-left: 100px;
+  margin-right: 100px;
 }
+
 @media (max-width: 767px) {
   .postbox__comment ul li.children {
-    margin-left: 0px;
+    margin-right: 0px;
   }
 }
+
 .postbox__comment-form {
   margin-bottom: 20px;
   padding: 40px 30px;
   box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.09);
   background: var(--tp-common-white);
 }
+
 .postbox__comment-form-title {
   font-size: 26px;
   font-weight: 600;
   margin-bottom: 40px;
 }
+
 .postbox__comment-input {
   position: relative;
   margin-bottom: 20px;
 }
+
 .postbox__comment-input span {
   font-weight: 600;
   color: var(--tp-common-black);
   margin-bottom: 12px;
   display: block;
 }
+
 .postbox__comment-input input, .postbox__comment-input textarea {
   height: 55px;
   padding: 0 20px;
@@ -5257,17 +5284,20 @@ div.choose-sub-color {
   border-radius: 7px;
   background: #f7f7f7;
 }
+
 .postbox__comment-input textarea {
   height: 175px;
   resize: none;
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
 .postbox__comment-title {
   font-size: 26px;
   font-weight: 600;
   margin-bottom: 20px;
 }
+
 .postbox__comment-box {
   padding: 30px;
   padding-right: 40px;
@@ -5278,6 +5308,7 @@ div.choose-sub-color {
   -ms-border-radius: 4px;
   border-radius: 4px;
 }
+
 .postbox__comment-avater img {
   width: 50px;
   height: 50px;
@@ -5287,32 +5318,39 @@ div.choose-sub-color {
   -ms-border-radius: 50%;
   border-radius: 50%;
 }
+
 .postbox__comment-name {
   margin-bottom: 5px;
 }
+
 .postbox__comment-name h5 {
   font-size: 16px;
   line-height: 1;
   margin-bottom: 0;
 }
+
 .postbox__comment-name span {
   font-size: 14px;
   color: var(--tp-text-1);
 }
+
 @media (max-width: 767px) {
   .postbox__comment-text {
     margin-left: 0;
     margin-top: 15px;
   }
 }
+
 .postbox__comment-text p {
   font-size: 16px;
   color: var(--tp-text-11);
   margin-bottom: 15px;
 }
+
 .postbox__comment-reply {
   margin-top: 10px;
 }
+
 .postbox__comment-reply a {
   display: inline-block;
   color: var(--tp-theme-1);
@@ -5327,13 +5365,16 @@ div.choose-sub-color {
   -ms-border-radius: 4px;
   border-radius: 4px;
 }
+
 .postbox__comment-reply a:hover {
   color: var(--tp-common-white);
   background: var(--tp-theme-1);
 }
+
 .postbox__comment-agree {
   padding-left: 5px;
 }
+
 .postbox__comment-agree input {
   margin: 0;
   appearance: none;
@@ -5356,11 +5397,13 @@ div.choose-sub-color {
   -o-transform: translateY(-1px);
   transform: translateY(-1px);
 }
+
 .postbox__comment-agree input:checked {
   position: relative;
   background-color: var(--tp-theme-1);
   border-color: transparent;
 }
+
 .postbox__comment-agree input:checked::after {
   box-sizing: border-box;
   content: "\f00c";
@@ -5376,25 +5419,31 @@ div.choose-sub-color {
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
 .postbox__comment-agree input:hover {
   cursor: pointer;
 }
+
 .postbox__comment-agree label {
   padding-left: 8px;
   color: var(--tp-text-1);
   line-height: 1;
 }
+
 .postbox__comment-agree label a {
   color: var(--tp-common-black);
   font-weight: 600;
   padding-left: 4px;
 }
+
 .postbox__comment-agree label a:hover {
   color: var(--tp-theme-1);
 }
+
 .postbox__comment-agree label:hover {
   cursor: pointer;
 }
+
 .postbox__tag span {
   font-size: 16px;
   margin-bottom: 17px;
@@ -5405,48 +5454,58 @@ div.choose-sub-color {
 .rc__post ul li:not(:last-child) {
   margin-bottom: 15px;
 }
+
 .rc__post-thumb {
-  margin-right: 20px;
+  margin-left: 20px;
 }
+
 @media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px) {
   .rc__post-thumb {
-    margin-right: 12px;
+    margin-left: 12px;
   }
 }
+
 .rc__post-thumb img {
   max-width: 90px;
   height: 90px;
   object-fit: cover;
 }
+
 .rc__post-title {
   margin-bottom: 6px;
   font-size: 17px;
   line-height: 1.7;
 }
+
 @media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px) {
   .rc__post-title {
     font-size: 15px;
   }
 }
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .rc__post-title {
     font-size: 16px;
   }
 }
+
 @media (max-width: 767px) {
   .rc__post-title {
     font-size: 14px;
     line-height: 1.4;
   }
 }
+
 .rc__post-title a:hover {
   color: var(--tp-theme-1);
 }
+
 .rc__meta span {
   font-size: 16px;
   font-weight: 400;
   color: var(--tp-border-2);
 }
+
 @media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), (max-width: 767px) {
   .rc__meta span {
     font-size: 14px;
@@ -5458,19 +5517,24 @@ div.choose-sub-color {
   background: var(--tp-common-white);
   box-shadow: 5px 15px 30px rgba(5, 13, 54, 0.05);
 }
+
 .sidebar__widget:last-child {
   margin-bottom: 0;
 }
+
 .sidebar__widget-title {
   display: inline-block;
   font-size: 20px;
 }
+
 .sidebar__widget ul li {
   list-style: none;
 }
+
 .sidebar__widget ul li:first-child {
   padding-top: 0;
 }
+
 .sidebar__widget ul li a {
   padding: 15px 0;
   color: var(--tp-heading-primary);
@@ -5480,21 +5544,26 @@ div.choose-sub-color {
   font-size: 16px;
   border-bottom: 1px solid #eaeaea;
 }
+
 .sidebar__widget ul li a:hover {
   color: var(--tp-theme-1);
 }
+
 .sidebar__widget ul li a span {
   float: right;
   color: var(--tp-border-2);
   font-weight: 500;
   font-family: "Gordita-500";
 }
+
 .sidebar__widget ul li ul {
   padding-left: 15px;
 }
+
 .sidebar__search {
   position: relative;
 }
+
 .sidebar__search input {
   width: 100%;
   height: 60px;
@@ -5512,10 +5581,12 @@ div.choose-sub-color {
   padding-top: 3px;
   padding-right: 80px;
 }
+
 .sidebar__search input::placeholder {
   color: var(--tp-heading-primary);
   font-size: 16px;
 }
+
 .sidebar__search button {
   position: absolute;
   top: 0;
@@ -5531,6 +5602,7 @@ div.choose-sub-color {
   border-radius: 0 7px 7px 0;
   background: var(--tp-border-2);
 }
+
 .sidebar__banner::after {
   position: absolute;
   content: "";
@@ -5540,6 +5612,7 @@ div.choose-sub-color {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
 }
+
 .sidebar__banner-content {
   position: absolute;
   top: 50%;
@@ -5552,6 +5625,7 @@ div.choose-sub-color {
   z-index: 1;
   background: var(--tp-common-white);
 }
+
 .sidebar__banner-content h4 {
   padding: 15px 20px;
   font-size: 24px;
@@ -5573,20 +5647,24 @@ div.choose-sub-color {
   border-radius: 5px;
   border: 0;
 }
+
 .tagcloud a:hover {
   background: var(--tp-heading-secondary);
   color: var(--tp-common-white);
 }
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .tagcloud a {
     padding: 15px;
   }
 }
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .tagcloud a {
     padding: 18px;
   }
 }
+
 @media (max-width: 767px) {
   .tagcloud a {
     padding: 14px;
@@ -5605,18 +5683,21 @@ blockquote {
   padding: 35px 50px;
   margin-bottom: 35px;
 }
+
 @media (max-width: 767px) {
   blockquote {
     padding-left: 15px;
     padding-right: 15px;
   }
 }
+
 blockquote p {
   line-height: 1.5;
   font-size: 20px;
   color: #57565e;
   font-weight: 400;
 }
+
 blockquote cite {
   font-size: 18px;
   display: block;
@@ -5626,6 +5707,7 @@ blockquote cite {
   font-weight: 600;
   position: relative;
 }
+
 blockquote cite::before {
   content: "";
   font-size: 28px;
@@ -5651,6 +5733,7 @@ blockquote cite::before {
   border-radius: 10px;
   min-height: calc(100% - 30px);
 }
+
 .location-item:hover .location-icon i {
   background-color: var(--tp-heading-secondary);
 }
@@ -5674,14 +5757,17 @@ blockquote cite::before {
   font-weight: 500;
   display: inline-block;
 }
+
 .location-title:hover {
   color: var(--tp-heading-secondary);
 }
+
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .location-title {
     font-size: 18px;
   }
 }
+
 @media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
   .location-title {
     font-size: 16px;
@@ -5698,6 +5784,7 @@ blockquote cite::before {
   font-size: 36px;
   color: var(--tp-heading-primary);
 }
+
 @media (max-width: 767px) {
   .contact-title {
     font-size: 30px;
@@ -5724,25 +5811,30 @@ blockquote cite::before {
   font-size: 16px;
   outline: 0;
 }
+
 .contact-form-input input::placeholder, .contact-form-input textarea::placeholder {
   color: var(--tp-heading-primary);
   font-size: 18px;
 }
+
 @media only screen and (min-width: 992px) and (max-width: 1199px), (max-width: 767px) {
   .contact-form-input input::placeholder, .contact-form-input textarea::placeholder {
     font-size: 16px;
   }
 }
+
 .contact-form-input input:focus {
   outline: none;
   border-color: var(--tp-heading-secondary);
 }
+
 .contact-form-input textarea {
   height: 200px;
   padding: 25px 20px;
   line-height: 1.1;
   resize: none;
 }
+
 .contact-form-input textarea:focus-visible {
   border-color: var(--tp-heading-secondary);
 }
@@ -5750,6 +5842,7 @@ blockquote cite::before {
 .contact-bg img {
   max-width: inherit;
 }
+
 @media only screen and (min-width: 1400px) and (max-width: 1600px), only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
   .contact-bg img {
     max-width: 100%;
@@ -5776,6 +5869,7 @@ blockquote cite::before {
   text-align: left;
   color: var(--tp-heading-primary);
 }
+
 @media (max-width: 767px) {
   .accordion-buttons {
     padding: 20px 30px;
@@ -5791,6 +5885,7 @@ blockquote cite::before {
   position: relative;
   transition: 0.3s;
 }
+
 .accordion-buttons::after {
   position: absolute;
   content: "\f077";
@@ -5802,12 +5897,14 @@ blockquote cite::before {
   font-size: 17px;
   padding-left: 10px;
 }
+
 @media (max-width: 767px) {
   .accordion-buttons::after {
     font-size: 14px;
     right: 10px;
   }
 }
+
 .accordion-buttons.collapsed::after {
   content: "\f107";
 }
@@ -5823,6 +5920,7 @@ blockquote cite::before {
   padding: 20px 40px 30px 40px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
 @media (max-width: 767px) {
   .accordion-items .accordion-body {
     font-size: 14px;
@@ -5842,6 +5940,7 @@ blockquote cite::before {
   width: 100%;
   margin-bottom: 0;
 }
+
 .table-content table.table > :not(:first-child) {
   border-top: 0;
 }
@@ -5916,6 +6015,7 @@ blockquote cite::before {
     float: none;
   }
 }
+
 #coupon_code {
   height: 58px;
   border: 2px solid #eaedff;
@@ -5929,6 +6029,7 @@ blockquote cite::before {
     margin-bottom: 15px;
   }
 }
+
 .coupon2 {
   float: right;
 }
@@ -5939,6 +6040,7 @@ blockquote cite::before {
     margin-top: 15px;
   }
 }
+
 .cart-page-total {
   padding-top: 50px;
 }
@@ -5984,6 +6086,7 @@ td.product-thumbnail img {
   text-align: center;
   font-size: 14px;
 }
+
 .cart-plus:hover,
 .cart-minus:hover {
   background-color: var(--tp-heading-secondary);
@@ -6078,6 +6181,7 @@ td.product-thumbnail img {
   -o-box-shadow: none;
   box-shadow: none;
 }
+
 .coupon-info p.form-row-first input:focus, .coupon-info p.form-row-last input:focus {
   border-color: var(--tp-heading-secondary);
 }
@@ -6134,6 +6238,7 @@ p.checkout-coupon input[type=text] {
   -o-box-shadow: none;
   box-shadow: none;
 }
+
 p.checkout-coupon input[type=text]:focus {
   border-color: var(--tp-heading-secondary);
 }
@@ -6208,6 +6313,7 @@ p.checkout-coupon input[type=text]:focus {
   -o-box-shadow: none;
   box-shadow: none;
 }
+
 .checkout-form-list input[type=text]:focus, .checkout-form-list input[type=password]:focus, .checkout-form-list input[type=email]:focus {
   border-color: var(--tp-heading-secondary);
 }
@@ -6293,6 +6399,7 @@ p.checkout-coupon input[type=text]:focus {
     padding: 15px;
   }
 }
+
 .your-order h3 {
   border-bottom: 1px solid #eaedff;
   font-size: 30px;
@@ -6321,6 +6428,7 @@ p.checkout-coupon input[type=text]:focus {
     padding-right: 10px;
   }
 }
+
 .your-order-table table th {
   border-top: medium none;
   color: #6f7172;
@@ -6375,15 +6483,18 @@ p.checkout-coupon input[type=text]:focus {
 .payment-method {
   margin-top: 40px;
 }
+
 .payment-method .accordion-item:last-of-type {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
+
 .payment-method .accordion-item {
   background-color: #fff;
   border: 0;
   border-bottom: 1px solid var(--tp-border-1);
 }
+
 .payment-method .accordion-button {
   font-size: 16px;
   font-weight: 500;
@@ -6391,6 +6502,7 @@ p.checkout-coupon input[type=text]:focus {
   padding: 23px 0;
   border: none;
 }
+
 .payment-method .accordion-button:focus {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -6398,6 +6510,7 @@ p.checkout-coupon input[type=text]:focus {
   -o-box-shadow: none;
   box-shadow: none;
 }
+
 .payment-method .accordion-button::after {
   position: absolute;
   content: "\f067";
@@ -6414,18 +6527,22 @@ p.checkout-coupon input[type=text]:focus {
   margin-left: 0;
   background-image: none;
 }
+
 .payment-method .accordion-button:not(.collapsed) {
   color: var(--tp-heading-primary);
   background-color: var(--tp-common-white);
   box-shadow: none;
 }
+
 .payment-method .accordion-button:not(.collapsed)::after {
   content: "\f068";
 }
+
 .payment-method .accordion-body {
   padding: 8px 0;
   padding-bottom: 40px;
 }
+
 .payment-method .accordion-collapse {
   border: none;
 }
@@ -6510,16 +6627,19 @@ p.checkout-coupon input[type=text]:focus {
     padding: 50px;
   }
 }
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .basic-login {
     padding: 40px;
   }
 }
+
 @media (max-width: 767px) {
   .basic-login {
     padding: 30px;
   }
 }
+
 .basic-login h3 {
   font-size: 30px;
 }
@@ -6591,6 +6711,7 @@ p.checkout-coupon input[type=text]:focus {
     float: none;
   }
 }
+
 .forgot-login a {
   color: var(--tp-common-black);
 }
@@ -6606,6 +6727,7 @@ p.checkout-coupon input[type=text]:focus {
     display: block;
   }
 }
+
 /*----------------------------------------*/
 /*  21. FOOTER CSS START
 /*----------------------------------------*/
@@ -6617,22 +6739,27 @@ p.checkout-coupon input[type=text]:focus {
 .footer-widget__title {
   color: var(--tp-common-white);
 }
+
 .footer-widget ul li a {
   color: var(--tp-common-white);
   font-size: 16px;
   display: inline-block;
 }
+
 .footer-widget ul li a:hover {
   color: var(--tp-heading-secondary);
   padding-left: 3px;
 }
+
 .footer-widget ul li:not(last-child) {
   margin-bottom: 22px;
 }
+
 .footer-widget p {
   color: var(--tp-common-white);
   margin-bottom: 25px;
 }
+
 .footer-widget__social a {
   height: 48px;
   width: 48px;
@@ -6645,14 +6772,17 @@ p.checkout-coupon input[type=text]:focus {
   font-size: 20px;
   margin-right: 8px;
 }
+
 .footer-widget__social a:hover {
   background: var(--tp-heading-secondary);
   color: var(--tp-common-white);
   display: block;
 }
+
 .footer-widget__f-newsletter form {
   position: relative;
 }
+
 .footer-widget__f-newsletter form span {
   position: absolute;
   top: 50%;
@@ -6661,6 +6791,7 @@ p.checkout-coupon input[type=text]:focus {
   font-size: 16px;
   color: var(--tp-text-2);
 }
+
 .footer-widget__f-newsletter form input {
   width: 100%;
   border: none;
@@ -6669,20 +6800,24 @@ p.checkout-coupon input[type=text]:focus {
   border-radius: 50px;
   color: var(--tp-text-2);
 }
+
 .footer-widget__f-newsletter form input::placeholder {
   font-size: 16px;
   color: var(--tp-text-2);
 }
+
 @media (max-width: 767px) {
   .footer-widget__f-newsletter form input::placeholder {
     font-size: 14px;
   }
 }
+
 @media (max-width: 767px) {
   .footer-widget__f-newsletter form input {
     padding: 17px 170px 17px 55px;
   }
 }
+
 .footer-widget__submit {
   position: absolute;
   top: 8px;
@@ -6692,6 +6827,7 @@ p.checkout-coupon input[type=text]:focus {
 .footer-col-4 {
   margin-left: 30px;
 }
+
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
   .footer-col-4 {
     margin-left: 0;
@@ -6701,9 +6837,11 @@ p.checkout-coupon input[type=text]:focus {
 .footer-widget-white .footer-widget__title {
   color: var(--tp-heading-primary);
 }
+
 .footer-widget-white p {
   color: var(--tp-text-2);
 }
+
 .footer-widget-white ul li a {
   color: var(--tp-text-2);
 }
@@ -6722,6 +6860,7 @@ p.checkout-coupon input[type=text]:focus {
   border-radius: 50px;
   display: block;
 }
+
 .footer-widget-info-icon:hover i {
   background: var(--tp-heading-secondary);
   color: var(--tp-common-white);
@@ -6731,48 +6870,59 @@ p.checkout-coupon input[type=text]:focus {
   color: var(--tp-common-white);
   font-size: 16px;
 }
+
 .f-copyright__list ul li {
   margin-right: 40px;
 }
+
 @media (max-width: 767px) {
   .f-copyright__list ul li {
     margin-right: 12px;
   }
 }
+
 .f-copyright__list ul li a {
   font-size: 16px;
   color: var(--tp-text-2);
 }
+
 .f-copyright__list ul li a:hover {
   color: var(--tp-heading-secondary);
 }
+
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
   .f-copyright__list ul li a {
     font-size: 14px;
   }
 }
+
 .f-copyright__list ul li:last-child {
   margin-right: 0px;
 }
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .f-copyright__list ul li {
     margin-right: 30px;
   }
 }
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .f-copyright__list ul li {
     margin-right: 18px;
   }
 }
+
 .f-copyright__dom {
   font-size: 16px;
   color: var(--tp-heading-primary);
 }
+
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px) {
   .f-copyright__dom {
     font-size: 14px;
   }
 }
+
 @media (max-width: 767px) {
   .f-copyright__dom {
     font-size: 14px;
@@ -6783,6 +6933,7 @@ p.checkout-coupon input[type=text]:focus {
 .f-bottom-list ul {
   justify-content: end;
 }
+
 @media (max-width: 767px) {
   .f-bottom-list ul {
     flex-wrap: wrap;
@@ -6796,12 +6947,14 @@ p.checkout-coupon input[type=text]:focus {
   display: block;
   line-height: 1.4;
 }
+
 .footer-widget-info .footer-widget-info-text a {
   font-size: 16px;
   font-family: "Gordita-500";
   color: var(--tp-heading-primary);
   display: inline-block;
 }
+
 .footer-widget-info .footer-widget-info-text a:hover {
   color: var(--tp-heading-secondary);
   padding-left: 0;
@@ -6822,6 +6975,7 @@ p.checkout-coupon input[type=text]:focus {
     margin-left: 0;
   }
 }
+
 .footer-2-col-4 ul li a {
   color: var(--tp-heading-secondary);
 }
@@ -6829,6 +6983,7 @@ p.checkout-coupon input[type=text]:focus {
 .footer-3-col-2 {
   margin-left: 48px;
 }
+
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
   .footer-3-col-2 {
     margin-left: 0;
@@ -6838,6 +6993,7 @@ p.checkout-coupon input[type=text]:focus {
 .footer-3-col-3 {
   margin-left: 42px;
 }
+
 @media (max-width: 767px) {
   .footer-3-col-3 {
     margin-left: 0;
@@ -6860,6 +7016,7 @@ p.checkout-coupon input[type=text]:focus {
   color: var(--tp-common-white);
   font-size: 20px;
 }
+
 .f-copyright__social-area i:hover {
   background: var(--tp-heading-secondary);
 }

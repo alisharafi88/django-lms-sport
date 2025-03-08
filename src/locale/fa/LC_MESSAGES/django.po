@@ -36,7 +36,7 @@ msgstr ""
 #| msgid "Home"
 msgctxt "Navigation"
 msgid "Home"
-msgstr "صفحه‌اصلی"
+msgstr "خانه"
 
 #: src/config/settings/development.py:345
 msgctxt "Action"
@@ -53,7 +53,7 @@ msgstr "چه چیزی می‌خواهید یاد بگیرید؟"
 
 #: src/templates/inc/header.html:38
 msgid "Home"
-msgstr "صفحه‌اصلی"
+msgstr "خانه"
 
 #: src/templates/inc/header.html:41
 msgid "Instructors"
