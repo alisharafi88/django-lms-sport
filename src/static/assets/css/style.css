@@ -5043,7 +5043,22 @@ div.choose-sub-color {
   line-height: 1;
   font-family: "Gordita-500";
   font-weight: 500;
-  margin-left: 30px;
+}
+
+.date-wrapper {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center;
+}
+
+.date-wrapper .icon {
+    margin-right: 5px;
+    unicode-bidi: isolate;
+}
+
+.date-wrapper .date-text {
+    white-space: nowrap;
+    unicode-bidi: isolate;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .tp-blog__meta-list span {
