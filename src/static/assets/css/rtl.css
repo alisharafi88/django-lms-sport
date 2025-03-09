@@ -167,10 +167,13 @@
 }
 [lang="fa"] .tp-testi__ava img {
   order: 1;
+  width: 100px;
+  height: 100px;
 }
 
 [lang="fa"] .tp-testi__ava {
   flex-direction: row-reverse;
+  display: inline-flex !important;
 }
 
 [lang="fa"] .ml-20 {
@@ -188,7 +191,7 @@
 }
 
 [lang="fa"] .tp-testi p {
-  text-align: justify;
+  text-align: right;
   line-height: 1.8;
 }
 [lang="fa"] .testimonial-active-box {

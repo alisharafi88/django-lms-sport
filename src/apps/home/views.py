@@ -31,7 +31,15 @@ class AboutUsView(View):
 
     def get(self, request):
         featured_instructors_query = get_featured_instructors()
-        return render(request, self.template_name, {'instructors': featured_instructors_query})
+        top_course_comment = get_top_comment()
+        return render(
+            request,
+            self.template_name,
+            {
+                'instructors': featured_instructors_query,
+                'comments': top_course_comment,
+            }
+        )
 
 
 class BMIView(TemplateView):

@@ -71,7 +71,7 @@
 
 	////////////////////////////////////////////////////
 	// 07. Data CSS Js
-	$("[data-background").each(function () {
+	$("[data-background]").each(function () {
 		$(this).css("background-image", "url( " + $(this).attr("data-background") + "  )");
 	});
 
@@ -240,7 +240,7 @@
 
 	$('.testimonial--active').slick({
 		infinite: true,
-		slidesToShow: 3,
+		slidesToShow: 2,
 		slidesToScroll: 1,
 		prevArrow: prevArrow,
 		nextArrow: nextArrow,
@@ -290,13 +290,14 @@
 	$('.testimonial-active-box').slick({
 		infinite: true,
 		autoplay:true,
-		slidesToShow: 3,
+		slidesToShow: 2,
 		slidesToScroll: 1,
 		prevArrow: prevArrow,
 		nextArrow: nextArrow,
 		arrows: false,
 		appendArrows: $(".tp-section-arrow"),
 		dots: false,
+		rtl: isRTL,
 		responsive: [
 			{
 				breakpoint: 768,

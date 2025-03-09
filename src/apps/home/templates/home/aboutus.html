@@ -115,7 +115,9 @@
                         <div class="section-title mb-35">
                             <span class="tp-sub-title-box mb-15">درباره ما</span>
                             <h2 class="tp-section-title mb-25">جایی که فوتبالت متحول میشه! ⚽️🔥</h2>
-                            <p>اینجا زمین بازی توئه! ما اومدیم تا بهت کمک کنیم مثل حرفه‌ای‌ها فوتبال بازی کنی. اگه عاشق فوتبال هستی، اگه همیشه دنبال پیشرفت توی تکنیک، بدنسازی فوتبال و هوش بازی بودی، این دوره آموزشی برای تو ساخته شده!</p>
+                            <p>اینجا زمین بازی توئه! ما اومدیم تا بهت کمک کنیم مثل حرفه‌ای‌ها فوتبال بازی کنی. اگه عاشق
+                                فوتبال هستی، اگه همیشه دنبال پیشرفت توی تکنیک، بدنسازی فوتبال و هوش بازی بودی، این دوره
+                                آموزشی برای تو ساخته شده!</p>
                         </div>
                         <div class="tp-about-list mb-65">
                             <ul>
@@ -223,84 +225,39 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title text-center mb-65">
-                        <span class="tp-sub-title-box mb-15">Testimonial</span>
-                        <h2 class="tp-section-title mb-20">What Our Happy Users Says</h2>
+                        <span class="tp-sub-title-box mb-15">{% trans 'Comments' %}</span>
+                        <h2 class="tp-section-title mb-20">{% trans 'What Our Happy Users Says' %}</h2>
                     </div>
                 </div>
             </div>
             <div class="testimonial-active-box tp-slide-space-white">
-                <div class="tp-test-s-item">
-                    <div class="tp-testi tp-testi-round p-relative">
-                        <div class="tp-testi__ava testi-ava-border d-flex align-items-center mb-20 pb-20">
-                            <img src="{% static 'assets/img/icon/test-avata--1.png' %}" alt="testi-avatar">
-                            <div class="tp-testi__avainfo ml-20">
-                                <h3 class="tp-testi__title tp-title-meta mt-5">Darrell Steward</h3>
-                                <i>President of Sales</i>
+                {% for comment in comments %}
+                    <div class="tp-test-s-item">
+                        <div class="tp-testi tp-testi-round p-relative">
+                            <div class="tp-testi__ava testi-ava-border d-flex align-items-center mb-20 pb-20">
+                                <img src="{{ comment.user.get_photo_url }}" alt="profile">
+                                <div class="tp-testi__avainfo ml-20">
+                                    <h3 class="tp-testi__title tp-title-meta mt-5">{{ comment.user.username }}</h3>
+                                    <i>{{ comment.course.title }}</i>
+                                </div>
+                            </div>
+                            <p>{{ comment.text|truncatewords:80 }}</p>
+                            <div class="tp-testi__rating mb-5">
+                                {% for i in "54321" %}
+                                    {% if comment.rate >= i|add:"0" %}
+                                        <i class="fi fi-ss-star"></i>
+                                    {% else %}
+                                        <i class="fi fi-rs-star"></i>
+                                    {% endif %}
+                                {% endfor %}
+                                <span>{{ comment.rate }}</span>
+                            </div>
+                            <div class="testi-quote">
+                                <i class="fa-solid fa-quote-left"></i>
                             </div>
                         </div>
-                        <p>Phosfluorescently aggregate bleeding-edge channels rather than global mindshare.
-                            Monotonectally enable enterprise wide strategi theme areas for worldwide initiatives.</p>
-                        <div class="tp-testi__rating mb-5">
-                            <i class="fi fi-ss-star"></i>
-                            <i class="fi fi-ss-star"></i>
-                            <i class="fi fi-ss-star"></i>
-                            <i class="fi fi-ss-star"></i>
-                            <i class="fi fi-rs-star"></i>
-                            <span>4.5</span>
-                        </div>
-                        <div class="testi-quote">
-                            <i class="fa-solid fa-quote-right"></i>
-                        </div>
                     </div>
-                </div>
-                <div class="tp-test-s-item">
-                    <div class="tp-testi p-relative">
-                        <div class="tp-testi__ava testi-ava-border d-flex align-items-center mb-20 pb-20">
-                            <img src="{% static 'assets/img/icon/testi-ava-sub-1.png' %}" alt="testi-avatar">
-                            <div class="tp-testi__avainfo ml-20">
-                                <h3 class="tp-testi__title tp-title-meta mt-5">Ralph Edwards</h3>
-                                <i>Marketing Coordinator</i>
-                            </div>
-                        </div>
-                        <p>Phosfluorescently aggregate bleeding-edge channels rather than global mindshare.
-                            Monotonectally enable enterprise wide strategi theme areas for worldwide initiatives.</p>
-                        <div class="tp-testi__rating mb-5">
-                            <i class="fi fi-ss-star"></i>
-                            <i class="fi fi-ss-star"></i>
-                            <i class="fi fi-ss-star"></i>
-                            <i class="fi fi-ss-star"></i>
-                            <i class="fi fi-rs-star"></i>
-                            <span>4.5</span>
-                        </div>
-                        <div class="testi-quote">
-                            <i class="fa-solid fa-quote-right"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="tp-test-s-item">
-                    <div class="tp-testi p-relative">
-                        <div class="tp-testi__ava testi-ava-border d-flex align-items-center mb-20 pb-20">
-                            <img src="{% static 'assets/img/icon/testi-ava-sub-2.png' %}" alt="testi-avatar">
-                            <div class="tp-testi__avainfo ml-20">
-                                <h3 class="tp-testi__title tp-title-meta mt-5">Courtney Henry</h3>
-                                <i>UX/UI Designer</i>
-                            </div>
-                        </div>
-                        <p>Phosfluorescently aggregate bleeding-edge channels rather than global mindshare.
-                            Monotonectally enable enterprise wide strategi theme areas for worldwide initiatives. </p>
-                        <div class="tp-testi__rating mb-5">
-                            <i class="fi fi-ss-star"></i>
-                            <i class="fi fi-ss-star"></i>
-                            <i class="fi fi-ss-star"></i>
-                            <i class="fi fi-ss-star"></i>
-                            <i class="fi fi-rs-star"></i>
-                            <span>4.5</span>
-                        </div>
-                        <div class="testi-quote">
-                            <i class="fa-solid fa-quote-right"></i>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
