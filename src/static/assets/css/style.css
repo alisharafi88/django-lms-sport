@@ -4646,7 +4646,10 @@ div.choose-sub-color {
 .tp-testi__avatar {
   position: absolute;
   top: -62px;
-  left: 0;
+  right: 0;
+  width: 130px;
+  height: 110px;
+  overflow: hidden;
 }
 .tp-testi__rating {
   color: #F2C94C;
@@ -4726,7 +4729,7 @@ div.choose-sub-color {
   background: var(--tp-heading-secondary);
 }
 .tp-section-arrow .slick-prev {
-  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .testi-ava-border {

@@ -498,45 +498,48 @@
     <!-- instructor-area-enfd -->
 
     <!-- testimonial-area -->
-    <section class="testimonial-area bg-bottom pt-110 pb-90 "
-             data-background="{% static 'assets/img/bg/shape-bg-1.png' %}">
+    <section class="testimonial-area bg-bottom pt-110 pb-90 " data-background="assets/img/bg/shape-bg-1.png">
         <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-xl-6 col-lg-8 col-md-8 col-12">
-                    <div class="section-title mb-65">
-                        <h2 class="tp-section-title mb-20">{% trans 'Our Testimonials' %}</h2>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-4 col-md-4 col-6">
-                    <div class="tp-section-arrow d-flex justify-content-md-end mb-40"></div>
-                </div>
-            </div>
-            <div class="testimonial-active tp-slide-space">
-                <div class="tp-test-slide-item">
+           <div class="row justify-content-between">
+              <div class="col-xl-6 col-lg-8 col-md-8 col-12">
+                 <div class="section-title mb-65">
+                    <h2 class="tp-section-title mb-20">Our Expert Instructor</h2>
+                 </div>
+              </div>
+              <div class="col-xl-6 col-lg-4 col-md-4 col-6">
+                 <div class="tp-section-arrow d-flex justify-content-md-end mb-40"></div>
+              </div>
+           </div>
+           <div class="testimonial-active tp-slide-space">
+                {% for comment in comments %}
+                    <div class="tp-test-slide-item">
                     <div class="tp-testi p-relative mt-65">
                         <div class="tp-testi__avatar">
-                            <img src="{% static 'assets/img/icon/test-ava-01.png' %}" alt="testi-avatar">
+                            <img src="{{ comment.user.get_photo_url }}" alt="profile">
                         </div>
                         <div class="tp-testi__rating pb-5">
                             <ul class="d-flex align-items-center justify-content-end mr-5 mb-25">
-                                <li><i class="fi fi-ss-star"></i></li>
-                                <li><i class="fi fi-ss-star"></i></li>
-                                <li><i class="fi fi-ss-star"></i></li>
-                                <li><i class="fi fi-ss-star"></i></li>
-                                <li><i class="fi fi-rs-star"></i></li>
+                                {% for i in "12345" %}
+                                    {% if comment.rate >= i|add:"0" %}
+                                        <i class="fi fi-ss-star"></i>
+                                    {% else %}
+                                        <i class="fi fi-rs-star"></i>
+                                    {% endif %}
+                                {% endfor %}
                             </ul>
                         </div>
                         <div class="tp-testi__avainfo">
-                            <p>Dramatically supply transparent deliverab before & you backward comp internal or
-                                "organic" sources.</p>
-                            <h3 class="tp-testi__title">Courtney Henry</h3>
-                            <i>Sr. UX/UI Designer</i>
+                            <p>{{ comment.text|truncatewords:80 }}</p>
+                            <h3 class="tp-testi__title">{{ comment.user.username }}</h3>
+                            <i>{{ comment.course.title }}</i>
                         </div>
                     </div>
-                </div>
-            </div>
+                    </div>
+                {% endfor %}
+           </div>
         </div>
-    </section>
+     </section>
+
     <!-- testimonial-area-end -->
 
     <!-- blog-area -->

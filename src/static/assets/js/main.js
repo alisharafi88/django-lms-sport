@@ -175,32 +175,30 @@
 
 	////////////////////////////////////////////////////
 	// 10. testimonial-active
+	var isRTL = $('html').attr('lang') === 'fa';
+
+	var prevArrow = isRTL ? 
+		'<button type="button" class="slick-prev"><i class="arrow_carrot-right"></i></button>' : 
+		'<button type="button" class="slick-prev"><i class="arrow_carrot-left"></i></button>';
+
+	var nextArrow = isRTL ? 
+		'<button type="button" class="slick-next"><i class="arrow_carrot-left"></i></button>' : 
+		'<button type="button" class="slick-next"><i class="arrow_carrot-right"></i></button>';
+
 	$('.testimonial-active').slick({
 		infinite: true,
+		autoplay: true,
 		slidesToShow: 3,
 		slidesToScroll: 1,
-		prevArrow: '<button type="button" class="slick-prev"><i class="arrow_carrot-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next"><i class="arrow_carrot-right"></i></button>',
+		prevArrow: prevArrow,
+		nextArrow: nextArrow,
 		arrows: true,
 		appendArrows: $(".tp-section-arrow"),
 		dots: false,
+		rtl: isRTL,
 		responsive: [
 			{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2,
-				}
-			},
-			{
-				breakpoint: 992,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 2
-				}
-			},
-			{
-				breakpoint: 480,
+				breakpoint: 768,
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1
@@ -214,13 +212,26 @@
 				}
 			},
 			{
-				breakpoint: 768,
+				breakpoint: 480,
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1
 				}
+			},
+			{
+				breakpoint: 992,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			},
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1
+				}
 			}
-
 		]
 	});
 
@@ -229,30 +240,16 @@
 
 	$('.testimonial--active').slick({
 		infinite: true,
-		slidesToShow: 2,
+		slidesToShow: 3,
 		slidesToScroll: 1,
-		prevArrow: '<button type="button" class="slick-prev"><i class="arrow_carrot-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next"><i class="arrow_carrot-right"></i></button>',
+		prevArrow: prevArrow,
+		nextArrow: nextArrow,
 		arrows: true,
 		appendArrows: $(".tp-section-arrow"),
 		dots: false,
 		responsive: [
 			{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2,
-				}
-			},
-			{
-				breakpoint: 992,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 2
-				}
-			},
-			{
-				breakpoint: 480,
+				breakpoint: 768,
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1
@@ -266,13 +263,26 @@
 				}
 			},
 			{
-				breakpoint: 768,
+				breakpoint: 480,
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1
 				}
-			}
-
+			},
+			{
+				breakpoint: 992,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 2
+				}
+			},
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2,
+				}
+			},
 		]
 	});
 
@@ -280,14 +290,42 @@
 	$('.testimonial-active-box').slick({
 		infinite: true,
 		autoplay:true,
-		slidesToShow: 2,
+		slidesToShow: 3,
 		slidesToScroll: 1,
-		prevArrow: '<button type="button" class="slick-prev"><i class="arrow_carrot-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next"><i class="arrow_carrot-right"></i></button>',
+		prevArrow: prevArrow,
+		nextArrow: nextArrow,
 		arrows: false,
 		appendArrows: $(".tp-section-arrow"),
 		dots: false,
 		responsive: [
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			},
+			{
+				breakpoint: 576,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			},
+			{
+				breakpoint: 992,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 2
+				}
+			},
 			{
 				breakpoint: 1024,
 				settings: {
@@ -295,76 +333,33 @@
 					slidesToScroll: 2,
 				}
 			},
-			{
-				breakpoint: 992,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 2
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			},
-			{
-				breakpoint: 576,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			},
-			{
-				breakpoint: 768,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}
-
 		]
 	});
 
 	////////////////////////////////////////////////////
 	// 11. instructor-active
-
 	$('.intruc-active').slick({
 		infinite: true,
 		slidesToShow: 3,
 		slidesToScroll: 1,
-		prevArrow: '<button type="button" class="slick-prev"><i class="arrow_carrot-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next"><i class="arrow_carrot-right"></i></button>',
+		prevArrow: prevArrow,
+		nextArrow: nextArrow,
 		arrows: true,
 		appendArrows: $(".tp-instruc-arrow"),
 		dots: false,
+		rtl: isRTL,
 		responsive: [
 			{
-				breakpoint: 1024,
+				breakpoint: 1200,
 				settings: {
 					slidesToShow: 3,
-					slidesToScroll: 3,
+					slidesToScroll: 1
 				}
 			},
 			{
 				breakpoint: 992,
 				settings: {
 					slidesToShow: 2,
-					slidesToScroll: 2
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			},
-			{
-				breakpoint: 576,
-				settings: {
-					slidesToShow: 1,
 					slidesToScroll: 1
 				}
 			},
@@ -375,7 +370,6 @@
 					slidesToScroll: 1
 				}
 			}
-
 		]
 	});
 

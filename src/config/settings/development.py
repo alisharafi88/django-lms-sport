@@ -2,20 +2,28 @@ import os
 import socket
 
 DEBUG = True
+
+
 # For Docker
 INTERNAL_IPS = [
     '127.0.0.1',
     'localhost',
+    '0.0.0.0',
+    '172.17.0.1',  # Docker default gateway
 ]
 
-hostname, i, ips = socket.gethostbyname_ex(socket.gethostname())
-INTERNAL_IPS += [ip[:-1] + '1' for ip in ips]
-INTERNAL_IPS += ['172.17.0.1']  # Docker default gateway
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS += [ip for ip in ips]
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG,
+}
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ["*"]
 
 # Database
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

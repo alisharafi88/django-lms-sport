@@ -1,7 +1,4 @@
-from django.contrib.contenttypes.models import ContentType
-from django.db.models import Count, Q, Value, IntegerField, F
-
-from apps.courses.models import Course, Package
+from apps.courses.models import CourseComments
 from apps.instructors.models import Instructor
 from apps.blogs.models import Blog
 
@@ -14,8 +11,9 @@ def get_featured_instructors():
     ).only(
         'user__first_name',
         'user__last_name',
+        'user__profile_photo',
         'slug',
-        'id'
+        'id',
     )[:3]
 
 
@@ -30,5 +28,11 @@ def get_latest_blogs():
         'img',
         'author__user__first_name',
         'author__user__last_name',
-        'id', 'slug',
+        'id',
+        'slug',
     )[:3]
+    
+def get_top_comment():
+    comments_queryset = CourseComments.objects.select_related('course', 'user').filter(status=True).order_by('rate')[:5]
+    return comments_queryset
+    

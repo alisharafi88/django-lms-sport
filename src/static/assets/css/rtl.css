@@ -149,17 +149,13 @@
   margin-left: 0 !important;
 }
 
-[lang="fa"] .tp-testi__rating {
-  direction: ltr;
-}
-
 [lang="fa"] .testi-quote {
   left: 30px;
   right: auto !important;
 }
 
 [lang="fa"] .slick-list {
-  direction: ltr;
+  direction: rtl;
 }
 
 [lang="fa"] .slick-slide {
