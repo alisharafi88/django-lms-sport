@@ -3,6 +3,7 @@ from apps.courses.models import Course, Package
 COURSE_TYPE = 'course'
 PACKAGE_TYPE = 'package'
 
+
 class Cart:
     CART_SESSION_ID = 'cart'
 

@@ -18,6 +18,7 @@ from itertools import chain
 from .forms import CourseCommentForm
 from .models import Course, CourseComments, CourseMembership, Package, CourseSeason, CourseVideo
 from .queries import get_combined_course_package_queryset
+from ..carts.carts import Cart
 from ..instructors.models import Instructor
 
 
@@ -29,6 +30,15 @@ class CourseListView(generic.ListView):
 
     def get_queryset(self):
         return get_combined_course_package_queryset()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+
+        cart = Cart(self.request)
+        cart_items = [(item['id'], item['type']) for item in cart.cart]
+        context['carts'] = cart_items
+
+        return context
 
 
 class CourseDetailView(generic.DetailView):

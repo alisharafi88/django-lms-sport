@@ -3,6 +3,7 @@ from django.views import View
 from django.views.generic import TemplateView
 
 from .queries import get_featured_instructors, get_latest_blogs, get_top_comment
+from ..carts.carts import Cart
 from ..courses.queries import get_combined_course_package_queryset
 
 
@@ -14,6 +15,10 @@ class HomeView(View):
         featured_instructors_query = get_featured_instructors()
         latest_blogs_query = get_latest_blogs()
         top_course_comment = get_top_comment()
+
+        cart = Cart(request)
+        cart_items = [(item['id'], item['type']) for item in cart.cart]
+
         return render(
             request,
             self.template_name,
@@ -22,6 +27,7 @@ class HomeView(View):
                 'instructors': featured_instructors_query,
                 'blogs': latest_blogs_query,
                 'comments': top_course_comment,
+                'carts': cart_items,
             }
         )
 

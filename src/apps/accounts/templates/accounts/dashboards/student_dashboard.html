@@ -27,6 +27,79 @@
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/rtl.css' %}">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+    <style>
+        .message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .cart-page-total {
+            transition: all 0.3s ease-in-out;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .cart-page-total.updating {
+            opacity: 0.5;
+            transform: translateX(-10px);
+        }
+
+        .price-item {
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .price-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #e0e0e0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .price-item.updated::after {
+            transform: scaleX(1);
+        }
+
+        .checkout-button {
+            transition: all 0.3s ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .checkout-button.hide {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
 <!-- Sandwich Icon -->
@@ -97,7 +170,7 @@
             </div>
         </section>
 
-        <section class="cart-area pt-100 pb-100">
+        <section class="pt-100 pb-100">
             <div class="container_content">
                 <div class="course-items">
                     {% if courses %}
@@ -205,7 +278,9 @@
                                     </thead>
                                     <tbody>
                                     {% for item in carts %}
-                                        <tr>
+                                        <tr data-product-id="{{ item.product_obj.id }}"
+                                            data-product-type="{{ item.type }}"
+                                            data-remove-url="{% url 'carts:cart_remove' 0 'type' %}">
                                             <td class="product-thumbnail">
                                                 <a href="{% if item.product_obj.type == 'course' %}{% url 'courses:course_detail'  item.product_obj.slug %}{% else %}{% url 'courses:package_detail' item.product_obj.slug %}{% endif %}">
                                                     <img src="{{ item.product_obj.img.url }}"
@@ -224,7 +299,7 @@
                                                 <span class="amount">{% trans 'Toman' %}{{ item.item_total_price }}</span>
                                             </td>
                                             <td class="product-remove">
-                                                <a href="{% url 'carts:cart_remove' item.product_obj.id item.type %}">
+                                                <a href="#" class="remove-from-cart-ajax">
                                                     <i class="fa fa-times"></i>
                                                 </a>
                                             </td>
@@ -237,11 +312,12 @@
                                 <div class="col-12">
                                     <div class="coupon-all">
                                         <div class="coupon2">
-                                            <a href="{% url 'carts:cart_clear' %}">
-                                                <button class="tp-btn" type="submit">{% trans 'Clear cart' %}
-                                                </button>
-                                            </a>
-                                            <button class="tp-btn" name="update_cart"
+                                            <button class="tp-btn clear-cart-ajax"
+                                                    type="submit"
+                                                    data-clear-url="{% url 'carts:cart_clear' %}"
+                                            >{% trans 'Clear cart' %}
+                                            </button>
+                                            <button class="tp-btn " name="update_cart"
                                                     type="submit">{% trans 'Update cart' %}</button>
                                         </div>
                                     </div>
@@ -252,10 +328,10 @@
                                     <div class="cart-page-total">
                                         <h2>Cart totals</h2>
                                         <ul class="mb-20">
-                                            <li>{% trans 'Total price' %}
+                                            <li class="total-price-item">{% trans 'Total price' %}
                                                 <span>{% trans 'Toman' %}{{ total_price }}</span>
                                             </li>
-                                            <li>{% trans 'Total price after discount' %}
+                                            <li class="discounted-price-item">{% trans 'Total price after discount' %}
                                                 <span>{% trans 'Toman' %}{{ total_discounted_price }}</span></li>
                                         </ul>
                                         <a class="tp-btn"
@@ -264,7 +340,7 @@
                                 </div>
                             </div>
                         {% else %}
-                            <div class="col_12">
+                            <div class="col-12">
                                 <div class="coupon1">
                                     <p>{% trans 'Your cart is empty!' %}</p>
                                     <a href="{% url 'courses:course_list' %}">
@@ -277,6 +353,14 @@
                     </div>
                 </div>
             </div>
+            <input
+                    type="hidden"
+                    id="csrf-token"
+                    value="{{ csrf_token }}"
+                    data-csrf="{{ csrf_token }}"
+                    readonly
+                    aria-hidden="true"
+            >
         </section>
         <!-- cart area end-->
     </div>
@@ -307,7 +391,7 @@
         </section>
 
 
-        <section class="cart-area pt-100 pb-100">
+        <section class="pt-100 pb-100">
             <div class="commentFormContainer">
                 <form id="userForm">
                     {% csrf_token %}
@@ -375,7 +459,7 @@
             </div>
         </section>
 
-        <section class="cart-area pt-100 pb-100">
+        <section class="pt-100 pb-100">
 
             <div class="profile-edit-container">
                 <form
@@ -657,36 +741,168 @@
 
     //------------------------------------------------بخش مورد علاقه ها--------------------------------------
 
-    const likeButtons = document.querySelectorAll(".like-btn");
+    document.addEventListener('DOMContentLoaded', function () {
+        const csrftoken = document.querySelector('#csrf-token').value;
 
-    likeButtons.forEach((button) => {
-        button.addEventListener("click", function () {
-            const icon = this.querySelector("i");
-            icon.classList.toggle("far");
-            icon.classList.toggle("fas");
-            this.classList.toggle("liked");
-        });
-    });
+        document.querySelectorAll('.remove-from-cart-ajax').forEach(button => {
+            button.addEventListener('click', async (e) => {
+                e.preventDefault();
 
-    const starRatings = document.querySelectorAll(".star-rating");
+                const row = button.closest('tr');
+                const productId = row.dataset.productId;
+                const productType = row.dataset.productType;
+                let url_remove = row.dataset.removeUrl
+                    .replace('0', productId)
+                    .replace('type', productType);
 
-    starRatings.forEach((rating) => {
-        const stars = rating.querySelectorAll("i");
+                try {
+                    const response = await fetch(url_remove, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': csrftoken,
+                        },
+                    });
 
-        stars.forEach((star) => {
-            star.addEventListener("click", function () {
-                const ratingValue = parseInt(this.getAttribute("data-rating"));
-                stars.forEach((s, index) => {
-                    if (index < ratingValue) {
-                        s.classList.remove("far");
-                        s.classList.add("fas");
+                    const data = await response.json();
+
+                    if (data.status === 'success') {
+                        row.remove();
+
+                        updateCartSummary(data);
+
+                        showMessage(data.message, 'success');
+
+                        if (data.cart_empty) {
+                            document.querySelector('.cart-area').innerHTML = `
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="coupon1">
+                                        <p>{% trans 'Your cart is empty!' %}</p>
+                                        <a href="{% url 'courses:course_list' %}">
+                                            <button class="tp-btn">{% trans 'Add course' %}</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                        }
                     } else {
-                        s.classList.remove("fas");
-                        s.classList.add("far");
+                        showMessage(data.message, 'error');
                     }
-                });
+                } catch (error) {
+                    console.error('Error:', error);
+                    showMessage("{% trans 'An error occurred' %}", 'error');
+                }
             });
         });
+
+        document.querySelector('.clear-cart-ajax').addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            if (!confirm("{% trans 'Are you sure you want to clear your cart?' %}")) return;
+
+            const button = e.target.closest('button');
+            const url_clear = button.dataset.clearUrl;
+
+            button.disabled = true;
+            button.innerHTML = `
+            <span class="spinner-border spinner-border-sm me-2"></span>
+            {% trans 'Clearing...' %}
+        `;
+
+            try {
+                const response = await fetch(url_clear, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken,
+                    },
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    document.querySelector('tbody').innerHTML = '';
+
+                    updateCartSummary(data);
+
+                    document.querySelector('.cart-area').innerHTML = `
+
+                <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="coupon1">
+                            <p>{% trans 'Your cart is empty!' %}</p>
+                            <a href="{% url 'courses:course_list' %}">
+                                <button class="tp-btn">{% trans 'Add course' %}</button>
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            `;
+
+                    showMessage(data.message, 'success');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage("{% trans 'An error occurred' %}", 'error');
+            } finally {
+                button.disabled = false;
+                button.innerHTML = "{% trans 'Clear cart' %}";
+            }
+        });
+
+        function updateCartSummary(data) {
+            const cartTotalSection = document.querySelector('.cart-page-total');
+            const totalPrice = document.querySelector('.cart-page-total li:first-child span');
+            const discountedPrice = document.querySelector('.cart-page-total li:nth-child(2) span');
+            const checkoutButton = document.querySelector('.checkout-button');
+
+            cartTotalSection.classList.add('updating');
+
+            if (totalPrice) {
+                totalPrice.textContent = `${data.total_price} {% trans 'Toman' %} `;
+                totalPrice.style.animation = 'pulse 0.5s ease';
+            }
+            setTimeout(() => {
+                if (discountedPrice) {
+                    discountedPrice.textContent = `${data.total_discounted_price.toLocaleString()} {% trans 'Toman' %} `;
+                    discountedPrice.closest('li').classList.add('updated');
+                }
+
+                // Handle checkout button visibility
+                if (checkoutButton) {
+                    if (data.cart_empty) {
+                        checkoutButton.classList.add('hide');
+                        setTimeout(() => checkoutButton.style.display = 'none', 300);
+                    } else {
+                        checkoutButton.style.display = 'inline-block';
+                        setTimeout(() => checkoutButton.classList.remove('hide'), 10);
+                    }
+                }
+
+                // Remove animation classes after transition
+                setTimeout(() => {
+                    cartTotalSection.classList.remove('updating');
+                    document.querySelectorAll('.price-item').forEach(item => {
+                        item.classList.remove('updated');
+                    });
+                }, 500);
+            }, 300);
+        }
+
+
+        function showMessage(text, type) {
+            const message = document.createElement('div');
+            message.className = `message ${type}`;
+            message.textContent = text;
+            document.body.appendChild(message);
+            setTimeout(() => message.remove(), type === 'error' ? 5000 : 3000);
+        }
+
     });
 
     //------------------------------------------------پایان--------------------------------------
