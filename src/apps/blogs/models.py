@@ -54,7 +54,7 @@ class BlogComment(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='sent_blogs_comments',
-        verbose_name="Blog's author",
+        verbose_name="Comment's author",
     )
     text = models.CharField(_("Comment's text"), max_length=500, )
 

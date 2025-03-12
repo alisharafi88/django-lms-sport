@@ -38,20 +38,26 @@ class PostDetailView(generic.DetailView):
             return redirect(self.get_object().get_absolute_url())
 
     def get_queryset(self):
-        blog_queryset = Blog.objects.filter(pk=self.kwargs['pk'], slug=self.kwargs['slug'],
-                                            status=Blog.BLOG_STATUS_PUBLISHED).select_related(
-            'author'
+        blog_queryset = Blog.objects.filter(
+            pk=self.kwargs['pk'],
+            slug=self.kwargs['slug'],
+            status=Blog.BLOG_STATUS_PUBLISHED
         ). \
-            prefetch_related(Prefetch('comments',
-                                      queryset=BlogComment
-                                      .objects
-                                      .filter(status=True)
-                                      .select_related(
-                                          'author', 'parent')
-                                      .prefetch_related(
-                                          'replies__author'
-                                      )
-                                      )
-                             )
+            select_related(
+                'author__user',
+        ). \
+            prefetch_related(
+            Prefetch(
+                'comments',
+                queryset=BlogComment.objects.filter(
+                    status=True
+                ).select_related(
+                    'author',
+                    'parent',
+                ).prefetch_related(
+                    'replies__author',
+                )
+            )
+        )
 
         return blog_queryset
