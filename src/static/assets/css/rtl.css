@@ -145,65 +145,70 @@
 }
 
 [lang="fa"] .tp-testi__avainfo {
-  margin-right: 20px;
-  margin-left: 0 !important;
+    margin-right: 20px;
+    margin-left: 0 !important;
 }
 
 [lang="fa"] .testi-quote {
-  left: 30px;
-  right: auto !important;
+    left: 30px;
+    right: auto !important;
 }
 
 [lang="fa"] .slick-list {
-  direction: rtl;
+    direction: rtl;
 }
 
 [lang="fa"] .slick-slide {
-  float: right !important;
+    float: right !important;
 }
+
 [lang="fa"] .tp-testi__rating span {
-  margin-right: 10px;
-  margin-left: 0;
+    margin-right: 10px;
+    margin-left: 0;
 }
+
 [lang="fa"] .tp-testi__ava img {
-  order: 1;
-  width: 100px;
-  height: 100px;
+    order: 1;
+    width: 100px;
+    height: 100px;
 }
 
 [lang="fa"] .tp-testi__ava {
-  flex-direction: row-reverse;
-  display: inline-flex !important;
+    flex-direction: row-reverse;
+    display: inline-flex !important;
 }
 
 [lang="fa"] .ml-20 {
-  margin-left: 20px !important;
-  margin-right: 0 !important;
+    margin-left: 20px !important;
+    margin-right: 0 !important;
 }
 
 [lang="fa"] .pl-20 {
-  padding-left: 20px !important;
-  padding-right: 0 !important;
+    padding-left: 20px !important;
+    padding-right: 0 !important;
 }
+
 [lang="fa"] .tp-testi {
-  direction: rtl;
-  text-align: right;
+    direction: rtl;
+    text-align: right;
 }
 
 [lang="fa"] .tp-testi p {
-  text-align: right;
-  line-height: 1.8;
+    text-align: right;
+    line-height: 1.8;
+    word-break: break-word
 }
-[lang="fa"] .testimonial-active-box {
-  .slick-prev {
-    right: -50px;
-    left: auto;
-  }
 
-  .slick-next {
-    left: -50px;
-    right: auto;
-  }
+[lang="fa"] .testimonial-active-box {
+    .slick-prev {
+        right: -50px;
+        left: auto;
+    }
+
+    .slick-next {
+        left: -50px;
+        right: auto;
+    }
 }
 
 [lang="fa"] .cd-information ul li {
@@ -235,6 +240,7 @@
 .rating-gold p {
     margin-left: 5px;
 }
+
 .rating-gold span {
     margin-right: 5px;
 }
@@ -290,6 +296,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .tpcourse__img-icon img {
     width: 100%;
     height: 100%;

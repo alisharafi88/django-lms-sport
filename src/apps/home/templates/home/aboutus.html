@@ -282,8 +282,7 @@
                         <div class="tp-instruc-item">
                             <div class="tp-instructor text-center p-relative mb-40">
                                 <div class="tp-instructor__thumb mb-25">
-                                    <img src="{% static 'assets/img/bg/instructor-bg-01.jpg' %}"
-                                         alt="instructor-profile">
+                                    <img src="{{ instructor.user.get_photo_url }}" alt="instructor-profile">
                                 </div>
                                 <div class="tp-instructor__content">
                                     <h4 class="tp-instructor__title tp-instructor__title-info p-relative mb-35 mt-5"><a
@@ -292,11 +291,13 @@
                                         <ul class="d-flex align-items-center justify-content-center">
                                             <li class="d-flex align-items-center"><img
                                                     src="{% static 'assets/img/icon/c-meta-01.png' %}"
-                                                    alt="meta-icon"> <i>35 Classes</i>
+                                                    alt="meta-icon">
+                                                <i>{{ instructor.video_count }} {% trans 'Classes' %}</i>
                                             </li>
                                             <li class="d-flex align-items-center"><img
                                                     src="{% static 'assets/img/icon/c-meta-02.png' %}"
-                                                    alt="meta-icon"> <i>291+ Students</i>
+                                                    alt="meta-icon">
+                                                <i>{{ instructor.student_count }}+ {% trans 'Students' %}</i>
                                             </li>
                                         </ul>
                                     </div>

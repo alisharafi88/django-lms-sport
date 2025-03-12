@@ -4085,8 +4085,8 @@ div.choose-sub-color {
 }
 
 .course-image {
-    max-width: 100%; /* Ensure the course image is responsive */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 100%;
+    height: auto;
 }
 
 .c-details-ava img {
@@ -4770,7 +4770,10 @@ div.choose-sub-color {
 
 .tp-instructor__thumb img {
     border-radius: 10px;
-    width: 100%;
+    height: 400px;
+    width: 374px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .tp-instructor__content span {
@@ -4874,7 +4877,7 @@ div.choose-sub-color {
 }
 
 .tp-instructor__stu-info ul li i {
-    margin-left: 4px;
+    margin-right: 4px;
     font-style: normal;
 }
 
@@ -5201,7 +5204,6 @@ div.choose-sub-color {
     margin-left: 5px;
 }
 
-/* CSS */
 .tp-testi {
     min-height: 380px;
     display: flex;
@@ -5352,7 +5354,7 @@ div.choose-sub-color {
 }
 
 .testimonial-active-box .slick-list {
-    padding-top: 40px;
+    padding-top: 60px;
 }
 
 .tp-slide-space-white {

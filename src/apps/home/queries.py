@@ -3,20 +3,6 @@ from apps.instructors.models import Instructor
 from apps.blogs.models import Blog
 
 
-def get_featured_instructors():
-    return Instructor.objects.select_related(
-        'user'
-    ).filter(
-        is_active=True
-    ).only(
-        'user__first_name',
-        'user__last_name',
-        'user__profile_photo',
-        'slug',
-        'id',
-    )[:3]
-
-
 def get_latest_blogs():
     return Blog.objects.select_related(
         'author__user'

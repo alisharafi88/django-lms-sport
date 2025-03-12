@@ -510,13 +510,11 @@
                                             href="{{ instructor.get_absolute_url }}">{{ instructor.full_name }}</a></h4>
                                     <div class="tp-instructor__stu-info">
                                         <ul class="d-flex align-items-center justify-content-center">
-                                            <li class="d-flex align-items-center"><img
-                                                    src="{% static 'assets/img/icon/c-meta-01.png' %}"
-                                                    alt="meta-icon"> <i>35 {% trans 'Classes' %}</i>
+                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-01.png' %}"
+                                                                                       alt="meta-icon"> <i>{{ instructor.video_count }} {% trans 'Classes' %}</i>
                                             </li>
-                                            <li class="d-flex align-items-center"><img
-                                                    src="{% static 'assets/img/icon/c-meta-02.png' %}"
-                                                    alt="meta-icon"> <i>291+ {% trans 'Students' %}</i>
+                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-02.png' %}"
+                                                                                       alt="meta-icon"> <i>{{ instructor.student_count }}+ {% trans 'Students' %}</i>
                                             </li>
                                         </ul>
                                     </div>
