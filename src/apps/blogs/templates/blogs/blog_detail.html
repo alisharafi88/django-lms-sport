@@ -67,16 +67,16 @@
                                         <li>
                                             <div class="postbox__comment-box grey-bg">
                                                 <div class="postbox__comment-info d-flex">
-                                                    <div class="postbox__comment-avater mr-20">
-                                                        <img src="{% static 'assets/img/blog/comments/comment-1.jpg' %}"
-                                                             alt="{% trans "Blog's comment's Cover" %}">
+                                                    <div class="postbox__comment-avater ml-20">
+                                                        <img src="{{ comment.author.get_photo_url }}"
+                                                             alt="{% trans "profile" %}">
                                                     </div>
                                                     <div class="postbox__comment-name">
-                                                        <h5>{{ comment.user.username }}</h5>
+                                                        <h5>{{ comment.author.username }}</h5>
                                                         <span class="post-meta"> {{ comment.date_created }}</span>
                                                     </div>
                                                 </div>
-                                                <div class="postbox__comment-text ml-65">
+                                                <div class="postbox__comment-text mr-65">
                                                     <p>{{ comment.text }}</p>
                                                     {% if user.is_authenticated %}
                                                         <div class="postbox__comment-reply">
@@ -91,16 +91,16 @@
                                             <li class="children">
                                                 <div class="postbox__comment-box grey-bg">
                                                     <div class="postbox__comment-info d-flex">
-                                                        <div class="postbox__comment-avater mr-20">
-                                                            <img src="{% static 'assets/img/blog/comments/comment-2.jpg' %}"
-                                                                 alt="">
+                                                        <div class="postbox__comment-avater ml-20">
+                                                            <img src="{{ comment.author.get_photo_url }}"
+                                                             alt="{% trans "profile" %}">
                                                         </div>
                                                         <div class="postbox__comment-name">
-                                                            <h5>{{ reply.user.username }}</h5>
+                                                            <h5>{{ reply.author.username }}</h5>
                                                             <span class="post-meta"> {{ reply.date_created }}</span>
                                                         </div>
                                                     </div>
-                                                    <div class="postbox__comment-text ml-65">
+                                                    <div class="postbox__comment-text mr-65">
                                                         <p>{{ reply.text }}</p>
                                                     </div>
                                                 </div>

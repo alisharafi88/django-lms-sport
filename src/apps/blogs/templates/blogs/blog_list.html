@@ -50,12 +50,16 @@
                             </div>
                             <div class="tp-blog__content blog-edu p-relative">
                                 <div class="tp-blog__meta-list mb-10">
-                                    <span><a href="{{ blog.get_absolute_url }}"><i
-                                            class="fi fi-ss-calendar"></i>{{ blog.date_created|timesince }}</a></span>
+                                    <span class="date-wrapper">
+                                        <a href="{{ blog.get_absolute_url }}">
+                                            <span class="icon" dir="ltr"><i class="fi fi-ss-calendar"></i></span>
+                                            <span class="date-text" dir="auto">{{ blog.date_created|timesince }}</span>
+                                        </a>
+                                    </span>
                                 </div>
                                 <h3 class="tp-blog__title mb-15"><a
                                         href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h3>
-                                <span><a href="{{ blog.get_absolute_url }}"><i
+                                <span><a href="{% url 'instructors:instructor_detail' blog.author.id blog.author.slug %}"><i
                                         class="fi fi-sr-user"></i>{{ blog.author }}</a></span>
                             </div>
                         </div>
