@@ -38,14 +38,14 @@
                                         <a href="{% url 'home:home' %}">{% trans 'HomePage' %}</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'instructors:instructor_list' %}">{% trans 'Coches' %}</a>
-                                    </li>
-                                    <li>
                                         <a href="{% url 'courses:course_list' %}">{% trans 'Courses' %}</a>
                                     </li>
                                     <li>
                                         <a href="{% url 'blogs:blog_list' %}">{% trans 'Blogs' %}</a>
 
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'instructors:instructor_list' %}">{% trans 'Coches' %}</a>
                                     </li>
                                     <li>
                                         <a href="{% url 'home:BMI' %}">{% trans 'BMI' %}</a>
@@ -55,10 +55,9 @@
                                         <ul class="submenu">
                                             <li><a href="{% url 'home:about_us' %}">{% trans 'About Us' %}</a></li>
                                             <li><a href="{% url 'contacts:contact' %}">{% trans 'Contact Us' %}</a></li>
-                                            <li><a href="{% static 'checkout.html' %}">{% trans 'Check Out' %}</a></li>
                                             <li><a href="{% url 'faq:question_answer' %}">{% trans 'FAQ' %}</a></li>
-                                            <li><a href="{% static 'register.html' %}">{% trans 'Register' %}</a></li>
-                                            <li><a href="{% static 'sign-in.html' %}">{% trans 'Sign In' %}</a></li>
+{#                                            <li><a href="{% static 'register.html' %}">{% trans 'Register' %}</a></li>#}
+{#                                            <li><a href="{% static 'sign-in.html' %}">{% trans 'Sign In' %}</a></li>#}
                                         </ul>
                                     </li>
                                 </ul>
@@ -70,7 +69,7 @@
                             <ul>
                                 <li><a href="{% url 'accounts:student_dashboards' %}"><i class="fi fi-rr-user"></i></a>
                                 </li>
-                                <li><a href="{% url 'carts:cart' %}"><i class="fi fi-rr-shopping-bag"></i></a></li>
+                                <li><a href="{% url 'carts:cart' %}"><i class="fi fi fi-rr-shopping-cart"></i></a></li>
                                 <li><a href="#" class="tp-menu-toggle d-xl-none"><i class="icon_ul"></i></a></li>
                             </ul>
                         </div>
@@ -95,7 +94,7 @@
                 <div class="header-meta-green text-end">
                     <ul>
                         <li><a href="{% url 'accounts:student_dashboards' %}"><i class="fi fi-rr-user"></i></a></li>
-                        <li><a href="{% url 'carts:cart' %}"><i class="fi fi-rr-shopping-bag"></i></a></li>
+                        <li><a href="{% url 'carts:cart' %}"><i class="fi fi fi-rr-shopping-cart"></i></a></li>
                         <li><a href="#" class="tp-menu-toggle d-xl-none"><i class="icon_ul"></i></a></li>
                     </ul>
                 </div>
