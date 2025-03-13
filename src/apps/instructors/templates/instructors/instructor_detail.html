@@ -227,12 +227,12 @@
                                                             <li>
                                                                 <img src="{% static 'assets/img/icon/c-meta-01.png' %}"
                                                                      alt="meta-icon">
-                                                                <span>{{ course.num_videos }}{% trans 'Classes' %}</span>
+                                                                <span>{{ course.num_videos }}{% trans 'Classes' context 'singular' %}</span>
                                                             </li>
                                                             <li>
                                                                 <img src="{% static 'assets/img/icon/c-meta-02.png' %}"
                                                                      alt="meta-icon">
-                                                                <span>{{ course.num_members }} {% trans 'Students' %}</span>
+                                                                <span>{{ course.num_members }} {% trans 'Students' context 'singular' %}</span>
                                                             </li>
                                                         </ul>
                                                     </div>

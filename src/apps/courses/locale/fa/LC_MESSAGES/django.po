@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-13 22:52+0330\n"
+"POT-Creation-Date: 2025-03-13 23:28+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,11 +61,9 @@ msgid "Media"
 msgstr "رسانه"
 
 #: src/apps/courses/admin.py:107 src/apps/courses/admin.py:116
-#: src/apps/courses/templates/packages/courses_list.html:16
-#: src/apps/courses/templates/packages/courses_list.html:20
-#: src/apps/courses/templates/packages/courses_list.html:125
-#: src/apps/courses/templates/packages/package_detail.html:159
-#: src/apps/courses/templates/packages/package_detail.html:230
+#: src/apps/courses/templates/packages/courses_list.html:50
+#: src/apps/courses/templates/packages/courses_list.html:54
+#: src/apps/courses/templates/packages/package_detail.html:190
 msgid "Courses"
 msgstr "دوره‌ها"
 
@@ -333,24 +331,18 @@ msgid "Products"
 msgstr "محصولات"
 
 #: src/apps/courses/templates/packages/course_detail.html:103
-#: src/apps/courses/templates/packages/course_detail.html:158
 #: src/apps/courses/templates/packages/course_detail.html:314
 #: src/apps/courses/templates/packages/courses_list.html:174
-#: src/apps/courses/templates/packages/package_detail.html:96
 #: src/apps/courses/templates/packages/package_detail.html:280
+msgctxt "singular"
 msgid "Classes"
-msgstr "کلاس‌ها"
+msgstr "کلاس‌"
 
 #: src/apps/courses/templates/packages/course_detail.html:105
-#: src/apps/courses/templates/packages/course_detail.html:167
-#: src/apps/courses/templates/packages/course_detail.html:227
 #: src/apps/courses/templates/packages/course_detail.html:318
-#: src/apps/courses/templates/packages/courses_list.html:178
-#: src/apps/courses/templates/packages/package_detail.html:100
-#: src/apps/courses/templates/packages/package_detail.html:192
-#: src/apps/courses/templates/packages/package_detail.html:284
+msgctxt "singular"
 msgid "Students"
-msgstr "دانش‌آموزان"
+msgstr "دانش‌آموز"
 
 #: src/apps/courses/templates/packages/course_detail.html:110
 #: src/apps/courses/templates/packages/package_detail.html:106
@@ -361,6 +353,20 @@ msgstr "درباره این دوره"
 #: src/apps/courses/templates/packages/package_detail.html:112
 msgid "Lectures"
 msgstr "درس‌ها"
+
+#: src/apps/courses/templates/packages/course_detail.html:158
+#: src/apps/courses/templates/packages/package_detail.html:96
+msgid "Classes"
+msgstr "کلاس‌ها"
+
+#: src/apps/courses/templates/packages/course_detail.html:167
+#: src/apps/courses/templates/packages/course_detail.html:227
+#: src/apps/courses/templates/packages/courses_list.html:178
+#: src/apps/courses/templates/packages/package_detail.html:100
+#: src/apps/courses/templates/packages/package_detail.html:192
+#: src/apps/courses/templates/packages/package_detail.html:284
+msgid "Students"
+msgstr "دانش‌آموزان"
 
 #: src/apps/courses/templates/packages/course_detail.html:177
 msgid "Comments"
@@ -385,6 +391,7 @@ msgid "Enroll Now"
 msgstr "همین حالا ثبت‌نام کنید"
 
 #: src/apps/courses/templates/packages/course_detail.html:224
+msgctxt "singular"
 msgid "Lesson"
 msgstr "درس"
 
@@ -436,6 +443,12 @@ msgstr "دوره‌های ما"
 #: src/apps/courses/templates/packages/courses_list.html:121
 msgid "Explore Courses"
 msgstr "دوره‌ها را کاوش کنید"
+
+#: src/apps/courses/templates/packages/courses_list.html:173
+#: src/apps/courses/templates/packages/package_detail.html:279
+msgctxt "singular"
+msgid "Courses"
+msgstr "دوره‌"
 
 #: src/apps/courses/templates/packages/package_detail.html:135
 msgid "Coaches"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-13 22:52+0330\n"
+"POT-Creation-Date: 2025-03-13 23:28+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Persian <LL@li.org>\n"
@@ -72,7 +72,6 @@ msgid "Coaches"
 msgstr "مربی‌ها"
 
 #: src/apps/home/templates/home/aboutus.html:295
-#: src/apps/home/templates/home/home.html:342
 #: src/apps/home/templates/home/home.html:514
 msgid "Classes"
 msgstr "کلاس‌ها"
@@ -88,7 +87,6 @@ msgid "Home Page"
 msgstr "خانه"
 
 #: src/apps/home/templates/home/home.html:67
-#: src/apps/home/templates/home/home.html:341
 msgid "Courses"
 msgstr "دوره‌ها"
 
@@ -144,6 +142,16 @@ msgstr "بیشتر بخوانید"
 msgid "Explore Popular Courses"
 msgstr "دوره‌های تخصصی مجموعه‌ما"
 
+#: src/apps/home/templates/home/home.html:341
+msgctxt "singular"
+msgid "Courses"
+msgstr "دوره‌"
+
+#: src/apps/home/templates/home/home.html:342
+msgctxt "singular"
+msgid "Classes"
+msgstr "کلاس‌"
+
 #: src/apps/home/templates/home/home.html:363
 msgid "Toman"
 msgstr "تومان"
@@ -170,7 +178,7 @@ msgstr "نقد و بررسی زیبای شما"
 
 #: src/apps/home/templates/home/home.html:493
 msgid "Coach"
-msgstr ""
+msgstr "مربی"
 
 #: src/apps/home/templates/home/home.html:539
 msgid "All Coaches"

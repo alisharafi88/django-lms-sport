@@ -170,8 +170,8 @@
                                                  src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
                                                  alt="meta-icon">
                                             <span>{% if product.product_type == 2 %}{{ product.num_courses|default:0 }}
-                                                {% trans 'Courses' %} {% else %}{{ product.num_videos }}
-                                                {% trans 'Classes' %} {% endif %}</span>
+                                                {% trans 'Courses' context 'singular' %} {% else %}{{ product.num_videos }}
+                                                {% trans 'Classes' context 'singular' %} {% endif %}</span>
                                         </li>
                                         <li>
                                             <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
