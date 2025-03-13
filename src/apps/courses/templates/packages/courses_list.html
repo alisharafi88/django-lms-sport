@@ -143,12 +143,12 @@
                                         </a>
                                     {% endif %}
                                     <input
-                                        type="hidden"
-                                        id="csrf-token"
-                                        value="{{ csrf_token }}"
-                                        data-csrf="{{ csrf_token }}"
-                                        readonly
-                                        aria-hidden="true"
+                                            type="hidden"
+                                            id="csrf-token"
+                                            value="{{ csrf_token }}"
+                                            data-csrf="{{ csrf_token }}"
+                                            readonly
+                                            aria-hidden="true"
                                     >
                                 </div>
                                 {% if product.product_type == 1 and product.coach_profile %}
@@ -205,44 +205,27 @@
                     <ul>
                         {% if page_obj.has_previous %}
                             <li>
-                                <a href="?page={{ page_obj.previous_page_number }}">
+                                <a href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}page={{ page_obj.previous_page_number }}">
                                     <i class="far fa-angle-right"></i>
                                 </a>
                             </li>
-                            {% if page_obj.number > 3 %}
-                                <li>
-                                    <a href="?page=1">1</a>
-                                </li>
-                                {% if page_obj.number > 4 %}
-                                    <li><span>...</span></li>
-                                {% endif %}
-                            {% endif %}
                         {% endif %}
+
                         {% for num in page_obj.paginator.page_range %}
                             {% if page_obj.number == num %}
+                                <li><span class="current">{{ num }}</span></li>
+                            {% else %}
                                 <li>
-                                    <span class="current">{{ page_obj.number }}</span>
-                                </li>
-                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                                <li>
-                                    <a href="?page={{ num }}">{{ num }}</a>
+                                    <a href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}page={{ num }}">
+                                        {{ num }}
+                                    </a>
                                 </li>
                             {% endif %}
                         {% endfor %}
 
                         {% if page_obj.has_next %}
-                            {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
-                                <li><span>...</span></li>
-                                <li>
-                                    <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
-                                </li>
-                            {% elif page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
-                                <li>
-                                    <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
-                                </li>
-                            {% endif %}
                             <li>
-                                <a href="?page={{ page_obj.next_page_number }}">
+                                <a href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}page={{ page_obj.next_page_number }}">
                                     <i class="far fa-angle-left"></i>
                                 </a>
                             </li>
