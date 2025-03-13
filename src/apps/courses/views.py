@@ -104,7 +104,8 @@ class CourseDetailView(generic.DetailView):
                             filter=Q(memberships__content_type=ContentType.objects.get_for_model(Course)),
                             distinct=True
                         ),
-                        avg_rate=Avg('comments__rate', default=0)
+                        avg_rate=Avg('comments__rate', default=0),
+                        product_type=Value(1, output_field=IntegerField()),
 
                     ).prefetch_related('comments')
 
@@ -137,6 +138,14 @@ class CourseDetailView(generic.DetailView):
 
         return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        cart = Cart(self.request)
+        cart_items = [(item['id'], item['type']) for item in cart.cart]
+        context['carts'] = cart_items
+        return context
+
 
 class PackageDetailView(generic.DetailView):
     model = Package
@@ -165,6 +174,8 @@ class PackageDetailView(generic.DetailView):
                                   'videos',
                           )
                       )
+                  ).annotate(
+                      product_type=Value(1, output_field=IntegerField()),
                   )
                 ),
             )
@@ -174,6 +185,11 @@ class PackageDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['coaches'] = Instructor.objects.filter(courses__in=self.object.courses.all()).select_related('user').distinct()
+
+        cart = Cart(self.request)
+        cart_items = [(item['id'], item['type']) for item in cart.cart]
+        context['carts'] = cart_items
+
         return context
 
 

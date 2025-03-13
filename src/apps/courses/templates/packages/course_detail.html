@@ -164,7 +164,8 @@
                                             <li class="d-flex align-items-center"><img
                                                     src="{% static 'assets/img/icon/c-details-02.png' %}"
                                                     alt="meta-icon">
-                                                <span>{{ course.coach_student_count }} {% trans 'Students' %}</span></li>
+                                                <span>{{ course.coach_student_count }} {% trans 'Students' %}</span>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -272,12 +273,14 @@
                                 </a>
                                 <div class="tpcourse__tag">
                                     {% if course|course_in_cart:carts %}
-                                        <a href="#" class="in-cart" data-product-id="{{ course.id }}"
+                                        <a href="#" class="in-cart"
+                                           data-product-id="{{ course.id }}"
                                            data-product-type="{{ course.product_type }}">
                                             <i class="fi fi-rr-shopping-cart-check"></i>
                                         </a>
                                     {% else %}
-                                        <a href="#" class="add-to-cart" data-product-id="{{ course.id }}"
+                                        <a href="#" class="add-to-cart"
+                                           data-product-id="{{ course.id }}"
                                            data-product-type="{{ course.product_type }}">
                                             <i class="fi fi-rr-shopping-cart-add"></i>
                                         </a>
@@ -291,7 +294,7 @@
                                             aria-hidden="true"
                                     >
                                 </div>
-                                {% if course.product_type == 1 and course.coach_profile %}
+                                {% if course.coach_profile %}
                                     <div class="tpcourse__img-icon">
                                         <img src="{{ course.coach_profile }}" alt="course-avata">
                                     </div>
@@ -306,12 +309,9 @@
                                 <div class="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
                                     <ul class="d-flex align-items-center">
                                         <li>
-                                            <img {% if course.product_type == 2 %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
-                                                 src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
+                                            <img src="{% static 'assets/img/icon/c-meta-01.png' %}"
                                                  alt="meta-icon">
-                                            <span>{% if course.product_type == 2 %}{{ course.num_courses|default:0 }}
-                                                {% trans 'Courses' %} {% else %}{{ course.num_videos }}
-                                                {% trans 'Classes' %} {% endif %}</span>
+                                            <span> {{ course.num_videos }} {% trans 'Classes' %}</span>
                                         </li>
                                         <li>
                                             <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
