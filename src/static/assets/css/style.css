@@ -6518,21 +6518,23 @@ blockquote cite::before {
 /*----------------------------------------*/
 /*  18. FAQ CSS START
 /*----------------------------------------*/
-.accordion-buttons {
+.accordion-button {
     background-color: #F8FAFA;
     box-shadow: none;
-    padding: 37px 40px;
+    padding: 37px 40px 37px 60px; /* Increased left padding for icon space */
     font-size: 22px;
     font-family: "Gordita-500";
     font-weight: 500;
     width: 100%;
-    text-align: left;
+    text-align: right; /* Text aligned to the right */
     color: var(--tp-heading-primary);
+    position: relative;
+    transition: 0.3s;
 }
 
 @media (max-width: 767px) {
-    .accordion-buttons {
-        padding: 20px 30px;
+    .accordion-button {
+        padding: 20px 30px 20px 40px; /* Adjusted left padding for smaller screens */
         font-size: 14px;
     }
 }
@@ -6541,37 +6543,59 @@ blockquote cite::before {
     margin-bottom: 40px;
 }
 
-.accordion-buttons {
-    position: relative;
-    transition: 0.3s;
-}
-
-.accordion-buttons::after {
+.accordion-button::after {
     position: absolute;
-    content: "\f077";
-    right: 50px;
+    content: "\f077"; /* Chevron up (expanded state) */
+    left: 20px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) !important;
     font-family: "Font Awesome 6 Pro";
     color: var(--tp-border-2);
-    font-size: 17px;
-    padding-left: 10px;
+    font-size: 17px; /* Base size */
+    background-image: none;
+    transition: transform 0.3s ease;
+    background-image: none !important;
 }
 
 @media (max-width: 767px) {
-    .accordion-buttons::after {
+    .accordion-button::after {
+        left: 10px; /* Closer to left edge on smaller screens */
         font-size: 14px;
-        right: 10px;
     }
 }
 
-.accordion-buttons.collapsed::after {
-    content: "\f107";
+.accordion-button.collapsed::after {
+    content: "\f107"; /* Chevron down (collapsed state) */
+    font-size: 17px; /* Match base size */
 }
 
-.accordion-buttons:not(.collapsed) {
+.accordion-button:not(.collapsed)::after {
+    font-size: 17px; /* Explicit size for expanded state */
+    background-image: none;
+}
+.accordion-button {
+    transition: none !important;
+}
+
+.accordion-button:not(.collapsed) {
     text-decoration: underline;
     color: var(--tp-border-2);
+}
+
+@media (max-width: 767px) {
+    .accordion-button {
+        padding: 20px 30px 20px 40px;
+        font-size: 14px;
+    }
+
+    .accordion-button::after {
+        left: 10px;
+        font-size: 14px;
+    }
+}
+
+.accordion-items {
+    margin-bottom: 40px;
 }
 
 .accordion-items .accordion-body {
@@ -6586,7 +6610,6 @@ blockquote cite::before {
         font-size: 14px;
     }
 }
-
 /*----------------------------------------*/
 /*  19. CART CSS START
 /*----------------------------------------*/
