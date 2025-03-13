@@ -92,12 +92,12 @@
                             </div>
                             <div class="header-right d-md-flex align-items-center">
                                 <div class="header__search d-none d-lg-block">
-                                    <form action="#">
+                                    <form action="{% url 'courses:course_list' %}">
                                         <div class="header__search-input">
                                             <button class="header__search-btn">
                                                 <i class="fa-regular fa-magnifying-glass"></i>
                                             </button>
-                                            <input type="text" placeholder="{% trans 'Search Courses' %}">
+                                            <input name="search" type="text" placeholder="{% trans 'Search Courses' %}">
                                         </div>
                                     </form>
                                 </div>

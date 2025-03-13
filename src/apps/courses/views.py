@@ -29,7 +29,10 @@ class CourseListView(generic.ListView):
     context_object_name = 'products'
 
     def get_queryset(self):
-        return get_combined_course_package_queryset()
+        search = self.request.GET.get('search')
+        queryset = get_combined_course_package_queryset(search)
+
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()

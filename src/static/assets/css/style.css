@@ -2788,6 +2788,7 @@ ul.bili_circle li::before {
     position: absolute;
     bottom: 85px;
     right: 509px;
+    animation: ab2animation 5s infinite linear alternate;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {

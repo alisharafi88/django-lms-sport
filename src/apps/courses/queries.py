@@ -54,12 +54,16 @@ def get_packages_queryset():
     return queryset
 
 
-def get_combined_course_package_queryset():
+def get_combined_course_package_queryset(search=None):
     """
         Retrieve a combined queryset of active courses & packages.
     """
     courses_queryset = get_courses_queryset()
     packages_queryset = get_packages_queryset()
+
+    if search:
+        courses_queryset = courses_queryset.filter(title__icontains=search)
+        packages_queryset = packages_queryset.filter(title__icontains=search)
 
     combined_queryset = courses_queryset.union(packages_queryset, all=True).order_by('-date_created', '-date_modified')
     return combined_queryset

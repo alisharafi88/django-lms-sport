@@ -18,11 +18,11 @@
                     <div class="col-xxl-5 col-lg-6 col-md-7">
                         <div class="header-right header-right-box">
                             <div class="header-search-box">
-                                <form action="#">
+                                <form action="{% url 'courses:course_list' %}">
                                     <div class="search-input">
                                         <button class="header-search-btn"><i
                                                 class="fi fi-rs-search mr-5"></i> {% trans 'Search Now' %}</button>
-                                        <input type="text" placeholder="{% trans 'What you want to learn?' %}">
+                                        <input name="search" type="text" placeholder="{% trans 'What you want to learn?' %}">
                                     </div>
                                 </form>
                             </div>
