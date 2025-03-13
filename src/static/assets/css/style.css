@@ -3553,7 +3553,7 @@ div.choose-sub-color {
 .tpcourse__meta ul li {
     align-items: center;
     display: flex;
-    margin-right: 25px;
+    margin-left: 25px;
 }
 
 .tpcourse__meta ul li:last-child {
@@ -3562,13 +3562,13 @@ div.choose-sub-color {
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
     .tpcourse__meta ul li {
-        margin-right: 21px;
+        margin-left: 21px;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
     .tpcourse__meta ul li {
-        margin-right: 11px;
+        margin-left: 11px;
     }
 }
 
@@ -3766,7 +3766,7 @@ div.choose-sub-color {
 }
 
 .tpcourse__meta-gap ul li {
-    margin-right: 30px;
+    margin-left: 30px;
 }
 
 .tpcourse__meta-gap ul li:last-child {
@@ -5027,7 +5027,7 @@ div.choose-sub-color {
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px), (max-width: 767px) {
     .instruc-profile-info ul li i {
-        margin-right: 5px;
+        margin-left: 5px;
     }
 }
 

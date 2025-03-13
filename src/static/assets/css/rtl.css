@@ -211,20 +211,12 @@
     }
 }
 
-[lang="fa"] .cd-information ul li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+.cd-information ul li span {
+    float: left;
 }
 
 [lang="fa"] .cd-information ul li i {
-    margin-right: 10px;
-    flex-shrink: 0;
-}
-
-[lang="fa"] .cd-information ul li label {
-    margin-right: 5px;
-    text-align: left;
+    margin-left: 10px;
 }
 
 [lang="fa"] .cd-information ul li .value-left {

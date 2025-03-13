@@ -1,5 +1,5 @@
 from django.contrib.contenttypes.models import ContentType
-from django.db.models import Prefetch, F, Count, Avg, Q
+from django.db.models import Prefetch, F, Count, Avg, Q, Value, IntegerField
 
 from apps.courses.models import Course
 from .models import Instructor, InstructorHonor
@@ -67,6 +67,7 @@ def get_instructor_by_id_slug(pk, slug):
                 discounted_price=F('price') - F('discount_amount'),
                 num_members=Count('memberships', filter=Q(memberships__content_type=course_ct), distinct=True),
                 num_videos=Count('seasons__videos'),
+                product_type=Value(1, output_field=IntegerField()),  # 1 = course
             )
         )
     )

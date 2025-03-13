@@ -3,7 +3,7 @@ from .models import Instructor
 
 def get_master_instructor_social_media():
     """
-    Retrieves the social media IDs of the master instructor.
+    Retrieves the social media IDs of the master coach.
 
     :return: A dictionary containing the Instagram, YouTube, and Telegram IDs of the master instructor,
              or None if no master instructor is found.

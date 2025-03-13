@@ -2,6 +2,7 @@ from django.views import generic
 
 from .queries import get_all_instructor, get_instructor_by_id_slug
 from .utils import get_master_instructor_social_media
+from ..carts.carts import Cart
 
 
 class InstructorListView(generic.ListView):
@@ -20,7 +21,13 @@ class InstructorDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(InstructorDetailView, self).get_context_data(**kwargs)
 
+        # social media IDs of the master coach
         master_social_media = get_master_instructor_social_media()
         if master_social_media:
             context.update(master_social_media)
+
+        # user cart items
+        cart = Cart(self.request)
+        cart_items = [(item['id'], item['type']) for item in cart.cart]
+        context['carts'] = cart_items
         return context

@@ -1,10 +1,43 @@
 {% extends '-base.html' %}
+{% load cart_tags %}
 {% load tags %}
 {% load static %}
 {% load i18n %}
 
 {% block title %}
     {{ instructor.full_name }}
+{% endblock %}
+
+{% block head %}
+    <style>
+        .message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -43,7 +76,7 @@
                             <div class="isntruc-side-content text-center">
                                 <h4 class="side-instructor-title mb-15">{{ instructor.full_name }}</h4>
                                 <p>{% for widjet in instructor.widjets.all %}
-                                    {{ widjet }},
+                                    {{ widjet }}
                                 {% endfor %}
                                 </p>
                             </div>
@@ -159,9 +192,27 @@
                                                         <img src="{{ course.img.url }}" alt="course-thumb">
                                                     </a>
                                                     <div class="tpcourse__tag">
-                                                        <a href="{% url 'carts:cart_add' course.id 1 %}">
-                                                            <i class="fi fi-rr-shopping-bag-add"></i>
-                                                        </a>
+                                                        {% if course|course_in_cart:carts %}
+                                                            <a href="#" class="in-cart"
+                                                               data-product-id="{{ course.id }}"
+                                                               data-product-type="{{ course.product_type }}">
+                                                                <i class="fi fi-rr-shopping-cart-check"></i>
+                                                            </a>
+                                                        {% else %}
+                                                            <a href="#" class="add-to-cart"
+                                                               data-product-id="{{ course.id }}"
+                                                               data-product-type="{{ course.product_type }}">
+                                                                <i class="fi fi-rr-shopping-cart-add"></i>
+                                                            </a>
+                                                        {% endif %}
+                                                        <input
+                                                                type="hidden"
+                                                                id="csrf-token"
+                                                                value="{{ csrf_token }}"
+                                                                data-csrf="{{ csrf_token }}"
+                                                                readonly
+                                                                aria-hidden="true"
+                                                        >
                                                     </div>
                                                 </div>
                                                 <div class="tpcourse__content-2">
@@ -198,7 +249,7 @@
                                                             <p>({{ course.num_comment }})</p>
                                                         </div>
                                                         <div class="tpcourse__pricing">
-{#                                                            <h5 class="price-title">{% trans 'Toman' %} {{ course.discounted_price }}</h5>#}
+                                                            {#                                                            <h5 class="price-title">{% trans 'Toman' %} {{ course.discounted_price }}</h5>#}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -260,4 +311,87 @@
         </div>
     </section>
     <!-- counter-area-end -->
+{% endblock %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const csrftoken = document.querySelector('#csrf-token').value;
+
+            function sendCartRequest(url, productId, productType) {
+                return fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken,
+                    },
+                    body: JSON.stringify({product_id: productId, product_type: productType})
+                });
+            }
+
+            document.querySelectorAll('a.add-to-cart, a.in-cart').forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    e.preventDefault();
+
+
+                    const originalClasses = button.className;
+                    const productId = button.dataset.productId;
+                    const productType = button.dataset.productType;
+                    const action = button.classList.contains('add-to-cart') ? 'add' : 'remove';
+                    const url = `/carts/${action}/${productId}/${productType}/`;
+
+
+                    button.disabled = true;
+                    button.innerHTML = `
+                <span class="spinner-border spinner-border-sm me-2"></span>
+                ${button.classList.contains('add-to-cart') ? '{% trans 'Adding...' %}' : '{% trans 'Removing...' %}'}`;
+
+                    try {
+                        const response = await sendCartRequest(url, productId, productType);
+                        const data = await response.json();
+
+                        if (data.status === 'success') {
+
+                            const cartCount = document.querySelector('.cart-count');
+                            const cartTotal = document.querySelector('.cart-total');
+
+                            if (cartCount) cartCount.textContent = data.cart_count;
+                            if (cartTotal) cartTotal.textContent = data.cart_total.toFixed(2);
+
+
+                            button.classList.toggle('add-to-cart');
+                            button.classList.toggle('in-cart');
+
+
+                            showMessage(data.message, 'success');
+                        } else {
+
+                            button.className = originalClasses;
+                            showMessage(data.message, 'error');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        button.className = originalClasses;
+                        showMessage("{% trans 'An error occurred. Please try again.' %}", 'error');
+                    } finally {
+
+                        button.disabled = false;
+                        button.innerHTML = `
+                    <i class="fi ${button.classList.contains('add-to-cart')
+                            ? 'fi-rr-shopping-cart-add'
+                            : 'fi-rr-shopping-cart-check'}">
+                    </i>`;
+                    }
+                });
+            });
+
+            function showMessage(text, type) {
+                const message = document.createElement('div');
+                message.className = `message ${type}`;
+                message.textContent = text;
+                document.body.appendChild(message);
+                setTimeout(() => message.remove(), type === 'error' ? 5000 : 3000);
+            }
+        });
+    </script>
 {% endblock %}
