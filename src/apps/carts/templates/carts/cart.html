@@ -161,8 +161,6 @@
                                                 data-clear-url="{% url 'carts:cart_clear' %}"
                                         >{% trans 'Clear cart' %}
                                         </button>
-                                        <button class="tp-btn " name="update_cart"
-                                                type="submit">{% trans 'Update cart' %}</button>
                                     </div>
                                 </div>
                             </div>
@@ -343,7 +341,6 @@
                         discountedPrice.closest('li').classList.add('updated');
                     }
 
-                    // Handle checkout button visibility
                     if (checkoutButton) {
                         if (data.cart_empty) {
                             checkoutButton.classList.add('hide');
@@ -354,7 +351,6 @@
                         }
                     }
 
-                    // Remove animation classes after transition
                     setTimeout(() => {
                         cartTotalSection.classList.remove('updating');
                         document.querySelectorAll('.price-item').forEach(item => {

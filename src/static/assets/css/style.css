@@ -6749,7 +6749,7 @@ blockquote cite::before {
 }
 
 .cart-page-total ul > li > span {
-    float: right;
+    float: left;
 }
 
 .cart-page-total li:last-child {
