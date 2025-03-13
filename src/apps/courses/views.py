@@ -106,6 +106,7 @@ class CourseDetailView(generic.DetailView):
                         ),
                         avg_rate=Avg('comments__rate', default=0),
                         product_type=Value(1, output_field=IntegerField()),
+                        num_comment=Count('courses__comments', distinct=True),
 
                     ).prefetch_related('comments')
 

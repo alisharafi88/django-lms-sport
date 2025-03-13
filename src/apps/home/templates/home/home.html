@@ -343,7 +343,7 @@
                                         </li>
                                         <li>
                                             <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
-                                            <span>{{ product.num_members }} {% trans 'Students' %}</span>
+                                            <span>{{ product.num_members }} {% trans 'Students' context 'singular' %}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -511,10 +511,10 @@
                                     <div class="tp-instructor__stu-info">
                                         <ul class="d-flex align-items-center justify-content-center">
                                             <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-01.png' %}"
-                                                                                       alt="meta-icon"> <i>{{ instructor.video_count }} {% trans 'Classes' %}</i>
+                                                                                       alt="meta-icon"> <i>{{ instructor.video_count }} {% trans 'Classes' context 'singular' %}</i>
                                             </li>
                                             <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-02.png' %}"
-                                                                                       alt="meta-icon"> <i>{{ instructor.student_count }}+ {% trans 'Students' %}</i>
+                                                                                       alt="meta-icon"> <i>{{ instructor.student_count }}+ {% trans 'Students' context 'singular' %}</i>
                                             </li>
                                         </ul>
                                     </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-13 23:28+0330\n"
+"POT-Creation-Date: 2025-03-13 23:46+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -158,11 +158,13 @@ msgid "Courses"
 msgstr "دوره‌ها"
 
 #: src/apps/instructors/templates/instructors/instructor_detail.html:230
+#: src/apps/instructors/templates/instructors/instructor_list.html:96
 msgctxt "singular"
 msgid "Classes"
 msgstr "کلاس‌"
 
 #: src/apps/instructors/templates/instructors/instructor_detail.html:235
+#: src/apps/instructors/templates/instructors/instructor_list.html:99
 msgctxt "singular"
 msgid "Students"
 msgstr "دانش‌آموز"
@@ -210,13 +212,11 @@ msgstr "مربی"
 msgid "Our Expert Coach"
 msgstr "مربی‌های متخصص ما"
 
-#: src/apps/instructors/templates/instructors/instructor_list.html:96
-msgid "Classes"
-msgstr "کلاس‌"
+#~ msgid "Classes"
+#~ msgstr "کلاس‌"
 
-#: src/apps/instructors/templates/instructors/instructor_list.html:99
-msgid "Students"
-msgstr "دانش‌آموز"
+#~ msgid "Students"
+#~ msgstr "دانش‌آموز"
 
 #~ msgid "Instructor List"
 #~ msgstr "لیست مدرسین"

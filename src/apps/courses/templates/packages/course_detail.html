@@ -155,7 +155,7 @@
                                                 </div>
                                             </li>
                                             <li><img src="{% static 'assets/img/icon/c-details-01.png' %}"
-                                                     alt="meta-icon"><span>{{ course.coach_video_count }} {% trans 'Classes' %}</span>
+                                                     alt="meta-icon"><span>{{ course.coach_video_count }} {% trans 'Classes' context 'singular' %}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -164,7 +164,7 @@
                                             <li class="d-flex align-items-center"><img
                                                     src="{% static 'assets/img/icon/c-details-02.png' %}"
                                                     alt="meta-icon">
-                                                <span>{{ course.coach_student_count }} {% trans 'Students' %}</span>
+                                                <span>{{ course.coach_student_count }} {% trans 'Students' context 'singular' %}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -180,7 +180,7 @@
                                 <li>
                                     <div class="postbox__comment-box grey-bg">
                                         <div class="postbox__comment-info d-flex">
-                                            <div class="postbox__comment-avater mr-20">
+                                            <div class="postbox__comment-avater ml-20">
                                                 <img src="{% static 'assets/img/blog/comments/comment-1.jpg' %}" alt="">
                                             </div>
                                             <div class="postbox__comment-name">
@@ -214,7 +214,7 @@
                                     {% translate 'Toman' %}{{ course.discounted_price }}</h3>
                                 <div class="cd-pricing-btn text-center mb-30">
                                     <a class="tp-vp-btn"
-                                       href="{% url 'carts:cart_add' course.pk 1 %}">{% trans 'Add To Cart' %}</a>
+                                       href="{% url 'carts:cart_add' course.pk 'course' %}">{% trans 'Add To Cart' %}</a>
                                     <a class="tp-vp-btn-green"
                                        href="{% static 'course-details.html' %}">{% trans 'Enroll Now' %}</a>
                                 </div>
@@ -224,7 +224,7 @@
                                     <li><i class="fa-light fa-calendars"></i> <label>{% trans 'Lesson' context 'singular' %}</label>
                                         <span class="value-left">{{ course.num_videos }}</span></li>
 
-                                    <li><i class="fi fi-rr-user"></i> <label>{% trans 'Students' %}</label>
+                                    <li><i class="fi fi-rr-user"></i> <label>{% trans 'Students' context 'singular' %}</label>
                                         <span class="value-left">{{ course.num_members }}</span></li>
                                     <li><i class="fa-light fa-clock-desk"></i> <label>{% trans 'Duration' %}</label>
                                         <span class="value-left">{{ course.duration }}</span></li>

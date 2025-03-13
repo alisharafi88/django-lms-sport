@@ -93,11 +93,11 @@
                                     </li>
                                     <li>
                                         <img src="{% static 'assets/img/icon/c-meta-01.png' %}" alt="meta-icon">
-                                        <span>{{ package.num_videos }} {% translate 'Classes' %}</span>
+                                        <span>{{ package.num_videos }} {% translate 'Classes' context 'singular' %}</span>
                                     </li>
                                     <li>
                                         <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
-                                        <span>{{ package.num_members }} {% translate 'Students' %}</span>
+                                        <span>{{ package.num_members }} {% translate 'Students' context 'singular' %}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -187,9 +187,9 @@
                             </div>
                             <div class="cd-information mb-35">
                                 <ul>
-                                    <li><i class="fa-light fa-calendars"></i> <label>{% trans 'Courses' %}</label>
+                                    <li><i class="fa-light fa-calendars"></i> <label>{% trans 'Courses' context 'singular' %}</label>
                                         <span class="value-left">{{ package.num_courses }}</span></li>
-                                    <li><i class="fi fi-rr-user"></i> <label>{% trans 'Students' %}</label>
+                                    <li><i class="fi fi-rr-user"></i> <label>{% trans 'Students' context 'singular' %}</label>
                                         <span class="value-left">{{ package.num_members }}</span></li>
                                     <li><i class="fa-light fa-clock-desk"></i> <label>{% trans 'Duration' %}</label>
                                         <span class="value-left">{{ package.duration }}</span></li>
@@ -281,7 +281,7 @@
                                         </li>
                                         <li>
                                             <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
-                                            <span>{{ course.num_members }} {% trans 'Students' %}</span>
+                                            <span>{{ course.num_members }} {% trans 'Students' context 'singular' %}</span>
                                         </li>
                                     </ul>
                                 </div>
