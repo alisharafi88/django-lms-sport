@@ -1,23 +1,15 @@
-from django.conf import settings
-from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.staticfiles.storage import staticfiles_storage
-from django.db.models import Count, Prefetch, Case, CharField, Value, When, IntegerField, Q, ExpressionWrapper, F, Avg, \
-    OuterRef, Subquery, FloatField
-from django.db.models.functions import Cast, Coalesce, Concat
+from django.db.models import Count, Prefetch, Value, IntegerField, Q, Avg, OuterRef, Subquery, FloatField
+from django.db.models.functions import Coalesce
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, redirect
-from django.urls import reverse
-from django.utils.decorators import method_decorator
+from django.shortcuts import get_object_or_404
 from django.views import generic, View
 from django.utils.translation import gettext_lazy as _
-from django.views.decorators.csrf import csrf_exempt
 
-from itertools import chain
 
 from .forms import CourseCommentForm
-from .models import Course, CourseComments, CourseMembership, Package, CourseSeason, CourseVideo
+from .models import Course, CourseComments, CourseMembership, Package, CourseSeason
 from .queries import get_combined_course_package_queryset
 from ..carts.carts import Cart
 from ..instructors.models import Instructor
@@ -106,7 +98,7 @@ class CourseDetailView(generic.DetailView):
                         ),
                         avg_rate=Avg('comments__rate', default=0),
                         product_type=Value(1, output_field=IntegerField()),
-                        num_comment=Count('courses__comments', distinct=True),
+                        num_comment=Count('comments', distinct=True),
 
                     ).prefetch_related('comments')
 
