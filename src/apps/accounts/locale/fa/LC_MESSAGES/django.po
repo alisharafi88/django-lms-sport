@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-09 00:11+0330\n"
+"POT-Creation-Date: 2025-03-13 22:52+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,10 +49,10 @@ msgid "Register"
 msgstr "ثبت نام"
 
 #: src/apps/accounts/templates/accounts/authentication.html:19
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:87
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:174
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:295
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:364
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:160
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:247
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:377
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:446
 #: src/apps/accounts/templates/accounts/verification_otp.html:19
 msgid "Home"
 msgstr "خانه"
@@ -63,219 +63,237 @@ msgid "Enter your phone number here"
 msgstr "شماره تلفن خود را اینجا وارد کنید"
 
 #: src/apps/accounts/templates/accounts/authentication.html:40
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:441
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:523
 #: src/apps/accounts/templates/accounts/verification_otp.html:40
 msgid "Phone Number"
 msgstr "شماره تلفن"
 
 #: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:8
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:90
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:177
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:298
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:367
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:163
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:250
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:380
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:449
 msgid "Dashboard"
 msgstr "پنل‌دانشجو"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:51
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:124
 msgid "HomePage"
 msgstr "خانه"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:54
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:92
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:127
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:165
 msgid "My Courses"
 msgstr "دوره های من"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:57
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:180
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:130
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:253
 msgid "Cart"
 msgstr "سبد خرید"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:60
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:301
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:133
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:383
 msgid "Tickets"
 msgstr "تیکت ها"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:63
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:370
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:136
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:452
 msgid "Settings"
 msgstr "تنظیمات"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:69
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:142
 msgid "LogOut"
 msgstr "خروج"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:112
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:185
 msgid "Send Comment"
 msgstr "ارسال نظر"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:117
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:190
 msgid "You haven't purchased any courses yet."
 msgstr "شما هنوز هیچ دوره‌ای خریداری نکرده‌اید."
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:119
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:192
 msgid "Browse Courses"
 msgstr "مرور دوره‌ها"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:150
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:223
 msgid "Write your feedback here..."
 msgstr "نظرات خود را اینجا بنویسید..."
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:154
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:320
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:227
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:402
 msgid "Submit"
 msgstr "ارسال"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:199
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:272
 msgid "Images"
 msgstr "تصاویر"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:200
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:273
 msgid "Products"
 msgstr "محصولات"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:201
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:274
 msgid "Unit Price"
 msgstr "قیمت واحد"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:202
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:275
 msgid "Total"
 msgstr "جمع"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:203
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:276
 msgid "Remove"
 msgstr "حذف"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:221
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:224
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:256
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:259
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:296
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:299
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:330
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:333
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:865
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:870
 msgid "Toman"
 msgstr "تومان"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:241
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:318
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:852
 msgid "Clear cart"
 msgstr "پاک کردن سبد خرید"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:245
-msgid "Update cart"
-msgstr "به‌روزرسانی سبد خرید"
-
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:255
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:329
 msgid "Total price"
 msgstr "قیمت کل"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:258
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:332
 msgid "Total price after discount"
 msgstr "قیمت کل پس از تخفیف"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:262
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:336
 msgid "Proceed to checkout"
 msgstr "ادامه به پرداخت"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:269
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:343
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:780
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:835
 msgid "Your cart is empty!"
 msgstr "سبد خرید شما خالی است!"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:271
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:345
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:782
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:837
 msgid "Add course"
 msgstr "افزودن دوره"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:314
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:417
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:396
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:499
 msgid "First Name"
 msgstr "نام"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:316
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:428
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:398
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:510
 msgid "Last Name"
 msgstr "نام خانوادگی"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:318
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:400
 msgid "Subject"
 msgstr "موضوع"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:319
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:401
 msgid "Your Message"
 msgstr "پیام شما"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:339
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:847
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:421
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:1061
 msgid "No replies yet."
 msgstr "هنوز پاسخی وجود ندارد."
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:344
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:817
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:426
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:1031
 msgid "No tickets found."
 msgstr "هیچ تیکتی پیدا نشد."
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:402
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:484
 msgid "Change Profile Picture"
 msgstr "تغییر عکس پروفایل"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:408
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:714
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:748
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:780
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:490
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:928
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:962
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:994
 msgid "Remove Profile Picture"
 msgstr "حذف عکس پروفایل"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:423
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:505
 msgid "Enter your first name"
 msgstr "نام خود را وارد کنید"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:434
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:516
 msgid "Enter your last name"
 msgstr "نام خانوادگی خود را وارد کنید"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:447
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:529
 msgid "Enter your phone number"
 msgstr "شماره تلفن خود را وارد کنید"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:454
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:536
 msgid "Email"
 msgstr "ایمیل"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:460
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:542
 msgid "Enter your email"
 msgstr "ایمیل خود را وارد کنید"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:466
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:548
 msgid "Bio"
 msgstr "بیوگرافی"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:470
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:552
 msgid "Tell us about yourself"
 msgstr "در مورد خود به ما بگویید"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:474
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:556
 msgid "Save Changes"
 msgstr "ذخیره تغییرات"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:590
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:672
 msgid "Please enter your feedback."
 msgstr "لطفاً نظر خود را وارد کنید."
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:594
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:676
 msgid "Please select a rating."
 msgstr "لطفاً یک امتیاز انتخاب کنید."
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:620
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:702
 msgid "Invalid input."
 msgstr "ورودی نامعتبر."
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:624
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:706
 msgid "You are not authorized to perform this action."
 msgstr "شما مجاز به انجام این عمل نیستید."
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:627
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:709
 msgid "An unexpected error occurred."
 msgstr "یک خطای غیرمنتظره رخ داد."
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:741
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:794
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:849
+#, fuzzy
+#| msgid "An unexpected error occurred."
+msgid "An error occurred"
+msgstr "یک خطا رخ داده."
+
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:802
+msgid "Are you sure you want to clear your cart?"
+msgstr "مطمئنی که می خواهی سبد خرید خود را پاک کنی؟"
+
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:810
+msgid "Clearing..."
+msgstr "پاک‌کردن..."
+
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:955
 msgid "Undo Remove Profile Picture"
 msgstr "بازگشت به حذف عکس پروفایل"
 
-#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:861
+#: src/apps/accounts/templates/accounts/dashboards/student_dashboard.html:1075
 msgid "An error occurred while submitting the form."
 msgstr "هنگام ارسال فرم خطایی رخ داد."
 
@@ -302,3 +320,6 @@ msgstr "تمامی فیلدها الزامی هستند."
 #: src/apps/accounts/views/studentsdashboards_views.py:111
 msgid "Ticket created successfully."
 msgstr "تیکت با موفقیت ایجاد شد."
+
+#~ msgid "Update cart"
+#~ msgstr "به‌روزرسانی سبد خرید"

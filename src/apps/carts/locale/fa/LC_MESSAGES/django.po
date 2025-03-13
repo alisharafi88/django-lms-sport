@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-09 00:11+0330\n"
+"POT-Creation-Date: 2025-03-13 22:52+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,85 +19,114 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/apps/carts/templates/carts/cart.html:6
-#: src/apps/carts/templates/carts/cart.html:17
-#: src/apps/carts/templates/carts/cart.html:21
+#: src/apps/carts/templates/carts/cart.html:93
+#: src/apps/carts/templates/carts/cart.html:97
 msgid "Cart"
 msgstr "سبد خرید"
 
-#: src/apps/carts/templates/carts/cart.html:19
+#: src/apps/carts/templates/carts/cart.html:95
 msgid "HomePage"
 msgstr "خانه"
 
-#: src/apps/carts/templates/carts/cart.html:40
+#: src/apps/carts/templates/carts/cart.html:116
 msgid "Images"
 msgstr "تصاویر"
 
-#: src/apps/carts/templates/carts/cart.html:41
+#: src/apps/carts/templates/carts/cart.html:117
 msgid "Products"
 msgstr "محصولات"
 
-#: src/apps/carts/templates/carts/cart.html:42
+#: src/apps/carts/templates/carts/cart.html:118
 msgid "Unit Price"
 msgstr "قیمت واحد"
 
-#: src/apps/carts/templates/carts/cart.html:43
+#: src/apps/carts/templates/carts/cart.html:119
 msgid "Total"
 msgstr "جمع کل"
 
-#: src/apps/carts/templates/carts/cart.html:44
+#: src/apps/carts/templates/carts/cart.html:120
 msgid "Remove"
 msgstr "حذف"
 
-#: src/apps/carts/templates/carts/cart.html:64
-#: src/apps/carts/templates/carts/cart.html:67
-#: src/apps/carts/templates/carts/cart.html:98
-#: src/apps/carts/templates/carts/cart.html:101
+#: src/apps/carts/templates/carts/cart.html:140
+#: src/apps/carts/templates/carts/cart.html:143
+#: src/apps/carts/templates/carts/cart.html:174
+#: src/apps/carts/templates/carts/cart.html:177
+#: src/apps/carts/templates/carts/cart.html:335
+#: src/apps/carts/templates/carts/cart.html:340
 msgid "Toman"
 msgstr "تومان"
 
-#: src/apps/carts/templates/carts/cart.html:84
+#: src/apps/carts/templates/carts/cart.html:162
+#: src/apps/carts/templates/carts/cart.html:322
 msgid "Clear cart"
 msgstr "پاک کردن سبد خرید"
 
-#: src/apps/carts/templates/carts/cart.html:88
-msgid "Update cart"
-msgstr "به‌روزرسانی سبد خرید"
-
-#: src/apps/carts/templates/carts/cart.html:98
+#: src/apps/carts/templates/carts/cart.html:173
 msgid "Total price"
 msgstr "قیمت کل"
 
-#: src/apps/carts/templates/carts/cart.html:100
+#: src/apps/carts/templates/carts/cart.html:176
 msgid "Total price after discount"
 msgstr "قیمت کل پس از تخفیف"
 
-#: src/apps/carts/templates/carts/cart.html:104
+#: src/apps/carts/templates/carts/cart.html:180
 msgid "Proceed to checkout"
 msgstr "ادامه به تسویه حساب"
 
-#: src/apps/carts/templates/carts/cart.html:111
+#: src/apps/carts/templates/carts/cart.html:187
+#: src/apps/carts/templates/carts/cart.html:250
+#: src/apps/carts/templates/carts/cart.html:305
 msgid "Your cart is empty!"
 msgstr "سبد خرید شما خالی است!"
 
-#: src/apps/carts/templates/carts/cart.html:113
+#: src/apps/carts/templates/carts/cart.html:189
+#: src/apps/carts/templates/carts/cart.html:252
+#: src/apps/carts/templates/carts/cart.html:307
 msgid "Add course"
 msgstr "افزودن دوره"
 
-#: src/apps/carts/views.py:35 src/apps/carts/views.py:55
+#: src/apps/carts/templates/carts/cart.html:264
+#: src/apps/carts/templates/carts/cart.html:319
+msgid "An error occurred"
+msgstr "یک خطا رخ داده."
+
+#: src/apps/carts/templates/carts/cart.html:272
+msgid "Are you sure you want to clear your cart?"
+msgstr "مطمئنی که می خواهی سبد خرید خود را پاک کنی؟"
+
+#: src/apps/carts/templates/carts/cart.html:280
+msgid "Clearing..."
+msgstr "پاک‌کردن..."
+
+#: src/apps/carts/views.py:31 src/apps/carts/views.py:49
 msgid "Invalid product type!"
 msgstr "نوع محصول نامعتبر است!"
 
-#: src/apps/carts/views.py:39
-msgid "Your product has been added to the cart successfully!"
-msgstr "دوره شما با موفقیت به سبد خرید اضافه شد!"
+#: src/apps/carts/views.py:36
+msgid "Product added to cart!"
+msgstr "به سبدخرید اضافه شد!"
 
-#: src/apps/carts/views.py:59
-msgid "Your product has been removed from the cart successfully!"
-msgstr "دوره شما با موفقیت از سبد خرید حذف شد!"
+#: src/apps/carts/views.py:60
+msgid "Product removed from cart!"
+msgstr "دوره شما با موفقیت از سبدخرید حذف شد!"
 
-#: src/apps/carts/views.py:71
-msgid "Your cart has been cleared successfully!"
-msgstr "سبد خرید شما با موفقیت پاک شد!"
+#: src/apps/carts/views.py:85
+msgid "Cart cleared"
+msgstr "سبدخرید پاک شد"
+
+#: src/apps/carts/views.py:90
+msgid "Cart already empty"
+msgstr "سبدخرید از قبل خالی است!"
+
+#~ msgid "Update cart"
+#~ msgstr "به‌روزرسانی سبد خرید"
+
+#~ msgid "Your product has been added to the cart successfully!"
+#~ msgstr "دوره شما با موفقیت به سبد خرید اضافه شد!"
+
+#~ msgid "Your cart has been cleared successfully!"
+#~ msgstr "سبد خرید شما با موفقیت پاک شد!"
 
 #~ msgid "Courses"
 #~ msgstr "دوره‌ها"

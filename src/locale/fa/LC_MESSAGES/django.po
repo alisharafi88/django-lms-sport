@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-09 00:11+0330\n"
+"POT-Creation-Date: 2025-03-13 22:52+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,15 @@ msgstr ""
 
 #: src/config/settings/base.py:306 src/config/settings/base.py:307
 msgid "Site Management"
-msgstr ""
+msgstr "مدیریت‌ سایت"
 
 #: src/config/settings/base.py:308 src/templates/admin/base_site.html:87
 msgid "Admin Panel"
-msgstr ""
+msgstr "پنل ادمین"
 
 #: src/config/settings/base.py:309
 msgid "Welcome to the Admin Panel"
-msgstr ""
+msgstr "به پنل‌ادمین خوش‌آمدی"
 
 #: src/config/settings/base.py:312
 #, fuzzy
@@ -40,7 +40,7 @@ msgstr "خانه"
 #: src/config/settings/base.py:314
 msgctxt "Action"
 msgid "Logout"
-msgstr ""
+msgstr "خروج"
 
 #: src/templates/inc/header.html:24
 msgid "Search Now"
@@ -55,20 +55,20 @@ msgid "HomePage"
 msgstr "خانه"
 
 #: src/templates/inc/header.html:41
-msgid "Coches"
-msgstr "مربی‌ها"
-
-#: src/templates/inc/header.html:44
 msgid "Courses"
 msgstr "دوره‌ها"
 
-#: src/templates/inc/header.html:47
+#: src/templates/inc/header.html:44
 msgid "Blogs"
 msgstr "وبلاگ‌ها"
 
+#: src/templates/inc/header.html:48
+msgid "Coches"
+msgstr "مربی‌ها"
+
 #: src/templates/inc/header.html:51
 msgid "BMI"
-msgstr ""
+msgstr "BMI"
 
 #: src/templates/inc/header.html:54
 msgid "Pages"
@@ -83,20 +83,17 @@ msgid "Contact Us"
 msgstr "تماس‌با‌ما"
 
 #: src/templates/inc/header.html:58
-msgid "Check Out"
-msgstr "تسویه‌حساب"
-
-#: src/templates/inc/header.html:59
 msgid "FAQ"
 msgstr "سوالات متداول"
 
-#: src/templates/inc/header.html:60
-msgid "Register"
-msgstr "ثبت نام"
+#~ msgid "Check Out"
+#~ msgstr "تسویه‌حساب"
 
-#: src/templates/inc/header.html:61
-msgid "Sign In"
-msgstr "ورود"
+#~ msgid "Register"
+#~ msgstr "ثبت نام"
+
+#~ msgid "Sign In"
+#~ msgstr "ورود"
 
 #~ msgid "Instructors"
 #~ msgstr "مدرسین"

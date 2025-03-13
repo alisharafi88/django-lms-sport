@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-09 00:11+0330\n"
+"POT-Creation-Date: 2025-03-13 22:52+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Persian <LL@li.org>\n"
@@ -63,8 +63,6 @@ msgid "Frequently Asked Question"
 msgstr "سوالات متداول"
 
 #: src/apps/faq/templates/faq/FAQ.html:20
-#, fuzzy
-#| msgid "Home"
 msgid "HomePage"
 msgstr "خانه"
 
@@ -73,22 +71,19 @@ msgid "Pages"
 msgstr "صفحات"
 
 #: src/apps/faq/templates/faq/FAQ.html:24
-#: src/apps/faq/templates/faq/FAQ.html:80
+#: src/apps/faq/templates/faq/FAQ.html:90
 msgid "FAQ"
 msgstr "سوالات متداول"
 
-#: src/apps/faq/templates/faq/FAQ.html:44
-msgid "Expert Trainer"
-msgstr "مربی متخصص"
-
-#: src/apps/faq/templates/faq/FAQ.html:54
-msgid "Get Certificate"
-msgstr "دریافت گواهی"
-
-#: src/apps/faq/templates/faq/FAQ.html:64
-msgid "Life Time Access"
-msgstr "دسترسی مادام العمر"
-
-#: src/apps/faq/templates/faq/FAQ.html:81
+#: src/apps/faq/templates/faq/FAQ.html:91
 msgid "Many People Ask About This"
 msgstr "بسیاری از مردم در مورد این سوال می‌پرسند"
+
+#~ msgid "Expert Trainer"
+#~ msgstr "مربی متخصص"
+
+#~ msgid "Get Certificate"
+#~ msgstr "دریافت گواهی"
+
+#~ msgid "Life Time Access"
+#~ msgstr "دسترسی مادام العمر"

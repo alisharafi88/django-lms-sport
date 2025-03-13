@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-09 00:11+0330\n"
+"POT-Creation-Date: 2025-03-13 22:52+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,8 +112,9 @@ msgid "Comments"
 msgstr "کامنت"
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:72
-msgid "Blog's comment's Cover"
-msgstr "کاور نظر وبلاگ"
+#: src/apps/blogs/templates/blogs/blog_detail.html:96
+msgid "profile"
+msgstr "پروفایل"
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:84
 msgid "Reply"
@@ -129,19 +130,19 @@ msgstr "ارسال کامنت"
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:137
 msgid "If you wanna send commnet please "
-msgstr ""
+msgstr "اگر می‌خواهید کامنت ارسال کنید لطفاً "
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:138
 msgid "LOGIN"
-msgstr ""
+msgstr "وارد شوید"
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:138
 msgid " or "
-msgstr ""
+msgstr " یا "
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:139
 msgid "SIGNUP."
-msgstr ""
+msgstr "ثبت نام کنید."
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:148
 msgid "Recent Post"
@@ -158,6 +159,9 @@ msgstr "خانه"
 #: src/apps/blogs/templates/blogs/blog_list.html:37
 msgid "Latest Blogs"
 msgstr "آخرین وبلاگ‌ها"
+
+#~ msgid "Blog's comment's Cover"
+#~ msgstr "کاور نظر وبلاگ"
 
 #~ msgid "Blog Details"
 #~ msgstr "جزئیات وبلاگ"
