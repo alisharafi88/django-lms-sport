@@ -37,7 +37,7 @@ class Coupon(models.Model):
 
 
 class Product(models.Model):
-    title = models.CharField(_('Title'), max_length=100)
+    title = models.CharField(_('Title'), max_length=100, db_index=True)
     slug = models.SlugField(unique=True, allow_unicode=True)
 
     description = CKEditor5Field(verbose_name=_("Description"))
@@ -59,10 +59,10 @@ class Product(models.Model):
     age_range = models.CharField(_('Age range'), max_length=12, help_text=_('Age range for users.'))
     duration = models.CharField(_('Duration'), max_length=10, help_text=_('How long it takes to complete this course?.'))
 
-    date_created = models.DateTimeField(_('Date created at'), auto_now_add=True)
-    date_modified = models.DateTimeField(_('Date modified at'), auto_now=True)
+    date_created = models.DateTimeField(_('Date created at'), auto_now_add=True, db_index=True)
+    date_modified = models.DateTimeField(_('Date modified at'), auto_now=True, db_index=True)
 
-    status = models.BooleanField(_('Status'), default=True, help_text=_('Show that this product is active or not.'))
+    status = models.BooleanField(_('Status'), default=True, help_text=_('Show that this product is active or not.'), db_index=True)
 
     certificate_status = models.BooleanField(_('Certificate'), help_text=_('Show that this course have certificate or no.'), default=False)
     analysis_room_status = models.BooleanField(_('Analysis room'), default=False)
@@ -71,6 +71,21 @@ class Product(models.Model):
 
     class Meta:
         abstract = True
+        indexes = [
+            models.Index(
+                fields=['status', '-date_created'],
+                name='%(class)s_status_created_idx'
+            ),
+            models.Index(
+                fields=['price', 'status'],
+                name='%(class)s_price_status_idx'
+            ),
+
+            models.Index(
+                fields=['status'],
+                name='%(class)s_status_covering_idx'
+            )
+        ]
 
     def discounted_price(self):
         return self.price - self.discount_amount
@@ -87,12 +102,21 @@ class Course(Product):
         blank=True,
         related_name='courses',
         verbose_name=_('Coach'),
+        db_index=True,
     )
 
     memberships = GenericRelation('CourseMembership', related_query_name='course')
 
     def get_absolute_url(self):
         return reverse('courses:course_detail', kwargs={'slug': self.slug})
+
+    class Meta(Product.Meta):
+        indexes = Product.Meta.indexes + [
+            models.Index(
+                fields=['coach', 'status'],
+                name='course_coach_status_idx'
+            )
+        ]
 
 
 class Package(Product):
@@ -102,6 +126,14 @@ class Package(Product):
 
     def get_absolute_url(self):
         return reverse('courses:package_detail', kwargs={'slug': self.slug})
+
+    class Meta(Product.Meta):
+        indexes = Product.Meta.indexes + [
+            models.Index(
+                fields=['certificate_status', 'status'],
+                name='package_cert_status_idx'
+            )
+        ]
 
 
 class CourseSeason(models.Model):

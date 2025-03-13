@@ -4177,17 +4177,17 @@ div.choose-sub-color {
 .c-details-list ul li {
     display: flex;
     align-items: center;
-    margin-right: 30px;
+    margin-left: 30px;
 }
 
 @media (max-width: 767px) {
     .c-details-list ul li {
-        margin-right: 15px;
+        margin-left: 15px;
     }
 }
 
 .c-details-list ul li img {
-    margin-right: 8px;
+    margin-left: 8px;
 }
 
 .c-details-list ul li span {
@@ -4200,7 +4200,7 @@ div.choose-sub-color {
 }
 
 .c-details-stu ul li span {
-    margin-left: 8px;
+    margin-right: 8px;
     font-size: 16px;
     color: var(--tp-text-2);
 }

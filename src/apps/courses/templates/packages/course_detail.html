@@ -1,4 +1,5 @@
 {% extends '-base.html' %}
+{% load cart_tags %}
 {% load tags %}
 {% load i18n %}
 {% load static %}
@@ -9,6 +10,36 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'assets/css/accordion.css' %}">
+    <style>
+        .message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+
 {% endblock %}
 
 {% block content %}
@@ -102,7 +133,7 @@
                         <div class="cor-details-instructor mb-40">
                             <h4 class="tp-c-details-title mb-40">{% trans 'Coach' %}</h4>
                             <div class="course-instructor-details d-flex f-wrap align-items-center">
-                                <div class="course-avata mr-30 mb-20">
+                                <div class="course-avata ml-30 mb-20">
                                     <img src="{{ course.coach.user.get_photo_url }}"
                                          alt="avata-thumb">
                                 </div>
@@ -112,15 +143,28 @@
                                         <ul class="d-flex align-items-center">
                                             <li>
                                                 <div class="rating-gold d-flex align-items-center">
-                                                    <p>4.7</p>
-                                                    <i class="fi fi-ss-star"></i>
-                                                    <i class="fi fi-ss-star"></i>
-                                                    <i class="fi fi-ss-star"></i>
-                                                    <i class="fi fi-ss-star"></i>
-                                                    <i class="fi fi-rs-star"></i>
-                                                    <span>(125)</span>
+                                                    <p>{{ course.coach_avg_rate }}</p>
+                                                    {% for i in "54321" %}
+                                                        {% if course.coach_avg_rate >= i|add:"0" %}
+                                                            <i class="fi fi-ss-star"></i>
+                                                        {% else %}
+                                                            <i class="fi fi-rs-star"></i>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    <span>({{ course.coach_num_comment }})</span>
                                                 </div>
                                             </li>
+                                            <li><img src="{% static 'assets/img/icon/c-details-01.png' %}"
+                                                     alt="meta-icon"><span>{{ course.coach_video_count }} {% trans 'Classes' %}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="c-details-stu">
+                                        <ul>
+                                            <li class="d-flex align-items-center"><img
+                                                    src="{% static 'assets/img/icon/c-details-02.png' %}"
+                                                    alt="meta-icon">
+                                                <span>{{ course.coach_student_count }} {% trans 'Students' %}</span></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -169,7 +213,7 @@
                                     {% translate 'Toman' %}{{ course.discounted_price }}</h3>
                                 <div class="cd-pricing-btn text-center mb-30">
                                     <a class="tp-vp-btn"
-                                       href="{% url 'carts:cart_add' course.pk %}">{% trans 'Add To Cart' %}</a>
+                                       href="{% url 'carts:cart_add' course.pk 1 %}">{% trans 'Add To Cart' %}</a>
                                     <a class="tp-vp-btn-green"
                                        href="{% static 'course-details.html' %}">{% trans 'Enroll Now' %}</a>
                                 </div>
@@ -224,16 +268,34 @@
                         <div class="tpcourse mb-40">
                             <div class="tpcourse__thumb p-relative w-img fix">
                                 <a href="{{ course.get_absolute_url }}">
-                                    <img src="{{ course.img.url }}" alt="course-thumb">
+                                    <img src="{% get_media_prefix %}{{ course.img }}" alt="course-thumb">
                                 </a>
                                 <div class="tpcourse__tag">
-                                    <a href="{% url 'carts:cart_add' course.id %}">
-                                        <i class="fi fi-rr-heart"></i>
-                                    </a>
+                                    {% if course|course_in_cart:carts %}
+                                        <a href="#" class="in-cart" data-product-id="{{ course.id }}"
+                                           data-product-type="{{ course.product_type }}">
+                                            <i class="fi fi-rr-shopping-cart-check"></i>
+                                        </a>
+                                    {% else %}
+                                        <a href="#" class="add-to-cart" data-product-id="{{ course.id }}"
+                                           data-product-type="{{ course.product_type }}">
+                                            <i class="fi fi-rr-shopping-cart-add"></i>
+                                        </a>
+                                    {% endif %}
+                                    <input
+                                            type="hidden"
+                                            id="csrf-token"
+                                            value="{{ csrf_token }}"
+                                            data-csrf="{{ csrf_token }}"
+                                            readonly
+                                            aria-hidden="true"
+                                    >
                                 </div>
-                                <div class="tpcourse__img-icon">
-                                    <img src="{{ course.coach.user.get_photo_url }}" alt="course-avata">
-                                </div>
+                                {% if course.product_type == 1 and course.coach_profile %}
+                                    <div class="tpcourse__img-icon">
+                                        <img src="{{ course.coach_profile }}" alt="course-avata">
+                                    </div>
+                                {% endif %}
                             </div>
                             <div class="tpcourse__content-2">
                                 <div class="tpcourse__ava-title mb-15">
@@ -244,9 +306,12 @@
                                 <div class="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
                                     <ul class="d-flex align-items-center">
                                         <li>
-                                            <img src="{% static 'assets/img/icon/c-meta-01.png' %}"
+                                            <img {% if course.product_type == 2 %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
+                                                 src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
                                                  alt="meta-icon">
-                                            <span>{{ course.num_videos }}{% trans 'Classes' %}</span>
+                                            <span>{% if course.product_type == 2 %}{{ course.num_courses|default:0 }}
+                                                {% trans 'Courses' %} {% else %}{{ course.num_videos }}
+                                                {% trans 'Classes' %} {% endif %}</span>
                                         </li>
                                         <li>
                                             <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
@@ -264,10 +329,10 @@
                                                 <i class="fi fi-rs-star"></i>
                                             {% endif %}
                                         {% endfor %}
-                                        <p>({{ course.comments.count }})</p>
+                                        <p>({{ course.num_comment }})</p>
                                     </div>
                                     <div class="tpcourse__pricing">
-                                        <h5 class="price-title">{% trans 'Toman' %} {{ course.discounted_price }}</h5>
+                                        <h5 class="c-price-list">{{ course.discounted_price }} {% trans 'Toman' %}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -376,6 +441,84 @@
                     icon.textContent = "+";
                 }
             });
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const csrftoken = document.querySelector('#csrf-token').value;
+
+            function sendCartRequest(url, productId, productType) {
+                return fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken,
+                    },
+                    body: JSON.stringify({product_id: productId, product_type: productType})
+                });
+            }
+
+            document.querySelectorAll('a.add-to-cart, a.in-cart').forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    e.preventDefault();
+
+
+                    const originalClasses = button.className;
+                    const productId = button.dataset.productId;
+                    const productType = button.dataset.productType;
+                    const action = button.classList.contains('add-to-cart') ? 'add' : 'remove';
+                    const url = `/carts/${action}/${productId}/${productType}/`;
+
+
+                    button.disabled = true;
+                    button.innerHTML = `
+                <span class="spinner-border spinner-border-sm me-2"></span>
+                ${button.classList.contains('add-to-cart') ? '{% trans 'Adding...' %}' : '{% trans 'Removing...' %}'}`;
+
+                    try {
+                        const response = await sendCartRequest(url, productId, productType);
+                        const data = await response.json();
+
+                        if (data.status === 'success') {
+
+                            const cartCount = document.querySelector('.cart-count');
+                            const cartTotal = document.querySelector('.cart-total');
+
+                            if (cartCount) cartCount.textContent = data.cart_count;
+                            if (cartTotal) cartTotal.textContent = data.cart_total.toFixed(2);
+
+
+                            button.classList.toggle('add-to-cart');
+                            button.classList.toggle('in-cart');
+
+
+                            showMessage(data.message, 'success');
+                        } else {
+
+                            button.className = originalClasses;
+                            showMessage(data.message, 'error');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        button.className = originalClasses;
+                        showMessage("{% trans 'An error occurred. Please try again.' %}", 'error');
+                    } finally {
+
+                        button.disabled = false;
+                        button.innerHTML = `
+                    <i class="fi ${button.classList.contains('add-to-cart')
+                            ? 'fi-rr-shopping-cart-add'
+                            : 'fi-rr-shopping-cart-check'}">
+                    </i>`;
+                    }
+                });
+            });
+
+            function showMessage(text, type) {
+                const message = document.createElement('div');
+                message.className = `message ${type}`;
+                message.textContent = text;
+                document.body.appendChild(message);
+                setTimeout(() => message.remove(), type === 'error' ? 5000 : 3000);
+            }
         });
     </script>
 {% endblock %}

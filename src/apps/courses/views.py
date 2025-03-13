@@ -3,7 +3,8 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.staticfiles.storage import staticfiles_storage
-from django.db.models import Count, Prefetch, Case, CharField, Value, When, IntegerField, Q, ExpressionWrapper, F, Avg
+from django.db.models import Count, Prefetch, Case, CharField, Value, When, IntegerField, Q, ExpressionWrapper, F, Avg, \
+    OuterRef, Subquery, FloatField
 from django.db.models.functions import Cast, Coalesce, Concat
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
@@ -51,7 +52,29 @@ class CourseDetailView(generic.DetailView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-
+        coach_stats = Course.objects.filter(
+            coach=OuterRef('coach'),
+            status=True
+        ).values('coach').annotate(
+            total_comments=Count(
+                'comments',
+                output_field=IntegerField()
+            ),
+            total_students=Count(
+                'memberships__user',
+                distinct=True,
+                output_field=IntegerField()
+            ),
+            total_videos=Count(
+                'seasons__videos',
+                output_field=IntegerField()
+            ),
+            avg_rating=Coalesce(
+                Avg('comments__rate'),
+                0.0,
+                output_field=FloatField()
+            )
+        )
         queryset = queryset \
             .filter(
                 status=True,
@@ -63,12 +86,14 @@ class CourseDetailView(generic.DetailView):
                 Prefetch(
                     'comments',
                     queryset=CourseComments.objects.filter(status=True).select_related('user'),
-                ), Prefetch(
+                ),
+                Prefetch(
                     'seasons',
                     CourseSeason.objects.prefetch_related(
                         'videos',
                     )
-                ), Prefetch(
+                ),
+                Prefetch(
                     'coach__courses',
                     queryset=Course.objects.filter(
                         status=True
@@ -83,15 +108,31 @@ class CourseDetailView(generic.DetailView):
 
                     ).prefetch_related('comments')
 
-                )
+                ),
             ) \
             .annotate(
-                num_videos=Count('seasons__videos'),
+                # Course specific metrics
+                num_videos=Count('seasons__videos', distinct=True),
                 num_members=Count('memberships', distinct=True),
-                avg_rate=Avg('comments__rate', default=0)
-            ) \
-            .prefetch_related(
+                avg_rate=Avg('comments__rate', default=0),
 
+                # Coach statistics subqueries
+                coach_avg_rate=Subquery(
+                    coach_stats.values('avg_rating')[:1],
+                    output_field=FloatField()
+                ),
+                coach_num_comment=Subquery(
+                    coach_stats.values('total_comments')[:1],
+                    output_field=IntegerField()
+                ),
+                coach_student_count=Subquery(
+                    coach_stats.values('total_students')[:1],
+                    output_field=IntegerField()
+                ),
+                coach_video_count=Subquery(
+                    coach_stats.values('total_videos')[:1],
+                    output_field=IntegerField()
+                ),
             )
 
         return queryset
