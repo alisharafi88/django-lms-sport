@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container_BMI" >
+    <div class="container_BMI">
         <h1>محاسبه‌گر BMI</h1>
         <div class="input-field">
             <input
@@ -57,55 +57,48 @@
             let heightCm = parseFloat(document.getElementById("height").value);
             let heightM = heightCm / 100;
 
-            if (
-                age > 0 &&
-                weight > 0 &&
-                heightM > 0 &&
-                weight < 400 &&
-                heightM < 4
-            ) {
+            if (age > 0 && weight > 0 && heightM > 0 && weight < 400 && heightM < 4) {
                 let bmi = weight / (heightM * heightM);
                 let category = "";
-                if (bmi < 18.5) {
-                    category = "کمبود وزن";
-                } else if (bmi < 25) {
-                    category = "وزن نرمال";
-                } else if (bmi < 30) {
-                    category = "اضافه وزن";
+                let minHealthyWeight, maxHealthyWeight;
+
+
+                if (gender === "male") {
+                    if (bmi < 18.5) category = "کمبود وزن";
+                    else if (bmi < 25) category = "وزن نرمال";
+                    else if (bmi < 30) category = "اضافه وزن";
+                    else category = "چاق";
+                    minHealthyWeight = 18.5 * (heightM ** 2);
+                    maxHealthyWeight = 24.9 * (heightM ** 2);
                 } else {
-                    category = "چاق";
+                    if (bmi < 18.5) category = "کمبود وزن";
+                    else if (bmi < 24) category = "وزن نرمال";
+                    else if (bmi < 30) category = "اضافه وزن";
+                    else category = "چاق";
+                    minHealthyWeight = 18.5 * (heightM ** 2);
+                    maxHealthyWeight = 23.9 * (heightM ** 2);
                 }
 
-                let minHealthyWeight = 18.5 * (heightM * heightM);
-                let maxHealthyWeight = 24.9 * (heightM * heightM);
-
                 let advice = "";
-
                 if (age < 18) {
-                    advice =
-                        "با توجه به اینکه زیر ۱۸ سال هستید، لطفاً به پزشک متخصص اطفال مراجعه کنید.";
+                    advice = "با توجه به اینکه زیر ۱۸ سال هستید، لطفاً به پزشک متخصص اطفال مراجعه کنید.";
                 } else if (age >= 18 && age <= 65) {
-                    advice =
-                        "حفظ یک رژیم غذایی متعادل و ورزش منظم برای سلامتی بهتر مهم است.";
+                    if (gender === "male") {
+                        advice = "برای مردان، ترکیبی از ورزش هوازی و قدرتی برای حفظ سلامتی توصیه میشود.";
+                    } else {
+                        advice = "برای زنان، تمرکز بر تمرینات استقامتی و تغذیه سرشار از کلسیم توصیه میشود.";
+                    }
                 } else {
-                    advice = "در سن شما، بررسی‌های منظم پزشکی بسیار توصیه می‌شود.";
+                    advice = "در سن شما، بررسیهای منظم پزشکی بسیار توصیه میشود.";
                 }
 
                 document.getElementById("result").innerHTML = `
-          شاخص توده بدنی (BMI) شما <strong>${bmi.toFixed(
-                    1
-                )}</strong> است (${category}).<br>
-          محدوده وزن سالم برای قد شما بین <strong>${minHealthyWeight.toFixed(
-                    1
-                )} کیلوگرم</strong> تا <strong>${maxHealthyWeight.toFixed(
-                    1
-                )} کیلوگرم</strong> است.<br>
-          ${advice}
-        `;
+            شاخص توده بدنی (BMI) شما <strong>${bmi.toFixed(1)}</strong> است (${category}).<br>
+            محدوده وزن سالم برای قد شما بین <strong>${minHealthyWeight.toFixed(1)} کیلوگرم</strong> تا <strong>${maxHealthyWeight.toFixed(1)} کیلوگرم</strong> است.<br>
+            ${advice}`;
                 document.getElementById("result").style.opacity = "1";
             } else {
-                document.getElementById("result").innerText =
-                    "لطفاً مقادیر معتبر برای سن، وزن و قد وارد کنید.";
+                document.getElementById("result").innerText = "لطفاً مقادیر معتبر برای سن، وزن و قد وارد کنید.";
                 document.getElementById("result").style.opacity = "1";
             }
         }
