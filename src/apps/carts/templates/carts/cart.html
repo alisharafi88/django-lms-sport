@@ -126,13 +126,13 @@
                                         data-product-type="{{ item.type }}"
                                         data-remove-url="{% url 'carts:cart_remove' 0 'type' %}">
                                         <td class="product-thumbnail">
-                                            <a href="{% if item.product_obj.type == 'course' %}{% url 'courses:course_detail'  item.product_obj.slug %}{% else %}{% url 'courses:package_detail' item.product_obj.slug %}{% endif %}">
+                                            <a href="{% if item.type == 'course' %}{% url 'courses:course_detail'  item.product_obj.slug %}{% else %}{% url 'courses:package_detail' item.product_obj.slug %}{% endif %}">
                                                 <img src="{{ item.product_obj.img.url }}"
                                                      alt="{{ item.product_obj.title }}">
                                             </a>
                                         </td>
                                         <td class="product-name">
-                                            <a href="{% if item.product_obj.type == 'course' %}{% url 'courses:course_detail'  item.product_obj.slug %}{% else %}{% url 'courses:package_detail' item.product_obj.slug %}{% endif %}">
+                                            <a href="{% if item.type == 'course' %}{% url 'courses:course_detail'  item.product_obj.slug %}{% else %}{% url 'courses:package_detail' item.product_obj.slug %}{% endif %}">
                                                 {{ item.product_obj.title }}
                                             </a>
                                         </td>
