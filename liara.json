@@ -1,5 +1,6 @@
 {
-    "app": "fastball-test",
+    "app": "wizardly-thompson-6zjh0x5fw0",
+    "team-id":"67b9b49545571fc1c404070c",
     "port": 8000,
     "platform": "docker",
 
@@ -18,8 +19,12 @@
             "mountTo": "/src"
         },
         {
-            "name": "mediapath",
-            "mountTo": "/media"
+            "name": "media-volume",
+            "mountTo": "/src/media"
+        },
+        {
+            "name": "static-volume",
+            "mountTo": "/src/static"
         }
     ]
 }

@@ -1,5 +1,8 @@
 import os
 import socket
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 DEBUG = True
 
@@ -37,3 +40,6 @@ DATABASES = {
 
 SECURE_SSL_REDIRECT = False
 SECURE_HSTS_SECONDS = 0
+
+# static
+STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]

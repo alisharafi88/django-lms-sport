@@ -5,7 +5,9 @@ DEBUG = False
 
 # === ALLOWED_HOSTS ===
 ALLOWED_HOSTS = [
-    '*'
+    'wizardly-thompson-6zjh0x5fw0.liara.run',
+    'fastball.ir',
+    'www.fastball.ir',
 ]
 
 # === Database ===
