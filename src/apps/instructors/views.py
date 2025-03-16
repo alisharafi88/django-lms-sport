@@ -8,7 +8,10 @@ from ..carts.carts import Cart
 class InstructorListView(generic.ListView):
     template_name = 'instructors/instructor_list.html'
     context_object_name = 'instructors'
-    queryset = get_all_instructor()
+
+    def get_queryset(self):
+        queryset = get_all_instructor()
+        return queryset
 
 
 class InstructorDetailView(generic.DetailView):
