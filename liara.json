@@ -24,7 +24,7 @@
         },
         {
             "name": "static-volume",
-            "mountTo": "/src/static"
+            "mountTo": "/src/staticfiles"
         }
     ]
 }

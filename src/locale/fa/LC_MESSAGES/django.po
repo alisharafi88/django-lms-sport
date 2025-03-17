@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-17 02:24+0330\n"
+"POT-Creation-Date: 2025-03-17 04:34+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,35 +18,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/config/settings/base.py:305 src/config/settings/base.py:306
+#: src/config/settings/base.py:311 src/config/settings/base.py:312
 msgid "Site Management"
 msgstr "مدیریت‌ سایت"
 
-#: src/config/settings/base.py:307 src/templates/admin/base_site.html:87
+#: src/config/settings/base.py:313 src/templates/admin/base_site.html:87
 msgid "Admin Panel"
 msgstr "پنل ادمین"
 
-#: src/config/settings/base.py:308
+#: src/config/settings/base.py:314
 msgid "Welcome to the Admin Panel"
 msgstr "به پنل‌ادمین خوش‌آمدی"
 
-#: src/config/settings/base.py:311
-#, fuzzy
-#| msgid "Home"
+#: src/config/settings/base.py:317
 msgctxt "Navigation"
 msgid "Home"
 msgstr "خانه"
 
-#: src/config/settings/base.py:313
+#: src/config/settings/base.py:319
 msgctxt "Action"
 msgid "Logout"
 msgstr "خروج"
 
 #: src/templates/inc/header.html:24
+msgctxt "header1"
 msgid "Search Now"
 msgstr "جستجو"
 
 #: src/templates/inc/header.html:25
+msgctxt "header1"
 msgid "What you want to learn?"
 msgstr "چه چیزی می‌خواهید یاد بگیرید؟"
 
