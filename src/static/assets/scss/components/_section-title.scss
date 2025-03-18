@@ -10,7 +10,7 @@
     color: var(--tp-heading-secondary);
     font-size: 20px;
     display: block;
-    font-family: 'Gordita-500';
+    font-family: var(--tp-ff-heading);
 }
 .tp-section-title {
     font-size: 44px;
@@ -37,7 +37,7 @@
     color: var(--tp-heading-secondary);
     border-radius: 5px;
     display: inline-block;
-    font-family: 'Gordita-500';
+    font-family: var(--tp-ff-heading);
     line-height: 1;
 }
 .hero-title-black {
@@ -63,7 +63,7 @@
     display: inline-block;
     position: relative;
     text-transform: uppercase;
-    font-family: 'Gordita-500';
+    font-family: var(--tp-ff-heading);
     font-size: 18px;
     color: var(--tp-heading-secondary);
     line-height: 1;

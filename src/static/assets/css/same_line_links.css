@@ -1,7 +1,7 @@
 .contact-form-input_same_line {
     display: flex;
     align-items: center;
-    font-family: inherit;
+    font-family: var(--tp-ff-body);;
 }
 
 .contact-form-input_same_line span,

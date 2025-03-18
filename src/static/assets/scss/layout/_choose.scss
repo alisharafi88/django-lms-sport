@@ -41,7 +41,7 @@
             & p {
                 margin:15px 0 0 0;
                 color: var(--tp-heading-primary);
-                font-family: 'Gordita-500';
+                font-family: var(--tp-ff-heading);
             }
         }
         & li:nth-child(1) {
@@ -81,7 +81,7 @@
        & li {
             font-size: 20px;
             color: var(--tp-heading-primary);
-            font-family: 'Gordita-500';
+            font-family: var(--tp-ff-heading);
             position: relative;
             padding-left: 45px;
             display: inline-block;
@@ -208,8 +208,8 @@
 }
 .choose-online-title {
     font-size: 22px;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     line-height: 1;
     display: inline-block;
     @media #{$xs} {

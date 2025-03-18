@@ -1,7 +1,7 @@
 body {
     direction: rtl !important;
     text-align: right !important;
-    font-family: Vazir, Tahoma !important;
+    font-family: var(--tp-ff-body);;
 }
 
 .bg-dark-green {

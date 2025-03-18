@@ -1,47 +1,84 @@
 @charset "UTF-8";
 @font-face {
-    font-family: "Gordita-300";
-    src: url("../fonts/Gordita-Light.woff2") format("woff2"), url("../fonts/Gordita-Light.woff") format("woff");
-    font-weight: 300;
-    font-style: normal;
+    font-family: "Shabnam";
+    src: url("../fonts/Shabnam-Thin.woff2") format("woff2");
+    font-weight: var(--tp-fw-normal);
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Gordita-400";
-    src: url("../fonts/Gordita-Regular.woff2") format("woff2"), url("../fonts/Gordita-Regular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
+    font-family: "Shabnam";
+    src: url("../fonts/Shabnam-Light.woff2") format("woff2");
+    font-weight: var(--tp-fw-light);
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Gordita-500";
-    src: url("../fonts/Gordita-Medium.woff2") format("woff2"), url("../fonts/Gordita-Medium.woff") format("woff");
-    font-weight: 500;
-    font-style: normal;
+    font-family: "Shabnam";
+    src: url("../fonts/Shabnam.woff2") format("woff2");
+    font-weight: var(--tp-fw-regular);
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Gordita-700";
-    src: url("../fonts/Gordita-Bold.woff2") format("woff2"), url("../fonts/Gordita-Bold.woff") format("woff");
-    font-weight: bold;
-    font-style: normal;
+    font-family: "Shabnam";
+    src: url("../fonts/Shabnam-Medium.woff2") format("woff2");
+    font-weight: var(--tp-fw-medium);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Shabnam";
+    src: url("../fonts/Shabnam-Bold.woff2") format("woff2");
+    font-weight: var(--tp-fw-bold);
+    font-display: swap;
+}
+
+/* Shabnam with Farsi Digits (no Latin) */
+@font-face {
+    font-family: "Shabnam-FD";
+    src: url("../fonts/Shabnam-Thin-FD-WOL.woff2") format("woff2");
+    font-weight: var(--tp-fw-normal);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Shabnam-FD";
+    src: url("../fonts/Shabnam-Light-FD-WOL.woff2") format("woff2");
+    font-weight: var(--tp-fw-light);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Shabnam-FD";
+    src: url("../fonts/Shabnam-FD-WOL.woff2") format("woff2");
+    font-weight: var(--tp-fw-regular);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Shabnam-FD";
+    src: url("../fonts/Shabnam-Medium-FD-WOL.woff2") format("woff2");
+    font-weight: var(--tp-fw-medium);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Shabnam-FD";
+    src: url("../fonts/Shabnam-Bold-FD-WOL.woff2") format("woff2");
+    font-weight: var(--tp-fw-bold);
     font-display: swap;
 }
 
 :root {
-    /**
-  @font family declaration
-  */
-    --tp-ff-body: Gordita-400;
-    --tp-ff-heading: Gordita-700;
-    --tp-ff-p: Gordita-400;
+    /* Font families */
+    --tp-ff-body: "Shabnam", sans-serif;
+    --tp-ff-heading: "Shabnam", sans-serif;
+    --tp-ff-p: "Shabnam", sans-serif;
+    --tp-ff-digits: "Shabnam-FD", "Shabnam", sans-serif;
     --tp-ff-fontawesome: "Font Awesome 6 Pro";
-    /**
-  @color declaration
-  */
+
+    /* Colors */
     --tp-common-white: #ffffff;
     --tp-common-black: #000;
     --tp-heading-primary: #050D36;
@@ -56,9 +93,8 @@
     --tp-theme-2: #F7F8F9;
     --tp-border-1: #fff;
     --tp-border-2: #245D51;
-    /**
-  @font weight declaration
-  */
+
+    /* Font weights */
     --tp-fw-normal: normal;
     --tp-fw-elight: 200;
     --tp-fw-light: 300;
@@ -66,9 +102,8 @@
     --tp-fw-medium: 500;
     --tp-fw-sbold: 600;
     --tp-fw-bold: 700;
-    /**
-  @font size declaration
-  */
+
+    /* Font sizes */
     --tp-fz-body: 14px;
     --tp-fz-p: 16px;
     --tp-fz-h1: 40px;
@@ -129,24 +164,21 @@
 body {
     font-family: var(--tp-ff-body);
     font-size: var(--tp-fz-body);
-    font-weight: normal;
+    font-weight: var(--tp-fw-normal);
     color: var(--tp-text-body);
     line-height: 26px;
+    direction: rtl;
 }
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: var(--tp-ff-heading);
     color: var(--tp-heading-primary);
-    margin-top: 0px;
+    margin-top: 0;
     font-weight: var(--tp-fw-bold);
     line-height: 1.2;
     -webkit-transition: all 0.3s ease-out 0s;
@@ -157,36 +189,27 @@ h6 {
 }
 
 h1 {
-    font-size: var(--tp-fz-h1);
+    font-size: var(--tp-fz-h1)
 }
 
 h2 {
-    font-size: var(--tp-fz-h2);
+    font-size: var(--tp-fz-h2)
 }
 
 h3 {
-    font-size: var(--tp-fz-h3);
+    font-size: var(--tp-fz-h3)
 }
 
 h4 {
-    font-size: var(--tp-fz-h4);
+    font-size: var(--tp-fz-h4)
 }
 
 h5 {
-    font-size: var(--tp-fz-h5);
+    font-size: var(--tp-fz-h5)
 }
 
 h6 {
-    font-size: var(--tp-fz-h6);
-}
-
-ul {
-    margin: 0px;
-    padding: 0px;
-}
-
-li {
-    list-style: none;
+    font-size: var(--tp-fz-h6)
 }
 
 p {
@@ -196,6 +219,14 @@ p {
     color: var(--tp-text-2);
     margin-bottom: 15px;
     line-height: 28px;
+}
+
+.price,
+.number,
+.counter {
+    font-family: var(--tp-ff-digits);
+    font-feature-settings: "lnum";
+    direction: ltr;
 }
 
 a,
@@ -224,6 +255,11 @@ h6 {
     -ms-transition: all 0.3s ease-out 0s;
     -o-transition: all 0.3s ease-out 0s;
     transition: all 0.3s ease-out 0s;
+}
+
+ul, ol {
+    list-style: none;
+    padding-left: 0;
 }
 
 a:focus,
@@ -437,8 +473,8 @@ img {
     -ms-border-radius: 7px;
     border-radius: 7px;
     border: 2px solid #f1f1f1;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: var(--tp-fz-p);
+    font-weight: var(--tp-fw-regular);
     color: var(--tp-text-2);
 }
 
@@ -540,7 +576,6 @@ img {
 
 .hamurger-btn span {
     display: inline-block;
-    width: 100%;
     background: var(--tp-common-black);
     display: block;
     position: absolute;
@@ -567,7 +602,7 @@ img {
 .tp-btn {
     display: inline-block;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: var(--tp-fw-sbold);
     color: var(--tp-common-white);
     background: var(--tp-theme-1);
     line-height: 1;
@@ -600,7 +635,7 @@ img {
 .tp-s-border-btn {
     display: inline-block;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: var(--tp-fw-sbold);
     color: var(--tp-common-white);
     background: transparent;
     border: 1px solid #fff;
@@ -636,7 +671,7 @@ img {
 .tp-border-btn {
     display: inline-block;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: var(--tp-fw-sbold);
     color: var(--tp-heading-secondary);
     background: var(--tp-common-white);
     border: 1px solid var(--tp-heading-secondary);
@@ -671,7 +706,7 @@ img {
 .tp-border-btn2 {
     display: inline-block;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: var(--tp-fw-sbold);
     color: var(--tp-common-white);
     background-color: var(--tp-heading-secondary);
     border: 1px solid var(--tp-heading-secondary);
@@ -768,7 +803,7 @@ img {
     position: relative;
     font-size: 16px;
     color: var(--tp-text-1);
-    font-weight: 500;
+    font-weight: var(--tp-fw-medium);
     padding-right: 21px;
     display: inline-block;
 }
@@ -849,7 +884,7 @@ img {
     color: var(--tp-heading-secondary);
     font-size: 20px;
     display: block;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
 }
 
 .tp-section-title {
@@ -888,7 +923,7 @@ img {
     color: var(--tp-heading-secondary);
     border-radius: 5px;
     display: inline-block;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
     line-height: 1;
 }
 
@@ -926,7 +961,7 @@ img {
     display: inline-block;
     position: relative;
     text-transform: uppercase;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
     font-size: 18px;
     color: var(--tp-heading-secondary);
     line-height: 1;
@@ -980,7 +1015,7 @@ img {
     line-height: 26px;
     font-size: 14px;
     color: var(--tp-common-white);
-    font-weight: 500;
+    font-weight: var(--tp-fw-medium);
     background: var(--tp-theme-2);
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -1004,7 +1039,7 @@ img {
 .breadcrumb__list span {
     font-size: 18px;
     color: var(--tp-text-2);
-    font-weight: 500;
+    font-weight: var(--tp-fw-medium);
     padding-right: 3px;
     margin-right: 3px;
 }
@@ -1031,7 +1066,7 @@ img {
 .breadcrumb__list-2 span {
     font-size: 14px;
     color: var(--tp-text-11);
-    font-weight: 500;
+    font-weight: var(--tp-fw-medium);
     padding-right: 3px;
     margin-right: 3px;
     text-transform: capitalize;
@@ -1697,7 +1732,7 @@ img {
 .main-menu ul > li > a {
     position: relative;
     display: inline-block;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
     font-size: 16px;
     color: var(--tp-common-white);
     padding: 23px 0;
@@ -1733,8 +1768,8 @@ img {
     font-size: 16px;
     color: var(--tp-common-white);
     font-family: var(--tp-ff-fontawesome);
-    font-weight: medium;
-    margin-left: 5px;
+    font-weight: var(--tp-fw-medium);
+    margin-right: 5px;
     display: inline-block;
 }
 
@@ -1833,7 +1868,7 @@ img {
 
 .main-menu-white ul li a {
     padding: 35px 0;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
     color: var(--tp-text-2);
 }
 
@@ -2135,7 +2170,7 @@ ul.bili_circle li::before {
 }
 
 .hero-content span {
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
     font-size: 20px;
     margin-bottom: 20px;
     color: var(--tp-common-white);
@@ -2517,7 +2552,7 @@ ul.bili_circle li::before {
 }
 
 .slider-text {
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
     font-size: 18px;
     color: var(--tp-common-white);
     background: rgba(255, 255, 255, 0.2);
@@ -2933,8 +2968,8 @@ ul.bili_circle li::before {
     width: 50%;
     flex: 0 0 50%;
     font-size: 20px;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     color: var(--tp-heading-primary);
     line-height: 1.7;
     position: relative;
@@ -3002,8 +3037,8 @@ ul.bili_circle li::before {
     z-index: 2;
     color: var(--tp-text-2);
     box-shadow: 5px 8px 30px 0 rgba(17, 29, 59, 0.08);
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 @media (max-width: 767px) {
@@ -3091,8 +3126,8 @@ ul.bili_circle li::before {
 .tp-about-list ul li {
     font-size: 20px;
     color: var(--tp-heading-primary);
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     position: relative;
     padding-left: 0;
     padding-right: 60px;
@@ -3206,7 +3241,7 @@ div.choose-sub-color {
 .video-text i {
     font-style: normal;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: var(--tp-fw-bold);
     display: block;
     position: relative;
     text-transform: uppercase;
@@ -3225,7 +3260,7 @@ div.choose-sub-color {
 }
 
 .video-text span {
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
     font-size: 14px;
     color: var(--tp-text-2);
     margin-left: 15px;
@@ -3299,8 +3334,8 @@ div.choose-sub-color {
     font-size: 24px;
     line-height: 1;
     margin-bottom: 0;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
@@ -3410,8 +3445,8 @@ div.choose-sub-color {
 .course-menu span {
     font-size: 20px;
     display: block;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     margin-right: 13px;
 }
 
@@ -3420,8 +3455,8 @@ div.choose-sub-color {
     padding: 12px 30px;
     background: rgba(255, 102, 82, 0.05);
     font-size: 16px;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     color: var(--tp-heading-secondary);
 }
 
@@ -3520,9 +3555,9 @@ div.choose-sub-color {
 .tpcourse__title {
     font-size: 20px;
     line-height: 1.5;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
     margin: 0 0 0 13px;
-    font-weight: 500;
+    font-weight: var(--tp-fw-medium);
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px), (max-width: 767px) {
@@ -3656,8 +3691,8 @@ div.choose-sub-color {
 }
 
 .tpcourse__price-list {
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 .tpcourse:hover .tpcourse__thumb a img {
@@ -3673,8 +3708,8 @@ div.choose-sub-color {
 .tp-wrap-course__title {
     font-size: 20px;
     line-height: 1.3;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 .tp-wrap-course__title:hover {
@@ -3744,8 +3779,8 @@ div.choose-sub-color {
 .tpcourse__rating-icon span {
     color: #F2C94C;
     font-size: 20px;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 .tpcourse__rating-icon i {
@@ -3761,8 +3796,8 @@ div.choose-sub-color {
 
 .tpcourse .price-title {
     font-size: 20px;
-    font-family: "Gordita-500";
-    font-weight: 400;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-regular);;
     margin-bottom: 0;
 }
 
@@ -3861,8 +3896,8 @@ div.choose-sub-color {
     font-size: 16px;
     border-radius: 50px;
     position: relative;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     position: relative;
     margin: 0 5px 20px 5px;
 }
@@ -3941,9 +3976,9 @@ div.choose-sub-color {
 
 .course-sidebar__title {
     color: var(--tp-color-primary);
-    font-weight: 500;
+    font-weight: var(--tp-fw-medium);
     font-size: 18px;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
 }
 
 .c-info-list .form-check {
@@ -3981,9 +4016,9 @@ div.choose-sub-color {
 }
 
 .c-info-list .form-check-label {
-    font-weight: 500;
+    font-weight: var(--tp-fw-medium);
     font-size: 16px;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
     color: var(--tp-text-2);
     padding-left: 15px;
 }
@@ -3996,7 +4031,7 @@ div.choose-sub-color {
 .c-info-list .form-check-input:checked[type=checkbox]::before {
     position: absolute;
     content: "\f00c";
-    font-family: "Font Awesome 6 Pro";
+    font-family: "Font Awesome 6 Pro", serif;
     left: 7px;
     color: var(--tp-common-white);
 }
@@ -4077,8 +4112,8 @@ div.choose-sub-color {
 .c-details-ava span {
     margin-left: 15px;
     color: var(--tp-common-white);
-    font-weight: 500;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 .c-details-ava span a:hover {
@@ -4219,8 +4254,8 @@ div.choose-sub-color {
 .course-ava-title {
     font-size: 20px;
     color: var(--tp-heading-primary);
-    font-weight: 400;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-regular);
 }
 
 .course-review-ava {
@@ -4230,11 +4265,11 @@ div.choose-sub-color {
 }
 
 .rating-gold p {
-    font-weight: 500;
     font-size: 18px;
     color: #F2C94C;
     margin-bottom: 0;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     margin-right: 5px;
 }
 
@@ -4244,7 +4279,7 @@ div.choose-sub-color {
 
 .rating-gold > span {
     margin-left: 5px;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
     font-size: 16px;
 }
 
@@ -4255,7 +4290,7 @@ div.choose-sub-color {
 }
 
 .c-reviewer-time span {
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
     font-size: 17px;
     color: var(--tp-text-2);
 }
@@ -4310,8 +4345,8 @@ div.choose-sub-color {
     display: block;
     padding: 20px 20px;
     font-size: 16px;
-    font-weight: 500;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     background: var(--tp-heading-secondary);
     color: var(--tp-common-white);
     border-radius: 10px;
@@ -4354,9 +4389,9 @@ div.choose-sub-color {
 }
 
 .cd-information ul li label {
-    font-weight: 500;
     font-size: 20px;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     color: var(--tp-heading-primary);
 }
 
@@ -4381,8 +4416,8 @@ div.choose-sub-color {
 
 .c-details-social .cd-social-title {
     font-size: 22px;
-    font-weight: 500;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     color: var(--tp-color-primary);
 }
 
@@ -4465,7 +4500,8 @@ div.choose-sub-color {
 .tpchoose-img-text ul li p {
     margin: 15px 0 0 0;
     color: var(--tp-heading-primary);
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 .tpchoose-img-text ul li:nth-child(1) {
@@ -4515,7 +4551,8 @@ div.choose-sub-color {
 .tp-choose-list ul li {
     font-size: 20px;
     color: var(--tp-heading-primary);
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     position: relative;
     padding-left: 0;
     display: block;
@@ -4651,8 +4688,8 @@ div.choose-sub-color {
 
 .choose-online-title {
     font-size: 22px;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     line-height: 1;
     display: inline-block;
 }
@@ -4726,8 +4763,8 @@ div.choose-sub-color {
 .counter-white-text p {
     font-size: 22px;
     color: var(--tp-common-white);
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 .counter-left-title {
@@ -4780,7 +4817,8 @@ div.choose-sub-color {
 .tp-instructor__content span {
     font-size: 16px;
     text-transform: uppercase;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     color: var(--tp-border-2);
 }
 
@@ -4979,8 +5017,8 @@ div.choose-sub-color {
     display: block;
     padding: 20px 20px;
     font-size: 16px;
-    font-weight: 500;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     background: var(--tp-heading-secondary);
     color: var(--tp-common-white);
     border-radius: 10px;
@@ -5021,8 +5059,8 @@ div.choose-sub-color {
 
 .isntruc-tp-counter p {
     font-size: 18px;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     color: var(--tp-text-2);
 }
 
@@ -5200,8 +5238,8 @@ div.choose-sub-color {
 .tp-testi__rating span {
     color: var(--tp-heading-primary);
     font-size: 18px;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     margin-left: 5px;
 }
 
@@ -5284,7 +5322,8 @@ div.choose-sub-color {
 .tp-testi__rating-count {
     font-size: 18px;
     color: var(--tp-heading-primary);
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     line-height: 1;
 }
 
@@ -5425,7 +5464,7 @@ div.choose-sub-color {
     border-top: 1px solid #ebebeb;
     font-size: 14px;
     line-height: 1.5;
-    font-weight: 700;
+    font-weight: var(--tp-fw-bold);
 }
 
 .mean-container .mean-nav ul li a:hover {
@@ -5443,7 +5482,7 @@ div.choose-sub-color {
     color: var(--clr-common-black);
     line-height: 30px;
     top: 0;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
 }
 
 .mean-container .mean-nav ul li a.mean-expand:hover {
@@ -5563,8 +5602,8 @@ div.choose-sub-color {
 .tp-blog__title {
     color: #161B2D;
     line-height: 1.6;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 .tp-blog__title a {
@@ -5601,8 +5640,8 @@ div.choose-sub-color {
     background: var(--tp-common-white);
     padding: 12px 11px;
     font-size: 16px;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     border-radius: 5px;
     box-shadow: rgba(5, 13, 54, 0.05) 5px 15px 30px 0px;
 }
@@ -5653,8 +5692,8 @@ div.choose-sub-color {
     color: var(--tp-text-2);
     font-size: 18px;
     line-height: 1;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 .blog-edu span i {
@@ -5669,8 +5708,8 @@ div.choose-sub-color {
     color: var(--tp-text-2);
     font-size: 17px;
     line-height: 1;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 .date-wrapper {
@@ -5809,7 +5848,7 @@ div.choose-sub-color {
 
 .postbox__meta span {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: var(--tp-fw-sbold);
     color: var(--tp-text-2);
     display: inline-flex;
     align-items: center;
@@ -5913,7 +5952,7 @@ div.choose-sub-color {
 
 .postbox__comment-form-title {
     font-size: 26px;
-    font-weight: 600;
+    font-weight: var(--tp-fw-sbold);
     margin-bottom: 40px;
 }
 
@@ -5923,7 +5962,7 @@ div.choose-sub-color {
 }
 
 .postbox__comment-input span {
-    font-weight: 600;
+    font-weight: var(--tp-fw-sbold);
     color: var(--tp-common-black);
     margin-bottom: 12px;
     display: block;
@@ -5954,7 +5993,7 @@ div.choose-sub-color {
 
 .postbox__comment-title {
     font-size: 26px;
-    font-weight: 600;
+    font-weight: var(--tp-fw-sbold);
     margin-bottom: 20px;
 }
 
@@ -6017,7 +6056,7 @@ div.choose-sub-color {
     background: var(--tp-common-white);
     line-height: 22px;
     padding: 4px 10px;
-    font-weight: 500;
+    font-weight: var(--tp-fw-medium);
     font-size: 14px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -6092,7 +6131,7 @@ div.choose-sub-color {
 
 .postbox__comment-agree label a {
     color: var(--tp-common-black);
-    font-weight: 600;
+    font-weight: var(--tp-fw-sbold);
     padding-left: 4px;
 }
 
@@ -6162,7 +6201,7 @@ div.choose-sub-color {
 
 .rc__meta span {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
     color: var(--tp-border-2);
 }
 
@@ -6200,7 +6239,7 @@ div.choose-sub-color {
     color: var(--tp-heading-primary);
     display: block;
     text-transform: capitalize;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
     font-size: 16px;
     border-bottom: 1px solid #eaeaea;
 }
@@ -6212,8 +6251,8 @@ div.choose-sub-color {
 .sidebar__widget ul li a span {
     float: right;
     color: var(--tp-border-2);
-    font-weight: 500;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 .sidebar__widget ul li ul {
@@ -6298,7 +6337,7 @@ div.choose-sub-color {
     background: #F7F8F9;
     color: var(--tp-heading-primary);
     display: inline-block;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
     font-size: 14px;
     line-height: 1;
     padding: 10px 23px;
@@ -6355,7 +6394,7 @@ blockquote p {
     line-height: 1.5;
     font-size: 20px;
     color: #57565e;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
 }
 
 blockquote cite {
@@ -6364,7 +6403,7 @@ blockquote cite {
     margin-top: 10px;
     color: #070337;
     font-style: inherit;
-    font-weight: 600;
+    font-weight: var(--tp-fw-sbold);
     position: relative;
 }
 
@@ -6377,7 +6416,7 @@ blockquote cite::before {
     background: var(--tp-theme-1);
     height: 2px;
     width: 40px;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
     text-align: center;
     top: -4px;
     margin-right: 10px;
@@ -6413,8 +6452,8 @@ blockquote cite::before {
 .location-title {
     color: var(--tp-heading-primary);
     font-size: 22px;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     display: inline-block;
 }
 
@@ -6455,7 +6494,7 @@ blockquote cite::before {
     display: block;
     color: var(--tp-text-2);
     font-size: 16px;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
     margin-bottom: 8px;
 }
 
@@ -6521,12 +6560,12 @@ blockquote cite::before {
 .accordion-button {
     background-color: #F8FAFA;
     box-shadow: none;
-    padding: 37px 40px 37px 60px; /* Increased left padding for icon space */
+    padding: 37px 40px 37px 60px; 
     font-size: 22px;
-    font-family: "Gordita-500";
-    font-weight: 500;
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     width: 100%;
-    text-align: right; /* Text aligned to the right */
+    text-align: right; 
     color: var(--tp-heading-primary);
     position: relative;
     transition: 0.3s;
@@ -6534,7 +6573,7 @@ blockquote cite::before {
 
 @media (max-width: 767px) {
     .accordion-button {
-        padding: 20px 30px 20px 40px; /* Adjusted left padding for smaller screens */
+        padding: 20px 30px 20px 40px; 
         font-size: 14px;
     }
 }
@@ -6545,13 +6584,13 @@ blockquote cite::before {
 
 .accordion-button::after {
     position: absolute;
-    content: "\f077"; /* Chevron up (expanded state) */
+    content: "\f077";
     left: 20px;
     top: 50%;
     transform: translateY(-50%) !important;
     font-family: "Font Awesome 6 Pro";
     color: var(--tp-border-2);
-    font-size: 17px; /* Base size */
+    font-size: 17px; 
     background-image: none;
     transition: transform 0.3s ease;
     background-image: none !important;
@@ -6559,20 +6598,21 @@ blockquote cite::before {
 
 @media (max-width: 767px) {
     .accordion-button::after {
-        left: 10px; /* Closer to left edge on smaller screens */
+        left: 10px; 
         font-size: 14px;
     }
 }
 
 .accordion-button.collapsed::after {
-    content: "\f107"; /* Chevron down (collapsed state) */
-    font-size: 17px; /* Match base size */
+    content: "\f107"; 
+    font-size: 17px; 
 }
 
 .accordion-button:not(.collapsed)::after {
-    font-size: 17px; /* Explicit size for expanded state */
+    font-size: 17px; 
     background-image: none;
 }
+
 .accordion-button {
     transition: none !important;
 }
@@ -6610,6 +6650,7 @@ blockquote cite::before {
         font-size: 14px;
     }
 }
+
 /*----------------------------------------*/
 /*  19. CART CSS START
 /*----------------------------------------*/
@@ -6638,7 +6679,7 @@ blockquote cite::before {
 
 .table-content table td.product-name {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
     text-transform: capitalize;
 }
 
@@ -6662,7 +6703,7 @@ blockquote cite::before {
 .product-quantity input {
     color: #000;
     font-size: 14px;
-    font-weight: normal;
+    font-weight: var(--tp-fw-normal);
     border: 1px solid #dcdcdc;
 }
 
@@ -6744,7 +6785,7 @@ blockquote cite::before {
     color: #6f7172;
     padding: 10px 30px;
     border-bottom: 1px solid #eaedff;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
 }
 
 .cart-page-total ul > li > span {
@@ -6796,12 +6837,12 @@ td.product-thumbnail img {
     background-color: #f6f6f6;
     border-top: 3px solid rgba(255, 102, 82, 0.1);
     font-size: 14px;
-    font-weight: 500;
     margin: 0 0 25px;
     padding: 1em 2em 1em 3.5em;
     position: relative;
     width: auto;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
 }
 
 .coupon-accordion h3::before {
@@ -6810,15 +6851,15 @@ td.product-thumbnail img {
     top: 13px;
     position: absolute;
     color: #6f7172;
-    font-family: "Font Awesome 5 Pro";
-    font-weight: 700;
+    font-family: "Font Awesome 5 Pro", serif;
+    font-weight: var(--tp-fw-bold);
 }
 
 .coupon-accordion span {
     color: #6f7172;
     cursor: pointer;
     transition: 0.3s;
-    font-weight: 500;
+    font-weight: var(--tp-fw-medium);
 }
 
 .coupon-accordion span:hover, p.lost-password a:hover {
@@ -6847,7 +6888,7 @@ td.product-thumbnail img {
 
 .coupon-info p.form-row-first label span.required, .coupon-info p.form-row-last label span.required {
     color: red;
-    font-weight: 700;
+    font-weight: var(--tp-fw-bold);
 }
 
 .coupon-info p.form-row-first input, .coupon-info p.form-row-last input {
@@ -6891,7 +6932,7 @@ td.product-thumbnail img {
     display: inline-block;
     float: left;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: var(--tp-fw-bold);
     height: 40px;
     line-height: 40px;
     margin-right: 15px;
@@ -7115,7 +7156,7 @@ p.checkout-coupon input[type=text]:focus {
 .your-order-table table th {
     border-top: medium none;
     color: #6f7172;
-    font-weight: normal;
+    font-weight: var(--tp-fw-normal);
     text-align: left;
     vertical-align: middle;
     white-space: nowrap;
@@ -7159,8 +7200,8 @@ p.checkout-coupon input[type=text]:focus {
 .your-order-table table tr.order-total td span {
     color: var(--tp-heading-primary);
     font-size: 18px;
-    font-weight: 500;
-    font-family: "Gordita-500";
+    font-weight: var(--tp-fw-medium);
+    font-family: var(--tp-ff-heading);
 }
 
 .payment-method {
@@ -7180,7 +7221,7 @@ p.checkout-coupon input[type=text]:focus {
 
 .payment-method .accordion-button {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: var(--tp-fw-medium);
     color: var(--tp-heading-primary);
     padding: 23px 0;
     border: none;
@@ -7206,7 +7247,7 @@ p.checkout-coupon input[type=text]:focus {
     transform: translateY(-50%);
     font-family: var(--tp-ff-fontawesome);
     font-size: 16px;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
     margin-left: 0;
     background-image: none;
 }
@@ -7239,7 +7280,7 @@ p.checkout-coupon input[type=text]:focus {
     border: medium none;
     color: #fff;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: var(--tp-fw-sbold);
     height: 40px;
     margin: 0px 0 0;
     padding: 0;
@@ -7260,7 +7301,7 @@ p.checkout-coupon input[type=text]:focus {
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: var(--tp-fw-medium);
     letter-spacing: 1px;
     line-height: 1;
     margin-bottom: 0;
@@ -7386,7 +7427,7 @@ p.checkout-coupon input[type=text]:focus {
     width: 40px;
     margin: auto;
     line-height: 1;
-    font-weight: 500;
+    font-weight: var(--tp-fw-medium);
 }
 
 @media (max-width: 767px) {
@@ -7633,7 +7674,8 @@ p.checkout-coupon input[type=text]:focus {
 
 .footer-widget-info .footer-widget-info-text a {
     font-size: 16px;
-    font-family: "Gordita-500";
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-medium);
     color: var(--tp-heading-primary);
     display: inline-block;
 }

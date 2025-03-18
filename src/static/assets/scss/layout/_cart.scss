@@ -28,7 +28,7 @@
 
 .table-content table td.product-name {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
     text-transform: capitalize;
 }
 
@@ -134,7 +134,7 @@
     color: #6f7172;
     padding: 10px 30px;
     border-bottom: 1px solid #eaedff;
-    font-weight: 400;
+    font-weight: var(--tp-fw-regular);
 }
 
 .cart-page-total ul>li>span {
@@ -182,12 +182,12 @@ td.product-thumbnail img {
 	background-color: #f6f6f6;
 	border-top: 3px solid rgb(255, 102, 82, .1);
 	font-size: 14px;
-	font-weight: 500;
+	font-weight: var(--tp-fw-medium);
 	margin: 0 0 25px;
 	padding: 1em 2em 1em 3.5em;
 	position: relative;
 	width: auto;
-  font-family: 'Gordita-500';
+  font-family: var(--tp-ff-heading);
 }
 
 .coupon-accordion h3::before {
@@ -204,7 +204,7 @@ td.product-thumbnail img {
   color: #6f7172;
   cursor: pointer;
   transition: .3s;
-  font-weight: 500;
+  font-weight: var(--tp-fw-medium);
 }
 
 .coupon-accordion span:hover, p.lost-password a:hover {
@@ -531,8 +531,8 @@ p.checkout-coupon input[type="text"] {
 .your-order-table table tr.order-total td span {
   color: var(--tp-heading-primary);
   font-size: 18px;
-  font-weight: 500;
-  font-family: 'Gordita-500';
+  font-weight: var(--tp-fw-medium);
+  font-family: var(--tp-ff-heading);
 }
 
 .payment-method {
@@ -549,7 +549,7 @@ p.checkout-coupon input[type="text"] {
     }
     & .accordion-button{
         font-size: 16px;
-        font-weight: 500;
+        font-weight: var(--tp-fw-medium);
         color: var(--tp-heading-primary);
         padding: 23px 0;
         border: none;
@@ -564,7 +564,7 @@ p.checkout-coupon input[type="text"] {
             @include transform(translateY(-50%));
             font-family: var(--tp-ff-fontawesome);
             font-size: 16px;
-            font-weight: 400;
+            font-weight: var(--tp-fw-regular);
             margin-left: 0;
             background-image: none;
         }
@@ -595,7 +595,7 @@ p.checkout-coupon input[type="text"] {
   border: medium none;
   color: #fff;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: var(--tp-fw-sbold);
   height: 40px;
   margin: 0px 0 0;
   padding: 0;
@@ -616,7 +616,7 @@ p.checkout-coupon input[type="text"] {
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: var(--tp-fw-medium);
   letter-spacing: 1px;
   line-height: 1;
   margin-bottom: 0;

@@ -204,7 +204,7 @@
         }
         & a {
             font-size: 16px;
-            font-family: 'Gordita-500';
+            font-family: var(--tp-ff-heading);
             color: var(--tp-heading-primary);
             display: inline-block;
             &:hover {

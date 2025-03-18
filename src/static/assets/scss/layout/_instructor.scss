@@ -31,7 +31,7 @@
         & span {
             font-size: 16px;
             text-transform: uppercase;
-            font-family: 'Gordita-500';
+            font-family: var(--tp-ff-heading);
             color: var(--tp-border-2);
         }
     }
@@ -205,8 +205,8 @@
         display: block;
         padding: 20px 20px;
         font-size: 16px;
-        font-weight: 500;
-        font-family: 'Gordita-500';
+        font-weight: var(--tp-fw-medium);
+        font-family: var(--tp-ff-heading);
         background: var(--tp-heading-secondary);
         color: var(--tp-common-white);
         border-radius: 10px;
@@ -242,8 +242,8 @@
     }
     & p {
         font-size: 18px;
-        font-family: 'Gordita-500';
-        font-weight: 500;
+        font-family: var(--tp-ff-heading);
+        font-weight: var(--tp-fw-medium);
         color: var(--tp-text-2);
     }
 }

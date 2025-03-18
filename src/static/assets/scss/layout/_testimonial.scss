@@ -27,8 +27,8 @@
         & span {
             color: var(--tp-heading-primary);
             font-size: 18px;
-            font-family: 'Gordita-500';
-            font-weight: 500;
+            font-family: var(--tp-ff-heading);
+            font-weight: var(--tp-fw-medium);
             margin-left: 5px;
         }
     }
@@ -59,7 +59,7 @@
     &__rating-count {
         font-size: 18px;
         color: var(--tp-heading-primary);
-        font-family: 'Gordita-500';
+        font-family: var(--tp-ff-heading);
         line-height: 1;
     }
 }

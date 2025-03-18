@@ -137,10 +137,10 @@
                                             </a>
                                         </td>
                                         <td class="product-price">
-                                            <span class="amount">{% trans 'Toman' %}{{ item.product_obj.price }}</span>
+                                            <span class="amount price">{% trans 'Toman' %}{{ item.product_obj.price }}</span>
                                         </td>
                                         <td class="product-subtotal">
-                                            <span class="amount">{% trans 'Toman' %}{{ item.item_total_price }}</span>
+                                            <span class="amount price">{% trans 'Toman' %}{{ item.item_total_price }}</span>
                                         </td>
                                         <td class="product-remove">
                                             <a href="#" class="remove-from-cart-ajax">
@@ -171,10 +171,10 @@
                                     <h2>Cart totals</h2>
                                     <ul class="mb-20">
                                         <li class="total-price-item">{% trans 'Total price' %}
-                                            <span>{% trans 'Toman' %}{{ total_price }}</span>
+                                            <span class="price">{% trans 'Toman' %}{{ total_price }}</span>
                                         </li>
                                         <li class="discounted-price-item">{% trans 'Total price after discount' %}
-                                            <span>{% trans 'Toman' %}{{ total_discounted_price }}</span></li>
+                                            <span class="price">{% trans 'Toman' %}{{ total_discounted_price }}</span></li>
                                     </ul>
                                     <a class="tp-btn"
                                        href="{% url 'orders:order_create' %}">{% trans 'Proceed to checkout' %}</a>

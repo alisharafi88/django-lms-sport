@@ -62,7 +62,7 @@
 .tp-btn {
 	display: inline-block;
 	font-size: 14px;
-	font-weight: 600;
+	font-weight: var(--tp-fw-sbold);
 	color: var(--tp-common-white);
 	background: var(--tp-theme-1);
 	line-height: 1;
@@ -89,7 +89,7 @@
 .tp-s-border-btn {
 	display: inline-block;
 	font-size: 14px;
-	font-weight: 600;
+	font-weight: var(--tp-fw-sbold);
 	color: var(--tp-common-white);
 	background: transparent;
 	border: 1px solid #fff;
@@ -120,7 +120,7 @@
 .tp-border-btn{
 	display: inline-block;
 	font-size: 16px;
-	font-weight: 600;
+	font-weight: var(--tp-fw-sbold);
 	color: var(--tp-heading-secondary);
 	background: var(--tp-common-white);
 	border: 1px solid var(--tp-heading-secondary);
@@ -153,7 +153,7 @@
 .tp-border-btn2{
 	display: inline-block;
 	font-size: 14px;
-	font-weight: 600;
+	font-weight: var(--tp-fw-sbold);
 	color: var(--tp-common-white);
 	background-color: var(--tp-heading-secondary);
 	border: 1px solid var(--tp-heading-secondary);

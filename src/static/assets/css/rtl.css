@@ -267,8 +267,8 @@
 
 .c-details-ava span {
     color: var(--tp-common-white);
-    font-weight: 500;
-    font-family: "Gordita-500";
+    font-weight: var(--tp-fw-medium);
+    font-family: var(--tp-ff-heading);
 }
 
 .c-details-ava span a:hover {

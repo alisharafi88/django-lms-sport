@@ -62,8 +62,8 @@
     &__title {
         color: #161B2D;
         line-height: 1.6;
-        font-family: 'Gordita-500';
-        font-weight: 500;
+        font-family: var(--tp-ff-heading);
+        font-weight: var(--tp-fw-medium);
         & a{
             background-image: linear-gradient(#000, #000), linear-gradient(#000, #000);
             display: inline;
@@ -93,8 +93,8 @@
 	    background: var(--tp-common-white);
 	    padding: 12px 11px;
 	    font-size: 16px;
-        font-family: 'Gordita-500';
-        font-weight: 500;
+        font-family: var(--tp-ff-heading);
+        font-weight: var(--tp-fw-medium);
         border-radius: 5px;
         box-shadow: rgba(5, 13, 54, 0.05) 5px 15px 30px 0px;
     }
@@ -137,8 +137,8 @@
         color: var(--tp-text-2);
         font-size: 18px;
         line-height: 1;
-        font-family: 'Gordita-500';
-        font-weight: 500;
+        font-family: var(--tp-ff-heading);
+        font-weight: var(--tp-fw-medium);
         & i {
             margin-right: 3px;
         }
@@ -152,8 +152,8 @@
         color: var(--tp-text-2);
         font-size: 17px;
         line-height: 1;
-        font-family: 'Gordita-500';
-        font-weight: 500;
+        font-family: var(--tp-ff-heading);
+        font-weight: var(--tp-fw-medium);
         margin-right: 30px;
         @media #{$md} {
             margin-right: 20px;
@@ -249,7 +249,7 @@
         margin-bottom: 15px;
         & span{
             font-size: 13px;
-            font-weight: 600;
+            font-weight: var(--tp-fw-sbold);
             color: var(--tp-text-2);
             display: inline-block;
             margin-right: 30px;
@@ -334,7 +334,7 @@
 
             &-title{
                 font-size: 26px;
-                font-weight: 600;
+                font-weight: var(--tp-fw-sbold);
                 margin-bottom: 40px;
             }
         }
@@ -342,7 +342,7 @@
             position: relative;
             margin-bottom: 20px;
             & span{
-                font-weight: 600;
+                font-weight: var(--tp-fw-sbold);
                 color: var(--tp-common-black);
                 margin-bottom: 12px;
                 display: block;
@@ -369,7 +369,7 @@
         }
         &-title{
             font-size: 26px;
-            font-weight: 600;
+            font-weight: var(--tp-fw-sbold);
             margin-bottom: 20px;
         }
         &-box{
@@ -418,7 +418,7 @@
                         background: var(--tp-common-white);
                         line-height: 22px;
                         padding: 4px 10px;
-                        font-weight: 500;
+                        font-weight: var(--tp-fw-medium);
                         font-size: 14px;
                         -webkit-border-radius: 4px;
                         -moz-border-radius: 4px;
@@ -472,7 +472,7 @@
                 line-height: 1;
                 & a{
                     color: var(--tp-common-black);
-                    font-weight: 600;
+                    font-weight: var(--tp-fw-sbold);
                     padding-left: 4px;
                     &:hover{
                         color: var(--tp-theme-1);
@@ -541,7 +541,7 @@
     &__meta{
         & span{
             font-size: 16px;
-            font-weight: 400;
+            font-weight: var(--tp-fw-regular);
             color: var(--tp-border-2);
             @media #{$xl,$lg,$xs} {
                 font-size: 14px;
@@ -577,7 +577,7 @@
                     color: var(--tp-heading-primary);
                     display: block;
                     text-transform: capitalize;
-                    font-weight: 400;
+                    font-weight: var(--tp-fw-regular);
                     font-size: 16px;
                     border-bottom: 1px solid #eaeaea;
                     &:hover{
@@ -586,8 +586,8 @@
                     & span {
                         float: right;
                         color: var(--tp-border-2);
-                        font-weight: 500;
-                        font-family: 'Gordita-500';
+                        font-weight: var(--tp-fw-medium);
+                        font-family: var(--tp-ff-heading);
                     }
                 }
                 & ul{
@@ -663,7 +663,7 @@
         background: #F7F8F9;
         color: var(--tp-heading-primary);
         display: inline-block;
-        font-weight: 400;
+        font-weight: var(--tp-fw-regular);
         font-size: 14px;
         line-height: 1;
         padding: 10px 23px;
@@ -708,7 +708,7 @@ blockquote{
         line-height: 1.5;
         font-size: 20px;
         color: #57565e;
-        font-weight: 400;
+        font-weight: var(--tp-fw-regular);
     }
     & cite{
         font-size: 18px;
@@ -716,7 +716,7 @@ blockquote{
         margin-top: 10px;
         color: #070337;
         font-style: inherit;
-        font-weight: 600;
+        font-weight: var(--tp-fw-sbold);
         position: relative;
 
         &::before{
@@ -728,7 +728,7 @@ blockquote{
             background: var(--tp-theme-1);
             height: 2px;
             width: 40px;
-            font-weight: 400;
+            font-weight: var(--tp-fw-regular);
             text-align: center;
             top: -4px;
             margin-right: 10px;

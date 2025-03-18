@@ -1,37 +1,37 @@
 
-// custom Gordita font
+// custom Shabnam font
 
 @font-face {
-    font-family: 'Gordita-300';
-    src: url('../fonts/Gordita-Light.woff2') format('woff2'),
-        url('../fonts/Gordita-Light.woff') format('woff');
+    font-family: 'Shabnam-300';
+    src: url('../../fonts/Shabnam-Light.woff2') format('woff2'),
+        url('../../fonts/Shabnam-Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Gordita-400';
-    src: url('../fonts/Gordita-Regular.woff2') format('woff2'),
-        url('../fonts/Gordita-Regular.woff') format('woff');
+    font-family: 'Shabnam-400';
+    src: url('../../fonts/Shabnam.woff2') format('woff2'),
+        url('../../fonts/Shabnam.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Gordita-500';
-    src: url('../fonts/Gordita-Medium.woff2') format('woff2'),
-        url('../fonts/Gordita-Medium.woff') format('woff');
+    font-family: 'Shabnam-500';
+    src: url('../../fonts/Shabnam-Medium.woff2') format('woff2'),
+        url('../../fonts/Shabnam-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Gordita-700';
-    src: url('../fonts/Gordita-Bold.woff2') format('woff2'),
-        url('../fonts/Gordita-Bold.woff') format('woff');
+    font-family: 'Shabnam-700';
+    src: url('../../fonts/Shabnam-Bold.woff2') format('woff2'),
+        url('../../fonts/Shabnam-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -41,9 +41,9 @@
 // font family
 $font-family: (
     ff: (
-        body: "Gordita-400",
-        heading: "Gordita-700",
-        p: "Gordita-400",
+        body: "Shabnam-400",
+        heading: "Shabnam-700",
+        p: "Shabnam-400",
         fontawesome: '"Font Awesome 6 Pro"',
     )
 );

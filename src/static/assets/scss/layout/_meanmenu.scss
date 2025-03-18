@@ -36,7 +36,7 @@
 	border-top: 1px solid #ebebeb;
 	font-size: 14px;
     line-height: 1.5;
-    font-weight: 700;
+    font-weight: var(--tp-fw-bold);
     &:hover{
         color: var(--clr-theme-1);
     }
@@ -54,7 +54,7 @@
 	color: var(--clr-common-black);
 	line-height: 30px;
 	top: 0;
-	font-weight: 400;
+	font-weight: var(--tp-fw-regular);
     &:hover{
         background: var(--clr-theme-1);
         color: var(--clr-common-white);

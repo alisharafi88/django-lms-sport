@@ -136,8 +136,8 @@
             width: 50%;
             flex: 0 0 50%;
             font-size: 20px;
-            font-family: 'Gordita-500';
-            font-weight: 500;
+            font-family: var(--tp-ff-heading);
+            font-weight: var(--tp-fw-medium);
             color: var(--tp-heading-primary);
             line-height: 1.7;
             position: relative;
@@ -200,8 +200,8 @@
             z-index: 2;
             color: var(--tp-text-2);
             box-shadow: 5px 8px 30px 0 rgba(17, 29, 59, 0.08);
-            font-family: 'Gordita-500';
-            font-weight: 500;
+            font-family: var(--tp-ff-heading);
+            font-weight: var(--tp-fw-medium);
             @media #{$xs} {
                 font-size: 16px;
                 padding: 15px 15px;
@@ -263,8 +263,8 @@
        & li {
             font-size: 20px;
             color: var(--tp-heading-primary);
-            font-family: 'Gordita-500';
-            font-weight: 500;
+            font-family: var(--tp-ff-heading);
+            font-weight: var(--tp-fw-medium);
             position: relative;
             padding-left: 50px;
             display: flex;
@@ -358,7 +358,7 @@ div.choose-sub-color {
     & i {
         font-style: normal;
         font-size: 14px;
-        font-weight: 700;
+        font-weight: var(--tp-fw-bold);
         display: block;
         position: relative;
         text-transform: uppercase;
@@ -375,7 +375,7 @@ div.choose-sub-color {
         }
     }
     & span {
-        font-weight: 400;
+        font-weight: var(--tp-fw-regular);
         font-size: 14px;
         color: var(--tp-text-2);
         margin-left: 15px;

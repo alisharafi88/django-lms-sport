@@ -28,7 +28,7 @@
             line-height: 26px;
             font-size: 14px;
             color: var(--tp-common-white);
-            font-weight: 500;
+            font-weight: var(--tp-fw-medium);
             background: var(--tp-theme-2);
             -webkit-border-radius: 4px;
             -moz-border-radius: 4px;
@@ -47,7 +47,7 @@
         & span{
             font-size: 18px;
             color: var(--tp-text-2);
-            font-weight: 500;
+            font-weight: var(--tp-fw-medium);
             padding-right: 3px;
             margin-right: 3px;
             @media #{$xs} {
@@ -68,7 +68,7 @@
             & span{
                 font-size: 14px;
                 color: var(--tp-text-11);
-                font-weight: 500;
+                font-weight: var(--tp-fw-medium);
                 padding-right: 3px;
                 margin-right: 3px;
                 text-transform: capitalize;

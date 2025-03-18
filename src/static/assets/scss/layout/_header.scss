@@ -304,7 +304,7 @@
             &>a {
                 position: relative;
                 display: inline-block;
-                font-family: 'Gordita-500';
+                font-family: var(--tp-ff-heading);
                 font-size: 16px;
                 color: var(--tp-common-white);
                 padding: 23px 0;
@@ -330,7 +330,7 @@
                         font-size: 16px;
                         color: var(--tp-common-white);
                         font-family: var(--tp-ff-fontawesome);
-                        font-weight: medium;
+                        font-weight: var(--tp-fw-medium);
                         margin-left: 5px;
                         display: inline-block;
                     }
@@ -417,7 +417,7 @@
             margin-right: 55px;
             & a {
                 padding: 35px 0;
-                font-family: 'Gordita-500';
+                font-family: var(--tp-ff-heading);
                 color: var(--tp-text-2);
                 &:hover {
                     color: var(--tp-common-black);

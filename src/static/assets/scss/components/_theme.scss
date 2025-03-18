@@ -350,7 +350,7 @@ img{
 				@include border-radius(7px);
 				border: 2px solid #f1f1f1;
 				font-size: 16px;
-				font-weight: 400;
+				font-weight: var(--tp-fw-regular);
 				color: var(--tp-text-2);
 				&:hover,
 				&.current{

@@ -36,8 +36,9 @@ body {
 }
 
 .accordion-header h2 {
+    font-family: var(--tp-ff-heading);
+    font-weight: var(--tp-fw-bold);
     font-size: 1.2rem;
-    font-weight: bold;
 }
 
 .accordion-header .icon {
