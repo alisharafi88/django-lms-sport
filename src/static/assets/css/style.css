@@ -2,7 +2,7 @@
 @font-face {
     font-family: "Shabnam";
     src: url("../fonts/Shabnam-Thin.woff2") format("woff2");
-    font-weight: var(--tp-fw-normal);
+    font-weight: 100;
     font-display: swap;
 }
 
@@ -38,35 +38,7 @@
 @font-face {
     font-family: "Shabnam-FD";
     src: url("../fonts/Shabnam-Thin-FD-WOL.woff2") format("woff2");
-    font-weight: var(--tp-fw-normal);
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Shabnam-FD";
-    src: url("../fonts/Shabnam-Light-FD-WOL.woff2") format("woff2");
-    font-weight: var(--tp-fw-light);
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Shabnam-FD";
-    src: url("../fonts/Shabnam-FD-WOL.woff2") format("woff2");
-    font-weight: var(--tp-fw-regular);
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Shabnam-FD";
-    src: url("../fonts/Shabnam-Medium-FD-WOL.woff2") format("woff2");
-    font-weight: var(--tp-fw-medium);
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Shabnam-FD";
-    src: url("../fonts/Shabnam-Bold-FD-WOL.woff2") format("woff2");
-    font-weight: var(--tp-fw-bold);
+    font-weight: 100;
     font-display: swap;
 }
 
@@ -164,7 +136,7 @@
 body {
     font-family: var(--tp-ff-body);
     font-size: var(--tp-fz-body);
-    font-weight: var(--tp-fw-normal);
+    font-weight: var(--tp-fw-light);
     color: var(--tp-text-body);
     line-height: 26px;
     direction: rtl;
@@ -215,7 +187,7 @@ h6 {
 p {
     font-family: var(--tp-ff-p);
     font-size: var(--tp-fz-p);
-    font-weight: var(--tp-fw-normal);
+    font-weight: var(--tp-fw-regular);
     color: var(--tp-text-2);
     margin-bottom: 15px;
     line-height: 28px;
@@ -223,7 +195,11 @@ p {
 
 .price,
 .number,
-.counter {
+.counter,
+.amount,
+.total-price-item,
+.c-price-list,
+.pricing-video {
     font-family: var(--tp-ff-digits);
     font-feature-settings: "lnum";
     direction: ltr;
@@ -742,7 +718,7 @@ img {
     position: relative;
     display: inline-block;
     font-size: 18px;
-    color: var(--tp-text-3);
+    color: var(--tp-text-2);
     background: transparent;
     border: 1px solid var(--tp-border-2);
     width: 50px;
@@ -1065,7 +1041,7 @@ img {
 
 .breadcrumb__list-2 span {
     font-size: 14px;
-    color: var(--tp-text-11);
+    color: var(--tp-text-1);
     font-weight: var(--tp-fw-medium);
     padding-right: 3px;
     margin-right: 3px;
@@ -1427,7 +1403,7 @@ img {
 }
 
 .header__info ul li a svg path {
-    fill: var(--tp-text-4);
+    fill: var(--tp-text-2);
 }
 
 .header__border {
@@ -1449,19 +1425,19 @@ img {
 }
 
 .header__search-input input::-webkit-input-placeholder {
-    color: var(--tp-text-3);
+    color: var(--tp-text-2);
 }
 
 .header__search-input input:-moz-placeholder {
-    color: var(--tp-text-3);
+    color: var(--tp-text-2);
 }
 
 .header__search-input input::-moz-placeholder {
-    color: var(--tp-text-3);
+    color: var(--tp-text-2);
 }
 
 .header__search-input input:-ms-input-placeholder {
-    color: var(--tp-text-3);
+    color: var(--tp-text-2);
 }
 
 .header__search-input input::placeholder {
@@ -1495,23 +1471,23 @@ img {
     -o-border-radius: 6px;
     -ms-border-radius: 6px;
     border-radius: 6px;
-    background-color: var(--tp-grey-5);
+    background-color: var(--tp-grey-1);
 }
 
 .header__search-2 input::-webkit-input-placeholder {
-    color: var(--tp-text-10);
+    color: var(--tp-text-1);
 }
 
 .header__search-2 input:-moz-placeholder {
-    color: var(--tp-text-10);
+    color: var(--tp-text-1);
 }
 
 .header__search-2 input::-moz-placeholder {
-    color: var(--tp-text-10);
+    color: var(--tp-text-1);
 }
 
 .header__search-2 input:-ms-input-placeholder {
-    color: var(--tp-text-10);
+    color: var(--tp-text-1);
 }
 
 .header__search-2 button::after {
@@ -1519,7 +1495,7 @@ img {
 }
 
 .header__search-3 button svg path {
-    stroke: var(--tp-theme-3);
+    stroke: var(--tp-theme-2);
 }
 
 .header__hamburger {
@@ -1545,7 +1521,7 @@ img {
 }
 
 .header__action ul li a:hover {
-    border-color: var(--tp-common-black-3);
+    border-color: var(--tp-common-black);
 }
 
 .header__sticky.header__sticky {
@@ -1567,18 +1543,18 @@ img {
     padding-right: 17px;
     font-size: 15px;
     border: 0;
-    color: var(--tp-text-11);
+    color: var(--tp-text-1);
 }
 
 .header__lang .nice-select .current {
-    color: var(--tp-text-11);
+    color: var(--tp-text-1);
     font-size: 15px;
 }
 
 .header__lang .nice-select::after {
     right: 0;
     border-width: 1.5px;
-    border-color: var(--tp-text-11);
+    border-color: var(--tp-text-1);
     height: 6px;
     width: 6px;
     margin-top: -6px;
@@ -1592,7 +1568,7 @@ img {
 }
 
 .header__lang .nice-select .list .option:hover, .header__lang .nice-select .list .option.selected.focus {
-    color: var(--tp-theme-3);
+    color: var(--tp-theme-2);
 }
 
 .header__social ul li {
@@ -3975,7 +3951,7 @@ div.choose-sub-color {
 }
 
 .course-sidebar__title {
-    color: var(--tp-color-primary);
+    color: var(--tp-heading-primary-primary);
     font-weight: var(--tp-fw-medium);
     font-size: 18px;
     font-family: var(--tp-ff-heading);
@@ -6042,7 +6018,7 @@ div.choose-sub-color {
 
 .postbox__comment-text p {
     font-size: 16px;
-    color: var(--tp-text-11);
+    color: var(--tp-text-1);
     margin-bottom: 15px;
 }
 
@@ -6591,7 +6567,6 @@ blockquote cite::before {
     font-family: "Font Awesome 6 Pro";
     color: var(--tp-border-2);
     font-size: 17px; 
-    background-image: none;
     transition: transform 0.3s ease;
     background-image: none !important;
 }
@@ -7156,7 +7131,7 @@ p.checkout-coupon input[type=text]:focus {
 .your-order-table table th {
     border-top: medium none;
     color: #6f7172;
-    font-weight: var(--tp-fw-normal);
+    font-weight: var(--tp-fw-regular);
     text-align: left;
     vertical-align: middle;
     white-space: nowrap;
