@@ -2040,6 +2040,10 @@ div.main-menu-black ul li.has-dropdown > a:hover::after {
     padding: 0;
     margin: 0;
 }
+.side-logo {
+    position: fixed;
+    left: 0
+}
 
 .sidebar-info {
     clear: both;
@@ -2049,6 +2053,7 @@ div.main-menu-black ul li.has-dropdown > a:hover::after {
 
 .mobile-menu.mean-container {
     overflow: hidden;
+    margin-top: 60px;
 }
 
 .side_circle li {
