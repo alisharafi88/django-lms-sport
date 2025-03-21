@@ -2,21 +2,23 @@ from django.contrib import admin
 from django.db.models import Count, Q
 from django.utils.translation import gettext as _
 
+from jalali_date.admin import ModelAdminJalaliMixin, TabularInlineJalaliMixin
+
 from .models import Instructor, InstructorHonor, InstructorWidjet
 
 
-class InstructorWidjetInline(admin.TabularInline):
+class InstructorWidjetInline(TabularInlineJalaliMixin, admin.TabularInline):
     model = InstructorWidjet
     extra = 0
 
 
-class InstructorHonorInline(admin.TabularInline):
+class InstructorHonorInline(TabularInlineJalaliMixin, admin.TabularInline):
     model = InstructorHonor
     extra = 0
 
 
 @admin.register(Instructor)
-class InstructorAdmin(admin.ModelAdmin):
+class InstructorAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('full_name', 'phone_number', 'num_of_courses', 'is_master', 'is_active',)
     fieldsets = (
         (None, {'fields': ('user', 'slug')}),
@@ -57,7 +59,7 @@ class InstructorAdmin(admin.ModelAdmin):
 
 
 @admin.register(InstructorHonor)
-class InstructorHonorAdmin(admin.ModelAdmin):
+class InstructorHonorAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('instructor', 'status',)
     search_fields = ('instructor', 'text',)
     list_editable = ('status',)
@@ -65,7 +67,7 @@ class InstructorHonorAdmin(admin.ModelAdmin):
 
 
 @admin.register(InstructorWidjet)
-class InstructorWidjetAdmin(admin.ModelAdmin):
+class InstructorWidjetAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('instructor',)
     search_fields = ('instructor', 'widjet',)
 

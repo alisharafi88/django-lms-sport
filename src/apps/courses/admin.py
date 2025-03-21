@@ -2,17 +2,19 @@ from django.contrib import admin
 from django.db.models import Count, OuterRef, IntegerField, Subquery, Prefetch
 from django.utils.translation import gettext as _
 
+from jalali_date.admin import ModelAdminJalaliMixin, StackedInlineJalaliMixin, TabularInlineJalaliMixin
+
 from .models import Course, Coupon, CourseVideo, CourseMembership, CourseComments, Package, CourseSeason
 
 
-class CourseVideoInline(admin.StackedInline):
+class CourseVideoInline(StackedInlineJalaliMixin, admin.StackedInline):
     model = CourseVideo
     extra = 1
     fields = ('title', 'status')
     readonly_fields = ('created_at', 'updated_at')
 
 
-class CourseSeasonInline(admin.StackedInline):
+class CourseSeasonInline(TabularInlineJalaliMixin, admin.StackedInline):
     model = CourseSeason
     extra = 1
     readonly_fields = ('created_at', 'updated_at')
@@ -21,7 +23,7 @@ class CourseSeasonInline(admin.StackedInline):
 
 
 @admin.register(Coupon)
-class CouponAdmin(admin.ModelAdmin):
+class CouponAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('discount_amount', 'date_valid_from', 'date_valid_to', 'status',)
 
     fieldsets = (
@@ -33,7 +35,7 @@ class CouponAdmin(admin.ModelAdmin):
 
 
 @admin.register(Course)
-class CourseAdmin(admin.ModelAdmin):
+class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('title', 'get_coach', 'price', 'date_modified', 'get_num_videos', 'get_num_members', 'status')
     list_filter = ('price', 'status', 'date_modified', 'coach')
     search_fields = ('title',)
@@ -91,7 +93,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 
 @admin.register(Package)
-class PackageAdmin(admin.ModelAdmin):
+class PackageAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('title', 'price', 'date_modified', 'num_courses', 'num_members', 'status')
     list_filter = ('price', 'status', 'date_modified')
     search_fields = ('title',)
@@ -141,7 +143,7 @@ class PackageAdmin(admin.ModelAdmin):
 
 
 @admin.register(CourseSeason)
-class CourseSeasonAdmin(admin.ModelAdmin):
+class CourseSeasonAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('course', 'title', 'created_at')
     list_filter = ('course', 'created_at')
     search_fields = ('title', 'course__title')
@@ -165,7 +167,7 @@ class CourseSeasonAdmin(admin.ModelAdmin):
 
 
 @admin.register(CourseVideo)
-class CourseVideoAdmin(admin.ModelAdmin):
+class CourseVideoAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('season_course_title', 'title', 'status_display', 'created_at')
 
     list_filter = ('status', 'season__course', 'created_at')
@@ -199,7 +201,7 @@ class CourseVideoAdmin(admin.ModelAdmin):
 
 
 @admin.register(CourseMembership)
-class CourseMembershipAdmin(admin.ModelAdmin):
+class CourseMembershipAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('user', 'product_type', 'product_title', 'date_modified')
     list_filter = ('content_type', 'date_modified')
     search_fields = ('user__username', 'object_id')

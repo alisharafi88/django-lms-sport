@@ -13,7 +13,7 @@ ROOT_DIR = BASE_DIR.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 INSTALLED_APPS = [
-    'jazzmin',
+    # 'jazzmin',
     'admin_confirm',
 
     'django.contrib.admin',
@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django_ckeditor_5',
     'django_seed',
     'widget_tweaks',
+    'jalali_date',
     'django_cleanup.apps.CleanupConfig',
 
     'apps.home.apps.HomeConfig',
@@ -103,7 +104,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 MEDIA_URL = 'media/'
@@ -374,4 +374,22 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar": "sidebar-dark bg-dark",
     "accent": "gold",
     "theme": "darkly",
+}
+
+JALALI_DATE_DEFAULTS = {
+    'LIST_DISPLAY_AUTO_CONVERT': True,
+    'Strftime': {
+        'date': '%Y/%m/%d',
+        'datetime': '%Y/%m/%d , %H:%M:%S',
+    },
+    'Static': {
+        'js': [
+            'admin/js/django_jalali.min.js',
+        ],
+        'css': {
+            'all': [
+                'assets/css/persian-admin.css',
+            ]
+        }
+    },
 }

@@ -1,14 +1,15 @@
 from django.contrib import admin
 from django.utils.translation import gettext as _
-
-from admin_confirm.admin import AdminConfirmMixin, confirm_action
 from django.template.response import TemplateResponse
+
+from admin_confirm.admin import AdminConfirmMixin
+from jalali_date.admin import ModelAdminJalaliMixin
 
 from .models import ContactInfo, Message
 
 
 @admin.register(ContactInfo)
-class ContactInfoAdmin(AdminConfirmMixin, admin.ModelAdmin):
+class ContactInfoAdmin(ModelAdminJalaliMixin, AdminConfirmMixin, admin.ModelAdmin):
     confirm_change = True
     confirm_add = True
     confirmation_fields = ('is_primary',)
@@ -25,7 +26,7 @@ class ContactInfoAdmin(AdminConfirmMixin, admin.ModelAdmin):
 
 
 @admin.register(Message)
-class MessageAdmin(admin.ModelAdmin):
+class MessageAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('user', 'date_sent',)
     list_filter = ('user',)
     search_fields = ('user',)

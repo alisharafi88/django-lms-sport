@@ -1,10 +1,11 @@
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
-from django.core.validators import FileExtensionValidator, MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from django.utils.translation import gettext as _
+
 from django_ckeditor_5.fields import CKEditor5Field
 
 

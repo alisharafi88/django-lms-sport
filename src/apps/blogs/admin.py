@@ -1,12 +1,14 @@
 from django.contrib import admin
 from django.db import models
 from django.db.models import Count
+
+from jalali_date.admin import ModelAdminJalaliMixin, TabularInlineJalaliMixin
 from django_ckeditor_5.widgets import CKEditor5Widget
 
 from .models import Blog, BlogComment
 
 
-class BlogCommentInline(admin.TabularInline):
+class BlogCommentInline(TabularInlineJalaliMixin, admin.TabularInline):
     model = BlogComment
     readonly_fields = ('date_created',)
     fields = ('author', 'text', 'date_created')
@@ -14,7 +16,7 @@ class BlogCommentInline(admin.TabularInline):
 
 
 @admin.register(Blog)
-class BlogAdmin(admin.ModelAdmin):
+class BlogAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': CKEditor5Widget(config_name='default')},
     }

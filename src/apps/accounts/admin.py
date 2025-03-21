@@ -2,12 +2,14 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext as _
 
+from jalali_date.admin import ModelAdminJalaliMixin
+
 from .models import CustomUser
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 
 @admin.register(CustomUser)
-class CustomUserAdmin(UserAdmin):
+class CustomUserAdmin(ModelAdminJalaliMixin, UserAdmin):
     form = CustomUserChangeForm
     add_form = CustomUserCreationForm
     list_display = ('phone_number', 'is_staff',)

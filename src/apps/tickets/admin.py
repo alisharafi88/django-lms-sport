@@ -1,10 +1,12 @@
 from django.contrib import admin, messages
 from django.utils.translation import gettext_lazy as _
 
+from jalali_date.admin import ModelAdminJalaliMixin, StackedInlineJalaliMixin
+
 from apps.tickets.models import TicketReply, Ticket
 
 
-class TicketReplyInline(admin.StackedInline):
+class TicketReplyInline(StackedInlineJalaliMixin, admin.StackedInline):
     model = TicketReply
     extra = 1
     readonly_fields = ('date_created',)
@@ -14,7 +16,7 @@ class TicketReplyInline(admin.StackedInline):
 
 
 @admin.register(Ticket)
-class TicketAdmin(admin.ModelAdmin):
+class TicketAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('subject', 'status', 'user', 'date_created')
     list_filter = ('status', 'date_created',)
     search_fields = ('subject', 'message')
@@ -44,7 +46,7 @@ class TicketAdmin(admin.ModelAdmin):
 
 
 @admin.register(TicketReply)
-class TicketReplyAdmin(admin.ModelAdmin):
+class TicketReplyAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('ticket', 'date_created')
     list_filter = ('date_created',)
     search_fields = ('message',)

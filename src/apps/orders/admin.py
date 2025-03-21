@@ -1,21 +1,23 @@
 from django.contrib import admin, messages
 from django.utils.translation import gettext_lazy as _
 
+from jalali_date.admin import ModelAdminJalaliMixin, TabularInlineJalaliMixin
+
 from .models import Order, OrderItem, DVDOrderDetail
 
 
-class OrderItemInline(admin.TabularInline):
+class OrderItemInline(TabularInlineJalaliMixin, admin.TabularInline):
     model = OrderItem
     extra = 0
 
 
-class DVDOrderDetailInline(admin.TabularInline):
+class DVDOrderDetailInline(TabularInlineJalaliMixin, admin.TabularInline):
     model = DVDOrderDetail
     extra = 0
 
 
 @admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
+class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('customer', 'date_created', 'access_status', 'status',)
     list_filter = ('access_status', 'status',)
     search_fields = ('customer', 'date_created',)
@@ -72,7 +74,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 @admin.register(OrderItem)
-class OrderItemAdmin(admin.ModelAdmin):
+class OrderItemAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('order', 'unit_price',)
     list_per_page = 50
     search_fields = ('order', 'order__customer',)
@@ -84,7 +86,7 @@ class OrderItemAdmin(admin.ModelAdmin):
 
 
 @admin.register(DVDOrderDetail)
-class DVDOrderDetailAdmin(admin.ModelAdmin):
+class DVDOrderDetailAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('order', 'date_created', 'delivery_status',)
     list_per_page = 50
     search_fields = ('order', 'order__customer', 'address',)

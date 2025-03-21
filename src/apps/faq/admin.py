@@ -1,11 +1,13 @@
 from django.contrib import admin
 from django.utils.translation import gettext as _
 
+from jalali_date.admin import ModelAdminJalaliMixin
+
 from .models import QuestionAnswer
 
 
 @admin.register(QuestionAnswer)
-class QuestionAnswerAdmin(admin.ModelAdmin):
+class QuestionAnswerAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('question', 'date_created', 'status',)
     list_filter = ('date_created', 'status',)
     search_fields = ('question', 'answer', 'date_created', 'status',)
