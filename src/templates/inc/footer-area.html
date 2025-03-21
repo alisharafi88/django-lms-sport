@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 <footer>
     <div class="footer-bg theme-bg bg-bottom" data-background="{% static 'assets/img/bg/shape-bg-02.png' %}">
@@ -7,15 +8,12 @@
                     <div class="col-xl-2 col-md-4">
                         <div class="footer-widget footer-col-1 mb-50">
                             <div class="footer-widget__text mb-35">
-                                <h3 class="footer-widget__title">About</h3>
+                                <h3 class="footer-widget__title">{% trans 'AboutUs' %}</h3>
                             </div>
                             <div class="footer-widget__link">
                                 <ul>
-                                    <li><a href="{% static 'about.html' %}">About us</a></li>
-                                    <li><a href="{% static 'blog.html' %}">Blog</a></li>
-                                    <li><a href="#">Careers</a></li>
-                                    <li><a href="#">Jobs</a></li>
-                                    <li><a href="#">In Press</a></li>
+                                    <li><a href="{% url 'home:about_us' %}">{% trans 'About us' %}</a></li>
+                                    <li><a href="{% url 'blogs:blog_list' %}">{% trans 'Blog' %}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -23,15 +21,15 @@
                     <div class="col-xl-3 col-md-4">
                         <div class="footer-widget footer-col-2 mb-50">
                             <div class="footer-widget__text mb-35">
-                                <h3 class="footer-widget__title">Quick Links</h3>
+                                <h3 class="footer-widget__title">{% trans 'Quick Links' %}</h3>
                             </div>
                             <div class="footer-widget__link">
                                 <ul>
-                                    <li><a href="#">Refund Policy</a></li>
-                                    <li><a href="#">Documentation</a></li>
-                                    <li><a href="#">Chat online</a></li>
-                                    <li><a href="#">Order Cancel</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="{% url 'courses:course_list' %}">{% trans 'Courses' %}</a></li>
+                                    <li><a href="{% url 'faq:question_answer' %}">{% trans 'FAQ' %}</a></li>
+                                    <li><a href="{% url 'carts:cart' %}">{% trans 'Cart' %}</a></li>
+                                    <li><a href="{% url 'home:BMI' %}">{% trans 'BMI' %}</a></li>
+                                    <li><a href="{% url 'instructors:instructor_list' %}">{% translate 'Coaches' %}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -39,15 +37,14 @@
                     <div class="col-xl-3 col-md-4">
                         <div class="footer-widget footer-col-3 mb-50">
                             <div class="footer-widget__text mb-35">
-                                <h3 class="footer-widget__title">Support</h3>
+                                <h3 class="footer-widget__title">{% trans 'Support' %}</h3>
                             </div>
                             <div class="footer-widget__link">
                                 <ul>
-                                    <li><a href="{% static 'contact.html' %}">Contact us</a></li>
-                                    <li><a href="#">Online Chat</a></li>
-                                    <li><a href="#">Whatsapp</a></li>
-                                    <li><a href="#">Telegram</a></li>
-                                    <li><a href="#">Ticketing</a></li>
+                                    <li><a href="{% url 'contacts:contact' %}">{% trans 'Contact us' %}</a></li>
+                                    <li><a href="#">{% trans 'Whatsapp' %}</a></li>
+                                    <li><a href="#">{% trans 'Telegram' %}</a></li>
+                                    <li><a href="{% url 'accounts:student_dashboards' %}">{% trans 'Ticketing' %}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -55,22 +52,13 @@
                     <div class="col-xl-4 col-lg-6 col-md-8">
                         <div class="footer-widget footer-col-4  mb-50">
                             <div class="footer-widget__text mb-35">
-                                <h3 class="footer-widget__title">Support</h3>
-                            </div>
-                            <p>Be the first one to know about discounts, offers and events. Unsubscribe whenever you
-                                like.</p>
-                            <div class="footer-widget__f-newsletter mb-40">
-                                <form action="{% static 'index.html' %}">
-                                    <span><i class="icon_mail_alt"></i></span>
-                                    <input type="email" placeholder="Enter your email">
-                                    <button class="footer-widget__submit tp-border-btn2">Subscribe Now</button>
-                                </form>
+                                <h3 class="footer-widget__title">{% translate 'SupportUs' %}</h3>
                             </div>
                             <div class="footer-widget__social d-flex align-items-center">
-                                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                                 <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                                <a href="#"><i class="fa-light fa-basketball"></i></a>
-                                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-telegram-plane"></i></a>
+                                <a href="#"><i class="fa-light fa-futbol-ball"></i></a>
                             </div>
                         </div>
                     </div>
@@ -82,13 +70,12 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div class="f-copyright__logo mb-30">
-                            <a href="{% static 'index.html' %}"><img src="{% static 'assets/img/logo/logo.png' %}"
-                                                                     alt="logo"></a>
+                            <a href="{% url 'home:home' %}"><img src="{% static 'assets/img/logo/logo-fastball.png' %}" alt="fastball-logo"></a>
                         </div>
                     </div>
                     <div class="col-md-7">
                         <div class="f-copyright__text text-md-end mb-30">
-                            <span>Copyright©Uxaction 2022, All Rights Reserved</span>
+                            <span>'...'</span>
                         </div>
                     </div>
                 </div>
