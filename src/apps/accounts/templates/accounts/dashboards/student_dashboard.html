@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load static %}
+{% load jalali_tags %}
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -405,7 +406,7 @@
                     {% for ticket in tickets %}
                         <div class="ticket">
                             <div class="comment-details">
-                                <h4>{{ ticket.subject }} <span class="place-name">{{ ticket.date_updated }}</span></h4>
+                                <h4>{{ ticket.subject }} <span class="place-name">{{ ticket.date_updated|to_jalali }}</span></h4>
                                 <h5>{{ ticket.get_status_display }}</h5>
                                 <p>{{ ticket.message }}</p>
                             </div>
@@ -414,7 +415,7 @@
                                     <div class="reply">
                                         <div class="reply-details">
                                             <p>{{ reply.message }}</p>
-                                            <small>{{ reply.date_created }}</small>
+                                            <small>{{ reply.date_created|to_jalali }}</small>
                                         </div>
                                     </div>
                                 {% empty %}

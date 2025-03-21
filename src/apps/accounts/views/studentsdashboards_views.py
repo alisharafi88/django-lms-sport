@@ -6,6 +6,8 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext_lazy as _
 
+from jalali_date import datetime2jalali
+
 from ..forms import EditProfileForm
 from apps.carts.carts import Cart
 from apps.courses.models import Course
@@ -113,7 +115,7 @@ class TicketCreateView(LoginRequiredMixin, generic.CreateView):
                     'id': ticket.id,
                     'subject': ticket.subject,
                     'status': ticket.get_status_display(),
-                    'date_updated': ticket.date_updated.strftime('%Y-%m-%d %H:%M:%S'),
+                    'date_updated': datetime2jalali(ticket.date_updated).strftime('%Y-%m-%d , %H:%M:%S'),
                     'message': ticket.message,
                     'replies': []
                 }

@@ -3,6 +3,7 @@
 {% load tags %}
 {% load i18n %}
 {% load static %}
+{% load jalali_tags %}
 
 {% block title %}
     {{ course.title }}
@@ -187,7 +188,7 @@
                                             </div>
                                             <div class="postbox__comment-name">
                                                 <h5>{{ comment.user.username }}</h5>
-                                                <span class="post-meta"> {{ comment.date_created }}</span>
+                                                <span class="post-meta"> {{ comment.date_created|to_jalali }}</span>
                                             </div>
                                         </div>
                                         <div class="postbox__comment-text ml-65">

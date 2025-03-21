@@ -1,6 +1,7 @@
 {% extends '-base.html' %}
 {% load i18n %}
 {% load static %}
+{% load jalali_tags %}
 
 {% block title %}
     {{ blog.title }}
@@ -73,7 +74,7 @@
                                                     </div>
                                                     <div class="postbox__comment-name">
                                                         <h5>{{ comment.author.username }}</h5>
-                                                        <span class="post-meta"> {{ comment.date_created }}</span>
+                                                        <span class="post-meta"> {{ comment.date_created|to_jalali }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="postbox__comment-text mr-65">
@@ -97,7 +98,7 @@
                                                         </div>
                                                         <div class="postbox__comment-name">
                                                             <h5>{{ reply.author.username }}</h5>
-                                                            <span class="post-meta"> {{ reply.date_created }}</span>
+                                                            <span class="post-meta"> {{ reply.date_created|to_jalali }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="postbox__comment-text mr-65">

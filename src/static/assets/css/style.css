@@ -199,7 +199,8 @@ p {
 .amount,
 .total-price-item,
 .c-price-list,
-.pricing-video {
+.pricing-video,
+.discounted-price-item {
     font-family: var(--tp-ff-digits);
     font-feature-settings: "lnum";
     direction: ltr;
