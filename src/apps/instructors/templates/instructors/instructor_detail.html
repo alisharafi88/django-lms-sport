@@ -122,22 +122,22 @@
                                 <div class="col-xl-4 col-lg-6 col-md-4">
                                     <div class="isntruc-tp-counter mb-30">
                                         <h4 class="isntruc-tp-counter__title p-relative"><span
-                                                class="counter">276</span>K</h4>
-                                        <p>Worldwide Students</p>
+                                                class="counter">{{ instructor.student_count }}</span>+</h4>
+                                        <p>{% trans 'Students' %}</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-6 col-md-4">
                                     <div class="isntruc-tp-counter mb-30">
-                                        <h4 class="isntruc-tp-counter__title p-relative"><span class="counter">35</span>+
+                                        <h4 class="isntruc-tp-counter__title p-relative"><span class="counter">{{ instructor.course_count }}</span>+
                                         </h4>
-                                        <p>Professional Courses</p>
+                                        <p>{% trans 'Professional Courses' %}</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-6 col-md-4">
                                     <div class="isntruc-tp-counter mb-30">
-                                        <h4 class="isntruc-tp-counter__title p-relative"><span class="counter">47</span>K+
+                                        <h4 class="isntruc-tp-counter__title p-relative"><span class="counter">{{ instructor.comment_count }}</span>+
                                         </h4>
-                                        <p>Beautiful Review</p>
+                                        <p>{% trans 'Beautiful Review' %}</p>
                                     </div>
                                 </div>
                             </div>

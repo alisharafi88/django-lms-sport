@@ -20,10 +20,6 @@ def get_all_instructor():
         'user__profile_photo',
         'id',
         'slug',
-        'is_master',
-        'telegram_id',
-        'youtube_id',
-        'instagram_id',
         'user__first_name',
         'user__last_name',
     ).filter(
@@ -69,5 +65,18 @@ def get_instructor_by_id_slug(pk, slug):
                 num_videos=Count('seasons__videos'),
                 product_type=Value(1, output_field=IntegerField()),  # 1 = course
             )
+        )
+    ) \
+        .annotate(
+        student_count=Count(
+            'courses__memberships__user',
+            distinct=True,
+            filter=Q(courses__memberships__content_type=course_ct),
+        ),
+        course_count=Count(
+            'courses',
+        ),
+        comment_count=Count(
+            'courses__comments',
         )
     )
