@@ -1724,11 +1724,14 @@ img {
 .main-menu ul > li > a::before {
     position: absolute;
     content: "";
-    background-image: url("../../assets/img/banner/h-shape-01.png");
+    background-image: url("../img/banner/h-shape-rtl.png");
+    background-position: right;
+    background-repeat: no-repeat;
     top: 53px;
-    left: 0;
+    right: 0;
     height: 4px;
     width: 0px;
+    transform-origin: right;
 }
 
 .main-menu ul > li.has-dropdown > a {
