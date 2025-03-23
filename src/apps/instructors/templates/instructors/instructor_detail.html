@@ -94,17 +94,17 @@
                                 </ul>
                             </div>
                             <div class="c-details-social">
-                                {% if instagram_id %}
-                                    <a href="https://www.instagram.com/{{ instagram_id }}" target="_blank"><i
-                                            class="fa-brands fa-instagram"></i></a>
-                                {% endif %}
-                                {% if youtube_id %}
-                                    <a href="https://www.youtube.com/@{{ youtube_id }}" target="_blank"><i
+                                {% if primary_contact.youtube_id %}
+                                    <a href="https://www.youtube.com/@{{ primary_contact.youtube_id }}" target="_blank"><i
                                             class="fa-brands fa-youtube"></i></a>
                                 {% endif %}
-                                {% if telegram_id %}
-                                    <a href="https://t.me/{{ telegram_id }}" target="_blank"><i
-                                            class="fa-brands fa-telegram"></i></a>
+                                {% if primary_contact.instagram_id %}
+                                    <a href="https://www.instagram.com/{{ primary_contact.instagram_id }}" target="_blank"><i
+                                            class="fa-brands fa-instagram"></i></a>
+                                {% endif %}
+                                {% if primary_contact.telegram_id %}
+                                    <a href="https://t.me/{{ primary_contact.telegram_id }}" target="_blank"><i
+                                            class="fa-brands fa-telegram-plane"></i></a>
                                 {% endif %}
                             </div>
                         </div>

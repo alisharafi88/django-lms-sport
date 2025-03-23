@@ -303,10 +303,23 @@
                                     </div>
                                     <div class="tp-instructor__social">
                                         <ul>
-                                            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                                            {% if primary_contact.youtube_id %}
+                                                <li>
+                                                    <a href="https://www.youtube.com/@{{ primary_contact.youtube_id }}"
+                                                       target="_blank"><i
+                                                            class="fa-brands fa-youtube"></i></a></li>
+                                            {% endif %}
+                                            {% if primary_contact.instagram_id %}
+                                                <li>
+                                                    <a href="https://www.instagram.com/{{ primary_contact.instagram_id }}"
+                                                       target="_blank"><i
+                                                            class="fa-brands fa-instagram"></i></a></li>
+                                            {% endif %}
+                                            {% if primary_contact.telegram_id %}
+                                                <li><a href="https://t.me/{{ primary_contact.telegram_id }}"
+                                                       target="_blank"><i
+                                                        class="fa-brands fa-telegram-plane"></i></a></li>
+                                            {% endif %}
                                         </ul>
                                     </div>
                                 </div>

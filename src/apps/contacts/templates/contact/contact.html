@@ -35,7 +35,7 @@
     <section class="location-area pt-120 pb-85">
         <div class="container">
             <div class="row justify-content-center">
-                {% if contact_info.phonenumber %}
+                {% if primary_contact.phonenumber %}
                     <div class="col-xl-4 col-md-6">
                         <div class="location-item text-center mb-30">
                             <div class="location-icon mb-25">
@@ -43,25 +43,25 @@
                             </div>
                             <div class="location-content">
                                 <h5 class="location-title"><a
-                                        href="tell:{{ contact_info.phonenumber }}">{{ contact_info.phonenumber }}</a>
+                                        href="tell:{{ primary_contact.phonenumber }}">{{ primary_contact.phonenumber }}</a>
                                 </h5>
                             </div>
                         </div>
                     </div>
                 {% endif %}
-                {% if contact_info.address %}
+                {% if primary_contact.address %}
                     <div class="col-xl-4 col-md-6">
                         <div class="location-item text-center mb-30">
                             <div class="location-icon mb-25">
                                 <i class="fa-light fa-location-dot"></i>
                             </div>
                             <div class="location-content">
-                                <h5 class="location-title">{{ contact_info.address }}</h5>
+                                <h5 class="location-title">{{ primary_contact.address|safe }}</h5>
                             </div>
                         </div>
                     </div>
                 {% endif %}
-                {% if contact_info.email %}
+                {% if primary_contact.email %}
                     <div class="col-xl-4 col-md-6">
                         <div class="location-item text-center mb-30">
                             <div class="location-icon mb-25">
@@ -69,7 +69,7 @@
                             </div>
                             <div class="location-content">
                                 <h5 class="location-title"><a
-                                        href="mailto:{{ contact_info.email }}">{{ contact_info.email }}</a>
+                                        href="mailto:{{ primary_contact.email }}">{{ primary_contact.email }}</a>
                                 </h5>
                             </div>
                         </div>

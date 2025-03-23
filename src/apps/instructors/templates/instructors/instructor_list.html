@@ -92,23 +92,39 @@
                                             href="{{ instructor.get_absolute_url }}">{{ instructor.full_name }}</a></h4>
                                     <div class="tp-instructor__stu-info">
                                         <ul class="d-flex align-items-center justify-content-center">
-                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-01.png' %}"
-                                                                                       alt="meta-icon"> <i>{{ instructor.video_count }} {% trans 'Classes' context 'singular' %}</i>
+                                            <li class="d-flex align-items-center"><img
+                                                    src="{% static 'assets/img/icon/c-meta-01.png' %}"
+                                                    alt="meta-icon">
+                                                <i>{{ instructor.video_count }} {% trans 'Classes' context 'singular' %}</i>
                                             </li>
-                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-02.png' %}"
-                                                                                       alt="meta-icon"> <i>{{ instructor.student_count }}+ {% trans 'Students' context 'singular' %}</i>
+                                            <li class="d-flex align-items-center"><img
+                                                    src="{% static 'assets/img/icon/c-meta-02.png' %}"
+                                                    alt="meta-icon">
+                                                <i>{{ instructor.student_count }}+ {% trans 'Students' context 'singular' %}</i>
                                             </li>
                                         </ul>
                                     </div>
-                                    {% if instructor.is_master %}
-                                        <div class="tp-instructor__social">
-                                            <ul>
-                                                <li><a href="{{ instructor.telegram_id }}"><i class="fa-brands fa-instagram"></i></a></li>
-                                                <li><a href="{{ instructor.youtube_id }}"><i class="fa-brands fa-youtube"></i></a></li>
-                                                <li><a href="{{ instructor.telegram_id }}"><i class="fa-brands fa-telegram"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    {% endif %}
+                                    <div class="tp-instructor__social">
+                                        <ul>
+                                            {% if primary_contact.youtube_id %}
+                                                <li>
+                                                    <a href="https://www.youtube.com/@{{ primary_contact.youtube_id }}"
+                                                       target="_blank"><i
+                                                            class="fa-brands fa-youtube"></i></a></li>
+                                            {% endif %}
+                                            {% if primary_contact.instagram_id %}
+                                                <li>
+                                                    <a href="https://www.instagram.com/{{ primary_contact.instagram_id }}"
+                                                       target="_blank"><i
+                                                            class="fa-brands fa-instagram"></i></a></li>
+                                            {% endif %}
+                                            {% if primary_contact.telegram_id %}
+                                                <li><a href="https://t.me/{{ primary_contact.telegram_id }}"
+                                                       target="_blank"><i
+                                                        class="fa-brands fa-telegram-plane"></i></a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>

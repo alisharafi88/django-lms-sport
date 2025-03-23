@@ -72,13 +72,12 @@ msgstr "شناسه اینستاگرام خود را برای نمایش در پ�
 
 #: src/apps/instructors/models.py:18
 msgid "is master"
-msgstr "آیا استاد است"
+msgstr "آیا استاد‌مربی است"
 
 #: src/apps/instructors/models.py:18
 msgid "Check this box to set master instructor and display social media links."
 msgstr ""
-"این کادر را علامت بزنید تا مدرس اصلی شود و لینک‌های شبکه‌های اجتماعی نمایش "
-"داده شود."
+"برای تنظیم استاد‌مربی و نمایش لینک‌های شبکه‌های اجتماعی او، این کادر را علامت بزنید. "
 
 #: src/apps/instructors/models.py:19
 msgid "is active"
@@ -86,7 +85,7 @@ msgstr "آیا فعال است"
 
 #: src/apps/instructors/models.py:19
 msgid "Check this box to set this instructor as active."
-msgstr "این کادر را علامت بزنید تا این مدرس به عنوان فعال تنظیم شود."
+msgstr "این کادر را علامت بزنید تا این مدرس فعال تنظیم شود."
 
 #: src/apps/instructors/models.py:46
 msgid "instructor widjet"

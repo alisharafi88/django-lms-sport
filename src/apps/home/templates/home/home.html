@@ -338,7 +338,8 @@
                                                  src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
                                                  alt="meta-icon">
                                             <span>{% if product.product_type == 2 %}{{ product.num_courses|default:0 }}
-                                                {% trans 'Courses' context 'singular' %} {% else %}{{ product.num_videos }}
+                                                {% trans 'Courses' context 'singular' %}
+                                                {% else %}{{ product.num_videos }}
                                                 {% trans 'Classes' context 'singular' %} {% endif %}</span>
                                         </li>
                                         <li>
@@ -510,20 +511,35 @@
                                             href="{{ instructor.get_absolute_url }}">{{ instructor.full_name }}</a></h4>
                                     <div class="tp-instructor__stu-info">
                                         <ul class="d-flex align-items-center justify-content-center">
-                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-01.png' %}"
-                                                                                       alt="meta-icon"> <i>{{ instructor.video_count }} {% trans 'Classes' context 'singular' %}</i>
+                                            <li class="d-flex align-items-center"><img
+                                                    src="{% static 'assets/img/icon/c-meta-01.png' %}"
+                                                    alt="meta-icon">
+                                                <i>{{ instructor.video_count }} {% trans 'Classes' context 'singular' %}</i>
                                             </li>
-                                            <li class="d-flex align-items-center"><img src="{% static 'assets/img/icon/c-meta-02.png' %}"
-                                                                                       alt="meta-icon"> <i>{{ instructor.student_count }}+ {% trans 'Students' context 'singular' %}</i>
+                                            <li class="d-flex align-items-center"><img
+                                                    src="{% static 'assets/img/icon/c-meta-02.png' %}"
+                                                    alt="meta-icon">
+                                                <i>{{ instructor.student_count }}+ {% trans 'Students' context 'singular' %}</i>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="tp-instructor__social">
                                         <ul>
-                                            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                                            {% if primary_contact.youtube_id %}
+                                                <li><a href="https://www.youtube.com/@{{ primary_contact.youtube_id }}"
+                                                   target="_blank"><i
+                                                        class="fa-brands fa-youtube"></i></a></li>
+                                            {% endif %}
+                                            {% if primary_contact.instagram_id %}
+                                                <li><a href="https://www.instagram.com/{{ primary_contact.instagram_id }}"
+                                                   target="_blank"><i
+                                                        class="fa-brands fa-instagram"></i></a></li>
+                                            {% endif %}
+                                            {% if primary_contact.telegram_id %}
+                                                <li><a href="https://t.me/{{ primary_contact.telegram_id }}"
+                                                   target="_blank"><i
+                                                        class="fa-brands fa-telegram-plane"></i></a></li>
+                                            {% endif %}
                                         </ul>
                                     </div>
                                 </div>

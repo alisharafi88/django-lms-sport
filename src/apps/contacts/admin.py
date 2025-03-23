@@ -19,6 +19,12 @@ class ContactInfoAdmin(ModelAdminJalaliMixin, AdminConfirmMixin, admin.ModelAdmi
     search_fields = ('phonenumber', 'email',)
     list_filter = ('is_primary',)
 
+    fieldsets = (
+        (_('Contact Information'), {'fields': ('phonenumber', 'email', 'address')}),
+        (_('SocialMedia Information'), {'fields': ('telegram_id', 'youtube_id', 'instagram_id')}),
+        (_('Status'), {'fields': ('is_primary',)}),
+    )
+
     def render_change_confirmation(self, request, context):
         primary_instance = ContactInfo.objects.filter(is_primary=True).first()
         context['primary_instance'] = primary_instance

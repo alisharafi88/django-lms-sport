@@ -4,16 +4,13 @@ from django.contrib import messages
 from django.utils.translation import gettext as _
 
 from .forms import MessageForm
-from .models import ContactInfo
 
 
 class ContactView(View):
     def get(self, request):
-        primary_contactinfo = ContactInfo.objects.filter(is_primary=True).first()
         message_form = MessageForm()
 
         context = {
-            'contact_info': primary_contactinfo,
             'message_form': message_form,
         }
 
