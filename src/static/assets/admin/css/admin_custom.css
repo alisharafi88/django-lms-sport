@@ -1,0 +1,74 @@
+body {
+    background: url('/static/assets/admin/img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--body-fg) !important;
+}
+.d-flex {
+    display: flex !important;
+}
+
+h1{
+    color: white !important;
+}
+h2{
+    color: #777c90 !important;
+}
+table {
+     caption-side: top !important;
+}
+
+tr:nth-child(odd), .row-form-errors {
+    background: var(--tp-theme) !important;
+}
+.module h2, .module caption, .inline-group h2 {
+    background: var(--tp-g-theme);
+}
+.module p, .module ul, .module h3, .module h4, .module dl, .module pre {
+    color: var(--body-fg) !important;
+}
+
+div.breadcrumbs {
+    margin-top: 100px;
+    background: none;
+}
+#content {
+    margin-top: 100px;
+}
+
+.module a {
+    color: var(--body-quiet-color);
+}
+
+.module ul li a {
+    color: #777C90;
+}
+
+.button, input[type=submit], .submit-row input {
+    background-color: var(--tp-g-theme);
+    color: #ffffff;
+    border: 1px solid var(--tp-g-theme);
+}
+
+.button:hover, input[type=submit]:hover {
+    background-color: var(--tp-g-theme);
+}
+
+.submit-row a.deletelink {
+    height: 2.1875rem !important;
+}
+
+html[data-theme="light"], :root {
+    --tp-theme: #FF6652;
+    --tp-g-theme: #17ad67ed;
+}
+
+html[data-theme="dark"] {
+    --tp-theme: #a74438;
+    --tp-g-theme: #1e4a3f;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --tp-theme: #a74438;
+        --tp-g-theme: #1e4a3f;
+    }
+}

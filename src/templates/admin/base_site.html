@@ -1,0 +1,76 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+{% load static %}
+
+
+{% block header %}
+    <!-- header area start -->
+    <header class="header__transparent">
+        <div class="header__area pl-220 pr-220 pt-30">
+            <div class="main-header" id="header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xxl-3 col-xl-3 col-lg-5 col-md-6 col-6">
+                            <div class="logo-area d-flex align-items-center">
+                                <div class="logo">
+                                    <a href="{% url 'admin:index' %}">
+                                        <img src="{% static 'assets/img/logo/logo-fastball.png' %}" alt="logo">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-9 col-xl-9 col-lg-7 col-md-6 col-6 d-flex align-items-center justify-content-end">
+                            <div class="main-menu d-flex justify-content-end mr-15">
+                                <nav id="mobile-menu">
+                                    <ul>
+
+                                        <li>
+                                            {% if site_url %}
+                                                <a href="{{ site_url }}">{% translate 'View site' %}</a>
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            {% if user.is_active and user.is_staff %}
+                                                {% url 'django-admindocs-docroot' as docsroot %}
+                                                {% if docsroot %}
+                                                    <a href="{{ docsroot }}">{% translate 'Documentation' %}</a>
+                                                {% endif %}
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            {% if user.has_usable_password %}
+                                                <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a>
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+                                                {% csrf_token %}
+                                                <button type="submit">{% translate 'Log out' %}</button>
+                                            </form>
+                                            {% include "admin/color_theme_toggle.html" %}
+                                        </li>
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+{% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/backtotop.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/ui-icon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/spacing.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/rtl.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/admin/css/admin_custom.css' %}">
+{% endblock %}
