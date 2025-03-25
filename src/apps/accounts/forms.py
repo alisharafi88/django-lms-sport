@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -19,7 +20,7 @@ class CustomUserChangeForm(UserChangeForm):
 
 
 class AthenticationForm(forms.Form):
-    phone_number = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'placeholder': 'Enter your phone number'}))
+    phone_number = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'placeholder': _('Enter your phone number')}))
 
     def clean_phone_number(self):
         phone_number = self.cleaned_data['phone_number']
@@ -33,13 +34,12 @@ class AthenticationForm(forms.Form):
             phone_number = '+98' + phone_number
 
         if len(phone_number) != 13:
-            raise ValidationError(
-                'Invalid Iranian phone number.')
+            raise ValidationError(_('Invalid Iranian phone number.'))
         return phone_number
 
 
 class VerificationForm(forms.Form):
-    otp = forms.CharField(max_length=6, widget=forms.TextInput(attrs={'placeholder': 'Enter OTP'}))
+    otp = forms.CharField(max_length=6, widget=forms.TextInput(attrs={'placeholder': _('Enter OTP')}))
 
 
 class EditProfileForm(forms.ModelForm):
@@ -48,5 +48,5 @@ class EditProfileForm(forms.ModelForm):
         fields = ('profile_photo', 'first_name', 'last_name', 'email', 'phone_number', 'bio')
         readonly_fields = ('phone_number',)
         labels = {
-            'profile_photo': 'Profile Picture',
+            'profile_photo': _('Profile Picture'),
         }

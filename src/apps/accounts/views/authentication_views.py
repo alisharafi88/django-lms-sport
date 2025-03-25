@@ -1,6 +1,5 @@
 from datetime import timedelta, datetime
 
-from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LogoutView
 from django.http import HttpResponseNotAllowed
 from django.urls import reverse_lazy
