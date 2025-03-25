@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-09 00:11+0330\n"
+"POT-Creation-Date: 2025-03-26 02:55+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Persian <LL@li.org>\n"
@@ -19,228 +19,306 @@ msgstr ""
 "POT-Creation-DDate: 2025-02-07 20:57+0330\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/apps/orders/admin.py:31 src/apps/orders/admin.py:37
+#: apps/orders/admin.py:33 apps/orders/admin.py:39
 msgid "custome information"
 msgstr "اطلاعات مشتری"
 
-#: src/apps/orders/admin.py:32 src/apps/orders/admin.py:38
-#: src/apps/orders/models.py:40
+#: apps/orders/admin.py:34 apps/orders/admin.py:40
 msgid "status"
 msgstr "وضعیت"
 
-#: src/apps/orders/admin.py:33
+#: apps/orders/admin.py:35
 msgid "date"
 msgstr "تاریخ"
 
-#: src/apps/orders/admin.py:46
+#: apps/orders/admin.py:48
 msgid "Update status to PAID"
 msgstr "به‌روزرسانی وضعیت به پرداخت شده"
 
-#: src/apps/orders/admin.py:51
+#: apps/orders/admin.py:53
 #, python-brace-format
 msgid "{update_count} of orders status has been updated to paid."
 msgstr "{update_count} سفارش به وضعیت پرداخت شده به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:55
+#: apps/orders/admin.py:57
 msgid "Update status to CANCELED"
 msgstr "به‌روزرسانی وضعیت به لغو شده"
 
-#: src/apps/orders/admin.py:60
+#: apps/orders/admin.py:62
 #, python-brace-format
 msgid "{update_count} of orders status has been updated to canceled."
 msgstr "{update_count} سفارش به وضعیت لغو شده به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:64
+#: apps/orders/admin.py:66
 msgid "Update status to UNPAID"
 msgstr "به‌روزرسانی وضعیت به پرداخت نشده"
 
-#: src/apps/orders/admin.py:69
+#: apps/orders/admin.py:71
 #, python-brace-format
 msgid "{update_count} of orders status has been updated to unpaid."
 msgstr "{update_count} سفارش به وضعیت پرداخت نشده به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:81
+#: apps/orders/admin.py:83 apps/orders/models.py:58 apps/orders/models.py:73
+#: apps/orders/models.py:116
 msgid "Order"
 msgstr "سفارش"
 
-#: src/apps/orders/admin.py:82
+#: apps/orders/admin.py:84
 msgid "course information"
 msgstr "اطلاعات دوره"
 
-#: src/apps/orders/admin.py:98 src/apps/orders/admin.py:102
-#: src/apps/orders/models.py:65 src/apps/orders/models.py:94
+#: apps/orders/admin.py:100 apps/orders/admin.py:104
 msgid "order"
 msgstr "سفارش"
 
-#: src/apps/orders/admin.py:99 src/apps/orders/admin.py:103
+#: apps/orders/admin.py:101 apps/orders/admin.py:105
 msgid "delivery information"
 msgstr "اطلاعات تحویل"
 
-#: src/apps/orders/admin.py:106
+#: apps/orders/admin.py:108
 msgid "Update delivery_status to PENDING"
 msgstr "به‌روزرسانی وضعیت تحویل به در انتظار"
 
-#: src/apps/orders/admin.py:111
+#: apps/orders/admin.py:113
 #, python-brace-format
 msgid "{update_count} of orders delivery_status has been updated to pending."
 msgstr "{update_count} سفارش به وضعیت تحویل در انتظار به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:115
+#: apps/orders/admin.py:117
 msgid "Update delivery_status to SENT"
 msgstr "به‌روزرسانی وضعیت تحویل به ارسال شده"
 
-#: src/apps/orders/admin.py:120
+#: apps/orders/admin.py:122
 #, python-brace-format
 msgid "{update_count} of orders delivery_status has been updated to sent."
 msgstr "{update_count} سفارش به وضعیت تحویل ارسال شده به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:124
+#: apps/orders/admin.py:126
 msgid "Update delivery_status to REJECTD"
 msgstr "به روزرسانی وضعیت تحویل به رد شده"
 
-#: src/apps/orders/admin.py:129
+#: apps/orders/admin.py:131
 #, python-brace-format
 msgid "{update_count} of orders delivery_status has been updated to rejectd."
 msgstr "{update_count} سفارش به وضعیت تحویل رد شده به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:133
+#: apps/orders/admin.py:135
 msgid "Update delivery_status to CANCELED"
 msgstr "به‌روزرسانی وضعیت تحویل به لغو شده"
 
-#: src/apps/orders/admin.py:138
+#: apps/orders/admin.py:140
 #, python-brace-format
 msgid "{update_count} of orders delivery_status has been updated to canceled."
 msgstr "{update_count} سفارش به وضعیت تحویل لغو شده به‌روزرسانی شد."
 
-#: src/apps/orders/models.py:25
+#: apps/orders/apps.py:8 apps/orders/models.py:59
+msgid "Orders"
+msgstr "سفارش‌ها"
+
+#: apps/orders/forms.py:31
+msgid "Please enter a shipping address"
+msgstr "لطفاً آدرس خود را وارد کنید."
+
+#: apps/orders/forms.py:33
+msgid "Please enter a shipping city"
+msgstr "لطفاً شهر خود را وارد کنید."
+
+#: apps/orders/forms.py:35
+msgid "Please enter your first name"
+msgstr "لطفاً نام خود را وارد کنید."
+
+#: apps/orders/forms.py:37
+msgid "Please enter your last name"
+msgstr "لطفاً نام خانوادگی خود را وارد کنید."
+
+#: apps/orders/forms.py:39
+msgid "Please enter your phone number"
+msgstr "لطفاً شماره‌تلفن خود را وارد کنید."
+
+#: apps/orders/forms.py:41
+msgid "Please enter your email"
+msgstr "لطفاً ایمیل خود را وارد کنید."
+
+#: apps/orders/forms.py:43
+msgid "Please enter your postal code"
+msgstr "لطفاً کدپستی خود را وارد کنید."
+
+#: apps/orders/models.py:16
+msgid "Invalid phone number."
+msgstr "شماره‌تلفن نامعتبر است."
+
+#: apps/orders/models.py:18
+msgid "Phone number must be from Iran."
+msgstr "شماره‌تلفن باید از ایران باشد."
+
+#: apps/orders/models.py:20
+msgid "Invalid phone number format."
+msgstr "فرمت شماره‌تلفن نامعتبر است."
+
+#: apps/orders/models.py:25
 msgid "Paid"
 msgstr "پرداخت شده"
 
-#: src/apps/orders/models.py:26
+#: apps/orders/models.py:26
 msgid "Unpaid"
 msgstr "پرداخت نشده"
 
-#: src/apps/orders/models.py:27 src/apps/orders/models.py:63
+#: apps/orders/models.py:27 apps/orders/models.py:67
 msgid "Canceled"
 msgstr "لغو شده"
 
-#: src/apps/orders/models.py:30
+#: apps/orders/models.py:30
 msgid "Online"
 msgstr "آنلاین"
 
-#: src/apps/orders/models.py:31
+#: apps/orders/models.py:31
 msgid "DVD"
 msgstr "دی‌وی‌دی"
 
-#: src/apps/orders/models.py:37
-msgid "customer"
+#: apps/orders/models.py:37
+msgid "Customer"
 msgstr "مشتری"
 
-#: src/apps/orders/models.py:46
-msgid "access status"
+#: apps/orders/models.py:40
+msgid "Status"
+msgstr "وضعیت"
+
+#: apps/orders/models.py:46
+msgid "AccessStatus"
 msgstr "وضعیت دسترسی"
 
-#: src/apps/orders/models.py:51 src/apps/orders/models.py:79
-msgid "date created"
+#: apps/orders/models.py:51
+msgid "DateCreated"
 msgstr "تاریخ ایجاد"
 
-#: src/apps/orders/models.py:52
-msgid "total price"
+#: apps/orders/models.py:52
+msgid "TotalPrice"
 msgstr "قیمت کل"
 
-#: src/apps/orders/models.py:60
+#: apps/orders/models.py:64
 msgid "Pending"
 msgstr "در انتظار"
 
-#: src/apps/orders/models.py:61
+#: apps/orders/models.py:65
 msgid "Sent"
 msgstr "ارسال شده"
 
-#: src/apps/orders/models.py:62
+#: apps/orders/models.py:66
 msgid "Rejected"
 msgstr "رد شده"
 
-#: src/apps/orders/models.py:67
-msgid "city"
+#: apps/orders/models.py:76
+msgid "City"
 msgstr "شهر"
 
-#: src/apps/orders/models.py:68
-msgid "address"
+#: apps/orders/models.py:77
+msgid "Address"
 msgstr "آدرس"
 
-#: src/apps/orders/models.py:69
-msgid "postal code"
-msgstr "کد پستی"
+#: apps/orders/models.py:78
+msgid "PostalCode"
+msgstr "کدپستی"
 
-#: src/apps/orders/models.py:70
-msgid "first name"
+#: apps/orders/models.py:79
+msgid "firstName"
 msgstr "نام"
 
-#: src/apps/orders/models.py:71
-msgid "last name"
-msgstr "نام خانوادگی"
+#: apps/orders/models.py:80
+msgid "LastName"
+msgstr "نام‌خانوادگی"
 
-#: src/apps/orders/models.py:72
-msgid "email"
+#: apps/orders/models.py:81
+msgid "Email"
 msgstr "ایمیل"
 
-#: src/apps/orders/models.py:73
-msgid "phonenumber"
-msgstr "شماره تلفن"
+#: apps/orders/models.py:83
+msgid "Phonenumber"
+msgstr "شماره‌تلفن"
 
-#: src/apps/orders/models.py:74
-msgid "order note"
+#: apps/orders/models.py:88
+msgid "Order'sNote"
 msgstr "یادداشت سفارش"
 
-#: src/apps/orders/models.py:76
-msgid "delivery status"
+#: apps/orders/models.py:91
+msgid "DeliveryStatus"
 msgstr "وضعیت تحویل"
 
-#: src/apps/orders/models.py:100
-msgid "course"
+#: apps/orders/models.py:97
+msgid "Created Date"
+msgstr "تاریخ ایجاد"
+
+#: apps/orders/models.py:100
+#, python-brace-format
+msgid "{self.order} - DVD Details"
+msgstr "{self.order} - جزئیات DVD"
+
+#: apps/orders/models.py:107
+msgid "DVD's Order"
+msgstr "سفارش DVD"
+
+#: apps/orders/models.py:108
+msgid "DVD's Orders"
+msgstr "سفارش‌های DVD"
+
+#: apps/orders/models.py:122
+msgid "Course"
 msgstr "دوره"
 
-#: src/apps/orders/models.py:102
-msgid "unit price"
+#: apps/orders/models.py:124
+msgid "UnitPrice"
 msgstr "قیمت واحد"
 
-#: src/apps/orders/templates/orders/checkout.html:19
-#: src/apps/orders/templates/orders/checkout.html:23
+#: apps/orders/models.py:129
+msgid "Order's Item"
+msgstr "آیتم سفارش"
+
+#: apps/orders/models.py:130
+msgid "Order's Items"
+msgstr "آیتم‌های سفارش"
+
+#: apps/orders/templates/orders/checkout.html:19
+#: apps/orders/templates/orders/checkout.html:23
 msgid "Checkout"
 msgstr "تسویه حساب"
 
-#: src/apps/orders/templates/orders/checkout.html:21
+#: apps/orders/templates/orders/checkout.html:21
 msgid "HomePage"
 msgstr "خانه"
 
-#: src/apps/orders/templates/orders/checkout.html:71
+#: apps/orders/templates/orders/checkout.html:71
 msgid "Product"
 msgstr "محصول"
 
-#: src/apps/orders/templates/orders/checkout.html:72
+#: apps/orders/templates/orders/checkout.html:72
 msgid "Total"
 msgstr "جمع"
 
-#: src/apps/orders/templates/orders/checkout.html:82
+#: apps/orders/templates/orders/checkout.html:82
 msgid "Toman"
 msgstr "تومان"
 
-#: src/apps/orders/templates/orders/checkout.html:116
+#: apps/orders/templates/orders/checkout.html:116
 msgid "Buy DVD"
 msgstr "خرید دی‌وی‌دی"
 
-#: src/apps/orders/views.py:28
+#: apps/orders/views.py:27
 msgid "You cannot proceed to the checkout page because your cart is empty."
 msgstr "شما نمی‌توانید به صفحه تسویه حساب بروید زیرا سبد خرید شما خالی است."
 
-#: src/apps/orders/views.py:81
+#: apps/orders/views.py:80
 msgid "Your order was successfully completed!"
 msgstr "سفارش شما با موفقیت تکمیل شد!"
 
-#: src/apps/orders/views.py:85
+#: apps/orders/views.py:84
 msgid "Something went wrong. Please try again."
 msgstr "مشکلی پیش آمده است. لطفاً دوباره تلاش کنید."
 
-#: src/apps/orders/views.py:89
+#: apps/orders/views.py:88
 msgid "Please correct the errors below:"
 msgstr "لطفاً خطاهای زیر را اصلاح کنید:"
+
+#~ msgid "city"
+#~ msgstr "شهر"
+
+#~ msgid "last name"
+#~ msgstr "نام خانوادگی"

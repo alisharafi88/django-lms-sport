@@ -1,5 +1,3 @@
-import logging
-
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
@@ -8,9 +6,10 @@ from django.contrib import messages
 from django.views import View
 from django.db import transaction
 
+import logging
+
 from .models import Order, OrderItem, DVDOrderDetail
 from .forms import CheckoutForm
-
 from apps.carts.carts import Cart
 
 

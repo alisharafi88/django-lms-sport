@@ -13,11 +13,11 @@ def phone_number_validator_for_iran(value):
     try:
         phone_number = parse(value, 'IR')
         if not is_valid_number(phone_number):
-            raise ValidationError('Invalid phone number.')
+            raise ValidationError(_('Invalid phone number.'))
         if region_code_for_number(phone_number) != 'IR':
-            raise ValidationError('Phone number must be from Iran.')
+            raise ValidationError(_('Phone number must be from Iran.'))
     except NumberParseException:
-        raise ValidationError('Invalid phone number format.')
+        raise ValidationError(_('Invalid phone number format.'))
 
 
 class Order(models.Model):
@@ -34,25 +34,29 @@ class Order(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.PROTECT,
         related_name='orders',
-        verbose_name=_('customer')
+        verbose_name=_('Customer')
     )
     status = models.CharField(
-        _('status'),
+        _('Status'),
         max_length=1,
         choices=OrderStatus.choices,
         default=OrderStatus.UNPAID
     )
     access_status = models.CharField(
-        _('access status'),
+        _('AccessStatus'),
         max_length=1,
         choices=AccessStatus.choices,
         default=AccessStatus.ONLINE
     )
-    date_created = models.DateTimeField(_('date created'), auto_now_add=True)
-    total_price = models.DecimalField(_('total price'), max_digits=10, decimal_places=2, default=0.00)
+    date_created = models.DateTimeField(_('DateCreated'), auto_now_add=True)
+    total_price = models.DecimalField(_('TotalPrice'), max_digits=10, decimal_places=2, default=0.00)
 
     def __str__(self):
         return f'{self.total_price}'
+
+    class Meta:
+        verbose_name = _('Order')
+        verbose_name_plural = _('Orders')
 
 
 class DVDOrderDetail(models.Model):
@@ -62,28 +66,46 @@ class DVDOrderDetail(models.Model):
         REJECTED = 'r', _('Rejected')
         CANCELED = 'c', _('Canceled')
 
-    order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name='dvd_detail', verbose_name=_('order'),)
+    order = models.OneToOneField(
+        Order,
+        on_delete=models.CASCADE,
+        related_name='dvd_detail',
+        verbose_name=_('Order'),
+    )
 
-    city = models.CharField(_('city'), max_length=15,)
-    address = models.CharField(_('address'), max_length=255,)
-    postal_code = models.CharField(_('postal code'), max_length=20,)
-    first_name = models.CharField(_('first name'), max_length=20,)
-    last_name = models.CharField(_('last name'), max_length=30,)
-    email = models.EmailField(_('email'),)
-    phone_number = PhoneNumberField(_('phonenumber'), region='IR', validators=[phone_number_validator_for_iran], unique=True,)
-    order_note = models.CharField(_('order note'), max_length=255, null=True, blank=True,)
+    city = models.CharField(_('City'), max_length=15)
+    address = models.CharField(_('Address'), max_length=255)
+    postal_code = models.CharField(_('PostalCode'), max_length=20)
+    first_name = models.CharField(_('firstName'), max_length=20)
+    last_name = models.CharField(_('LastName'), max_length=30)
+    email = models.EmailField(_('Email'))
+    phone_number = PhoneNumberField(
+        _('Phonenumber'),
+        region='IR',
+        validators=[phone_number_validator_for_iran],
+        unique=True
+    )
+    order_note = models.CharField(_('Order\'sNote'), max_length=255, null=True, blank=True)
 
-    delivery_status = models.CharField(_('delivery status'), max_length=1, choices=DeliveryStatus.choices,
-                                       default=DeliveryStatus.PENDING,)
+    delivery_status = models.CharField(
+        _('DeliveryStatus'),
+        max_length=1,
+        choices=DeliveryStatus.choices,
+        default=DeliveryStatus.PENDING,
+    )
 
-    date_created = models.DateTimeField(_('date created'), auto_now_add=True,)
+    date_created = models.DateTimeField(_('Created Date'), auto_now_add=True)
 
     def __str__(self):
-        return f'{self.order} - DVD Details'
+        return _(f'{self.order} - DVD Details')
 
     def save(self, *args, **kwargs):
         super().save()
         self.order.access_status = self.order.AccessStatus.DVD
+
+    class Meta:
+        verbose_name = _('DVD\'s Order')
+        verbose_name_plural = _('DVD\'s Orders')
 
 
 class OrderItem(models.Model):
@@ -91,18 +113,21 @@ class OrderItem(models.Model):
         Order,
         on_delete=models.PROTECT,
         related_name='items',
-        verbose_name=_('order')
+        verbose_name=_('Order'),
     )
     course = models.ForeignKey(
         Course,
         on_delete=models.PROTECT,
         related_name='order_items',
-        verbose_name=_('course')
+        verbose_name=_('Course')
     )
-    unit_price = models.DecimalField(_('unit price'), max_digits=6, decimal_places=2)
+    unit_price = models.DecimalField(_('UnitPrice'), max_digits=6, decimal_places=2)
 
     class Meta:
         unique_together = ('order', 'course')
+
+        verbose_name = _('Order\'s Item')
+        verbose_name_plural = _('Order\'s Items')
 
     def __str__(self):
         return f'{self.order} - {self.course}'

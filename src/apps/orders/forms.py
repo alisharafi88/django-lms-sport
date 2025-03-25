@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
 from .models import Order
 
@@ -27,17 +28,17 @@ class CheckoutForm(forms.Form):
 
         if status == Order.AccessStatus.DVD:
             if not shipping_address:
-                self.add_error('shipping_address', 'Please enter a shipping address')
+                self.add_error('shipping_address', _('Please enter a shipping address'))
             if not shipping_city:
-                self.add_error('shipping_city', 'Please enter a shipping city')
+                self.add_error('shipping_city', _('Please enter a shipping city'))
             if not first_name:
-                self.add_error('first_name', 'Please enter your first name')
+                self.add_error('first_name', _('Please enter your first name'))
             if not last_name:
-                self.add_error('last_name', 'Please enter your last name')
+                self.add_error('last_name', _('Please enter your last name'))
             if not phone_number:
-                self.add_error('phone_number', 'Please enter your phone number')
+                self.add_error('phone_number', _('Please enter your phone number'))
             if not email:
-                self.add_error('email', 'Please enter your email')
+                self.add_error('email', _('Please enter your email'))
             if not postal_code:
-                self.add_error('postal_code', 'Please enter your postal code')
+                self.add_error('postal_code', _('Please enter your postal code'))
         return cleaned_data
