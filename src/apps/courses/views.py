@@ -101,7 +101,6 @@ class CourseDetailView(generic.DetailView):
                         num_comment=Count('comments', distinct=True),
 
                     ).prefetch_related('comments')
-
                 ),
             ) \
             .annotate(

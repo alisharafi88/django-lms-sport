@@ -4,7 +4,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from django_ckeditor_5.fields import CKEditor5Field
 
@@ -25,25 +25,61 @@ class Coupon(models.Model):
     """
     Coupon for courses
     """
-    code = models.CharField(_('code of coupon'), max_length=50, unique=True)
-    discount_amount = models.DecimalField(_('discount amount'), max_digits=5, decimal_places=2)
-    date_valid_from = models.DateField(_('date valid from'), )
-    date_valid_to = models.DateField(_('date valid to'), )
-    status = models.BooleanField(_('status'), default=True)
-    max_usage_per_user = models.IntegerField(_('max number of usage'), default=1,
-                                             help_text='Number of people who can use.')
+    code = models.CharField(
+        _('Code of coupon'),
+        max_length=50,
+        unique=True,
+    )
+    discount_amount = models.DecimalField(
+        _('Discount amount'),
+        max_digits=5,
+        decimal_places=2,
+    )
+    date_valid_from = models.DateField(
+        _('Date valid from'),
+    )
+    date_valid_to = models.DateField(
+        _('Date valid to'),
+    )
+    status = models.BooleanField(
+        _('Status'),
+        default=True
+    )
+    max_usage_per_user = models.IntegerField(
+        _('Max number of usage'),
+        default=1,
+        help_text='Number of people who can use.',
+    )
 
     def __str__(self):
         return f'{self.date_valid_to} - {self.discount_amount}'
 
+    class Meta:
+        verbose_name = _('Coupon')
+        verbose_name_plural = _('Coupons')
+
 
 class Product(models.Model):
-    title = models.CharField(_('Title'), max_length=100, db_index=True)
-    slug = models.SlugField(unique=True, allow_unicode=True)
+    title = models.CharField(
+        _('Title'),
+        max_length=100,
+        db_index=True,
+    )
+    slug = models.SlugField(
+        _('Slug'),
+        unique=True,
+        allow_unicode=True,
+    )
 
-    description = CKEditor5Field(verbose_name=_("Description"))
+    description = CKEditor5Field(
+        verbose_name=_("Description")
+    )
 
-    price = models.DecimalField(_('Price'), max_digits=10, decimal_places=2)
+    price = models.DecimalField(
+        _('Price'),
+        max_digits=10,
+        decimal_places=2,
+    )
     discount_amount = models.DecimalField(
         _('Discount amount'),
         max_digits=5,
@@ -52,9 +88,9 @@ class Product(models.Model):
         help_text=_('Discount amount for this product.'),
     )
 
-    img = models.ImageField(_("Main img"), upload_to=upload_introduce_image_path)
+    img = models.ImageField(_("Main Image"), upload_to=upload_introduce_image_path)
 
-    introduce_video_cover = models.ImageField(_('Cover'), help_text=_('Cover of introduce video'), upload_to=upload_introduce_video_cover_path, blank=True, null=True)
+    introduce_video_cover = models.ImageField(_('Video\'s Cover'), help_text=_('Cover of introduce video'), upload_to=upload_introduce_video_cover_path, blank=True, null=True)
     introduce_video_url = models.URLField(_('Introduce Video URL'), blank=True, null=True)
 
     age_range = models.CharField(_('Age range'), max_length=12, help_text=_('Age range for users.'))
@@ -119,6 +155,9 @@ class Course(Product):
             )
         ]
 
+        verbose_name = _('Course')
+        verbose_name_plural = _('Courses')
+
 
 class Package(Product):
     courses = models.ManyToManyField(Course, verbose_name=_('Courses in this package'))
@@ -136,27 +175,31 @@ class Package(Product):
             )
         ]
 
+        verbose_name = _('Package')
+        verbose_name_plural = _('Packages')
+
 
 class CourseSeason(models.Model):
     course = models.ForeignKey(
         Course,
         on_delete=models.CASCADE,
-        verbose_name=_('Course'),
         related_name='seasons',
+        verbose_name=_('Course'),
     )
 
     title = models.CharField(_('Title'), max_length=100)
 
-    created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
-    updated_at = models.DateTimeField(_('Updated at'), auto_now=True)
+    created_at = models.DateTimeField(_('Creat Date'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('Update Date'), auto_now=True)
 
     def __str__(self):
         return f'{self.course} - {self.title}'
 
     class Meta:
+        ordering = ('created_at',)
+
         verbose_name = _('Season')
         verbose_name_plural = _('Seasons')
-        ordering = ('created_at',)
 
 
 class CourseVideo(models.Model):
@@ -167,8 +210,8 @@ class CourseVideo(models.Model):
     season = models.ForeignKey(
         CourseSeason,
         on_delete=models.CASCADE,
-        verbose_name=_('Season'),
         related_name='videos',
+        verbose_name=_('Season'),
     )
 
     title = models.CharField(_('title'), max_length=100, )
@@ -177,7 +220,7 @@ class CourseVideo(models.Model):
         _('Status'), max_length=1,
         choices=VideoStatus.choices,
         default=VideoStatus.MONETARY,
-        help_text='Show that this video is free or not.',
+        help_text=_('Show that this video is free or not.'),
     )
 
     created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
@@ -187,13 +230,14 @@ class CourseVideo(models.Model):
         return f'{self.season} - {self.title}'
 
     class Meta:
-        verbose_name = _('Video')
-        verbose_name_plural = _('Videos')
         ordering = ('created_at',)
         indexes = (
             models.Index(fields=['season'], name='courses_video_season_idx'),
             models.Index(fields=['created_at'], name='courses_video_created_at_idx'),
         )
+
+        verbose_name = _('Video')
+        verbose_name_plural = _('Videos')
 
 
 class CourseMembership(models.Model):
@@ -216,6 +260,7 @@ class CourseMembership(models.Model):
 
     class Meta:
         unique_together = ('user', 'content_type', 'object_id')
+
         verbose_name = _('Course Membership')
         verbose_name_plural = _('Course Memberships')
 
@@ -224,19 +269,43 @@ class CourseMembership(models.Model):
 
 
 class CourseComments(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='course_comments',
-                             verbose_name=_('User'), )
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='comments', verbose_name=_('Course'))
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='course_comments',
+        verbose_name=_('User'),
+    )
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        verbose_name=_('Course')
+    )
     text = models.TextField(_('Text of the comment'), )
-    rate = models.PositiveSmallIntegerField(_('Rate'), validators=[MinValueValidator(1), MaxValueValidator(5)])
+    rate = models.PositiveSmallIntegerField(
+        _('Rate'),
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(5)
+        ]
+    )
 
-    date_created = models.DateTimeField(_('Created date'), auto_now_add=True, )
+    date_created = models.DateTimeField(
+        _('Created date'),
+        auto_now_add=True,
+    )
 
-    status = models.BooleanField(_('Status'), default=True,
-                                 help_text=_('If the comment is not appropriate, set it to false.'))
+    status = models.BooleanField(
+        _('Status'),
+        default=True,
+        help_text=_('If the comment is not appropriate, set it to false.')
+    )
 
     class Meta:
         ordering = ('-date_created',)
+
+        verbose_name = _('course\'s comment')
+        verbose_name_plural = _('course\'s comments')
 
     @property
     def is_member(self):

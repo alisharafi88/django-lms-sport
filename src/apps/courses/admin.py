@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db.models import Count, OuterRef, IntegerField, Subquery, Prefetch
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from jalali_date.admin import ModelAdminJalaliMixin, StackedInlineJalaliMixin, TabularInlineJalaliMixin
 
@@ -79,17 +79,17 @@ class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
             num_members=Count('memberships')
         ).prefetch_related('memberships', Prefetch('seasons', queryset=CourseSeason.objects.prefetch_related('videos').all()))
 
-    @admin.display(description='#Videos', ordering='num_videos')
+    @admin.display(description=_('#Videos'), ordering='num_videos')
     def get_num_videos(self, course):
         return course.num_videos
 
-    @admin.display(description='#Members', ordering='num_members')
+    @admin.display(description=_('#Members'), ordering='num_members')
     def get_num_members(self, course):
         return course.num_members
 
-    @admin.display(description='Coach')
+    @admin.display(description=_('Coach'))
     def get_coach(self, course):
-        return course.coach or "No Coach Assigned"
+        return course.coach or _('No Coach Assigned')
 
 
 @admin.register(Package)
@@ -133,11 +133,11 @@ class PackageAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
             num_members=Count('memberships')
         )
 
-    @admin.display(description='#Courses', ordering='num_courses')
+    @admin.display(description=_('#Courses'), ordering='num_courses')
     def num_courses(self, package):
         return package.num_courses
 
-    @admin.display(description='#Members', ordering='num_members')
+    @admin.display(description=_('#Members'), ordering='num_members')
     def num_members(self, package):
         return package.num_members
 
@@ -225,13 +225,13 @@ class CourseMembershipAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
             return self.add_fieldsets
         return super().get_fieldsets(request, obj)
 
-    @admin.display(description='Product Type')
+    @admin.display(description=_('Product Type'))
     def product_type(self, membership):
         return membership.content_type.model.capitalize()
 
-    @admin.display(description='Product Title')
+    @admin.display(description=_('Product Title'))
     def product_title(self, membership):
-        return str(membership.product) if membership.product else "Unknown Product"
+        return str(membership.product) if membership.product else _('Unknown Product')
 
 
 admin.site.register(CourseComments)
