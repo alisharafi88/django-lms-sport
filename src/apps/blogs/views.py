@@ -1,5 +1,5 @@
 from django.db.models import Prefetch
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.views import generic
 
 from .forms import BlogCommentForm
@@ -59,5 +59,4 @@ class PostDetailView(generic.DetailView):
                 )
             )
         )
-
         return blog_queryset

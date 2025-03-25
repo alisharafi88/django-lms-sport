@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-13 22:52+0330\n"
+"POT-Creation-Date: 2025-03-26 00:22+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,147 +18,171 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/apps/blogs/forms.py:12
-msgid "Enter your comment ..."
-msgstr "کامنت خود را بنوسید ..."
+#: apps/blogs/admin.py:55
+msgid "#comments"
+msgstr "#کامنت"
 
-#: src/apps/blogs/models.py:13
-msgid "Published"
-msgstr "منتشر شده"
-
-#: src/apps/blogs/models.py:14
-msgid "Rejected"
-msgstr "رد شده"
-
-#: src/apps/blogs/models.py:22
-msgid "Blog's title"
-msgstr "عنوان وبلاگ"
-
-#: src/apps/blogs/models.py:24
-msgid "blog's description"
-msgstr "توضیحات وبلاگ"
-
-#: src/apps/blogs/models.py:26
-msgid "Blog's main img"
-msgstr "تصویر اصلی وبلاگ"
-
-#: src/apps/blogs/models.py:32
-msgid "Blog's status"
-msgstr "وضعیت وبلاگ"
-
-#: src/apps/blogs/models.py:34
-msgid "Enable comments on post"
-msgstr "فعال کردن کامنت در پست"
-
-#: src/apps/blogs/models.py:36
-msgid "Created at"
-msgstr "ایجاد شده در"
-
-#: src/apps/blogs/models.py:37
-msgid "Updated at"
-msgstr "به‌روزرسانی شده در"
-
-#: src/apps/blogs/models.py:40
-#: src/apps/blogs/templates/blogs/blog_detail.html:20
-#: src/apps/blogs/templates/blogs/blog_list.html:18
-msgid "Blog"
-msgstr "وبلاگ"
-
-#: src/apps/blogs/models.py:41
-#: src/apps/blogs/templates/blogs/blog_detail.html:24
-#: src/apps/blogs/templates/blogs/blog_list.html:22
+#: apps/blogs/apps.py:8 apps/blogs/models.py:46
+#: apps/blogs/templates/blogs/blog_detail.html:25
+#: apps/blogs/templates/blogs/blog_list.html:22
 msgid "Blogs"
 msgstr "وبلاگ‌ها"
 
-#: src/apps/blogs/models.py:52
-msgid "Blog's comments"
-msgstr "کامنت‌های وبلاگ"
+#: apps/blogs/forms.py:12
+msgid "Enter your comment ..."
+msgstr "کامنت خود را بنوسید ..."
 
-#: src/apps/blogs/models.py:59
-msgid "Comment's text"
-msgstr "متن کامنت"
+#: apps/blogs/models.py:13
+msgid "Published"
+msgstr "منتشر شده"
 
-#: src/apps/blogs/models.py:62
-msgid "Parent"
-msgstr "والد"
+#: apps/blogs/models.py:14
+msgid "Rejected"
+msgstr "رد شده"
 
-#: src/apps/blogs/models.py:64
+#: apps/blogs/models.py:21
+msgid "Author"
+msgstr "نویسنده"
+
+#: apps/blogs/models.py:23
+msgid "Title"
+msgstr "عنوان"
+
+#: apps/blogs/models.py:25
+msgid "Description"
+msgstr "توضیحات"
+
+#: apps/blogs/models.py:27
+msgid "Image"
+msgstr "عکس"
+
+#: apps/blogs/models.py:33 apps/blogs/models.py:76
 msgid "Status"
 msgstr "وضعیت"
 
-#: src/apps/blogs/models.py:65
+#: apps/blogs/models.py:36
+msgid "Enable comments"
+msgstr "فعال کردن کامنت در پست"
+
+#: apps/blogs/models.py:37
+msgid "If checked, users will be able to post comments on this content."
+msgstr "اگر این گزینه فعال شود، کاربران می‌توانند نظرات خود را در مورد این محتوا ارسال کنند."
+
+#: apps/blogs/models.py:41
+msgid "Created at"
+msgstr "ایجاد شده در"
+
+#: apps/blogs/models.py:42
+msgid "Updated at"
+msgstr "به‌روزرسانی شده در"
+
+#: apps/blogs/models.py:45 apps/blogs/models.py:57
+#: apps/blogs/templates/blogs/blog_detail.html:21
+#: apps/blogs/templates/blogs/blog_list.html:18
+msgid "Blog"
+msgstr "وبلاگ"
+
+#: apps/blogs/models.py:64
+msgid "Text"
+msgstr "متن"
+
+#: apps/blogs/models.py:72
+msgid "Replayed to"
+msgstr "پاسخ داده‌شده به"
+
+#: apps/blogs/models.py:78
 msgid "If the comment is not appropriate, set it to false."
 msgstr "اگر نظر مناسب نیست، آن را به نادرست تنظیم کنید."
 
-#: src/apps/blogs/models.py:67
+#: apps/blogs/models.py:81
 msgid "created at"
 msgstr "ایجاد شده در"
 
-#: src/apps/blogs/models.py:70
-msgid "Blog comment"
-msgstr "نظر وبلاگ"
+#: apps/blogs/models.py:84
+msgid "Comment"
+msgstr "کامنت"
 
-#: src/apps/blogs/models.py:71
-msgid "Blog comments"
-msgstr "کامنت وبلاگ"
+#: apps/blogs/models.py:85 apps/blogs/templates/blogs/blog_detail.html:53
+#: apps/blogs/templates/blogs/blog_detail.html:64
+msgid "Comments"
+msgstr "کامنت‌ها"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:22
+#: apps/blogs/templates/blogs/blog_detail.html:23
 msgid "Home"
 msgstr "خانه"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:52
-#: src/apps/blogs/templates/blogs/blog_detail.html:63
-msgid "Comments"
-msgstr "کامنت"
-
-#: src/apps/blogs/templates/blogs/blog_detail.html:72
-#: src/apps/blogs/templates/blogs/blog_detail.html:96
+#: apps/blogs/templates/blogs/blog_detail.html:73
+#: apps/blogs/templates/blogs/blog_detail.html:97
 msgid "profile"
 msgstr "پروفایل"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:84
+#: apps/blogs/templates/blogs/blog_detail.html:85
 msgid "Reply"
 msgstr "پاسخ"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:115
+#: apps/blogs/templates/blogs/blog_detail.html:116
 msgid "Write a comment"
 msgstr "یک کامنت بنویسید"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:130
+#: apps/blogs/templates/blogs/blog_detail.html:131
 msgid "Post Comment"
 msgstr "ارسال کامنت"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:137
+#: apps/blogs/templates/blogs/blog_detail.html:138
 msgid "If you wanna send commnet please "
 msgstr "اگر می‌خواهید کامنت ارسال کنید لطفاً "
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:138
+#: apps/blogs/templates/blogs/blog_detail.html:139
 msgid "LOGIN"
 msgstr "وارد شوید"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:138
+#: apps/blogs/templates/blogs/blog_detail.html:139
 msgid " or "
 msgstr " یا "
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:139
+#: apps/blogs/templates/blogs/blog_detail.html:140
 msgid "SIGNUP."
 msgstr "ثبت نام کنید."
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:148
+#: apps/blogs/templates/blogs/blog_detail.html:149
 msgid "Recent Post"
 msgstr "پست‌های اخیر"
 
-#: src/apps/blogs/templates/blogs/blog_list.html:6
+#: apps/blogs/templates/blogs/blog_list.html:6
 msgid "Blog List"
 msgstr "لیست وبلاگ‌ها"
 
-#: src/apps/blogs/templates/blogs/blog_list.html:20
+#: apps/blogs/templates/blogs/blog_list.html:20
 msgid "HomePage"
 msgstr "خانه"
 
-#: src/apps/blogs/templates/blogs/blog_list.html:37
+#: apps/blogs/templates/blogs/blog_list.html:37
 msgid "Latest Blogs"
 msgstr "آخرین وبلاگ‌ها"
+
+#~ msgid "Blog's title"
+#~ msgstr "عنوان وبلاگ"
+
+#~ msgid "Blog's main img"
+#~ msgstr "تصویر اصلی وبلاگ"
+
+#~ msgid "Blog's status"
+#~ msgstr "وضعیت وبلاگ"
+
+#~ msgid "Blog's comments"
+#~ msgstr "کامنت‌های وبلاگ"
+
+#~ msgid "Comment's text"
+#~ msgstr "متن کامنت"
+
+#~ msgid "Parent"
+#~ msgstr "والد"
+
+#~ msgid "Blog comment"
+#~ msgstr "نظر وبلاگ"
+
+#~ msgid "Blog comments"
+#~ msgstr "کامنت وبلاگ"
 
 #~ msgid "Blog's comment's Cover"
 #~ msgstr "کاور نظر وبلاگ"

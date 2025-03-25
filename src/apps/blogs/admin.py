@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from django.db.models import Count
+from django.utils.translation import gettext_lazy as _
 
 from jalali_date.admin import ModelAdminJalaliMixin, TabularInlineJalaliMixin
 from django_ckeditor_5.widgets import CKEditor5Widget
@@ -51,7 +52,7 @@ class BlogAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
             .prefetch_related('comments')\
             .annotate(num_of_comments=Count('comments'))
 
-    @admin.display(description='#comments', ordering='-num_of_comments')
+    @admin.display(description=_('#comments'), ordering='-num_of_comments')
     def num_of_comments(self, blog):
         return blog.comments.all().count()
 
