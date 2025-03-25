@@ -13,7 +13,7 @@ class ContactInfo(models.Model):
     youtube_id = models.CharField(_('youtube id'), max_length=50, blank=True, null=True, help_text=_('Enter your YouTube ID.'))
     instagram_id = models.CharField(_('instagram id'), max_length=50, blank=True, null=True, help_text=_('Enter your Instagram ID.'))
 
-    is_primary = models.BooleanField(_('Is primary'), help_text=_('you can only have 1 primary contact'))
+    is_primary = models.BooleanField(_('Is primary'), help_text=_('You can only have 1 primary contact'))
 
     class Meta:
         verbose_name = _('Contact Information')
@@ -27,11 +27,11 @@ class Message(models.Model):
         null=True,
         blank=True,
         related_name='messages',
-        verbose_name=_('User')
+        verbose_name=_('User'),
     )
-    text = models.TextField(_('Message'),)
+    text = models.TextField(_('Message'))
 
-    date_sent = models.DateTimeField(auto_now_add=True, verbose_name=_('Date sent'))
+    date_sent = models.DateTimeField(_('Sent Date'), auto_now_add=True)
 
     class Meta:
         verbose_name = _('Message')
