@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db.models import Count, Q
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from jalali_date.admin import ModelAdminJalaliMixin, TabularInlineJalaliMixin
 
@@ -19,12 +19,11 @@ class InstructorHonorInline(TabularInlineJalaliMixin, admin.TabularInline):
 
 @admin.register(Instructor)
 class InstructorAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ('full_name', 'phone_number', 'num_of_courses', 'is_master', 'is_active',)
+    list_display = ('full_name', 'phone_number', 'num_of_courses', 'is_active',)
     fieldsets = (
         (None, {'fields': ('user', 'slug')}),
         (_('instructor info'), {'fields': ('description', 'experience')}),
-        (_('social media info'), {'fields': ('telegram_id', 'youtube_id', 'instagram_id',)}),
-        (_('status info'), {'fields': ('is_active', 'is_master',)}),
+        (_('status info'), {'fields': ('is_active',)}),
     )
     list_editable = ('is_active',)
     inlines = (InstructorWidjetInline, InstructorHonorInline,)
@@ -39,11 +38,11 @@ class InstructorAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
             pass
         return queryset, use_distinct
 
-    @admin.display(ordering='user__first_name')
+    @admin.display(ordering='user__first_name', description=_('FullName'))
     def full_name(self, instructor):
         return instructor.full_name
 
-    @admin.display(ordering='user__phone_number')
+    @admin.display(ordering='user__phone_number', description=_('PhoneNumber'))
     def phone_number(self, instructor):
         return instructor.user.phone_number
 
@@ -53,7 +52,7 @@ class InstructorAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
                 .prefetch_related('courses') \
                 .annotate(num_of_courses=Count('courses'))
 
-    @admin.display(description=_('# courses'), ordering='num_of_courses')
+    @admin.display(description=_('#courses'), ordering='num_of_courses')
     def num_of_courses(self, instructor):
         return instructor.num_of_courses
 
@@ -69,7 +68,7 @@ class InstructorHonorAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 @admin.register(InstructorWidjet)
 class InstructorWidjetAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('instructor',)
-    search_fields = ('instructor', 'widjet',)
+    search_fields = ('instructor', 'widjet')
 
 
 

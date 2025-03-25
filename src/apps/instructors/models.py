@@ -2,21 +2,35 @@ from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 
 class Instructor(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, verbose_name=_('user'),)
-    slug = models.SlugField(_('slug'), blank=True, allow_unicode=True,)
-    description = models.TextField(_('description'), help_text=_('Provide a detailed description of the instructor.'),)
-    experience = models.PositiveIntegerField(_('experience'), help_text=_('Enter the number of years of experience.'),)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name=_('user'),
+    )
+    slug = models.SlugField(
+        _('slug'),
+        blank=True,
+        allow_unicode=True,
+    )
+    description = models.TextField(
+        _('description'),
+        help_text=_('Provide a detailed description of the instructor.'),
+    )
+    experience = models.PositiveIntegerField(
+        _('experience'),
+        help_text=_('Enter the number of years of experience.'),
+    )
 
-    telegram_id = models.CharField(max_length=50, blank=True, null=True, help_text=_('Enter your Telegram ID to display on your profile.'),)
-    youtube_id = models.CharField(max_length=50, blank=True, null=True, help_text=_('Enter your YouTube ID to display on your profile.'),)
-    instagram_id = models.CharField(max_length=50, blank=True, null=True, help_text=_('Enter your Instagram ID to display on your profile.'),)
-
-    is_master = models.BooleanField(_('is master'), default=False, help_text=_('Check this box to set master instructor and display social media links.'),)
-    is_active = models.BooleanField(_('is active'), default=True, help_text=_('Check this box to set this instructor as active.'),)
+    is_active = models.BooleanField(
+        _('is active'),
+        default=True,
+        help_text=_('Check this box to set this instructor as active.'),
+    )
 
     def __str__(self):
         return self.full_name
@@ -38,6 +52,10 @@ class Instructor(models.Model):
 
         super(Instructor, self).save(*args, **kwargs)
 
+    class Meta:
+        verbose_name = _('Coach')
+        verbose_name_plural = _('Coaches')
+
 
 class InstructorWidjet(models.Model):
     instructor = models.ForeignKey(
@@ -51,16 +69,24 @@ class InstructorWidjet(models.Model):
     def __str__(self):
         return self.widjet
 
+    class Meta:
+        verbose_name = _('widjet')
+        verbose_name_plural = _('widjets')
+
 
 class InstructorHonor(models.Model):
     instructor = models.ForeignKey(
         settings.INSTRUCTOR_USER_MODEL,
         on_delete=models.CASCADE,
-        verbose_name=_('instructor'),
+        verbose_name=_('coach'),
         related_name='honors',
         help_text=_('add your honor here, with one related photo'),
     )
-    text = models.CharField(verbose_name=_('honor'), max_length=50, )
-    img = models.ImageField(_('photo'), upload_to='instructors/honor/img', )
+    text = models.CharField(verbose_name=_('honor'), max_length=50)
+    img = models.ImageField(_('photo'), upload_to='instructors/honor/img')
 
-    status = models.BooleanField(_('status'), default=True, )
+    status = models.BooleanField(_('status'), default=True)
+
+    class Meta:
+        verbose_name = _('Honor')
+        verbose_name_plural = _('Honors')
