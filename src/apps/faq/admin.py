@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from jalali_date.admin import ModelAdminJalaliMixin
 
@@ -16,13 +16,13 @@ class QuestionAnswerAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     ordering = ('-date_created',)
     actions = ('status_to_false', 'status_to_true',)
     fieldsets = (
-        ('QuestionAnswerAdmin', {'fields': ('question', 'answer',)}),
-        ('Status', {'fields': ('status',)}),
-        ('Date\'s informations', {'fields': ('date_created', 'date_modified',)}),
+        (_('QuestionAnswer'), {'fields': ('question', 'answer',)}),
+        (_('Status'), {'fields': ('status',)}),
+        (_('Date\'s informations'), {'fields': ('date_created', 'date_modified',)}),
     )
     add_fieldsets = (
-        ('QuestionAnswerAdmin', {'fields': ('question', 'answer',)}),
-        ('Status', {'fields': ('status',)}),
+        ('_(QuestionAnswer', {'fields': ('question', 'answer',)}),
+        (_('Status'), {'fields': ('status',)}),
     )
 
     def get_fieldsets(self, request, obj=None):
@@ -35,7 +35,7 @@ class QuestionAnswerAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         updated_count = queryset.update(status=False)
         self.message_user(
             request,
-            f'{updated_count} of status changed to false.'
+            _(f'{updated_count} of status changed to false.'),
         )
         return updated_count
 
@@ -44,6 +44,6 @@ class QuestionAnswerAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         updated_count = queryset.update(status=True)
         self.message_user(
             request,
-            f'{updated_count} of status changed to True.'
+            _(f'{updated_count} of status changed to True.')
         )
         return updated_count
