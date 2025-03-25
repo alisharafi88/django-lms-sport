@@ -1,30 +1,83 @@
+html[data-theme="light"], :root {
+    --tp-theme: #CCD5C0 ;
+    --tp-g-theme: #6E7753;
+    --tp-btn: #D47F6A;
+}
+
+html[data-theme="dark"] {
+    --tp-theme: #4a545980;
+    --tp-g-theme: #172B23;
+    --tp-btn: #E2583E;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --tp-theme: #4a545980;
+        --tp-g-theme: #172B23;
+        --tp-btn: #E2583E;
+    }
+}
+
 body {
     background: url('/static/assets/admin/img/background.jpg') no-repeat center center fixed;
     background-size: cover;
-    color: var(--body-fg) !important;
+    color: var(--body-fg);
+}
+.ck-content {
+    color: black !important;
 }
 .d-flex {
     display: flex !important;
+}
+.justify-content-end {
+    justify-content: flex-end !important;
+}
+.logo {
+    padding: 23px 0;
+}
+.align-items-center {
+    align-items: center !important;
+}
+@media (min-width: 1200px) {
+    .col-xl-9 {
+        flex: 0 0 auto;
+        width: 75%;
+    }
+}
+@media (min-width: 992px) {
+    .col-lg-7 {
+        flex: 0 0 auto;
+        width: 58.33333333%;
+    }
+}
+@media (min-width: 768px) {
+    .col-md-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+.col-6 {
+    flex: 0 0 auto;
+    width: 50%;
 }
 
 h1{
     color: white !important;
 }
 h2{
-    color: #777c90 !important;
+    color: white !important;
 }
 table {
      caption-side: top !important;
 }
 
 tr:nth-child(odd), .row-form-errors {
-    background: var(--tp-theme) !important;
+    background: var(--tp-theme);
 }
 .module h2, .module caption, .inline-group h2 {
     background: var(--tp-g-theme);
 }
-.module p, .module ul, .module h3, .module h4, .module dl, .module pre {
-    color: var(--body-fg) !important;
+ #content-related .module h2 {
+    color: var(--body-fg);
 }
 
 div.breadcrumbs {
@@ -57,18 +110,13 @@ div.breadcrumbs {
     height: 2.1875rem !important;
 }
 
-html[data-theme="light"], :root {
-    --tp-theme: #FF6652;
-    --tp-g-theme: #17ad67ed;
+.toggle-nav-sidebar {
+    color: var(--tp-btn);
 }
 
-html[data-theme="dark"] {
-    --tp-theme: #a74438;
-    --tp-g-theme: #1e4a3f;
+.button.default, input[type=submit].default, .submit-row input.default, .button, .submit-row input {
+    background: var(--tp-btn);
 }
-@media (prefers-color-scheme: dark) {
-    :root {
-        --tp-theme: #a74438;
-        --tp-g-theme: #1e4a3f;
-    }
+.theme-toggle svg.theme-icon-when-auto, .theme-toggle svg.theme-icon-when-dark, .theme-toggle svg.theme-icon-when-light {
+     color: #141414;
 }
