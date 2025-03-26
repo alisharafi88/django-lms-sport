@@ -109,7 +109,7 @@ msgstr "ثبت نام"
 #: apps/accounts/templates/accounts/dashboards/student_dashboard.html:447
 #: apps/accounts/templates/accounts/verification_otp.html:19
 msgid "Home"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: apps/accounts/templates/accounts/authentication.html:36
 #: apps/accounts/templates/accounts/verification_otp.html:36
@@ -132,7 +132,7 @@ msgstr "پنل‌دانشجو"
 
 #: apps/accounts/templates/accounts/dashboards/student_dashboard.html:125
 msgid "HomePage"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: apps/accounts/templates/accounts/dashboards/student_dashboard.html:128
 #: apps/accounts/templates/accounts/dashboards/student_dashboard.html:166
@@ -147,7 +147,7 @@ msgstr "سبد خرید"
 #: apps/accounts/templates/accounts/dashboards/student_dashboard.html:134
 #: apps/accounts/templates/accounts/dashboards/student_dashboard.html:384
 msgid "Tickets"
-msgstr "تیکت ها"
+msgstr "تیکت‌ها"
 
 #: apps/accounts/templates/accounts/dashboards/student_dashboard.html:137
 #: apps/accounts/templates/accounts/dashboards/student_dashboard.html:453

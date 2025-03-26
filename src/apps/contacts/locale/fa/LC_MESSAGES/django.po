@@ -109,7 +109,7 @@ msgstr "پیام‌ها"
 
 #: apps/contacts/templates/admin/custom_change_confirmation.html:22
 msgid "Home"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: apps/contacts/templates/admin/custom_change_confirmation.html:28
 msgid "Confirm change"
@@ -195,7 +195,7 @@ msgstr "با ما تماس بگیرید"
 
 #: apps/contacts/templates/contact/contact.html:23
 msgid "HomePage"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: apps/contacts/templates/contact/contact.html:25
 msgid "Contact"

@@ -385,7 +385,7 @@ msgstr "کامنت‌دوره‌ها"
 #: apps/courses/templates/packages/courses_list.html:52
 #: apps/courses/templates/packages/package_detail.html:55
 msgid "HomePage"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: apps/courses/templates/packages/course_detail.html:58
 #: apps/courses/templates/packages/package_detail.html:57

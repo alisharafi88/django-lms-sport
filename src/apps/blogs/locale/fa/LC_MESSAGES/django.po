@@ -109,7 +109,7 @@ msgstr "کامنت‌ها"
 
 #: apps/blogs/templates/blogs/blog_detail.html:23
 msgid "Home"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: apps/blogs/templates/blogs/blog_detail.html:73
 #: apps/blogs/templates/blogs/blog_detail.html:97
@@ -154,7 +154,7 @@ msgstr "لیست وبلاگ‌ها"
 
 #: apps/blogs/templates/blogs/blog_list.html:20
 msgid "HomePage"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: apps/blogs/templates/blogs/blog_list.html:37
 msgid "Latest Blogs"

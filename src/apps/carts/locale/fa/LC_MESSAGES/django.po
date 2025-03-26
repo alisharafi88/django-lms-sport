@@ -30,7 +30,7 @@ msgstr "سبد خرید"
 
 #: apps/carts/templates/carts/cart.html:95
 msgid "HomePage"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: apps/carts/templates/carts/cart.html:116
 msgid "Images"

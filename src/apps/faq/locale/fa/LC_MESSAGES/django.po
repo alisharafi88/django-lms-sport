@@ -91,7 +91,7 @@ msgstr "سوالات متداول"
 
 #: apps/faq/templates/faq/FAQ.html:20
 msgid "HomePage"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: apps/faq/templates/faq/FAQ.html:22
 msgid "Pages"

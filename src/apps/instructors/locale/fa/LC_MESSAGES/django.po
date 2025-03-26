@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-26 02:26+0330\n"
+"POT-Creation-Date: 2025-03-26 02:43+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,22 +23,18 @@ msgid "instructor info"
 msgstr "اطلاعات مدرس"
 
 #: apps/instructors/admin.py:26
-msgid "social media info"
-msgstr "اطلاعات شبکه‌های اجتماعی"
-
-#: apps/instructors/admin.py:27
 msgid "status info"
 msgstr "اطلاعات وضعیت"
 
-#: apps/instructors/admin.py:42
+#: apps/instructors/admin.py:41
 msgid "FullName"
 msgstr "نام"
 
-#: apps/instructors/admin.py:46
+#: apps/instructors/admin.py:45
 msgid "PhoneNumber"
 msgstr "تلفن‌همراه"
 
-#: apps/instructors/admin.py:56
+#: apps/instructors/admin.py:55
 msgid "#courses"
 msgstr "#دوره‌ها"
 
@@ -133,7 +129,7 @@ msgstr "افتخارات"
 #: apps/instructors/templates/instructors/instructor_detail.html:53
 #: apps/instructors/templates/instructors/instructor_list.html:19
 msgid "HomePage"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
 #: apps/instructors/templates/instructors/instructor_detail.html:55
 msgid "Coachs"
@@ -218,6 +214,9 @@ msgstr "دسترسی مادام‌العمر"
 #: apps/instructors/templates/instructors/instructor_list.html:78
 msgid "Our Expert Coach"
 msgstr "مربی‌های متخصص ما"
+
+#~ msgid "social media info"
+#~ msgstr "اطلاعات شبکه‌های اجتماعی"
 
 #~ msgid "instructor"
 #~ msgstr "مدرس"

@@ -8,92 +8,132 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-17 04:34+0330\n"
+"POT-Creation-Date: 2025-03-26 04:13+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: fa\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/config/settings/base.py:311 src/config/settings/base.py:312
+#: config/settings/base.py:311 config/settings/base.py:312
 msgid "Site Management"
-msgstr "مدیریت‌ سایت"
+msgstr "مدیریت سایت"
 
-#: src/config/settings/base.py:313 src/templates/admin/base_site.html:87
+#: config/settings/base.py:313
 msgid "Admin Panel"
-msgstr "پنل ادمین"
+msgstr "پنل مدیریت"
 
-#: src/config/settings/base.py:314
+#: config/settings/base.py:314
 msgid "Welcome to the Admin Panel"
-msgstr "به پنل‌ادمین خوش‌آمدی"
+msgstr "به پنل مدیریت خوش آمدید"
 
-#: src/config/settings/base.py:317
+#: config/settings/base.py:317
 msgctxt "Navigation"
 msgid "Home"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
-#: src/config/settings/base.py:319
+#: config/settings/base.py:319
 msgctxt "Action"
 msgid "Logout"
 msgstr "خروج"
 
-#: src/templates/inc/header.html:24
-msgctxt "header1"
-msgid "Search Now"
-msgstr "جستجو"
+#: templates/admin/base_site.html:29
+msgid "View site"
+msgstr "مشاهده سایت"
 
-#: src/templates/inc/header.html:25
-msgctxt "header1"
-msgid "What you want to learn?"
-msgstr "چه چیزی می‌خواهید یاد بگیرید؟"
+#: templates/admin/base_site.html:36
+msgid "Documentation"
+msgstr "مستندات"
 
-#: src/templates/inc/header.html:38
+#: templates/admin/base_site.html:42
+msgid "Change password"
+msgstr "تغییر رمز عبور"
+
+#: templates/admin/base_site.html:48
+msgid "Log out"
+msgstr "خروج"
+
+#: templates/admin/base_site.html:65
+msgid "Breadcrumbs"
+msgstr ""
+
+#: templates/admin/base_site.html:68 templates/inc/header.html:38
 msgid "HomePage"
-msgstr "خانه"
+msgstr "صفحه‌اصلی"
 
-#: src/templates/inc/header.html:41
+#: templates/inc/footer-area.html:11
+msgid "AboutUs"
+msgstr "درباره ما"
+
+#: templates/inc/footer-area.html:15
+msgid "About us"
+msgstr "درباره ما"
+
+#: templates/inc/footer-area.html:16 templates/inc/header.html:44
+msgid "Blogs"
+msgstr "بلاگ‌ها"
+
+#: templates/inc/footer-area.html:24
+msgid "Quick Links"
+msgstr "لینک‌های سریع"
+
+#: templates/inc/footer-area.html:28 templates/inc/header.html:41
 msgid "Courses"
 msgstr "دوره‌ها"
 
-#: src/templates/inc/header.html:44
-msgid "Blogs"
-msgstr "وبلاگ‌ها"
-
-#: src/templates/inc/header.html:48
-msgid "Coches"
-msgstr "مربی‌ها"
-
-#: src/templates/inc/header.html:51
-msgid "BMI"
-msgstr "BMI"
-
-#: src/templates/inc/header.html:54
-msgid "Pages"
-msgstr "صفحات"
-
-#: src/templates/inc/header.html:56
-msgid "About Us"
-msgstr "درباره‌‌ما"
-
-#: src/templates/inc/header.html:57
-msgid "Contact Us"
-msgstr "تماس‌با‌ما"
-
-#: src/templates/inc/header.html:58
+#: templates/inc/footer-area.html:29 templates/inc/header.html:58
 msgid "FAQ"
 msgstr "سوالات متداول"
 
-#~ msgid "Check Out"
-#~ msgstr "تسویه‌حساب"
+#: templates/inc/footer-area.html:30
+msgid "Cart"
+msgstr "سبد خرید"
 
-#~ msgid "Register"
-#~ msgstr "ثبت نام"
+#: templates/inc/footer-area.html:31 templates/inc/header.html:51
+msgid "BMI"
+msgstr "BMI"
 
-#~ msgid "Sign In"
-#~ msgstr "ورود"
+#: templates/inc/footer-area.html:32
+msgid "Coaches"
+msgstr "مربیان"
 
-#~ msgid "Instructors"
-#~ msgstr "مدرسین"
+#: templates/inc/footer-area.html:40
+msgid "Support"
+msgstr "پشتیبانی"
+
+#: templates/inc/footer-area.html:44
+msgid "Contact us"
+msgstr "تماس با ما"
+
+#: templates/inc/footer-area.html:45
+msgid "Ticketing"
+msgstr "ارسال تیکت"
+
+#: templates/inc/footer-area.html:53
+msgid "SupportUs"
+msgstr "حمایت از ما"
+
+#: templates/inc/header.html:48
+msgid "Coches"
+msgstr "مربیان"
+
+#: templates/inc/header.html:54
+msgid "Pages"
+msgstr "صفحات"
+
+#: templates/inc/header.html:56
+msgid "About Us"
+msgstr "درباره ما"
+
+#: templates/inc/header.html:57
+msgid "Contact Us"
+msgstr "تماس با ما"
+
+#, fuzzy
+#~| msgctxt "Navigation"
+#~| msgid "Home"
+#~ msgid "Home"
+#~ msgstr "صفحه‌اصلی"
