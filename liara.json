@@ -15,10 +15,6 @@
 
     "disks": [
         {
-            "name": "src",
-            "mountTo": "/src"
-        },
-        {
             "name": "media-volume",
             "mountTo": "/src/media"
         },
