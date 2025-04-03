@@ -32,6 +32,7 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     fieldsets = (
         (_('custome information'), {'fields': ('customer',)}),
         (_('status'), {'fields': ('status', 'access_status',)}),
+        (_('Payment'), {'fields': ('zarinpal_authority', 'zarinpal_ref_id', 'zarinpal_data')}),
         (_('date'), {'fields': ('date_created',)}),
     )
 

@@ -303,6 +303,9 @@ SMS_API_KEY = os.getenv('SMS_API_KEY')
 SMS_SENDER = os.getenv('SMS_SENDER')
 SMS_PATTERN_CODE = os.getenv('SMS_PATTERN_CODE')
 
+# Zarinpal
+MERCHANT = os.getenv('MERCHANT')
+
 # Jazzmin
 
 JAZZMIN_SETTINGS = {

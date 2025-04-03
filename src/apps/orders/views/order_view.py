@@ -8,8 +8,8 @@ from django.db import transaction
 
 import logging
 
-from .models import Order, OrderItem, DVDOrderDetail
-from .forms import CheckoutForm
+from apps.orders.models import Order, OrderItem, DVDOrderDetail
+from apps.orders.forms import CheckoutForm
 from apps.carts.carts import Cart
 
 
@@ -86,10 +86,8 @@ class OrderCreateView(View):
                         )
                         logger.info('DVDOrderDetail created for order ID %s', order.id)
 
-                    cart.clear()
-                    logger.info('Cart cleared for user %s after order completion.', request.user.username)
-                    messages.success(request, _('Your order was successfully completed!'), 'success')
-                    return redirect('carts:cart')
+                    request.session['order_id'] = order.id
+                    return redirect('orders:zp_payment_process')
             except Exception as e:
                 logger.error('Error creating order for user %s: %s', request.user.username, e, exc_info=True)
                 messages.error(request, _('Something went wrong. Please try again.'), 'error')

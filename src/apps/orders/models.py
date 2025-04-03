@@ -52,10 +52,18 @@ class Order(models.Model):
 
     date_created = models.DateTimeField(_('DateCreated'), auto_now_add=True)
 
+    zarinpal_authority = models.CharField(_('Payment Authority'), max_length=255, null=True, blank=True)
+    zarinpal_ref_id = models.CharField(max_length=150, null=True, blank=True)
+    zarinpal_data = models.TextField(null=True, blank=True)
+
     def __str__(self):
         return f'{self.total_price}'
 
     class Meta:
+        indexes = [
+            models.Index(fields=['status', 'zarinpale_authority']),
+        ]
+
         verbose_name = _('Order')
         verbose_name_plural = _('Orders')
 

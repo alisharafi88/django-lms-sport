@@ -43,3 +43,6 @@ SECURE_HSTS_SECONDS = 0
 
 # static
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
+
+# Zarinpal
+SANDBOX = True
