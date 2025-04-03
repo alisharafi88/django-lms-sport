@@ -1,7 +1,6 @@
 {% extends '-base.html' %}
 {% load widget_tweaks %}
 {% load i18n %}
-{% load widget_tweaks %}
 {% load static %}
 
 {% block title %}
@@ -36,13 +35,13 @@
                 <div class="col-md-6">
                     <div class="coupon-accordion">
                         <!-- ACCORDION START -->
-                        <h3>Have a coupon? <span id="showcoupon">Click here to enter your code</span></h3>
+                        <h3>{% trans 'Have a coupon?' %} <span id="showcoupon">{% trans 'Click here to enter your code' %}</span></h3>
                         <div id="checkout_coupon" class="coupon-checkout-content">
                             <div class="coupon-info">
                                 <form action="#">
                                     <p class="checkout-coupon">
-                                        <input type="text" placeholder="Coupon Code"/>
-                                        <button class="tp-btn-3" type="submit">Apply Coupon</button>
+                                        <input type="text" placeholder="{% trans 'Coupon Code' %}"/>
+                                        <button class="tp-btn-3" type="submit">{% trans 'Apply Coupon' %}</button>
                                     </p>
                                 </form>
                             </div>
@@ -63,7 +62,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
                         <div class="your-order mb-30 ">
-                            <h3>Your order</h3>
+                            <h3>{% trans 'Your order' %}</h3>
                             <div class="your-order-table table-responsive">
                                 <table>
                                     <thead>
@@ -76,18 +75,18 @@
                                     {% for item in cart %}
                                         <tr class="cart_item">
                                             <td class="product-name">
-                                                {{ item.course_obj.title }} <strong class="product-name"></strong>
+                                                {{ item.product_obj.title }} <strong class="product-name"></strong>
                                             </td>
                                             <td class="product-total">
-                                                <span class="amount price">{% trans 'Toman' %}{{ item.course_obj.price }}</span>
+                                                <span class="amount price">{{ item.product_obj.price }} {% trans 'Toman' %}</span>
                                             </td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
                                     <tfoot>
                                     <tr class="cart-subtotal">
-                                        <th>Cart Subtotal</th>
-                                        <td><span class="amount">$215.00</span></td>
+                                        <th>{% trans 'Cart Subtotal' %}</th>
+                                        <td><span class="amount">{{ total_price }} {% trans 'Toman' %}</span></td>
                                     </tr>
                                     <tr class="shippings">
                                         <th>Shipping</th>
@@ -98,14 +97,14 @@
                                         </td>
                                     </tr>
                                     <tr class="order-total">
-                                        <th>Order Total</th>
-                                        <td><strong><span class="amount">$215.00</span></strong>
+                                        <th>{% trans 'Order Total' %}</th>
+                                        <td><strong><span class="amount">{{ total_discounted_price }} {% trans 'Toman' %}</span></strong>
                                         </td>
                                     </tr>
                                     </tfoot>
                                 </table>
                                 <div class="order-button-payment mt-20">
-                                    <button type="submit" class="tp-btn">Place order</button>
+                                    <button type="submit" class="tp-btn">{% trans 'Place order' %}</button>
                                 </div>
                             </div>
                         </div>

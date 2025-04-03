@@ -32,8 +32,19 @@ class OrderCreateView(View):
 
     def get(self, request):
         cart = Cart(request)
+        total_price, total_discounted_price = cart.get_total_price()
+
         logger.debug('Rendering checkout page for user %s with cart items: %s', request.user.username, cart)
-        return render(request, self.template_name, {'cart': cart, 'form': self.form_class()})
+        return render(
+            request,
+            self.template_name,
+            {
+                'cart': cart,
+                'total_price': total_price,
+                'total_discounted_price': total_discounted_price,
+                'form': self.form_class()
+            }
+        )
 
     def post(self, request):
         cart = Cart(request)
@@ -54,12 +65,12 @@ class OrderCreateView(View):
                     for item in cart:
                         OrderItem.objects.create(
                             order=order,
-                            course=item['course_obj'],
+                            course=item['product_obj'],
                             unit_price=item['item_total_price'],
                         )
                         logger.debug('OrderItem created for order ID %s: %s', order.id, item)
 
-                    if form.cleaned_data['is_active'] == Order.AccessStatus.DVD:
+                    if form.cleaned_data['status'] == Order.AccessStatus.DVD:
                         order.access_status = Order.AccessStatus.DVD
                         order.save()
                         DVDOrderDetail.objects.create(

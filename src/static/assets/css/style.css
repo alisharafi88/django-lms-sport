@@ -7140,7 +7140,7 @@ p.checkout-coupon input[type=text]:focus {
     color: #6f7172;
     font-size: 14px;
     padding: 15px 0;
-    text-align: left;
+    text-align: right;
 }
 
 @media (max-width: 767px) {
@@ -7153,7 +7153,7 @@ p.checkout-coupon input[type=text]:focus {
     border-top: medium none;
     color: #6f7172;
     font-weight: var(--tp-fw-regular);
-    text-align: left;
+    text-align: right;
     vertical-align: middle;
     white-space: nowrap;
     width: 250px;
