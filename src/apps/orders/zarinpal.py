@@ -39,14 +39,10 @@ def send_request(amount, description, phone, callback_url,):
         )
         if response.status_code == 200:
             response = response.json()
-            print(response['data'])
-            print(response['errors'])
             return {
                 'status': True,
                 'data': response['data'],
             }
-        print(response.json()['data'])
-        print(response.json()['errors'])
         return {'status': False, 'error': 'http_error'}
     except requests.exceptions.Timeout:
         return {'status': False, 'error': 'timeout'}
