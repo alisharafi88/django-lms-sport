@@ -34,10 +34,6 @@ def generate_instructor_data():
     return {
         'description': ' '.join(fake.sentences(nb=3)),
         'experience': random.randint(1, 20),
-        'telegram_id': fake.user_name(),
-        'youtube_id': fake.user_name(),
-        'instagram_id': fake.user_name(),
-        'is_master': random.choice([True, False]),
         'is_active': True,
     }
 
@@ -136,7 +132,7 @@ def generate_faq_data():
 
 list_of_models = {
     'accounts.CustomUser': {
-        'count': 200,
+        'count': 20,
         'fields': {
             'first_name': lambda x: fake.first_name(),
             'last_name': lambda x: fake.last_name(),

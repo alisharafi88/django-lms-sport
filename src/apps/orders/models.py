@@ -48,8 +48,9 @@ class Order(models.Model):
         choices=AccessStatus.choices,
         default=AccessStatus.ONLINE
     )
+    total_price = models.PositiveIntegerField(_('TotalPrice'), default=0)
+
     date_created = models.DateTimeField(_('DateCreated'), auto_now_add=True)
-    total_price = models.DecimalField(_('TotalPrice'), max_digits=10, decimal_places=2, default=0.00)
 
     def __str__(self):
         return f'{self.total_price}'
@@ -121,7 +122,7 @@ class OrderItem(models.Model):
         related_name='order_items',
         verbose_name=_('Course')
     )
-    unit_price = models.DecimalField(_('UnitPrice'), max_digits=6, decimal_places=2)
+    unit_price = models.PositiveIntegerField(_('UnitPrice'), default=0)
 
     class Meta:
         unique_together = ('order', 'course')

@@ -45,11 +45,6 @@ class Instructor(models.Model):
     def save(self, *args, **kwargs):
         # Generate a URL-friendly slug from the instructor's full name
         self.slug = slugify(self.full_name, allow_unicode=True)
-
-        # Ensure only one instructor can be marked as master
-        if self.is_master:
-            Instructor.objects.filter(is_master=True).update(is_master=False)
-
         super(Instructor, self).save(*args, **kwargs)
 
     class Meta:

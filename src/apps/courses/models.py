@@ -30,10 +30,9 @@ class Coupon(models.Model):
         max_length=50,
         unique=True,
     )
-    discount_amount = models.DecimalField(
+    discount_amount = models.PositiveIntegerField(
         _('Discount amount'),
-        max_digits=5,
-        decimal_places=2,
+        default=0,
     )
     date_valid_from = models.DateField(
         _('Date valid from'),
@@ -75,16 +74,13 @@ class Product(models.Model):
         verbose_name=_("Description")
     )
 
-    price = models.DecimalField(
+    price = models.PositiveIntegerField(
         _('Price'),
-        max_digits=10,
-        decimal_places=2,
+        default=0,
     )
-    discount_amount = models.DecimalField(
+    discount_amount = models.PositiveIntegerField(
         _('Discount amount'),
-        max_digits=5,
-        decimal_places=2,
-        default=0.00,
+        default=0,
         help_text=_('Discount amount for this product.'),
     )
 

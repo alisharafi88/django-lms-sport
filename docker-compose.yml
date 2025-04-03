@@ -37,19 +37,19 @@ services:
       retries: 5
       start_period: 30s
 
-#  nginx:
-#    build: ./nginx
-#    container_name: fastball-nginx-container
-#    ports:
-#      - "80:80"
-#      - "443:443"
-#    volumes:
-#      - static-volume:/src/staticfiles
-#      - media-volume:/src/media
-#      - ./nginx/certs:/etc/nginx/certs
-#    depends_on:
-#      - web
-#    restart: unless-stopped
+  nginx:
+    build: ./nginx
+    container_name: fastball-nginx-container
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - static-volume:/src/staticfiles
+      - media-volume:/src/media
+      - ./nginx/certs:/etc/nginx/certs
+    depends_on:
+      - web
+    restart: unless-stopped
 
 volumes:
   mysql-data:
