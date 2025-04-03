@@ -11,6 +11,7 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'assets/css/student-dashboard.css' %}"/>
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
@@ -100,6 +101,38 @@
             transform: translateY(20px);
             pointer-events: none;
         }
+
+        .order-header {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .order-header:hover {
+            background-color: #f8f9fa;
+        }
+
+        .collapse:not(.show) {
+            display: none;
+        }
+
+        .collapse.show {
+            display: table-row;
+        }
+
+        .dvd-details {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .order-header[aria-expanded="true"] .fa-chevron-down {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .card.bg-light {
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -131,9 +164,12 @@
         <i class="fas fa-shopping-cart"></i> {% trans 'Cart' %}
     </button>
     <button onclick="navigateToTab('tab3')">
-        <i class="fas fa-envelope"></i> {% trans 'Tickets' %}
+        <i class="fa-solid fa-credit-card-front"></i> {% trans 'Orders' %}
     </button>
     <button onclick="navigateToTab('tab4')">
+        <i class="fas fa-envelope"></i> {% trans 'Tickets' %}
+    </button>
+    <button onclick="navigateToTab('tab5')">
         <i class="fas fa-cog"></i> {% trans 'Settings' %}
     </button>
 
@@ -283,13 +319,19 @@
                                             data-product-type="{{ item.type }}"
                                             data-remove-url="{% url 'carts:cart_remove' 0 'type' %}">
                                             <td class="product-thumbnail">
-                                                <a href="{% if item.product_obj.type == 'course' %}{% url 'courses:course_detail'  item.product_obj.slug %}{% else %}{% url 'courses:package_detail' item.product_obj.slug %}{% endif %}">
+                                                <a href="
+                                                        
+                                                        
+                                                        {% if item.product_obj.type == 'course' %}{% url 'courses:course_detail'  item.product_obj.slug %}{% else %}{% url 'courses:package_detail' item.product_obj.slug %}{% endif %}">
                                                     <img src="{{ item.product_obj.img.url }}"
                                                          alt="{{ item.product_obj.title }}">
                                                 </a>
                                             </td>
                                             <td class="product-name">
-                                                <a href="{% if item.product_obj.type == 'course' %}{% url 'courses:course_detail'  item.product_obj.slug %}{% else %}{% url 'courses:package_detail' item.product_obj.slug %}{% endif %}">
+                                                <a href="
+                                                        
+                                                        
+                                                        {% if item.product_obj.type == 'course' %}{% url 'courses:course_detail'  item.product_obj.slug %}{% else %}{% url 'courses:package_detail' item.product_obj.slug %}{% endif %}">
                                                     {{ item.product_obj.title }}
                                                 </a>
                                             </td>
@@ -364,8 +406,150 @@
         <!-- cart area end-->
     </div>
     <!-- ----------------------------------------------پایان--------------------------- -->
-    <!-- ----------------------------------------------بخش کامنت گزاری--------------------------- -->
+
+    <!-- ------------------------------------------------------بخش سفارش‌ها----------------------------------- -->
     <div class="element" id="element3">
+        <!-- Breadcrumb Section -->
+        <section class="breadcrumb-section py-4" style="background-color: #f9fafb;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Breadcrumb Path -->
+                    <div class="col-lg-8 col-md-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'home:home' %}"
+                                       class="text-decoration-none text-dark">{% trans 'Home' %}</a>
+                                </li>
+                                <li class="dvdr"><i class="fa-regular fa-angle-left"></i></li>
+                                <li class="active text-muted" aria-current="page">{% trans 'Dashboard' %}</li>
+                                <li class="dvdr"><i class="fa-regular fa-angle-left"></i></li>
+                                <li class="active text-muted"
+                                    aria-current="page">{% trans 'Orders' %}</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- End of Breadcrumb Section -->
+        <!-- order area -->
+        <section class="order-area pt-100 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        {% if orders.exists %}
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <tbody>
+                                    {% for order in orders %}
+                                        <!-- Order Header -->
+                                        <tr class="order-header" data-bs-toggle="collapse"
+                                            data-bs-target="#dvd-{{ order.id }}" aria-expanded="false">
+                                            <td colspan="5">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <strong>{% trans 'Order' %} #{{ order.id }}</strong>
+                                                        <small class="text-muted">{{ order.date_created|to_jalali }}</small>
+                                                    </div>
+                                                    {% if order.access_status == 'd' %}
+                                                        <div>
+                                                            <i class="fas fa-chevron-down ms-2"></i>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Order Details -->
+                                        <tr>
+                                            <td colspan="5">
+                                                <div class="row g-3">
+                                                    <div class="col-md-3">
+                                                        <strong>{% trans 'Total' %}:</strong><br>
+                                                        {{ order.total_price }} {% trans 'Toman' %}
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <strong>{% trans 'Status' %}:</strong><br>
+                                                        <span class="badge 
+                                                            {% if order.status == 'p' %}bg-success
+                                                            {% elif order.status == 'u' %}bg-warning
+                                                            {% else %}bg-danger{% endif %}">
+                                                            {{ order.get_status_display }}
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <strong>{% trans 'Access' %}:</strong><br>
+                                                        {{ order.get_access_status_display }}
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <strong>{% trans 'Items' %}:</strong><br>
+                                                        {% for item in order.items.all %}
+                                                            <div>{{ item.course.title }}</div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Collapsible DVD Details -->
+                                        {% if order.access_status == 'd' %}
+                                            <tr class="collapse dvd-details" id="dvd-{{ order.id }}">
+                                                <td colspan="5">
+                                                    <div class="card card-body bg-light mt-3">
+                                                        <h6>{% trans 'Shipping Information' %}</h6>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <p>
+                                                                    <strong>{% trans 'Address' %}:</strong><br>
+                                                                    {{ order.dvd_detail.address }}, {{ order.dvd_detail.city }}<br>
+                                                                    {% trans 'Postal Code' %}: {{ order.dvd_detail.postal_code }}
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <p>
+                                                                    <strong>{% trans 'Contact' %}:</strong><br>
+                                                                    {% trans 'Phone' %}: {{ order.dvd_detail.phone_number }}<br>
+                                                                    {% trans 'Email' %}: {{ order.dvd_detail.email }}
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <strong>{% trans 'Delivery Status' %}:</strong>
+                                                                <span class="badge 
+                                                                    {% if order.dvd_detail.delivery_status == 's' %}bg-success
+                                                                    {% elif order.dvd_detail.delivery_status == 'p' %}bg-warning
+                                                                    {% else %}bg-danger{% endif %}">
+                                                                    {{ order.dvd_detail.get_delivery_status_display }}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <div class="text-center">
+                                <p>{% trans 'No orders found' %}</p>
+                                <a href="{% url 'courses:course_list' %}" class="btn btn-primary">
+                                    {% trans 'Browse Courses' %}
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- cart area end-->
+    </div>
+    <!-- ----------------------------------------------پایان--------------------------- -->
+
+    <!-- ----------------------------------------------بخش کامنت گزاری--------------------------- -->
+    <div class="element" id="element4">
         <section class="breadcrumb-section py-4" style="background-color: #f9fafb;">
             <div class="container">
                 <div class="row align-items-center">
@@ -406,7 +590,8 @@
                     {% for ticket in tickets %}
                         <div class="ticket">
                             <div class="comment-details">
-                                <h4>{{ ticket.subject }} <span class="place-name">{{ ticket.date_updated|to_jalali }}</span></h4>
+                                <h4>{{ ticket.subject }} <span
+                                        class="place-name">{{ ticket.date_updated|to_jalali }}</span></h4>
                                 <h5>{{ ticket.get_status_display }}</h5>
                                 <p>{{ ticket.message }}</p>
                             </div>
@@ -434,7 +619,7 @@
     <!-- ------------------------------------------------------پایان----------------------------------- -->
 
     <!-- ----------------------------------------------بخش ادیت--------------------------- -->
-    <div class="element" id="element4">
+    <div class="element" id="element5">
         <section class="breadcrumb-section py-4" style="background-color: #f9fafb;">
             <div class="container">
                 <div class="row align-items-center">
@@ -1095,5 +1280,6 @@
         }
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -61,7 +61,7 @@ class Order(models.Model):
 
     class Meta:
         indexes = [
-            models.Index(fields=['status', 'zarinpale_authority']),
+            models.Index(fields=['status', 'zarinpal_authority']),
         ]
 
         verbose_name = _('Order')

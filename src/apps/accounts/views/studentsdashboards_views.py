@@ -10,6 +10,7 @@ from jalali_date import datetime2jalali
 from ..forms import EditProfileForm
 from apps.carts.carts import Cart
 from apps.courses.models import Course
+from ...orders.models import Order
 from ...tickets.models import Ticket
 
 
@@ -24,6 +25,9 @@ class StudentsDashboard(LoginRequiredMixin, View):
         cart = Cart(request)
         total_price, total_discounted_price = cart.get_total_price()
 
+        # Orders
+        orders_queryset = Order.objects.filter(customer=request.user)
+
         # Ticket
         ticket_queryset = Ticket.objects.prefetch_related('replies').filter(user=request.user)
 
@@ -35,6 +39,9 @@ class StudentsDashboard(LoginRequiredMixin, View):
             'carts': cart,
             'total_price': total_price,
             'total_discounted_price': total_discounted_price,
+
+            # Orders
+            'orders': orders_queryset,
 
             # Student Courses
             'courses': courses_queryset,

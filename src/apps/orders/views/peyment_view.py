@@ -39,7 +39,7 @@ def payment_process(request):
         if 'errors' not in data or len(data['errors']) == 0:
             return redirect('{zp_api_startpay}{authority}'.format(zp_api_startpay=ZP_API_STARTPAY, authority=authority))
         else:
-            return HttpResponse('Error from zarinpal')
+            return HttpResponse('An unexpected error occurred during payment verification')
     else:
         return HttpResponse(res['error'])
 
