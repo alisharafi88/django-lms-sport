@@ -92,7 +92,6 @@ class DVDOrderDetail(models.Model):
         _('Phonenumber'),
         region='IR',
         validators=[phone_number_validator_for_iran],
-        unique=True
     )
     order_note = models.CharField(_('Order\'sNote'), max_length=255, null=True, blank=True)
 
