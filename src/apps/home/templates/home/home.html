@@ -83,8 +83,7 @@
                                                 </li>
                                                 <li><a href="checkout.html">{% trans 'Check Out' %}</a></li>
                                                 <li><a href="{% url 'faq:question_answer' %}">{% trans 'FAQ' %}</a></li>
-                                                <li><a href="register.html">{% trans 'Register' %}</a></li>
-                                                <li><a href="sign-in.html">{% trans 'Sign In' %}</a></li>
+                                                <li><a href="{% url 'accounts:authenticate' %}">{% trans 'Register' %}</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -103,7 +102,7 @@
                                 </div>
                                 <div class="header-meta">
                                     <ul>
-                                        <li><a href="{% url 'accounts:student_dashboards' %}" class="d-none d-md-block"><i
+                                        <li><a href="{% if user.is_authenticated %}{% url 'accounts:student_dashboards' %}{% else %}{% url 'accounts:authenticate' %}{% endif %}" class="d-none d-md-block"><i
                                                 class="fi fi-rr-user"></i></a></li>
                                         <li><a href="{% url 'carts:cart' %}" class="d-none d-md-block"><i
                                                 class="fi fi-rr-shopping-cart"></i></a></li>

@@ -128,8 +128,8 @@ INSTRUCTOR_USER_MODEL = 'instructors.Instructor'
 # auth
 
 AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
     "apps.accounts.backends.PhoneAuthenticationBackend",
+    "django.contrib.auth.backends.ModelBackend",
 ]
 
 # ckeditor
@@ -302,7 +302,7 @@ LOGGING = {
 
 SMS_API_KEY = os.getenv('SMS_API_KEY')
 SMS_SENDER = os.getenv('SMS_SENDER')
-SMS_PATTERN_CODE = os.getenv('SMS_PATTERN_CODE')
+SMS_PATTERN_OTP_CODE = os.getenv('SMS_PATTERN_CODE')
 
 # Zarinpal
 MERCHANT = os.getenv('MERCHANT')

@@ -42,7 +42,7 @@
                             <div class="footer-widget__link">
                                 <ul>
                                     <li><a href="{% url 'contacts:contact' %}">{% trans 'Contact us' %}</a></li>
-                                    <li><a href="{% url 'accounts:student_dashboards' %}">{% trans 'Ticketing' %}</a></li>
+                                    <li><a href="{% if user.is_authenticated %}{% url 'accounts:student_dashboards' %}{% else %}{% url 'accounts:authenticate' %}{% endif %}">{% trans 'Ticketing' %}</a></li>
                                 </ul>
                             </div>
                         </div>

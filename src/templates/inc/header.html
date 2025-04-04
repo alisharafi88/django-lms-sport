@@ -65,7 +65,7 @@
                     <div class="col-xxl-3 col-xl-3 col-lg-6 d-flex align-items-center justify-content-end">
                         <div class="header-meta-green">
                             <ul>
-                                <li><a href="{% url 'accounts:student_dashboards' %}"><i class="fi fi-rr-user"></i></a>
+                                <li><a href="{% if user.is_authenticated %}{% url 'accounts:student_dashboards' %}{% else %}{% url 'accounts:authenticate' %}{% endif %}"><i class="fi fi-rr-user"></i></a>
                                 </li>
                                 <li><a href="{% url 'carts:cart' %}"><i class="fi fi fi-rr-shopping-cart"></i></a></li>
                                 <li><a href="#" class="tp-menu-toggle d-xl-none"><i class="icon_ul"></i></a></li>
@@ -91,7 +91,7 @@
             <div class="col-md-6 col-7 d-flex align-items-center justify-content-end">
                 <div class="header-meta-green text-end">
                     <ul>
-                        <li><a href="{% url 'accounts:student_dashboards' %}"><i class="fi fi-rr-user"></i></a></li>
+                        <li><a href="{% if user.is_authenticated %}{% url 'accounts:student_dashboards' %}{% else %}{% url 'accounts:authenticate' %}{% endif %}"><i class="fi fi-rr-user"></i></a></li>
                         <li><a href="{% url 'carts:cart' %}"><i class="fi fi fi-rr-shopping-cart"></i></a></li>
                         <li><a href="#" class="tp-menu-toggle d-xl-none"><i class="icon_ul"></i></a></li>
                     </ul>
