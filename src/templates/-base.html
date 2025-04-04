@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/spacing.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/rtl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/message.css' %}">
     {% block head %}
 
     {% endblock head %}
@@ -71,7 +72,9 @@
 
 
 <main>
-
+    <!-- messages area start -->
+    {% include 'inc/message.html' %}
+    <!-- messages area start -->
     {% block content %}
 
     {% endblock %}
@@ -84,6 +87,16 @@
 
 
 <!-- JS here -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const closeButtons = document.querySelectorAll('.alert__close');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                this.closest('.alert').style.display = 'none';
+            });
+        });
+    });
+</script>
 <script src="{% static 'assets/js/vendor/jquery.js' %}"></script>
 <script src="{% static 'assets/js/vendor/waypoints.js' %}"></script>
 <script src="{% static 'assets/js/bootstrap-bundle.js' %}"></script>

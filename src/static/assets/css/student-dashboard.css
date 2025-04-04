@@ -88,7 +88,7 @@ body {
     box-shadow: 0 0 0 3px rgba(254, 92, 79, 0.5);
 }
 .sidebar .logout {
-    margin-top: 50px;
+    margin-top: 10px;
     background-color: #fe5c4f;
     display: flex;
     align-items: center;
