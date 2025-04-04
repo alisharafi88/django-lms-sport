@@ -407,7 +407,7 @@
                             <span class="tp-sub-title mb-25">چرا ما</span>
                             <h2 class="tp-section-title mb-20">چرا باید مارو انتخاب کنید؟</h2>
                             <p>دوره ما به دلیل ترکیب آموزش‌های حرفه‌ای، تمرینات کاربردی و پشتیبانی شخصی، بهترین انتخاب
-                                برای پیشرفت سریع در فوتبال است. با شرکت در این دورهشما به طور قابل توجهی مهارت‌های خود
+                                برای پیشرفت سریع در فوتبال است. با شرکت در این دوره شما به طور قابل توجهی مهارت‌های خود
                                 را بهبود خواهید داد.</p>
                         </div>
                         <div class="tp-choose-list mb-35">
@@ -422,7 +422,7 @@
                             </ul>
                         </div>
                         <div class="choose-btn">
-                            <a href="{% url 'instructors:instructor_list' %}" class="tp-btn">{% trans 'Read more' %}</a>
+                            <a href="{% url 'home:about_us' %}" class="tp-btn">{% trans 'Read more' %}</a>
                         </div>
                     </div>
                 </div>
@@ -442,7 +442,7 @@
                             <i class="fi fi-rr-user"></i>
                         </div>
                         <div class="counter-item__content">
-                            <h4 class="counter-item__title"><span class="counter">276</span>K</h4>
+                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.students }}"></span>+</h4>
                             <p>{% trans 'Worldwide Students' %}</p>
                         </div>
                     </div>
@@ -453,7 +453,7 @@
                             <i class="fi fi-rr-document"></i>
                         </div>
                         <div class="counter-item__content">
-                            <h4 class="counter-item__title"><span class="counter">23</span>+</h4>
+                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.experience_years }}"></span>+</h4>
                             <p>{% trans 'Years Experience' %}</p>
                         </div>
                     </div>
@@ -464,7 +464,7 @@
                             <i class="fi fi-rr-apps"></i>
                         </div>
                         <div class="counter-item__content">
-                            <h4 class="counter-item__title"><span class="counter">735</span>+</h4>
+                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.professional_courses }}"></span>+</h4>
                             <p>{% trans 'Professional Courses' %}</p>
                         </div>
                     </div>
@@ -475,7 +475,7 @@
                             <i class="fi fi-rr-star"></i>
                         </div>
                         <div class="counter-item__content">
-                            <h4 class="counter-item__title"><span class="counter">4.7</span>K+</h4>
+                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.comments }}"></span>+</h4>
                             <p>{% trans 'Beautiful Review' %}</p>
                         </div>
                     </div>

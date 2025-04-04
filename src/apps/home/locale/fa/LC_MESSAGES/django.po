@@ -135,7 +135,7 @@ msgstr "جستجوی‌دوره‌ها"
 
 #: apps/home/templates/home/home.html:148
 msgid "Explore Courses"
-msgstr "دوره‌ها را کاوش کنید"
+msgstr "مشاهده دوره‌ها"
 
 #: apps/home/templates/home/home.html:273
 msgid "Read More"

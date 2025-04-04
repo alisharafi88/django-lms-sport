@@ -72,7 +72,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 # Local
-                'apps.contacts.context_processors.primary_contact'
+                'apps.contacts.context_processors.primary_contact',
+                'apps.home.context_processors.counter',
             ],
         },
     },

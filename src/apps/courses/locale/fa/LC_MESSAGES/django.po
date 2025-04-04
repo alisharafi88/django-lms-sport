@@ -507,7 +507,7 @@ msgstr "دوره‌های ما"
 
 #: apps/courses/templates/packages/courses_list.html:121
 msgid "Explore Courses"
-msgstr "دوره‌ها را کاوش کنید"
+msgstr "مشاهده دوره‌ها"
 
 #: apps/courses/templates/packages/courses_list.html:173
 #: apps/courses/templates/packages/package_detail.html:190

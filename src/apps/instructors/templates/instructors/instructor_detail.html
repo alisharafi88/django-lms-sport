@@ -122,20 +122,20 @@
                                 <div class="col-xl-4 col-lg-6 col-md-4">
                                     <div class="isntruc-tp-counter mb-30">
                                         <h4 class="isntruc-tp-counter__title p-relative"><span
-                                                class="counter">{{ instructor.student_count }}</span>+</h4>
+                                                class="counter" data-value="{{ instructor.student_count }}"></span>+</h4>
                                         <p>{% trans 'Students' %}</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-6 col-md-4">
                                     <div class="isntruc-tp-counter mb-30">
-                                        <h4 class="isntruc-tp-counter__title p-relative"><span class="counter">{{ instructor.course_count }}</span>+
+                                        <h4 class="isntruc-tp-counter__title p-relative"><span class="counter" data-value="{{ instructor.course_count }}"></span>+
                                         </h4>
                                         <p>{% trans 'Professional Courses' %}</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-6 col-md-4">
                                     <div class="isntruc-tp-counter mb-30">
-                                        <h4 class="isntruc-tp-counter__title p-relative"><span class="counter">{{ instructor.comment_count }}</span>+
+                                        <h4 class="isntruc-tp-counter__title p-relative"><span class="counter" data-value="{{ instructor.comment_count }}"></span>+
                                         </h4>
                                         <p>{% trans 'Beautiful Review' %}</p>
                                     </div>
@@ -267,43 +267,51 @@
     <!-- instructor-portfolio-area-end -->
 
     <!-- counter-area -->
-    <section class="tp-counter-area theme-bg pt-90">
-        <div class="counter-b-border">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="counter-item mb-70">
-                            <div class="counter-item__content counter-white-text">
-                                <h4 class="counter-item__title counter-left-title"><span class="counter">276</span>K
-                                </h4>
-                                <p>Worldwide Students</p>
-                            </div>
+    <section class="tp-counter-area bg-bottom grey-bg pt-120 pb-60"
+             data-background="{% static 'assets/img/bg/shape-bg-1.png' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="counter-item mb-60 text-center">
+                        <div class="counter-item__icon mb-25">
+                            <i class="fi fi-rr-user"></i>
+                        </div>
+                        <div class="counter-item__content">
+                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.students }}"></span>+</h4>
+                            <p>{% trans 'Worldwide Students' %}</p>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="counter-item mb-70">
-                            <div class="counter-item__content counter-white-text">
-                                <h4 class="counter-item__title counter-left-title"><span class="counter">23</span>+</h4>
-                                <p>Years Experience</p>
-                            </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="counter-item mb-60 text-center">
+                        <div class="counter-item__icon mb-25">
+                            <i class="fi fi-rr-document"></i>
+                        </div>
+                        <div class="counter-item__content">
+                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.experience_years }}"></span>+</h4>
+                            <p>{% trans 'Years Experience' %}</p>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="counter-item mb-70">
-                            <div class="counter-item__content counter-white-text">
-                                <h4 class="counter-item__title counter-left-title"><span class="counter">735</span>+
-                                </h4>
-                                <p>Professional Courses</p>
-                            </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="counter-item mb-60 text-center">
+                        <div class="counter-item__icon mb-25">
+                            <i class="fi fi-rr-apps"></i>
+                        </div>
+                        <div class="counter-item__content">
+                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.professional_courses }}"></span>+</h4>
+                            <p>{% trans 'Professional Courses' %}</p>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="counter-item mb-70">
-                            <div class="counter-item__content counter-white-text">
-                                <h4 class="counter-item__title counter-left-title"><span class="counter">4.7</span>K+
-                                </h4>
-                                <p>Beautiful Review</p>
-                            </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="counter-item mb-60 text-center">
+                        <div class="counter-item__icon mb-25">
+                            <i class="fi fi-rr-star"></i>
+                        </div>
+                        <div class="counter-item__content">
+                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.comments }}"></span>+</h4>
+                            <p>{% trans 'Beautiful Review' %}</p>
                         </div>
                     </div>
                 </div>
