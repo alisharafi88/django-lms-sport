@@ -1,3 +1,4 @@
+from django.db.models import Prefetch
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views import generic
@@ -10,7 +11,7 @@ from jalali_date import datetime2jalali
 from ..forms import EditProfileForm
 from apps.carts.carts import Cart
 from apps.courses.models import Course
-from ...orders.models import Order
+from ...orders.models import Order, OrderItem
 from ...tickets.models import Ticket
 
 
@@ -26,7 +27,16 @@ class StudentsDashboard(LoginRequiredMixin, View):
         total_price, total_discounted_price = cart.get_total_price()
 
         # Orders
-        orders_queryset = Order.objects.filter(customer=request.user)
+        orders_queryset = Order.objects.filter(
+            customer=request.user,
+        ).\
+            prefetch_related(
+            'dvd_detail',
+            Prefetch(
+                'items',
+                queryset=OrderItem.objects.select_related('course').all(),
+            ),
+        )
 
         # Ticket
         ticket_queryset = Ticket.objects.prefetch_related('replies').filter(user=request.user)
