@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-26 02:13+0330\n"
+"POT-Creation-Date: 2025-04-05 00:19+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Persian <LL@li.org>\n"
@@ -18,88 +18,104 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps/faq/admin.py:19
+#: src/apps/faq/admin.py:19
 msgid "QuestionAnswer"
 msgstr "سوال و جواب"
 
-#: apps/faq/admin.py:20 apps/faq/admin.py:25
+#: src/apps/faq/admin.py:20 src/apps/faq/admin.py:25
 msgid "Status"
 msgstr "وضعیت"
 
-#: apps/faq/admin.py:21
+#: src/apps/faq/admin.py:21
 msgid "Date's informations"
 msgstr "اطلاعات تاریخ"
 
-#: apps/faq/admin.py:33
+#: src/apps/faq/admin.py:33
 msgid "Change status to false"
 msgstr "تغییر وضعیت به غلط"
 
-#: apps/faq/admin.py:38
+#: src/apps/faq/admin.py:38
 #, python-brace-format
 msgid "{updated_count} of status changed to false."
 msgstr "{updated_count} مورد از وضعیت به غیرفعال تغییر کرد."
 
-#: apps/faq/admin.py:42
+#: src/apps/faq/admin.py:42
 msgid "Change status to True"
 msgstr "تغییر وضعیت به درست"
 
-#: apps/faq/admin.py:47
+#: src/apps/faq/admin.py:47
 #, python-brace-format
 msgid "{updated_count} of status changed to True."
 msgstr "{updated_count} مورد از وضعیت به فعال تغییر کرد."
 
-#: apps/faq/apps.py:8 apps/faq/templates/faq/FAQ.html:24
-#: apps/faq/templates/faq/FAQ.html:90
+#: src/apps/faq/apps.py:8 src/apps/faq/templates/faq/FAQ.html:24
+#: src/apps/faq/templates/faq/FAQ.html:90
 msgid "FAQ"
 msgstr "سوالات متداول"
 
-#: apps/faq/models.py:8
+#: src/apps/faq/models.py:8
 msgid "question"
 msgstr "سوال"
 
-#: apps/faq/models.py:9
+#: src/apps/faq/models.py:9
 msgid "answer"
 msgstr "جواب"
 
-#: apps/faq/models.py:11
+#: src/apps/faq/models.py:11
 msgid "slug"
 msgstr "اسلاگ"
 
-#: apps/faq/models.py:13
+#: src/apps/faq/models.py:13
 msgid "date created"
 msgstr "تاریخ ایجاد"
 
-#: apps/faq/models.py:14
+#: src/apps/faq/models.py:14
 msgid "date modified"
 msgstr "تاریخ ویرایش"
 
-#: apps/faq/models.py:16
+#: src/apps/faq/models.py:16
 msgid "status"
 msgstr "وضعیت"
 
-#: apps/faq/models.py:21
+#: src/apps/faq/models.py:21
 msgid "question and answer"
 msgstr "سوال و جواب"
 
-#: apps/faq/models.py:22
+#: src/apps/faq/models.py:22
 msgid "questions and answers"
 msgstr "سوالات و جواب ها"
 
-#: apps/faq/templates/faq/FAQ.html:7 apps/faq/templates/faq/FAQ.html:18
+#: src/apps/faq/templates/faq/FAQ.html:7 src/apps/faq/templates/faq/FAQ.html:18
 msgid "Frequently Asked Question"
 msgstr "سوالات متداول"
 
-#: apps/faq/templates/faq/FAQ.html:20
+#: src/apps/faq/templates/faq/FAQ.html:20
 msgid "HomePage"
 msgstr "صفحه‌اصلی"
 
-#: apps/faq/templates/faq/FAQ.html:22
+#: src/apps/faq/templates/faq/FAQ.html:22
 msgid "Pages"
 msgstr "صفحات"
 
-#: apps/faq/templates/faq/FAQ.html:91
+#: src/apps/faq/templates/faq/FAQ.html:91
 msgid "Many People Ask About This"
 msgstr "بسیاری از مردم در مورد این سوال می‌پرسند"
+
+#: src/apps/faq/templates/faq/FAQ.html:136
+msgid "Worldwide Students"
+msgstr "دانش‌آموزان"
+
+#: src/apps/faq/templates/faq/FAQ.html:147
+msgid "Years Experience"
+msgstr "سال‌ها تجربه"
+
+#: src/apps/faq/templates/faq/FAQ.html:158
+msgid "Professional Courses"
+msgstr "دوره‌های حرفه‌ای"
+
+#: src/apps/faq/templates/faq/FAQ.html:169
+msgid "Beautiful Review"
+msgstr "نقد و بررسی زیبای شما"
 
 #~ msgid "Expert Trainer"
 #~ msgstr "مربی متخصص"

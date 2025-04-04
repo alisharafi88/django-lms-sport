@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-26 03:34+0330\n"
+"POT-Creation-Date: 2025-04-05 00:19+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,81 +18,81 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps/tickets/admin.py:14 apps/tickets/models.py:90
+#: src/apps/tickets/admin.py:14 src/apps/tickets/models.py:90
 msgid "Reply"
 msgstr "پاسخ"
 
-#: apps/tickets/admin.py:15 apps/tickets/models.py:91
+#: src/apps/tickets/admin.py:15 src/apps/tickets/models.py:91
 msgid "Replies"
 msgstr "پاسخ‌ها"
 
-#: apps/tickets/admin.py:29
+#: src/apps/tickets/admin.py:29
 msgid "Mark selected tickets as Resolved"
 msgstr "تیکت‌های انتخاب شده را به عنوان حل شده علامت‌گذاری کنید"
 
-#: apps/tickets/admin.py:34
+#: src/apps/tickets/admin.py:34
 #, python-brace-format
 msgid "{update_count} of tickets status has been updated to pending."
 msgstr "{update_count} از وضعیت تیکت‌ها به حالت معلق تغییر یافته است."
 
-#: apps/tickets/admin.py:38
+#: src/apps/tickets/admin.py:38
 msgid "Mark selected tickets as Closed"
 msgstr "تیکت‌های انتخاب شده را به عنوان بسته شده علامت‌گذاری کنید"
 
-#: apps/tickets/admin.py:43
+#: src/apps/tickets/admin.py:43
 #, python-brace-format
 msgid "{update_count} of tickets status has been updated to closed."
 msgstr "{update_count} از وضعیت تیکت‌ها به حالت بسته شده تغییر یافته است."
 
-#: apps/tickets/apps.py:8 apps/tickets/models.py:60
+#: src/apps/tickets/apps.py:8 src/apps/tickets/models.py:60
 msgid "Tickets"
 msgstr "تیکت‌ها"
 
-#: apps/tickets/models.py:9
+#: src/apps/tickets/models.py:9
 msgid "Pending"
 msgstr "معلق"
 
-#: apps/tickets/models.py:10
+#: src/apps/tickets/models.py:10
 msgid "Resolved"
 msgstr "حل شده"
 
-#: apps/tickets/models.py:11
+#: src/apps/tickets/models.py:11
 msgid "Closed"
 msgstr "بسته شده"
 
-#: apps/tickets/models.py:19
+#: src/apps/tickets/models.py:19
 msgid "User"
 msgstr "کاربر"
 
-#: apps/tickets/models.py:23
+#: src/apps/tickets/models.py:23
 msgid "Subject"
 msgstr "موضوع"
 
-#: apps/tickets/models.py:28 apps/tickets/models.py:72
+#: src/apps/tickets/models.py:28 src/apps/tickets/models.py:72
 msgid "Message"
 msgstr "پیام"
 
-#: apps/tickets/models.py:32
+#: src/apps/tickets/models.py:32
 msgid "Status"
 msgstr "وضعیت"
 
-#: apps/tickets/models.py:39
+#: src/apps/tickets/models.py:39
 msgid "Create Date"
 msgstr "تاریخ ایجاد"
 
-#: apps/tickets/models.py:44
+#: src/apps/tickets/models.py:44
 msgid "Update Date"
 msgstr "تاریخ به‌روزرسانی"
 
-#: apps/tickets/models.py:59 apps/tickets/models.py:68
+#: src/apps/tickets/models.py:59 src/apps/tickets/models.py:68
 msgid "Ticket"
 msgstr "تیکت"
 
-#: apps/tickets/models.py:76
+#: src/apps/tickets/models.py:76
 msgid "Date Created"
 msgstr "تاریخ ایجاد"
 
-#: apps/tickets/models.py:81
+#: src/apps/tickets/models.py:81
 msgid ""
 "Reply for Ticket ({self.ticket.get_status_display()}) on {self.ticket."
 "subject}"

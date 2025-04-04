@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-26 00:22+0330\n"
+"POT-Creation-Date: 2025-04-05 00:19+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,147 +18,166 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps/blogs/admin.py:55
+#: src/apps/blogs/admin.py:55
 msgid "#comments"
 msgstr "#کامنت"
 
-#: apps/blogs/apps.py:8 apps/blogs/models.py:46
-#: apps/blogs/templates/blogs/blog_detail.html:25
-#: apps/blogs/templates/blogs/blog_list.html:22
+#: src/apps/blogs/apps.py:8 src/apps/blogs/models.py:46
+#: src/apps/blogs/templates/blogs/blog_detail.html:25
+#: src/apps/blogs/templates/blogs/blog_list.html:22
 msgid "Blogs"
 msgstr "وبلاگ‌ها"
 
-#: apps/blogs/forms.py:12
+#: src/apps/blogs/forms.py:12
 msgid "Enter your comment ..."
 msgstr "کامنت خود را بنوسید ..."
 
-#: apps/blogs/models.py:13
+#: src/apps/blogs/models.py:13
 msgid "Published"
 msgstr "منتشر شده"
 
-#: apps/blogs/models.py:14
+#: src/apps/blogs/models.py:14
 msgid "Rejected"
 msgstr "رد شده"
 
-#: apps/blogs/models.py:21
+#: src/apps/blogs/models.py:21
 msgid "Author"
 msgstr "نویسنده"
 
-#: apps/blogs/models.py:23
+#: src/apps/blogs/models.py:23
 msgid "Title"
 msgstr "عنوان"
 
-#: apps/blogs/models.py:25
+#: src/apps/blogs/models.py:25
 msgid "Description"
 msgstr "توضیحات"
 
-#: apps/blogs/models.py:27
+#: src/apps/blogs/models.py:27
 msgid "Image"
 msgstr "عکس"
 
-#: apps/blogs/models.py:33 apps/blogs/models.py:76
+#: src/apps/blogs/models.py:33 src/apps/blogs/models.py:76
 msgid "Status"
 msgstr "وضعیت"
 
-#: apps/blogs/models.py:36
+#: src/apps/blogs/models.py:36
 msgid "Enable comments"
 msgstr "فعال کردن کامنت در پست"
 
-#: apps/blogs/models.py:37
+#: src/apps/blogs/models.py:37
 msgid "If checked, users will be able to post comments on this content."
-msgstr "اگر این گزینه فعال شود، کاربران می‌توانند نظرات خود را در مورد این محتوا ارسال کنند."
+msgstr ""
+"اگر این گزینه فعال شود، کاربران می‌توانند نظرات خود را در مورد این محتوا "
+"ارسال کنند."
 
-#: apps/blogs/models.py:41
+#: src/apps/blogs/models.py:41
 msgid "Created at"
 msgstr "ایجاد شده در"
 
-#: apps/blogs/models.py:42
+#: src/apps/blogs/models.py:42
 msgid "Updated at"
 msgstr "به‌روزرسانی شده در"
 
-#: apps/blogs/models.py:45 apps/blogs/models.py:57
-#: apps/blogs/templates/blogs/blog_detail.html:21
-#: apps/blogs/templates/blogs/blog_list.html:18
+#: src/apps/blogs/models.py:45 src/apps/blogs/models.py:57
+#: src/apps/blogs/templates/blogs/blog_detail.html:21
+#: src/apps/blogs/templates/blogs/blog_list.html:18
 msgid "Blog"
 msgstr "وبلاگ"
 
-#: apps/blogs/models.py:64
+#: src/apps/blogs/models.py:64
 msgid "Text"
 msgstr "متن"
 
-#: apps/blogs/models.py:72
+#: src/apps/blogs/models.py:72
 msgid "Replayed to"
 msgstr "پاسخ داده‌شده به"
 
-#: apps/blogs/models.py:78
+#: src/apps/blogs/models.py:78
 msgid "If the comment is not appropriate, set it to false."
 msgstr "اگر نظر مناسب نیست، آن را به نادرست تنظیم کنید."
 
-#: apps/blogs/models.py:81
+#: src/apps/blogs/models.py:81
 msgid "created at"
 msgstr "ایجاد شده در"
 
-#: apps/blogs/models.py:84
+#: src/apps/blogs/models.py:84
 msgid "Comment"
 msgstr "کامنت"
 
-#: apps/blogs/models.py:85 apps/blogs/templates/blogs/blog_detail.html:53
-#: apps/blogs/templates/blogs/blog_detail.html:64
+#: src/apps/blogs/models.py:85
+#: src/apps/blogs/templates/blogs/blog_detail.html:53
+#: src/apps/blogs/templates/blogs/blog_detail.html:64
 msgid "Comments"
 msgstr "کامنت‌ها"
 
-#: apps/blogs/templates/blogs/blog_detail.html:23
+#: src/apps/blogs/templates/blogs/blog_detail.html:23
 msgid "Home"
 msgstr "صفحه‌اصلی"
 
-#: apps/blogs/templates/blogs/blog_detail.html:73
-#: apps/blogs/templates/blogs/blog_detail.html:97
+#: src/apps/blogs/templates/blogs/blog_detail.html:73
+#: src/apps/blogs/templates/blogs/blog_detail.html:97
 msgid "profile"
 msgstr "پروفایل"
 
-#: apps/blogs/templates/blogs/blog_detail.html:85
+#: src/apps/blogs/templates/blogs/blog_detail.html:85
 msgid "Reply"
 msgstr "پاسخ"
 
-#: apps/blogs/templates/blogs/blog_detail.html:116
+#: src/apps/blogs/templates/blogs/blog_detail.html:116
 msgid "Write a comment"
 msgstr "یک کامنت بنویسید"
 
-#: apps/blogs/templates/blogs/blog_detail.html:131
+#: src/apps/blogs/templates/blogs/blog_detail.html:131
 msgid "Post Comment"
 msgstr "ارسال کامنت"
 
-#: apps/blogs/templates/blogs/blog_detail.html:138
+#: src/apps/blogs/templates/blogs/blog_detail.html:138
 msgid "If you wanna send commnet please "
 msgstr "اگر می‌خواهید کامنت ارسال کنید لطفاً "
 
-#: apps/blogs/templates/blogs/blog_detail.html:139
+#: src/apps/blogs/templates/blogs/blog_detail.html:139
 msgid "LOGIN"
 msgstr "وارد شوید"
 
-#: apps/blogs/templates/blogs/blog_detail.html:139
+#: src/apps/blogs/templates/blogs/blog_detail.html:139
 msgid " or "
 msgstr " یا "
 
-#: apps/blogs/templates/blogs/blog_detail.html:140
+#: src/apps/blogs/templates/blogs/blog_detail.html:140
 msgid "SIGNUP."
 msgstr "ثبت نام کنید."
 
-#: apps/blogs/templates/blogs/blog_detail.html:149
+#: src/apps/blogs/templates/blogs/blog_detail.html:149
 msgid "Recent Post"
 msgstr "پست‌های اخیر"
 
-#: apps/blogs/templates/blogs/blog_list.html:6
+#: src/apps/blogs/templates/blogs/blog_list.html:6
 msgid "Blog List"
 msgstr "لیست وبلاگ‌ها"
 
-#: apps/blogs/templates/blogs/blog_list.html:20
+#: src/apps/blogs/templates/blogs/blog_list.html:20
 msgid "HomePage"
 msgstr "صفحه‌اصلی"
 
-#: apps/blogs/templates/blogs/blog_list.html:37
+#: src/apps/blogs/templates/blogs/blog_list.html:37
 msgid "Latest Blogs"
 msgstr "آخرین وبلاگ‌ها"
+
+#: src/apps/blogs/templates/blogs/blog_list.html:137
+msgid "Worldwide Students"
+msgstr "دانش‌آموزان"
+
+#: src/apps/blogs/templates/blogs/blog_list.html:148
+msgid "Years Experience"
+msgstr "سال‌ها تجربه"
+
+#: src/apps/blogs/templates/blogs/blog_list.html:159
+msgid "Professional Courses"
+msgstr "دوره‌های حرفه‌ای"
+
+#: src/apps/blogs/templates/blogs/blog_list.html:170
+msgid "Beautiful Review"
+msgstr "نقد و بررسی زیبای شما"
 
 #~ msgid "Blog's title"
 #~ msgstr "عنوان وبلاگ"

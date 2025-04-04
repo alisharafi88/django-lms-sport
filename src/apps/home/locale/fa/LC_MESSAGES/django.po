@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-25 23:42+0330\n"
+"POT-Creation-Date: 2025-04-05 00:19+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Persian <LL@li.org>\n"
@@ -18,198 +18,211 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps/home/templates/BMI/BMI.html:6
-msgid "BMI Test"
-msgstr "آزمون BMI"
+#: src/apps/home/apps.py:8 src/apps/home/models.py:29
+#: src/apps/home/models.py:30
+msgid "Counter"
+msgstr ""
 
-#: apps/home/templates/home/aboutus.html:6
-#: apps/home/templates/home/aboutus.html:17
-#: apps/home/templates/home/aboutus.html:21
-#: apps/home/templates/home/home.html:81
-msgid "About Us"
-msgstr "درباره‌‌ما"
+#: src/apps/home/models.py:6
+msgid "Students"
+msgstr "دانش‌آموزها"
 
-#: apps/home/templates/home/aboutus.html:19
-#: apps/home/templates/home/home.html:64
-msgid "HomePage"
-msgstr "صفحه‌اصلی"
+#: src/apps/home/models.py:7
+msgid "Experience years"
+msgstr "سال‌ها تجربه"
 
-#: apps/home/templates/home/aboutus.html:37
-#: apps/home/templates/home/home.html:169
-msgid "What We Offer"
-msgstr "آنچه ارائه می‌دهیم"
+#: src/apps/home/models.py:8 src/apps/home/templates/home/aboutus.html:376
+#: src/apps/home/templates/home/home.html:467
+msgid "Professional Courses"
+msgstr "دوره‌های حرفه‌ای"
 
-#: apps/home/templates/home/aboutus.html:38
-#: apps/home/templates/home/home.html:170
-msgid "For Your Future Learning."
-msgstr "برای یادگیری آینده شما."
-
-#: apps/home/templates/home/aboutus.html:106
-#: apps/home/templates/home/home.html:446
-msgid "Worldwide Students"
-msgstr "دانش‌آموزان"
-
-#: apps/home/templates/home/aboutus.html:107
-msgid "Worldwide Review"
-msgstr "نقد و بررسی جهانی"
-
-#: apps/home/templates/home/aboutus.html:108
-msgid "Free Pro Courses"
-msgstr "دوره‌های حرفه‌ای رایگان"
-
-#: apps/home/templates/home/aboutus.html:228
+#: src/apps/home/models.py:9 src/apps/home/templates/home/aboutus.html:228
 msgid "Comments"
 msgstr "کامنت‌ها"
 
-#: apps/home/templates/home/aboutus.html:229
-#: apps/home/templates/home/home.html:569
+#: src/apps/home/templates/BMI/BMI.html:6
+msgid "BMI Test"
+msgstr "آزمون BMI"
+
+#: src/apps/home/templates/home/aboutus.html:6
+#: src/apps/home/templates/home/aboutus.html:17
+#: src/apps/home/templates/home/aboutus.html:21
+#: src/apps/home/templates/home/home.html:81
+msgid "About Us"
+msgstr "درباره‌‌ما"
+
+#: src/apps/home/templates/home/aboutus.html:19
+#: src/apps/home/templates/home/home.html:64
+msgid "HomePage"
+msgstr "صفحه‌اصلی"
+
+#: src/apps/home/templates/home/aboutus.html:37
+#: src/apps/home/templates/home/home.html:168
+msgid "What We Offer"
+msgstr "آنچه ارائه می‌دهیم"
+
+#: src/apps/home/templates/home/aboutus.html:38
+#: src/apps/home/templates/home/home.html:169
+msgid "For Your Future Learning."
+msgstr "برای یادگیری آینده شما."
+
+#: src/apps/home/templates/home/aboutus.html:106
+#: src/apps/home/templates/home/aboutus.html:354
+#: src/apps/home/templates/home/home.html:445
+msgid "Worldwide Students"
+msgstr "دانش‌آموزان"
+
+#: src/apps/home/templates/home/aboutus.html:107
+msgid "Worldwide Review"
+msgstr "نقد و بررسی جهانی"
+
+#: src/apps/home/templates/home/aboutus.html:108
+msgid "Free Pro Courses"
+msgstr "دوره‌های حرفه‌ای رایگان"
+
+#: src/apps/home/templates/home/aboutus.html:229
+#: src/apps/home/templates/home/home.html:568
 msgid "What Our Happy Users Says"
 msgstr "آنچه کاربران خوب‌ما می گویند"
 
-#: apps/home/templates/home/aboutus.html:272
-#: apps/home/templates/home/aboutus.html:334
+#: src/apps/home/templates/home/aboutus.html:272
+#: src/apps/home/templates/home/aboutus.html:334
 msgid "Coaches"
 msgstr "مربی‌ها"
 
-#: apps/home/templates/home/aboutus.html:295
-#: apps/home/templates/home/home.html:343
-#: apps/home/templates/home/home.html:517
+#: src/apps/home/templates/home/aboutus.html:295
+#: src/apps/home/templates/home/home.html:342
+#: src/apps/home/templates/home/home.html:516
 msgctxt "singular"
 msgid "Classes"
 msgstr "کلاس‌"
 
-#: apps/home/templates/home/aboutus.html:300
-#: apps/home/templates/home/home.html:347
-#: apps/home/templates/home/home.html:522
+#: src/apps/home/templates/home/aboutus.html:300
+#: src/apps/home/templates/home/home.html:346
+#: src/apps/home/templates/home/home.html:521
 msgctxt "singular"
 msgid "Students"
 msgstr "دانش‌آموز"
 
-#: apps/home/templates/home/home.html:7
+#: src/apps/home/templates/home/aboutus.html:365
+#: src/apps/home/templates/home/home.html:456
+msgid "Years Experience"
+msgstr "سال‌ها تجربه"
+
+#: src/apps/home/templates/home/aboutus.html:387
+#: src/apps/home/templates/home/home.html:478
+msgid "Beautiful Review"
+msgstr "نقد و بررسی زیبای شما"
+
+#: src/apps/home/templates/home/home.html:7
 msgid "Home Page"
 msgstr "صفحه‌اصلی"
 
-#: apps/home/templates/home/home.html:67
+#: src/apps/home/templates/home/home.html:67
 msgid "Courses"
 msgstr "دوره‌ها"
 
-#: apps/home/templates/home/home.html:70
+#: src/apps/home/templates/home/home.html:70
 msgid "Blogs"
 msgstr "وبلاگ‌ها"
 
-#: apps/home/templates/home/home.html:73
+#: src/apps/home/templates/home/home.html:73
 msgid "Coches"
 msgstr "مربی‌ها"
 
-#: apps/home/templates/home/home.html:76
+#: src/apps/home/templates/home/home.html:76
 msgid "BMI"
 msgstr "BMI"
 
-#: apps/home/templates/home/home.html:79
+#: src/apps/home/templates/home/home.html:79
 msgid "Pages"
 msgstr "صفحات"
 
-#: apps/home/templates/home/home.html:82
+#: src/apps/home/templates/home/home.html:82
 msgid "Contact Us"
 msgstr "تماس‌با‌ما"
 
-#: apps/home/templates/home/home.html:84
+#: src/apps/home/templates/home/home.html:84
 msgid "Check Out"
 msgstr "تسویه‌حساب"
 
-#: apps/home/templates/home/home.html:85
+#: src/apps/home/templates/home/home.html:85
 msgid "FAQ"
 msgstr "سوالات متداول"
 
-#: apps/home/templates/home/home.html:86
+#: src/apps/home/templates/home/home.html:86
 msgid "Register"
 msgstr "ثبت نام"
 
-#: apps/home/templates/home/home.html:87
-msgid "Sign In"
-msgstr "ورود"
-
-#: apps/home/templates/home/home.html:100
+#: src/apps/home/templates/home/home.html:99
 msgid "Search Courses"
 msgstr "جستجوی‌دوره‌ها"
 
-#: apps/home/templates/home/home.html:148
+#: src/apps/home/templates/home/home.html:147
 msgid "Explore Courses"
 msgstr "مشاهده دوره‌ها"
 
-#: apps/home/templates/home/home.html:273
+#: src/apps/home/templates/home/home.html:272
 msgid "Read More"
 msgstr "بیشتر بخوانید"
 
-#: apps/home/templates/home/home.html:288
+#: src/apps/home/templates/home/home.html:287
 msgid "Explore Popular Courses"
 msgstr "دوره‌های تخصصی مجموعه‌ما"
 
-#: apps/home/templates/home/home.html:341
+#: src/apps/home/templates/home/home.html:340
 msgctxt "singular"
 msgid "Courses"
 msgstr "دوره‌"
 
-#: apps/home/templates/home/home.html:364
+#: src/apps/home/templates/home/home.html:363
 msgid "Toman"
 msgstr "تومان"
 
-#: apps/home/templates/home/home.html:375
+#: src/apps/home/templates/home/home.html:374
 msgid "Browse All Courses"
 msgstr "مشاهده دوره‌ها"
 
-#: apps/home/templates/home/home.html:425
+#: src/apps/home/templates/home/home.html:424
 msgid "Read more"
 msgstr "بیشتر بخوانید"
 
-#: apps/home/templates/home/home.html:457
-msgid "Years Experience"
-msgstr "سال‌ها تجربه"
-
-#: apps/home/templates/home/home.html:468
-msgid "Professional Courses"
-msgstr "دوره‌های حرفه‌ای"
-
-#: apps/home/templates/home/home.html:479
-msgid "Beautiful Review"
-msgstr "نقد و بررسی زیبای شما"
-
-#: apps/home/templates/home/home.html:494
+#: src/apps/home/templates/home/home.html:493
 msgid "Coach"
 msgstr "مربی"
 
-#: apps/home/templates/home/home.html:555
+#: src/apps/home/templates/home/home.html:554
 msgid "All Coaches"
 msgstr "مربی‌ها"
 
-#: apps/home/templates/home/home.html:614
+#: src/apps/home/templates/home/home.html:613
 msgid "Latest Blogs & News"
 msgstr "آخرین وبلاگ‌ها و اخبار"
 
-#: apps/home/templates/home/home.html:649
+#: src/apps/home/templates/home/home.html:648
 msgid "All Blog"
 msgstr "تمام وبلاگ‌ها"
 
-#: apps/home/templates/home/home.html:689
+#: src/apps/home/templates/home/home.html:688
 msgid "Adding..."
 msgstr "افزودن..."
 
-#: apps/home/templates/home/home.html:689
+#: src/apps/home/templates/home/home.html:688
 msgid "Removing..."
 msgstr "حذف..."
 
-#: apps/home/templates/home/home.html:717
+#: src/apps/home/templates/home/home.html:716
 msgid "An error occurred. Please try again."
 msgstr "خطایی رخ داد. لطفا دوباره امتحان کنید."
+
+#~ msgid "Sign In"
+#~ msgstr "ورود"
 
 #~ msgid "Classes"
 #~ msgstr "کلاس‌ها"
 
 #~ msgid "Instructors"
 #~ msgstr "مدرسین"
-
-#~ msgid "Years Experiences"
-#~ msgstr "سال‌ها تجربه"
 
 #~ msgid "Fully Safe & Secure"
 #~ msgstr "کاملاً ایمن و مطمئن"

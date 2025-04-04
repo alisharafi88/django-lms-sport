@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-26 00:33+0330\n"
+"POT-Creation-Date: 2025-04-05 00:19+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,108 +18,108 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps/contacts/admin.py:23 apps/contacts/models.py:19
-#: apps/contacts/models.py:20
+#: src/apps/contacts/admin.py:23 src/apps/contacts/models.py:19
+#: src/apps/contacts/models.py:20
 msgid "Contact Information"
 msgstr "راه‌های ارتباطی"
 
-#: apps/contacts/admin.py:24
+#: src/apps/contacts/admin.py:24
 msgid "SocialMedia Information"
 msgstr "اطلاعات حساب‌های اجتماعی"
 
-#: apps/contacts/admin.py:25
+#: src/apps/contacts/admin.py:25
 msgid "Status"
 msgstr "وضعیت"
 
-#: apps/contacts/admin.py:43 apps/contacts/admin.py:47
+#: src/apps/contacts/admin.py:43 src/apps/contacts/admin.py:47
 msgid "user information"
 msgstr "اطلاعات کاربر"
 
-#: apps/contacts/admin.py:44 apps/contacts/admin.py:48
+#: src/apps/contacts/admin.py:44 src/apps/contacts/admin.py:48
 msgid "message info"
 msgstr "اطلاعات پیام"
 
-#: apps/contacts/apps.py:8
+#: src/apps/contacts/apps.py:8
 msgid "Contacts"
 msgstr "مخاطب‌ها"
 
-#: apps/contacts/forms.py:12
+#: src/apps/contacts/forms.py:12
 msgid "Enter Your Message"
 msgstr "پیام خود را ارسال کنید"
 
-#: apps/contacts/models.py:8
+#: src/apps/contacts/models.py:8
 msgid "Phone number"
 msgstr "شماره تلفن"
 
-#: apps/contacts/models.py:9
+#: src/apps/contacts/models.py:9
 msgid "Email address"
 msgstr "آدرس ایمیل"
 
-#: apps/contacts/models.py:10
+#: src/apps/contacts/models.py:10
 msgid "Address"
 msgstr "آدرس"
 
-#: apps/contacts/models.py:12
+#: src/apps/contacts/models.py:12
 msgid "telegram id"
 msgstr "شناسه تلگرام"
 
-#: apps/contacts/models.py:12
+#: src/apps/contacts/models.py:12
 msgid "Enter your Telegram ID."
 msgstr "شناسه‌تلگرام خود را وارد نمایید."
 
-#: apps/contacts/models.py:13
+#: src/apps/contacts/models.py:13
 msgid "youtube id"
 msgstr "شناسه یوتیوب"
 
-#: apps/contacts/models.py:13
+#: src/apps/contacts/models.py:13
 msgid "Enter your YouTube ID."
 msgstr "شناسه‌یوتیوب خود را وارد نمایید."
 
-#: apps/contacts/models.py:14
+#: src/apps/contacts/models.py:14
 msgid "instagram id"
 msgstr "شناسه اینستاگرام"
 
-#: apps/contacts/models.py:14
+#: src/apps/contacts/models.py:14
 msgid "Enter your Instagram ID."
 msgstr "شناسه‌اینستاگرام خود را وارد نمایید."
 
-#: apps/contacts/models.py:16
+#: src/apps/contacts/models.py:16
 msgid "Is primary"
 msgstr "آیا اصلی است"
 
-#: apps/contacts/models.py:16
+#: src/apps/contacts/models.py:16
 msgid "You can only have 1 primary contact"
 msgstr "شما فقط می‌توانید یک راه‌ارتباطی اصلی داشته باشید"
 
-#: apps/contacts/models.py:30
+#: src/apps/contacts/models.py:30
 msgid "User"
 msgstr "کاربر"
 
-#: apps/contacts/models.py:32 apps/contacts/models.py:37
+#: src/apps/contacts/models.py:32 src/apps/contacts/models.py:37
 msgid "Message"
 msgstr "پیام"
 
-#: apps/contacts/models.py:34
+#: src/apps/contacts/models.py:34
 msgid "Sent Date"
 msgstr "تاریخ ارسال"
 
-#: apps/contacts/models.py:38
+#: src/apps/contacts/models.py:38
 msgid "Messages"
 msgstr "پیام‌ها"
 
-#: apps/contacts/templates/admin/custom_change_confirmation.html:22
+#: src/apps/contacts/templates/admin/custom_change_confirmation.html:22
 msgid "Home"
 msgstr "صفحه‌اصلی"
 
-#: apps/contacts/templates/admin/custom_change_confirmation.html:28
+#: src/apps/contacts/templates/admin/custom_change_confirmation.html:28
 msgid "Confirm change"
 msgstr "تأیید تغییر"
 
-#: apps/contacts/templates/admin/custom_change_confirmation.html:30
+#: src/apps/contacts/templates/admin/custom_change_confirmation.html:30
 msgid "Confirm add"
 msgstr "تأیید افزودن"
 
-#: apps/contacts/templates/admin/custom_change_confirmation.html:41
+#: src/apps/contacts/templates/admin/custom_change_confirmation.html:41
 msgid ""
 "Are yoy sure you don't want set this new information\n"
 "                        as primary?!"
@@ -127,7 +127,7 @@ msgstr ""
 "آیا مطمئن هستید که نمی‌خواهید این اطلاعات جدید را\n"
 "                        به عنوان اصلی تنظیم کنید؟"
 
-#: apps/contacts/templates/admin/custom_change_confirmation.html:44
+#: src/apps/contacts/templates/admin/custom_change_confirmation.html:44
 msgid ""
 "Setting this new information as primary will unset\n"
 "                        other primary instances.Do you want to proceed?!"
@@ -135,7 +135,7 @@ msgstr ""
 "تنظیم این اطلاعات جدید به عنوان اصلی، سایر موارد اصلی را غیر فعال می‌کند. آیا "
 "می‌خواهید ادامه دهید؟"
 
-#: apps/contacts/templates/admin/custom_change_confirmation.html:53
+#: src/apps/contacts/templates/admin/custom_change_confirmation.html:53
 #, python-format
 msgid ""
 "Are you sure you want to unset  \"%(object_name)s\"  as\n"
@@ -144,7 +144,7 @@ msgstr ""
 "آیا مطمئن هستید که می‌خواهید \"%(object_name)s\" را\n"
 "                    به عنوان اصلی غیر فعال کنید؟"
 
-#: apps/contacts/templates/admin/custom_change_confirmation.html:57
+#: src/apps/contacts/templates/admin/custom_change_confirmation.html:57
 #, python-format
 msgid ""
 "Are you sure you want to set  \"%(object_name)s\"  as\n"
@@ -153,92 +153,108 @@ msgstr ""
 "آیا مطمئن هستید که می‌خواهید \"%(object_name)s\" را\n"
 "                    به عنوان اصلی تنظیم کنید؟"
 
-#: apps/contacts/templates/admin/custom_change_confirmation.html:83
+#: src/apps/contacts/templates/admin/custom_change_confirmation.html:83
 msgid "Yes, I’m sure"
 msgstr "بله، مطمئن هستم"
 
-#: apps/contacts/templates/admin/custom_change_confirmation.html:85
+#: src/apps/contacts/templates/admin/custom_change_confirmation.html:85
 msgid "No, continue to edit"
 msgstr "خیر، ادامه به ویرایش"
 
-#: apps/contacts/templates/admin/custom_change_data.html:5
+#: src/apps/contacts/templates/admin/custom_change_data.html:5
 msgid "Confirm Values:"
 msgstr "تأیید مقادیر:"
 
-#: apps/contacts/templates/admin/custom_change_data.html:11
-#: apps/contacts/templates/admin/custom_change_data.html:24
+#: src/apps/contacts/templates/admin/custom_change_data.html:11
+#: src/apps/contacts/templates/admin/custom_change_data.html:24
 msgid "Curent primary"
 msgstr "اصلی فعلی"
 
-#: apps/contacts/templates/admin/custom_change_data.html:12
-#: apps/contacts/templates/admin/custom_change_data.html:25
+#: src/apps/contacts/templates/admin/custom_change_data.html:12
+#: src/apps/contacts/templates/admin/custom_change_data.html:25
 msgid "Your primary status"
 msgstr "وضعیت اصلی شما"
 
-#: apps/contacts/templates/admin/custom_change_data.html:16
-#: apps/contacts/templates/admin/custom_change_data.html:29
+#: src/apps/contacts/templates/admin/custom_change_data.html:16
+#: src/apps/contacts/templates/admin/custom_change_data.html:29
 msgid "True"
 msgstr "درست"
 
-#: apps/contacts/templates/admin/custom_change_data.html:16
-#: apps/contacts/templates/admin/custom_change_data.html:29
+#: src/apps/contacts/templates/admin/custom_change_data.html:16
+#: src/apps/contacts/templates/admin/custom_change_data.html:29
 msgid "False"
 msgstr "نادرست"
 
-#: apps/contacts/templates/contact/contact.html:6
+#: src/apps/contacts/templates/contact/contact.html:6
 msgid "Contact Page"
 msgstr "صفحه تماس"
 
-#: apps/contacts/templates/contact/contact.html:21
+#: src/apps/contacts/templates/contact/contact.html:21
 msgid "Contact Us"
 msgstr "با ما تماس بگیرید"
 
-#: apps/contacts/templates/contact/contact.html:23
+#: src/apps/contacts/templates/contact/contact.html:23
 msgid "HomePage"
 msgstr "صفحه‌اصلی"
 
-#: apps/contacts/templates/contact/contact.html:25
+#: src/apps/contacts/templates/contact/contact.html:25
 msgid "Contact"
 msgstr "تماس"
 
-#: apps/contacts/templates/contact/contact.html:90
-#: apps/contacts/templates/contact/contact.html:112
+#: src/apps/contacts/templates/contact/contact.html:90
+#: src/apps/contacts/templates/contact/contact.html:112
 msgid "Send Us Message"
 msgstr "پیام خود را برای ما ارسال کنید"
 
-#: apps/contacts/templates/contact/contact.html:98
+#: src/apps/contacts/templates/contact/contact.html:98
 msgid "Comments"
 msgstr "نظرات"
 
-#: apps/contacts/templates/contact/contact.html:101
+#: src/apps/contacts/templates/contact/contact.html:101
 msgid "Submit Now"
 msgstr "همین حالا ارسال کنید"
 
-#: apps/contacts/templates/contact/contact.html:116
+#: src/apps/contacts/templates/contact/contact.html:116
 msgid "If you wanna send us message please "
 msgstr "اگر می‌خواهید برای ما پیامی ارسال کنید لطفاً "
 
-#: apps/contacts/templates/contact/contact.html:117
+#: src/apps/contacts/templates/contact/contact.html:117
 msgid "LOGIN"
 msgstr "وارد شوید"
 
-#: apps/contacts/templates/contact/contact.html:117
+#: src/apps/contacts/templates/contact/contact.html:117
 msgid " or "
 msgstr " یا "
 
-#: apps/contacts/templates/contact/contact.html:118
+#: src/apps/contacts/templates/contact/contact.html:118
 msgid "SIGNUP."
 msgstr "ثبت نام کنید."
 
-#: apps/contacts/views.py:26
+#: src/apps/contacts/templates/contact/contact.html:143
+msgid "Worldwide Students"
+msgstr "دانش‌آموزان"
+
+#: src/apps/contacts/templates/contact/contact.html:154
+msgid "Years Experience"
+msgstr "سال‌ها تجربه"
+
+#: src/apps/contacts/templates/contact/contact.html:165
+msgid "Professional Courses"
+msgstr "دوره‌های حرفه‌ای"
+
+#: src/apps/contacts/templates/contact/contact.html:176
+msgid "Beautiful Review"
+msgstr "نقد و بررسی زیبای شما"
+
+#: src/apps/contacts/views.py:26
 msgid "Your message sent successfully!"
 msgstr "پیام شما با موفقیت ارسال شد!"
 
-#: apps/contacts/views.py:28
+#: src/apps/contacts/views.py:28
 msgid "Your message was not sent, please try again."
 msgstr "پیام شما ارسال نشد، لطفاً دوباره تلاش کنید."
 
-#: apps/contacts/views.py:30
+#: src/apps/contacts/views.py:30
 msgid "You should be authenticated."
 msgstr "شما باید احراز هویت شده باشید."
 

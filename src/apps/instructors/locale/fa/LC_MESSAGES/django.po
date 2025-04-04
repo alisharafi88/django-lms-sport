@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-26 02:43+0330\n"
+"POT-Creation-Date: 2025-04-05 00:19+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,200 +18,214 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps/instructors/admin.py:25
+#: src/apps/instructors/admin.py:25
 msgid "instructor info"
 msgstr "اطلاعات مدرس"
 
-#: apps/instructors/admin.py:26
+#: src/apps/instructors/admin.py:26
 msgid "status info"
 msgstr "اطلاعات وضعیت"
 
-#: apps/instructors/admin.py:41
+#: src/apps/instructors/admin.py:41
 msgid "FullName"
 msgstr "نام"
 
-#: apps/instructors/admin.py:45
+#: src/apps/instructors/admin.py:45
 msgid "PhoneNumber"
 msgstr "تلفن‌همراه"
 
-#: apps/instructors/admin.py:55
+#: src/apps/instructors/admin.py:55
 msgid "#courses"
 msgstr "#دوره‌ها"
 
-#: apps/instructors/apps.py:8 apps/instructors/models.py:57
-#: apps/instructors/templates/instructors/instructor_list.html:17
-#: apps/instructors/templates/instructors/instructor_list.html:21
+#: src/apps/instructors/apps.py:8 src/apps/instructors/models.py:52
+#: src/apps/instructors/templates/instructors/instructor_list.html:17
+#: src/apps/instructors/templates/instructors/instructor_list.html:21
 msgid "Coaches"
 msgstr "مربی‌ها"
 
-#: apps/instructors/models.py:13
+#: src/apps/instructors/models.py:13
 msgid "user"
 msgstr "کاربر"
 
-#: apps/instructors/models.py:16
+#: src/apps/instructors/models.py:16
 msgid "slug"
 msgstr "اسلاگ"
 
-#: apps/instructors/models.py:21
+#: src/apps/instructors/models.py:21
 msgid "description"
 msgstr "توضیحات"
 
-#: apps/instructors/models.py:22
+#: src/apps/instructors/models.py:22
 msgid "Provide a detailed description of the instructor."
 msgstr "توضیحات دقیقی از مدرس ارائه دهید."
 
-#: apps/instructors/models.py:25
+#: src/apps/instructors/models.py:25
 msgid "experience"
 msgstr "تجربه"
 
-#: apps/instructors/models.py:26
+#: src/apps/instructors/models.py:26
 msgid "Enter the number of years of experience."
 msgstr "تعداد سال‌های تجربه را وارد کنید."
 
-#: apps/instructors/models.py:30
+#: src/apps/instructors/models.py:30
 msgid "is active"
 msgstr "آیا فعال است"
 
-#: apps/instructors/models.py:32
+#: src/apps/instructors/models.py:32
 msgid "Check this box to set this instructor as active."
 msgstr "این کادر را علامت بزنید تا این مدرس فعال تنظیم شود."
 
-#: apps/instructors/models.py:56
-#: apps/instructors/templates/instructors/instructor_list.html:77
+#: src/apps/instructors/models.py:51
+#: src/apps/instructors/templates/instructors/instructor_list.html:77
 msgid "Coach"
 msgstr "مربی"
 
-#: apps/instructors/models.py:64
+#: src/apps/instructors/models.py:59
 msgid "instructor widjet"
 msgstr "ویجت مدرس"
 
-#: apps/instructors/models.py:67 apps/instructors/models.py:73
+#: src/apps/instructors/models.py:62 src/apps/instructors/models.py:68
 msgid "widjet"
 msgstr "ویجت"
 
-#: apps/instructors/models.py:67
+#: src/apps/instructors/models.py:62
 msgid "short Widjet"
 msgstr "ویجت کوتاه"
 
-#: apps/instructors/models.py:74
+#: src/apps/instructors/models.py:69
 msgid "widjets"
 msgstr "ویجت‌ها"
 
-#: apps/instructors/models.py:81
+#: src/apps/instructors/models.py:76
 msgid "coach"
 msgstr "مربی"
 
-#: apps/instructors/models.py:83
+#: src/apps/instructors/models.py:78
 msgid "add your honor here, with one related photo"
 msgstr "افتخارات خود را اینجا اضافه کنید، با یک عکس مرتبط"
 
-#: apps/instructors/models.py:85
+#: src/apps/instructors/models.py:80
 msgid "honor"
 msgstr "افتخار"
 
-#: apps/instructors/models.py:86
+#: src/apps/instructors/models.py:81
 msgid "photo"
 msgstr "عکس"
 
-#: apps/instructors/models.py:88
+#: src/apps/instructors/models.py:83
 msgid "status"
 msgstr "وضعیت"
 
-#: apps/instructors/models.py:91
+#: src/apps/instructors/models.py:86
 msgid "Honor"
 msgstr "افتخار"
 
-#: apps/instructors/models.py:92
-#: apps/instructors/templates/instructors/instructor_detail.html:151
+#: src/apps/instructors/models.py:87
+#: src/apps/instructors/templates/instructors/instructor_detail.html:151
 msgid "Honors"
 msgstr "افتخارات"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:53
-#: apps/instructors/templates/instructors/instructor_list.html:19
+#: src/apps/instructors/templates/instructors/instructor_detail.html:53
+#: src/apps/instructors/templates/instructors/instructor_list.html:19
 msgid "HomePage"
 msgstr "صفحه‌اصلی"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:55
+#: src/apps/instructors/templates/instructors/instructor_detail.html:55
 msgid "Coachs"
 msgstr "مربی"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:57
+#: src/apps/instructors/templates/instructors/instructor_detail.html:57
 msgid "Coach Profile"
 msgstr "پروفایل مربی"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:86
+#: src/apps/instructors/templates/instructors/instructor_detail.html:86
 msgid "Email"
 msgstr "ایمیل"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:91
+#: src/apps/instructors/templates/instructors/instructor_detail.html:91
 msgid "Experiences"
 msgstr "تجربیات"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:92
+#: src/apps/instructors/templates/instructors/instructor_detail.html:92
 msgid "Years"
 msgstr "سال‌ها"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:116
+#: src/apps/instructors/templates/instructors/instructor_detail.html:116
 msgid "Biography"
 msgstr "بیوگرافی"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:126
+#: src/apps/instructors/templates/instructors/instructor_detail.html:126
 msgid "Students"
 msgstr "دانش‌آموز"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:133
+#: src/apps/instructors/templates/instructors/instructor_detail.html:133
+#: src/apps/instructors/templates/instructors/instructor_detail.html:303
+#: src/apps/instructors/templates/instructors/instructor_list.html:172
 msgid "Professional Courses"
 msgstr "دوره‌های حرفه‌ای"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:140
+#: src/apps/instructors/templates/instructors/instructor_detail.html:140
+#: src/apps/instructors/templates/instructors/instructor_detail.html:314
+#: src/apps/instructors/templates/instructors/instructor_list.html:183
 msgid "Beautiful Review"
 msgstr "نقدهای زیبای شما"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:182
+#: src/apps/instructors/templates/instructors/instructor_detail.html:182
 msgid "Courses"
 msgstr "دوره‌ها"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:230
-#: apps/instructors/templates/instructors/instructor_list.html:98
+#: src/apps/instructors/templates/instructors/instructor_detail.html:230
+#: src/apps/instructors/templates/instructors/instructor_list.html:98
 msgctxt "singular"
 msgid "Classes"
 msgstr "کلاس‌"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:235
-#: apps/instructors/templates/instructors/instructor_list.html:103
+#: src/apps/instructors/templates/instructors/instructor_detail.html:235
+#: src/apps/instructors/templates/instructors/instructor_list.html:103
 msgctxt "singular"
 msgid "Students"
 msgstr "دانش‌آموز"
 
-#: apps/instructors/templates/instructors/instructor_detail.html:347
+#: src/apps/instructors/templates/instructors/instructor_detail.html:281
+#: src/apps/instructors/templates/instructors/instructor_list.html:150
+msgid "Worldwide Students"
+msgstr "دانش‌آموزان"
+
+#: src/apps/instructors/templates/instructors/instructor_detail.html:292
+#: src/apps/instructors/templates/instructors/instructor_list.html:161
+msgid "Years Experience"
+msgstr "سال‌ها تجربه"
+
+#: src/apps/instructors/templates/instructors/instructor_detail.html:355
 msgid "Adding..."
 msgstr "افزودن..."
 
-#: apps/instructors/templates/instructors/instructor_detail.html:347
+#: src/apps/instructors/templates/instructors/instructor_detail.html:355
 msgid "Removing..."
 msgstr "حذف..."
 
-#: apps/instructors/templates/instructors/instructor_detail.html:375
+#: src/apps/instructors/templates/instructors/instructor_detail.html:383
 msgid "An error occurred. Please try again."
 msgstr "خطایی رخ داد. لطفا دوباره امتحان کنید."
 
-#: apps/instructors/templates/instructors/instructor_list.html:6
+#: src/apps/instructors/templates/instructors/instructor_list.html:6
 msgid "Coach List"
 msgstr "لیست مربی"
 
-#: apps/instructors/templates/instructors/instructor_list.html:41
+#: src/apps/instructors/templates/instructors/instructor_list.html:41
 msgid "Expert Trainer"
 msgstr "مدرس متخصص"
 
-#: apps/instructors/templates/instructors/instructor_list.html:51
+#: src/apps/instructors/templates/instructors/instructor_list.html:51
 msgid "Get Certificate"
 msgstr "گواهی دریافت کنید"
 
-#: apps/instructors/templates/instructors/instructor_list.html:61
+#: src/apps/instructors/templates/instructors/instructor_list.html:61
 msgid "Life Time Access"
 msgstr "دسترسی مادام‌العمر"
 
-#: apps/instructors/templates/instructors/instructor_list.html:78
+#: src/apps/instructors/templates/instructors/instructor_list.html:78
 msgid "Our Expert Coach"
 msgstr "مربی‌های متخصص ما"
 
