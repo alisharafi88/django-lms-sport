@@ -1,4 +1,5 @@
 {% extends '-base.html' %}
+{% load enrollment %}
 {% load cart_tags %}
 {% load tags %}
 {% load i18n %}
@@ -237,16 +238,26 @@
                                     <img src="{% get_media_prefix %}{{ course.img }}" alt="course-thumb">
                                 </a>
                                 <div class="tpcourse__tag">
-                                    {% if course|course_in_cart:carts %}
-                                        <a href="#" class="in-cart" data-product-id="{{ course.id }}"
-                                           data-product-type="{{ course.product_type }}">
-                                            <i class="fi fi-rr-shopping-cart-check"></i>
+                                    {% if user.is_authenticated and product|is_enrolled:user %}
+                                        <!-- Enrolled State -->
+                                        <a href="{% url 'accounts:student_dashboards' %}" class="enrolled">
+                                            <i class="fi fi-rr-check"></i>
                                         </a>
                                     {% else %}
-                                        <a href="#" class="add-to-cart" data-product-id="{{ course.id }}"
-                                           data-product-type="{{ course.product_type }}">
-                                            <i class="fi fi-rr-shopping-cart-add"></i>
-                                        </a>
+                                        <!-- Cart State -->
+                                        {% if product|in_cart:carts %}
+                                            <a href="#" class="in-cart"
+                                               data-product-id="{{ product.id }}"
+                                               data-product-type="{{ product.product_type }}">
+                                                <i class="fi fi-rr-shopping-cart-check"></i>
+                                            </a>
+                                        {% else %}
+                                            <a href="#" class="add-to-cart"
+                                               data-product-id="{{ product.id }}"
+                                               data-product-type="{{ product.product_type }}">
+                                                <i class="fi fi-rr-shopping-cart-add"></i>
+                                            </a>
+                                        {% endif %}
                                     {% endif %}
                                     <input
                                             type="hidden"
