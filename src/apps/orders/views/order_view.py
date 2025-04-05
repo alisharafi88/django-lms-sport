@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
@@ -8,6 +9,7 @@ from django.db import transaction
 
 import logging
 
+from apps.courses.models import CourseMembership
 from apps.orders.models import Order, OrderItem, DVDOrderDetail
 from apps.orders.forms import CheckoutForm
 from apps.carts.carts import Cart
@@ -56,13 +58,40 @@ class OrderCreateView(View):
         if form.is_valid():
             try:
                 with transaction.atomic():
+                    valid_items = []
+                    enrolled_items = []
+
+                    for item in cart:
+                        product = item['product_obj']
+                        content_type = ContentType.objects.get_for_model(product)
+                        membership_exists = CourseMembership.objects.filter(
+                            user=request.user,
+                            content_type=content_type,
+                            object_id=product.id
+                        ).exists()
+
+                        if membership_exists:
+                            enrolled_items.append(product)
+                        else:
+                            valid_items.append(item)
+
+                    if enrolled_items:
+                        for product in enrolled_items:
+                            messages.warning(
+                                request,
+                                _(f"You're already enrolled in {product.title}. Removed from order."),
+                                'warning'
+                            )
+                        if not valid_items:
+                            return redirect('courses:course_list')
+
                     order = Order.objects.create(
                         customer=request.user,
                         total_price=total_discounted_price,
                     )
                     logger.info('Order created for user %s with order ID: %s', request.user.username, order.id)
 
-                    for item in cart:
+                    for item in valid_items:
                         OrderItem.objects.create(
                             order=order,
                             course=item['product_obj'],

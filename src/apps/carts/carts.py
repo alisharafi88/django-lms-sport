@@ -1,4 +1,7 @@
-from apps.courses.models import Course, Package
+from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
+
+from apps.courses.models import Course, Package, CourseMembership
 
 COURSE_TYPE = 'course'
 PACKAGE_TYPE = 'package'
@@ -26,6 +29,18 @@ class Cart:
         product_type = COURSE_TYPE if isinstance(product, Course) else PACKAGE_TYPE
         product_id = str(product.id)
         item = {'type': product_type, 'id': product_id}
+
+        user = self.request.user
+        if user.is_authenticated:
+            content_type = ContentType.objects.get_for_model(product)
+            if CourseMembership.objects.filter(
+                    user=user,
+                    content_type=content_type,
+                    object_id=product.id
+            ).exists():
+                messages.warning(self.request, "You're already enrolled in this product.")
+                return  # Skip adding to cart
+
         if item not in self.cart:
             self.cart.append(item)
             self.save()
@@ -47,16 +62,58 @@ class Cart:
 
     def load_products(self):
         """
-        Load all product objects into memory using `in_bulk()` to avoid redundant queries.
+        Load products while excluding enrolled items and notify the user.
         """
-        if self.products is None:
-            course_ids = [int(item['id']) for item in self.cart if item['type'] == COURSE_TYPE]
-            package_ids = [int(item['id']) for item in self.cart if item['type'] == PACKAGE_TYPE]
+        if self.products is not None:
+            return  # Skip if already loaded
 
-            courses = Course.objects.in_bulk(course_ids) if course_ids else {}
-            packages = Package.objects.in_bulk(package_ids) if package_ids else {}
+        user = self.request.user
+        items_removed = False
 
-            self.products = {**courses, **packages}
+        if user.is_authenticated:
+            course_ct = ContentType.objects.get_for_model(Course)
+            package_ct = ContentType.objects.get_for_model(Package)
+
+            enrolled_course_ids = set(
+                CourseMembership.objects.filter(
+                    user=user,
+                    content_type=course_ct
+                ).values_list('object_id', flat=True)
+            )
+
+            enrolled_package_ids = set(
+                CourseMembership.objects.filter(
+                    user=user,
+                    content_type=package_ct
+                ).values_list('object_id', flat=True)
+            )
+
+            items_to_remove = []
+            for item in self.cart:
+                product_type = item['type']
+                product_id = int(item['id'])
+                if (product_type == COURSE_TYPE and product_id in enrolled_course_ids) or \
+                   (product_type == PACKAGE_TYPE and product_id in enrolled_package_ids):
+                    items_to_remove.append(item)
+
+            if items_to_remove:
+                for item in items_to_remove:
+                    self.cart.remove(item)
+                    product = Course.objects.get(id=item['id']) if item['type'] == COURSE_TYPE else Package.objects.get(id=item['id'])
+                    messages.warning(
+                        self.request,
+                        f'You\'re already enrolled in \'{product.title}\'. Removed from your cart.'
+                    )
+                self.save()
+                items_removed = True
+
+        course_ids = [int(item['id']) for item in self.cart if item['type'] == COURSE_TYPE]
+        package_ids = [int(item['id']) for item in self.cart if item['type'] == PACKAGE_TYPE]
+
+        courses = Course.objects.in_bulk(course_ids) if course_ids else {}
+        packages = Package.objects.in_bulk(package_ids) if package_ids else {}
+
+        self.products = {**courses, **packages}
 
     def __iter__(self):
         """
@@ -66,11 +123,22 @@ class Cart:
         for item in self.cart:
             product_type, product_id = item['type'], int(item['id'])
             product = self.products.get(product_id)
+
             if product:
                 yield {
                     'product_obj': product,
                     'item_total_price': product.discounted_price(),
                     'type': product_type,
+                    'is_enrolled': False,
+                }
+            else:
+                product = Course.objects.get(id=product_id) if product_type == COURSE_TYPE else Package.objects.get(
+                    id=product_id)
+                yield {
+                    'product_obj': product,
+                    'item_total_price': 0,
+                    'type': product_type,
+                    'is_enrolled': True,
                 }
 
     def __len__(self):
