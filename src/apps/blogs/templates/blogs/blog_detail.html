@@ -136,8 +136,7 @@
                             {% else %}
                                 <div class="contact-form-input_same_line mb-40">
                                     <span>{% trans 'If you wanna send commnet please ' %}</span>
-                                    <a href="#">{% trans 'LOGIN' %}</a><span>{% trans ' or ' %}</span><a
-                                        href="#">{% trans 'SIGNUP.' %}</a>
+                                    <a href="{% url 'accounts:authenticate' %}">{% trans 'LOGIN' %}.</a>
                                 </div>
                             {% endif %}
                         </div>
