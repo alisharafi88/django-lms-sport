@@ -92,8 +92,17 @@
         const closeButtons = document.querySelectorAll('.alert__close');
         closeButtons.forEach(button => {
             button.addEventListener('click', function () {
-                this.closest('.alert').style.display = 'none';
+                const alert = this.closest('.alert');
+                alert.classList.add('hide');
+                setTimeout(() => alert.remove(), 300);
             });
+        });
+
+        document.querySelectorAll('.alert').forEach(alert => {
+            setTimeout(() => {
+                alert.classList.add('hide');
+                setTimeout(() => alert.remove(), 300);
+            }, 5000);
         });
     });
 </script>
