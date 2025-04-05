@@ -169,6 +169,14 @@ class PackageDetailView(generic.DetailView):
                       )
                   ).annotate(
                       product_type=Value(1, output_field=IntegerField()),
+                      num_videos=Count('seasons__videos'),
+                      num_members=Count(
+                          'memberships',
+                          filter=Q(memberships__content_type=ContentType.objects.get_for_model(Course)),
+                          distinct=True
+                      ),
+                      avg_rate=Avg('comments__rate', default=0),
+                      num_comment=Count('comments', distinct=True),
                   )
                 ),
             )
