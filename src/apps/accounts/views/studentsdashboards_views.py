@@ -28,14 +28,17 @@ class StudentsDashboard(LoginRequiredMixin, View):
 
         # Orders
         orders_queryset = Order.objects.filter(
-            customer=request.user,
-        ).\
-            prefetch_related(
+            customer=request.user
+        ).prefetch_related(
             'dvd_detail',
             Prefetch(
                 'items',
-                queryset=OrderItem.objects.select_related('course').all(),
-            ),
+                queryset=OrderItem.objects.select_related(
+                    'content_type',
+                ).prefetch_related(
+                    'product',
+                )
+            )
         )
 
         # Ticket

@@ -8,7 +8,7 @@ from django.utils import timezone
 from django.utils.translation import gettext as _
 
 from apps.carts.carts import Cart
-from apps.courses.models import CourseMembership, CourseTelegramLink
+from apps.courses.models import CourseMembership, CourseTelegramLink, Package, Course
 from apps.orders.models import Order
 from apps.orders.zarinpal import send_request, verify, ZP_API_STARTPAY
 
@@ -72,25 +72,33 @@ def payment_callback(request):
                         order.save()
                         # Enroll student in courses
                         for item in order.items.all():
-                            content_type = ContentType.objects.get_for_model(item.course)
-                            CourseMembership.objects.get_or_create(
-                                user=order.customer,
-                                content_type=content_type,
-                                object_id=item.course.id
-                            )
-                            course = item.course
-                            link = CourseTelegramLink.objects.filter(
-                                course=course,
-                                is_used=False
-                            ).select_for_update().first()
+                            product = item.product
+                            user = order.customer
 
-                            if link:
-                                link.user = order.customer
-                                link.is_used = True
-                                link.date_used = timezone.now()
-                                link.save()
-                            else:
-                                messages.warning(request, _('Some Telegram links couldn\'t be assigned. Please contact support or send ticket if you don\'t receive your invite links.'))
+                            if isinstance(product, Package):  # package
+                                # package-level
+                                CourseMembership.objects.get_or_create(
+                                    user=user,
+                                    content_type=ContentType.objects.get_for_model(Package),
+                                    object_id=product.id
+                                )
+                                # course-level
+                                courses = product.courses.all()
+                                for course in courses:
+                                    CourseMembership.objects.get_or_create(
+                                        user=user,
+                                        content_type=ContentType.objects.get_for_model(Course),
+                                        object_id=course.id
+                                    )
+                                    assign_telegram_link(request, user, course)
+                            elif isinstance(product, Course):  # course
+                                CourseMembership.objects.get_or_create(
+                                    user=user,
+                                    content_type=ContentType.objects.get_for_model(Course),
+                                    object_id=product.id
+                                )
+                                assign_telegram_link(request, user, product)
+
                         # Clear cart
                         cart = Cart(request)
                         cart.clear()
@@ -111,3 +119,24 @@ def payment_callback(request):
 
     messages.error(request, _('An unexpected error occurred during payment verification'))
     return redirect('carts:cart')
+
+
+def assign_telegram_link(request, user, course):
+    link = CourseTelegramLink.objects.filter(
+        course=course,
+        is_used=False
+    ).select_for_update().first()
+
+    if link:
+        link.user = user
+        link.is_used = True
+        link.date_used = timezone.now()
+        link.save()
+    else:
+        messages.warning(request,
+                         _('Some Telegram links couldn\'t be assigned. Please contact support or send ticket if you don\'t receive your invite links.'))
+
+        # sms_admins(
+        #     f"No Telegram links for course: {course.title}",
+        #     f"User {user} needs a link for course ID {course.id}"
+        # )

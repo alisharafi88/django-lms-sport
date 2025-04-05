@@ -246,7 +246,7 @@ class CourseMembershipAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
 
 @admin.register(CourseTelegramLink)
-class TelegramLinkAdmin(admin.ModelAdmin):
+class TelegramLinkAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('course', 'invite_link', 'user', 'date_created', 'date_used', 'is_used')
     list_filter = ('course', 'is_used')
     search_fields = ('course__title', 'invite_link')

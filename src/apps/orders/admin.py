@@ -76,14 +76,22 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
 @admin.register(OrderItem)
 class OrderItemAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ('order', 'unit_price',)
+    list_display = ('order', 'unit_price', 'product_type', 'product_title')
     list_per_page = 50
     search_fields = ('order', 'order__customer',)
 
     fieldsets = (
         (_('Order'), {'fields': ('order',)}),
-        (_('course information'), {'fields': ('course', 'unit_price',)}),
+        (_('product information'), {'fields': ('content_type', 'object_id', 'unit_price',)}),
     )
+
+    @admin.display(description=_('Type'))
+    def product_type(self, obj):
+        return obj.content_type.model
+
+    @admin.display(description=_('Product'))
+    def product_title(self, obj):
+        return obj.product.title
 
 
 @admin.register(DVDOrderDetail)

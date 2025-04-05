@@ -60,10 +60,13 @@ class OrderCreateView(View):
                 with transaction.atomic():
                     valid_items = []
                     enrolled_items = []
+                    seen_products = set()
 
                     for item in cart:
                         product = item['product_obj']
                         content_type = ContentType.objects.get_for_model(product)
+                        product_key = (content_type.id, product.id)
+
                         membership_exists = CourseMembership.objects.filter(
                             user=request.user,
                             content_type=content_type,
@@ -72,7 +75,8 @@ class OrderCreateView(View):
 
                         if membership_exists:
                             enrolled_items.append(product)
-                        else:
+                        elif product_key not in seen_products:
+                            seen_products.add(product_key)
                             valid_items.append(item)
 
                     if enrolled_items:
@@ -92,11 +96,17 @@ class OrderCreateView(View):
                     logger.info('Order created for user %s with order ID: %s', request.user.username, order.id)
 
                     for item in valid_items:
-                        OrderItem.objects.create(
+                        product = item['product_obj']
+                        content_type = ContentType.objects.get_for_model(product)
+
+                        OrderItem.objects.get_or_create(
                             order=order,
-                            course=item['product_obj'],
-                            unit_price=item['item_total_price'],
+                            content_type=content_type,
+                            object_id=product.id,
+                            defaults={'unit_price': item['item_total_price']}
                         )
+                        logger.debug('Processing cart item: %s', item)
+                        logger.debug('Product object: %s', product)
                         logger.debug('OrderItem created for order ID %s: %s', order.id, item)
 
                     if form.cleaned_data['status'] == Order.AccessStatus.DVD:

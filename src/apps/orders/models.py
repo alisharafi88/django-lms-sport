@@ -1,3 +1,5 @@
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.conf import settings
@@ -123,19 +125,23 @@ class OrderItem(models.Model):
         related_name='items',
         verbose_name=_('Order'),
     )
-    course = models.ForeignKey(
-        Course,
-        on_delete=models.PROTECT,
-        related_name='order_items',
-        verbose_name=_('Course')
+    content_type = models.ForeignKey(
+        ContentType,
+        on_delete=models.CASCADE,
+        limit_choices_to={'model__in': ('course', 'package')},
+        verbose_name=_('Content Type'),
+        null=True,
+        blank=True,
     )
-    unit_price = models.PositiveIntegerField(_('UnitPrice'), default=0)
+    object_id = models.PositiveIntegerField(verbose_name=_('Object ID'), null=True, blank=True)
+    product = GenericForeignKey('content_type', 'object_id')
+    unit_price = models.PositiveIntegerField(_('Unit Price'), default=0)
 
     class Meta:
-        unique_together = ('order', 'course')
+        unique_together = ('order', 'content_type', 'object_id')
 
         verbose_name = _('Order\'s Item')
         verbose_name_plural = _('Order\'s Items')
 
     def __str__(self):
-        return f'{self.order} - {self.course}'
+        return f'{self.order} - {self.product}'

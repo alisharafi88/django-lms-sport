@@ -37,7 +37,11 @@ RUN apt-get purge -y build-essential gcc \
     && rm -rf /var/lib/apt/lists/*
 
 COPY src/ /src/
-#COPY nginx.conf /etc/nginx/nginx.conf
+RUN mkdir -p /src/staticfiles && \
+    chown -R appuser:appuser /src/staticfiles
+
+RUN mkdir -p /src/media && \
+    chown -R appuser:appuser /src/media
 #
 #RUN mkdir -p /src/run \
 #    && touch /src/run/nginx.pid \
