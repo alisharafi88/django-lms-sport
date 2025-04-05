@@ -216,17 +216,21 @@
                                 <h3 class="pricing-video text-center mb-15">
                                     {% translate 'Toman' %}{{ course.discounted_price }}</h3>
                                 <div class="cd-pricing-btn text-center mb-30">
-                                    <a class="tp-vp-btn"
-                                       data-product-id="{{ course.id }}"
-                                       data-product-type="1">
-                                        {% if course|course_in_cart:carts %}
-                                            {% trans 'Remove from Cart' %}
-                                        {% else %}
-                                            {% trans 'Add To Cart' %}
-                                        {% endif %}
-                                    </a>
-                                    <a class="tp-vp-btn-green"
-                                       href="{% static 'course-details.html' %}">{% trans 'Enroll Now' %}</a>
+                                    {% if user.is_authenticated and course|is_enrolled:user %}
+                                        <a class="tp-vp-btn-green" href="{% url 'accounts:student_dashboards' %}">
+                                            {% trans 'You are student of this course.' %}
+                                        </a>
+                                    {% else %}
+                                        <a class="tp-vp-btn"
+                                           data-product-id="{{ course.id }}"
+                                           data-product-type="1">
+                                            {% if course|course_in_cart:carts %}
+                                                {% trans 'Remove from Cart' %}
+                                            {% else %}
+                                                {% trans 'Add To Cart' %}
+                                            {% endif %}
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="cd-information mb-35">
@@ -367,7 +371,8 @@
                             <i class="fi fi-rr-user"></i>
                         </div>
                         <div class="counter-item__content">
-                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.students }}"></span>+</h4>
+                            <h4 class="counter-item__title"><span class="counter"
+                                                                  data-value="{{ counter.students }}"></span>+</h4>
                             <p>{% trans 'Worldwide Students' %}</p>
                         </div>
                     </div>
@@ -378,7 +383,9 @@
                             <i class="fi fi-rr-document"></i>
                         </div>
                         <div class="counter-item__content">
-                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.experience_years }}"></span>+</h4>
+                            <h4 class="counter-item__title"><span class="counter"
+                                                                  data-value="{{ counter.experience_years }}"></span>+
+                            </h4>
                             <p>{% trans 'Years Experience' %}</p>
                         </div>
                     </div>
@@ -389,7 +396,9 @@
                             <i class="fi fi-rr-apps"></i>
                         </div>
                         <div class="counter-item__content">
-                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.professional_courses }}"></span>+</h4>
+                            <h4 class="counter-item__title"><span class="counter"
+                                                                  data-value="{{ counter.professional_courses }}"></span>+
+                            </h4>
                             <p>{% trans 'Professional Courses' %}</p>
                         </div>
                     </div>
@@ -400,7 +409,8 @@
                             <i class="fi fi-rr-star"></i>
                         </div>
                         <div class="counter-item__content">
-                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.comments }}"></span>+</h4>
+                            <h4 class="counter-item__title"><span class="counter"
+                                                                  data-value="{{ counter.comments }}"></span>+</h4>
                             <p>{% trans 'Beautiful Review' %}</p>
                         </div>
                     </div>
