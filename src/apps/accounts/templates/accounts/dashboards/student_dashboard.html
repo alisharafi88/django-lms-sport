@@ -1332,23 +1332,19 @@
         }
     
         isInitialized = true;
-    
-        // Select all buttons with the 'copy' class
+
         const copyButtons = document.querySelectorAll('.copy');
-    
-        // Add a single click event listener to each button
+
         copyButtons.forEach(button => {
             button.addEventListener('click', async () => {
-                // Get the link from the data-link attribute
                 const link = button.getAttribute('data-link');
-    
+
                 try {
-                    // Copy the link to the clipboard
                     await navigator.clipboard.writeText(link);
-    
-                button.classList.add('copied'); // Add a CSS class for styling
+
+                button.classList.add('copied');
                 setTimeout(() => {
-                    button.classList.remove('copied'); // Remove the class after 1 second
+                    button.classList.remove('copied');
                 }, 1000);
                 } catch (error) {
                     console.error('Failed to copy link:', error);
