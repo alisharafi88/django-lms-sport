@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.db.models import Count, OuterRef, IntegerField, Subquery, Prefetch
+from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
 from jalali_date.admin import ModelAdminJalaliMixin, StackedInlineJalaliMixin, TabularInlineJalaliMixin
 
-from .models import Course, Coupon, CourseVideo, CourseMembership, CourseComments, Package, CourseSeason
+from .models import Course, Coupon, CourseVideo, CourseMembership, CourseComments, Package, CourseSeason, CourseTelegramLink
 
 
 class CourseVideoInline(StackedInlineJalaliMixin, admin.StackedInline):
@@ -36,7 +37,7 @@ class CouponAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
 @admin.register(Course)
 class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ('title', 'get_coach', 'price', 'date_modified', 'get_num_videos', 'get_num_members', 'status')
+    list_display = ('title', 'get_coach', 'price', 'date_modified', 'get_num_videos', 'get_num_members', 'telegram_link_count', 'available_links', 'status')
     list_filter = ('price', 'status', 'date_modified', 'coach')
     search_fields = ('title',)
     date_hierarchy = 'date_modified'
@@ -90,6 +91,16 @@ class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     @admin.display(description=_('Coach'))
     def get_coach(self, course):
         return course.coach or _('No Coach Assigned')
+
+    @admin.display(description=_('Total Links'))
+    def telegram_link_count(self, obj):
+        return obj.telegram_links.count()
+
+    @admin.display(description=_('Available Links'))
+    def available_links(self, obj):
+        count = obj.telegram_links.filter(is_used=False).count()
+        color = 'green' if count > 0 else 'red'
+        return format_html(f'<span style="color:{color}">{count}</span>')
 
 
 @admin.register(Package)
@@ -232,6 +243,14 @@ class CourseMembershipAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     @admin.display(description=_('Product Title'))
     def product_title(self, membership):
         return str(membership.product) if membership.product else _('Unknown Product')
+
+
+@admin.register(CourseTelegramLink)
+class TelegramLinkAdmin(admin.ModelAdmin):
+    list_display = ('course', 'invite_link', 'user', 'date_created', 'date_used', 'is_used')
+    list_filter = ('course', 'is_used')
+    search_fields = ('course__title', 'invite_link')
+    readonly_fields = ('date_created', 'date_used')
 
 
 admin.site.register(CourseComments)

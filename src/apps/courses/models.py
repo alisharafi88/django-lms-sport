@@ -311,3 +311,37 @@ class CourseComments(models.Model):
 
     def __str__(self):
         return f'{self.user} - {self.course.title}'
+
+
+class CourseTelegramLink(models.Model):
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name='telegram_links',
+        verbose_name=_('Course')
+    )
+    invite_link = models.URLField(
+        _('Telegram Invite Link'),
+        unique=True
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='telegram_links',
+        verbose_name=_('Assigned User')
+    )
+    is_used = models.BooleanField(_('Used'), default=False)
+
+    date_created = models.DateTimeField(_('Create Date'), auto_now_add=True)
+    date_used = models.DateTimeField(_('Update Date'), blank=True, null=True)
+
+    class Meta:
+        verbose_name = _('Telegram Link')
+        verbose_name_plural = _('Telegram Links')
+
+    def __str__(self):
+        if self.user:
+            return f"{self.course.title} - {self.invite_link}"
+        return self.course.title

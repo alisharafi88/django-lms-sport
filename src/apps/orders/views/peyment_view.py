@@ -4,10 +4,11 @@ from django.db import transaction
 from django.shortcuts import get_object_or_404, redirect
 from django.http import HttpResponse
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.translation import gettext as _
 
 from apps.carts.carts import Cart
-from apps.courses.models import CourseMembership
+from apps.courses.models import CourseMembership, CourseTelegramLink
 from apps.orders.models import Order
 from apps.orders.zarinpal import send_request, verify, ZP_API_STARTPAY
 
@@ -77,6 +78,19 @@ def payment_callback(request):
                                 content_type=content_type,
                                 object_id=item.course.id
                             )
+                            course = item.course
+                            link = CourseTelegramLink.objects.filter(
+                                course=course,
+                                is_used=False
+                            ).select_for_update().first()
+
+                            if link:
+                                link.user = order.customer
+                                link.is_used = True
+                                link.date_used = timezone.now()
+                                link.save()
+                            else:
+                                messages.warning(request, _('Some Telegram links couldn\'t be assigned. Please contact support or send ticket if you don\'t receive your invite links.'))
                         # Clear cart
                         cart = Cart(request)
                         cart.clear()
