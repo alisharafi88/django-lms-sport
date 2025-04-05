@@ -1,4 +1,4 @@
-from django.db.models import Prefetch
+from django.db.models import Prefetch, Subquery, OuterRef
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views import generic
@@ -10,7 +10,7 @@ from jalali_date import datetime2jalali
 
 from ..forms import EditProfileForm
 from apps.carts.carts import Cart
-from apps.courses.models import Course
+from apps.courses.models import Course, CourseTelegramLink
 from ...orders.models import Order, OrderItem
 from ...tickets.models import Ticket
 
@@ -20,7 +20,18 @@ class StudentsDashboard(LoginRequiredMixin, View):
     
     def get(self, request):
         # Student Courses
-        courses_queryset = Course.objects.filter(memberships__user=request.user.id, status=True)
+        courses_queryset = Course.objects.filter(
+            memberships__user=request.user.id,
+            status=True,
+        ). \
+            annotate(
+            link=Subquery(
+                CourseTelegramLink.objects.filter(
+                    course=OuterRef('pk'),
+                    user=request.user,
+                ).values('invite_link')[:1]
+            )
+        )
 
         # Cart
         cart = Cart(request)
