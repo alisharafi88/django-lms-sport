@@ -153,8 +153,9 @@ class PackageDetailView(generic.DetailView):
             ) \
             .annotate(
                 num_courses=Count('courses', distinct=True),
-                num_members=Count('memberships'),
-                num_videos=Count('courses__seasons__videos')
+                num_members=Count('memberships', distinct=True),
+                num_videos=Count('courses__seasons__videos', distinct=True),
+                avg_rate=Avg('courses__comments__rate', default=0, distinct=True),
             ) \
             .prefetch_related(
                 Prefetch(
@@ -176,7 +177,19 @@ class PackageDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['coaches'] = Instructor.objects.filter(courses__in=self.object.courses.all()).select_related('user').distinct()
+        context['coaches'] = Instructor.objects.filter(
+            courses__in=self.object.courses.all()
+        ). \
+            select_related(
+            'user'
+        ). \
+            annotate(
+                coach_avg_rate=Avg('courses__comments__rate', default=0, distinct=True),
+                coach_num_comment=Count('courses__comments', distinct=True),
+                coach_student_count=Count('courses__memberships', distinct=True),
+                coach_video_count=Count('courses__seasons__videos', distinct=True),
+        ). \
+            distinct()
 
         cart = Cart(self.request)
         cart_items = [(item['id'], item['type']) for item in cart.cart]

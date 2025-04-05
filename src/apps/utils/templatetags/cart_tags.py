@@ -15,3 +15,10 @@ def course_in_cart(course, cart_items):
     course_id = str(course.id)
     product_type = 'course'
     return (course_id, product_type) in cart_items if product_type else False
+
+
+@register.filter
+def package_in_cart(package, cart_items):
+    package_id = str(package.id)
+    product_type = 'package'
+    return (package_id, product_type) in cart_items if product_type else False

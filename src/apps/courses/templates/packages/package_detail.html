@@ -83,13 +83,14 @@
                                 <ul class="d-flex align-items-center">
                                     <li>
                                         <div class="rating-gold d-flex align-items-center">
-                                            <p>4.7</p>
-                                            <i class="fi fi-ss-star"></i>
-                                            <i class="fi fi-ss-star"></i>
-                                            <i class="fi fi-ss-star"></i>
-                                            <i class="fi fi-ss-star"></i>
-                                            <i class="fi-rs-star"></i>
-                                            <span>(125)</span>
+                                            <p>{{ package.avg_rate|default:0 }}</p>
+                                            {% for _ in "12345" %}
+                                                {% if package.avg_rate >= forloop.counter %}
+                                                    <i class="fi fi-ss-star"></i>
+                                                {% else %}
+                                                    <i class="fi fi-rs-star"></i>
+                                                {% endif %}
+                                            {% endfor %}
                                         </div>
                                     </li>
                                     <li>
@@ -132,36 +133,52 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        <div class="cor-details-instructor mb-40">
+                        <div>
                             <h4 class="tp-c-details-title mb-40">{% trans 'Coaches' %}</h4>
                             {% for coach in coaches %}
-                                <div class="course-instructor-details d-flex f-wrap align-items-center">
-                                    <div class="course-avata mr-30 mb-20">
-                                        <img src="{{ coach.user.get_photo_url }}"
-                                             alt="avata-thumb">
-                                    </div>
-                                    <div class="course-avatar-details mb-20">
-                                        <h5 class="c-avata-title mb-10">{{ coach.full_name }}</h5>
-                                        <div class="c-details-list mb-5">
-                                            <ul class="d-flex align-items-center">
-                                                <li>
-                                                    <div class="rating-gold d-flex align-items-center">
-                                                        <p>4.7</p>
-                                                        <i class="fi fi-ss-star"></i>
-                                                        <i class="fi fi-ss-star"></i>
-                                                        <i class="fi fi-ss-star"></i>
-                                                        <i class="fi fi-ss-star"></i>
-                                                        <i class="fi fi-rs-star"></i>
-                                                        <span>(125)</span>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                <div class="cor-details-instructor mb-40">
+                                    <div class="course-instructor-details d-flex f-wrap align-items-center">
+                                        <div class="course-avata ml-30 mb-20">
+                                            <img src="{{ coach.user.get_photo_url }}"
+                                                 alt="avata-thumb">
+                                        </div>
+                                        <div class="course-avatar-details mb-20">
+                                            <h5 class="c-avata-title mb-10">{{ coach.full_name }}</h5>
+                                            <div class="c-details-list mb-5">
+                                                <ul class="d-flex align-items-center">
+                                                    <li>
+                                                        <div class="rating-gold d-flex align-items-center">
+                                                            <p>{{ coach.coach_avg_rate }}</p>
+                                                            {% for i in "12345" %}
+                                                                {% if coach.coach_avg_rate >= i|add:"0" %}
+                                                                    <i class="fi fi-ss-star"></i>
+                                                                {% else %}
+                                                                    <i class="fi fi-rs-star"></i>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                            <span>({{ coach.coach_num_comment }})</span>
+                                                        </div>
+                                                    </li>
+                                                    <li><img src="{% static 'assets/img/icon/c-details-01.png' %}"
+                                                             alt="meta-icon"><span>{{ coach.coach_video_count }} {% trans 'Classes' context 'singular' %}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="c-details-stu">
+                                                <ul>
+                                                    <li class="d-flex align-items-center"><img
+                                                            src="{% static 'assets/img/icon/c-details-02.png' %}"
+                                                            alt="meta-icon">
+                                                        <span>{{ coach.coach_student_count }} {% trans 'Students' context 'singular' %}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <p>{{ coach.description }}</p>
                             {% endfor %}
                         </div>
-                        <p>{{ package.coach.description }}</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
@@ -178,19 +195,32 @@
                         <div class="course-details-widget">
                             <div class="cd-video-price">
                                 <h3 class="pricing-video text-center mb-15">
-                                    {% translate 'Toman' %}{{ package.discounted_price }}</h3>
+                                    {{ package.discounted_price }} {% translate 'Toman' %}</h3>
                                 <div class="cd-pricing-btn text-center mb-30">
-                                    <a class="tp-vp-btn"
-                                       href="{% url 'carts:cart_add' course.pk 2 %}">{% trans 'Add To Cart' %}</a>
-                                    <a class="tp-vp-btn-green"
-                                       href="{% static 'course-details.html' %}">{% trans 'Enroll Now' %}</a>
+                                    {% if user.is_authenticated and package|is_enrolled:user %}
+                                        <a class="tp-vp-btn-green" href="{% url 'accounts:student_dashboards' %}">
+                                            {% trans 'You are student of this course.' %}
+                                        </a>
+                                    {% else %}
+                                        <a class="tp-vp-btn"
+                                           data-product-id="{{ package.id }}"
+                                           data-product-type="2">
+                                            {% if package|package_in_cart:carts %}
+                                                {% trans 'Remove from Cart' %}
+                                            {% else %}
+                                                {% trans 'Add To Cart' %}
+                                            {% endif %}
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="cd-information mb-35">
                                 <ul>
-                                    <li><i class="fa-light fa-calendars"></i> <label>{% trans 'Courses' context 'singular' %}</label>
+                                    <li><i class="fa-light fa-calendars"></i>
+                                        <label>{% trans 'Courses' context 'singular' %}</label>
                                         <span class="value-left">{{ package.num_courses }}</span></li>
-                                    <li><i class="fi fi-rr-user"></i> <label>{% trans 'Students' context 'singular' %}</label>
+                                    <li><i class="fi fi-rr-user"></i>
+                                        <label>{% trans 'Students' context 'singular' %}</label>
                                         <span class="value-left">{{ package.num_members }}</span></li>
                                     <li><i class="fa-light fa-clock-desk"></i> <label>{% trans 'Duration' %}</label>
                                         <span class="value-left">{{ package.duration }}</span></li>
@@ -238,23 +268,23 @@
                                     <img src="{% get_media_prefix %}{{ course.img }}" alt="course-thumb">
                                 </a>
                                 <div class="tpcourse__tag">
-                                    {% if user.is_authenticated and product|is_enrolled:user %}
+                                    {% if user.is_authenticated and course|is_enrolled:user %}
                                         <!-- Enrolled State -->
                                         <a href="{% url 'accounts:student_dashboards' %}" class="enrolled">
                                             <i class="fi fi-rr-check"></i>
                                         </a>
                                     {% else %}
                                         <!-- Cart State -->
-                                        {% if product|in_cart:carts %}
+                                        {% if course|course_in_cart:carts %}
                                             <a href="#" class="in-cart"
-                                               data-product-id="{{ product.id }}"
-                                               data-product-type="{{ product.product_type }}">
+                                               data-product-id="{{ course.id }}"
+                                               data-product-type="{{ course.product_type }}">
                                                 <i class="fi fi-rr-shopping-cart-check"></i>
                                             </a>
                                         {% else %}
                                             <a href="#" class="add-to-cart"
-                                               data-product-id="{{ product.id }}"
-                                               data-product-type="{{ product.product_type }}">
+                                               data-product-id="{{ course.id }}"
+                                               data-product-type="{{ course.product_type }}">
                                                 <i class="fi fi-rr-shopping-cart-add"></i>
                                             </a>
                                         {% endif %}
@@ -287,7 +317,8 @@
                                                  src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
                                                  alt="meta-icon">
                                             <span>{% if course.product_type == 2 %}{{ course.num_courses|default:0 }}
-                                                {% trans 'Courses' context 'singular' %} {% else %}{{ course.num_videos }}
+                                                {% trans 'Courses' context 'singular' %}
+                                                {% else %}{{ course.num_videos }}
                                                 {% trans 'Classes' context 'singular' %} {% endif %}</span>
                                         </li>
                                         <li>
@@ -332,7 +363,8 @@
                             <i class="fi fi-rr-user"></i>
                         </div>
                         <div class="counter-item__content">
-                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.students }}"></span>+</h4>
+                            <h4 class="counter-item__title"><span class="counter"
+                                                                  data-value="{{ counter.students }}"></span>+</h4>
                             <p>{% trans 'Worldwide Students' %}</p>
                         </div>
                     </div>
@@ -343,7 +375,9 @@
                             <i class="fi fi-rr-document"></i>
                         </div>
                         <div class="counter-item__content">
-                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.experience_years }}"></span>+</h4>
+                            <h4 class="counter-item__title"><span class="counter"
+                                                                  data-value="{{ counter.experience_years }}"></span>+
+                            </h4>
                             <p>{% trans 'Years Experience' %}</p>
                         </div>
                     </div>
@@ -354,7 +388,9 @@
                             <i class="fi fi-rr-apps"></i>
                         </div>
                         <div class="counter-item__content">
-                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.professional_courses }}"></span>+</h4>
+                            <h4 class="counter-item__title"><span class="counter"
+                                                                  data-value="{{ counter.professional_courses }}"></span>+
+                            </h4>
                             <p>{% trans 'Professional Courses' %}</p>
                         </div>
                     </div>
@@ -365,7 +401,8 @@
                             <i class="fi fi-rr-star"></i>
                         </div>
                         <div class="counter-item__content">
-                            <h4 class="counter-item__title"><span class="counter" data-value="{{ counter.comments }}"></span>+</h4>
+                            <h4 class="counter-item__title"><span class="counter"
+                                                                  data-value="{{ counter.comments }}"></span>+</h4>
                             <p>{% trans 'Beautiful Review' %}</p>
                         </div>
                     </div>
@@ -441,58 +478,77 @@
                 });
             }
 
-            document.querySelectorAll('a.add-to-cart, a.in-cart').forEach(button => {
+            document.querySelectorAll('a.add-to-cart, a.in-cart, a.tp-vp-btn').forEach(button => {
                 button.addEventListener('click', async (e) => {
                     e.preventDefault();
 
-
-                    const originalClasses = button.className;
+                    const originalHtml = button.innerHTML;
                     const productId = button.dataset.productId;
                     const productType = button.dataset.productType;
-                    const action = button.classList.contains('add-to-cart') ? 'add' : 'remove';
-                    const url = `/carts/${action}/${productId}/${productType}/`;
 
+                    let action;
+                    if (button.classList.contains('tp-vp-btn')) {
+                        const isAdd = button.textContent.trim() === "{% trans 'Add To Cart' %}";
+                        action = isAdd ? 'add' : 'remove';
+                    } else {
+                        action = button.classList.contains('add-to-cart') ? 'add' : 'remove';
+                    }
+
+                    const url = `/carts/${action}/${productId}/${productType}/`;
 
                     button.disabled = true;
                     button.innerHTML = `
                 <span class="spinner-border spinner-border-sm me-2"></span>
-                ${button.classList.contains('add-to-cart') ? '{% trans 'Adding...' %}' : '{% trans 'Removing...' %}'}`;
+                ${action === 'add' ? '{% trans 'Adding...' %}' : '{% trans 'Removing...' %}'}`;
 
                     try {
                         const response = await sendCartRequest(url, productId, productType);
                         const data = await response.json();
 
                         if (data.status === 'success') {
-
                             const cartCount = document.querySelector('.cart-count');
                             const cartTotal = document.querySelector('.cart-total');
 
                             if (cartCount) cartCount.textContent = data.cart_count;
                             if (cartTotal) cartTotal.textContent = data.cart_total.toFixed(2);
 
-
-                            button.classList.toggle('add-to-cart');
-                            button.classList.toggle('in-cart');
-
+                            document.querySelectorAll(`a[data-product-id="${productId}"][data-product-type="${productType}"]`).forEach(btn => {
+                                if (btn.classList.contains('tp-vp-btn')) {
+                                    btn.textContent = action === 'add' ? "{% trans 'Remove from Cart' %}" : "{% trans 'Add To Cart' %}";
+                                } else {
+                                    btn.classList.toggle('add-to-cart', action === 'remove');
+                                    btn.classList.toggle('in-cart', action === 'add');
+                                    const iconElement = btn.querySelector('i');
+                                    if (iconElement) {
+                                        const iconClass = action === 'add'
+                                            ? 'fi-rr-shopping-cart-check'
+                                            : 'fi-rr-shopping-cart-add';
+                                        iconElement.className = `fi ${iconClass}`;
+                                    }
+                                }
+                            });
 
                             showMessage(data.message, 'success');
                         } else {
-
-                            button.className = originalClasses;
+                            button.innerHTML = originalHtml;
                             showMessage(data.message, 'error');
                         }
                     } catch (error) {
                         console.error('Error:', error);
-                        button.className = originalClasses;
+                        button.innerHTML = originalHtml;
                         showMessage("{% trans 'An error occurred. Please try again.' %}", 'error');
                     } finally {
-
                         button.disabled = false;
-                        button.innerHTML = `
-                    <i class="fi ${button.classList.contains('add-to-cart')
-                            ? 'fi-rr-shopping-cart-add'
-                            : 'fi-rr-shopping-cart-check'}">
-                    </i>`;
+                        if (button.classList.contains('tp-vp-btn')) {
+                            button.textContent = action === 'add'
+                                ? "{% trans 'Remove from Cart' %}"
+                                : "{% trans 'Add To Cart' %}";
+                        } else {
+                            const iconClass = action === 'add'
+                                ? 'fi-rr-shopping-cart-check'
+                                : 'fi-rr-shopping-cart-add';
+                            button.innerHTML = `<i class="fi ${iconClass}"></i>`;
+                        }
                     }
                 });
             });
