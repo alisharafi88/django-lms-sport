@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
@@ -137,3 +138,43 @@ class OrderCreateView(View):
             for field, errors in form.errors.items():
                 messages.error(request, f'{field}: {errors[0]}', 'error')
             return redirect('carts:cart')
+
+
+def apply_coupon_view(request):
+    if request.method == 'POST':
+        logger.debug('Apply coupon view called')
+        coupon_code = request.POST.get('coupon_code')
+        logger.debug(f'Coupon code received: {coupon_code}')
+        cart = Cart(request)
+        try:
+            cart.apply_coupon(coupon_code)
+            total_price, final_price = cart.get_total_price()
+            logger.debug(f'Total price: {total_price}, Final price: {final_price}')
+            return JsonResponse({
+                'success': True,
+                'message': _('Coupon applied successfully.'),
+                'coupon_code': coupon_code,
+                'coupon_discount': cart.coupon_discount,
+                'total_price': total_price,
+                'final_price': final_price,
+            })
+        except ValueError as e:
+            logger.error(f'Error applying coupon: {e}')
+            return JsonResponse({'success': False, 'message': str(e)})
+    return JsonResponse({'success': False, 'message': 'Invalid request.'})
+
+
+def remove_coupon_view(request):
+    logger.debug('Remove coupon view called')
+    if request.method == 'POST':
+        cart = Cart(request)
+        cart.remove_coupon()
+        total_price, final_price = cart.get_total_price()
+        logger.debug(f'Total price after removing coupon: {total_price}, Final price: {final_price}')
+        return JsonResponse({
+            'success': True,
+            'message': _('Coupon removed successfully.'),
+            'total_price': total_price,
+            'final_price': final_price,
+        })
+    return JsonResponse({'success': False, 'message': 'Invalid request.'})

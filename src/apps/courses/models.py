@@ -23,39 +23,75 @@ def upload_introduce_image_path(instance, filename):
 
 class Coupon(models.Model):
     """
-    Coupon for courses
+    Coupon for courses or packages.
     """
     code = models.CharField(
-        _('Code of coupon'),
+        _('Coupon Code'),
         max_length=50,
         unique=True,
     )
     discount_amount = models.PositiveIntegerField(
-        _('Discount amount'),
+        _('Discount Amount'),
         default=0,
+        help_text=_('The amount of discount (in currency units).'),
     )
     date_valid_from = models.DateField(
-        _('Date valid from'),
+        _('Valid From'),
     )
     date_valid_to = models.DateField(
-        _('Date valid to'),
+        _('Valid To'),
     )
     status = models.BooleanField(
         _('Status'),
-        default=True
+        default=True,
+        help_text=_('Whether the coupon is active or not.'),
     )
     max_usage_per_user = models.IntegerField(
-        _('Max number of usage'),
+        _('Max Usage Per User'),
         default=1,
-        help_text='Number of people who can use.',
+        help_text=_('Maximum number of times a user can use this coupon.'),
+    )
+    max_usage_total = models.IntegerField(
+        _('Max Total Usage'),
+        default=100,
+        help_text=_('Maximum number of times the coupon can be used globally.'),
     )
 
     def __str__(self):
-        return f'{self.date_valid_to} - {self.discount_amount}'
+        return f'{self.code} - {self.discount_amount}'
 
     class Meta:
         verbose_name = _('Coupon')
         verbose_name_plural = _('Coupons')
+
+
+class CouponUsage(models.Model):
+    """
+    Tracks usage of coupons by users.
+    """
+    coupon = models.ForeignKey(
+        Coupon,
+        on_delete=models.CASCADE,
+        related_name='usages',
+        verbose_name=_('Coupon'),
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='coupon_usages',
+        verbose_name=_('User'),
+    )
+    usage_date = models.DateTimeField(
+        _('Usage Date'),
+        auto_now_add=True,
+    )
+
+    def __str__(self):
+        return f'{self.user} used {self.coupon.code} on {self.usage_date}'
+
+    class Meta:
+        verbose_name = _('Coupon Usage')
+        verbose_name_plural = _('Coupon Usages')
 
 
 class Product(models.Model):

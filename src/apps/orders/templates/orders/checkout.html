@@ -5,7 +5,20 @@
 {% load static %}
 
 {% block title %}
+    {% trans 'Checkout' %}
+{% endblock %}
 
+{% block head %}
+	<meta name="csrf-token" content="{{ csrf_token }}">
+    <style>
+    .error {
+        color: red;
+    }
+
+    .success {
+        color: green;
+    }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -36,17 +49,27 @@
                 <div class="col-md-6">
                     <div class="coupon-accordion">
                         <!-- ACCORDION START -->
-                        <h3>{% trans 'Have a coupon?' %} <span id="showcoupon">{% trans 'Click here to enter your code' %}</span></h3>
-                        <div id="checkout_coupon" class="coupon-checkout-content">
+                        <h3>{% trans 'Have a coupon?' %} <span
+                                id="showcoupon">{% trans 'Click here to enter your code' %}</span></h3>
+                        <div id="checkout_coupon" class="coupon-checkout-content" style="display: none;">
                             <div class="coupon-info">
-                                <form action="#">
+                                <form id="coupon-form">
                                     <p class="checkout-coupon">
-                                        <input type="text" placeholder="{% trans 'Coupon Code' %}"/>
-                                        <button class="tp-btn-3" type="submit">{% trans 'Apply Coupon' %}</button>
+                                        <input type="text" id="coupon-code" placeholder="{% trans 'Coupon Code' %}"/>
+                                        <button class="tp-btn-3" id="apply-coupon-btn"
+                                                type="button">{% trans 'Apply Coupon' %}</button>
                                     </p>
                                 </form>
+                                <div id="coupon-message"></div>
                             </div>
                         </div>
+
+                        {% if cart.coupon_code %}
+                            <div id="applied-coupon">
+                                <p>{% trans 'Applied Coupon:' %} <strong>{{ cart.coupon_code }}</strong> ({% trans 'Discount:' %} {{ cart.coupon_discount }} {% trans 'Toman' %})</p>
+                                <button id="remove-coupon-btn" class="tp-btn-3">{% trans 'Remove Coupon' %}</button>
+                            </div>
+                        {% endif %}
                         <!-- ACCORDION END -->
                     </div>
                 </div>
@@ -87,7 +110,9 @@
                                     <tfoot>
                                     <tr class="cart-subtotal">
                                         <th>{% trans 'Cart Subtotal' %}</th>
-                                        <td><span class="amount">{{ total_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</span></td>
+                                        <td><span id="cart-subtotal"
+                                                class="amount">{{ total_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</span>
+                                        </td>
                                     </tr>
                                     <tr class="shippings">
                                         <th>Shipping</th>
@@ -99,7 +124,8 @@
                                     </tr>
                                     <tr class="order-total">
                                         <th>{% trans 'Order Total' %}</th>
-                                        <td><strong><span class="amount">{{ total_discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</span></strong>
+                                        <td><strong><span id="order-total"
+                                                class="amount">{{ total_discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</span></strong>
                                         </td>
                                     </tr>
                                     </tfoot>
@@ -142,13 +168,15 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
-                                                <label>{% trans 'Postcode / Zip' %} <span class="required">*</span></label>
+                                                <label>{% trans 'Postcode / Zip' %} <span
+                                                        class="required">*</span></label>
                                                 {% render_field form.postal_code type="text" placeholder="" %}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
-                                                <label>{% trans 'Email Address' %} <span class="required">*</span></label>
+                                                <label>{% trans 'Email Address' %} <span
+                                                        class="required">*</span></label>
                                                 {% render_field form.email type="email" placeholder="" %}
                                             </div>
                                         </div>
@@ -160,7 +188,7 @@
                                         </div>
                                         <div class="order-notes">
                                             <div class="checkout-form-list"><label>{% trans 'Order Notes' %}</label>
-                                                {% render_field form.order_note id="checkout-mess" cols="30" rows="10" placeholder=""%}
+                                                {% render_field form.order_note id="checkout-mess" cols="30" rows="10" placeholder="" %}
                                             </div>
                                         </div>
                                     </div>
@@ -173,4 +201,81 @@
         </div>
     </section>
     <!-- checkout-area end -->
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).ready(function () {
+            const csrftoken = $('meta[name=csrf-token]').attr('content');
+            $.ajaxSetup({
+                beforeSend: function (xhr, settings) {
+                    if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+
+
+
+            $('#apply-coupon-btn').on('click', function () {
+                const couponCode = $('#coupon-code').val().trim();
+                if (!couponCode) {
+                    $('#coupon-message').html('<p class="error">{% trans 'Please enter a coupon code.' %}</p>');
+                    return;
+                }
+
+                $.ajax({
+                    url: '{% url 'orders:apply_coupon' %}',
+                    method: 'POST',
+                    data: {
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                        coupon_code: couponCode,
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            $('#coupon-message').html('<p class="success">' + response.message + '</p>');
+                            $('#applied-coupon').html(`
+                            <p>{% trans 'Applied Coupon:' %} <strong>${response.coupon_code}</strong> ({% trans 'Discount' %}: ${response.coupon_discount} {% trans 'Toman' %})</p>
+                            <button id="remove-coupon-btn" class="tp-btn-3">{% trans 'Remove Coupon' %}</button>
+                    `);
+                            $('#checkout_coupon').hide();
+                            updateCartTotals(response.total_price, response.final_price);
+                        } else {
+                            $('#coupon-message').html('<p class="error">' + response.message + '</p>');
+                        }
+                    },
+                    error: function () {
+                        $('#coupon-message').html('<p class="error">{% trans 'An error occurred. Please try again later.' %}</p>');
+                    },
+                });
+            });
+
+            $(document).on('click', '#remove-coupon-btn', function () {
+                $.ajax({
+                    url: '{% url 'orders:remove_coupon' %}',
+                    method: 'POST',
+                    data: {
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            $('#applied-coupon').empty();
+                            $('#coupon-message').html('<p class="success">' + response.message + '</p>');
+                            updateCartTotals(response.total_price, response.final_price);
+                        } else {
+                            $('#coupon-message').html('<p class="error">' + response.message + '</p>');
+                        }
+                    },
+                    error: function () {
+                        $('#coupon-message').html('<p class="error">{% trans 'An error occurred. Please try again later.' %}</p>');
+                    },
+                });
+            });
+
+            function updateCartTotals(totalPrice, finalPrice) {
+                $('#cart-subtotal').text(`${totalPrice.toLocaleString('fa-IR')} {% trans 'Toman' %}`);
+                $('#order-total').text(`${finalPrice.toLocaleString('fa-IR')} {% trans 'Toman' %}`);
+            }
+        });
+    </script>
 {% endblock %}

@@ -1,8 +1,9 @@
 from django.contrib import messages
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 
-from apps.courses.models import Course, Package, CourseMembership
+from apps.courses.models import Course, Package, CourseMembership, Coupon, CouponUsage
 
 COURSE_TYPE = 'course'
 PACKAGE_TYPE = 'package'
@@ -22,6 +23,9 @@ class Cart:
             cart = self.session[self.CART_SESSION_ID] = []
         self.cart = cart
         self.products = None
+
+        self.coupon_code = self.session.get('coupon_code', None)
+        self.coupon_discount = 0
 
         self.course_ct = ContentType.objects.get_for_model(Course)
         self.package_ct = ContentType.objects.get_for_model(Package)
@@ -43,7 +47,7 @@ class Cart:
                     object_id=product.id
             ).exists():
                 messages.warning(self.request, "You're already enrolled in this product.")
-                return  # Skip adding to cart
+                return
 
         if item not in self.cart:
             self.cart.append(item)
@@ -69,7 +73,7 @@ class Cart:
         Load products while excluding enrolled items and notify the user.
         """
         if self.products is not None:
-            return  # Skip if already loaded
+            return
 
         user = self.request.user
         items_removed = False
@@ -152,10 +156,63 @@ class Cart:
 
     def get_total_price(self):
         """
-        Calculate the total price of all products in the cart.
+        Calculate the total price of all products in the cart, including the coupon discount.
         Returns a tuple of (total_price, total_discounted_price).
         """
         self.load_products()
         total_price = sum(product.price for product in self.products.values())
         total_discounted_price = sum(product.discounted_price() for product in self.products.values())
-        return total_price, total_discounted_price
+
+        final_price = max(total_discounted_price - self.coupon_discount, 0)
+        return total_price, final_price
+
+    def apply_coupon(self, code):
+        try:
+            coupon = Coupon.objects.get(code=code, status=True)
+            today = timezone.now().date()
+            if not (coupon.date_valid_from <= today <= coupon.date_valid_to):
+                raise ValueError('Coupon is expired or not yet valid.')
+
+
+            total_usage = CouponUsage.objects.filter(coupon=coupon).count()
+            if total_usage >= coupon.max_usage_total:
+                raise ValueError('Coupon usage limit exceeded.')
+
+            user = self.request.user
+            if user.is_authenticated:
+                user_usage = CouponUsage.objects.filter(coupon=coupon, user=user).count()
+                if user_usage >= coupon.max_usage_per_user:
+                    raise ValueError('You have exceeded the maximum usage limit for this coupon.')
+
+            self.coupon_code = code
+            self.coupon_discount = coupon.discount_amount
+            self.session['coupon_code'] = code
+            self.session['coupon_discount'] = coupon.discount_amount
+            self.save()
+
+        except Coupon.DoesNotExist:
+            raise ValueError('Invalid coupon code.')
+        except ValueError as e:
+            raise ValueError(e)
+
+    def remove_coupon(self):
+        self.coupon_code = None
+        self.coupon_discount = 0
+        if 'coupon_code' in self.session:
+            del self.session['coupon_code']
+        if 'coupon_discount' in self.session:
+            del self.session['coupon_discount']
+        self.save()
+
+    def finalize_purchase(self):
+        """
+        Finalize the purchase and record coupon usage if applicable.
+        """
+        user = self.request.user
+        if self.coupon_code:
+            try:
+                coupon = Coupon.objects.get(code=self.coupon_code, status=True)
+                CouponUsage.objects.create(coupon=coupon, user=user)
+            except Coupon.DoesNotExist:
+                pass
+        self.clear()
