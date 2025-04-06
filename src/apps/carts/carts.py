@@ -173,7 +173,6 @@ class Cart:
             if not (coupon.date_valid_from <= today <= coupon.date_valid_to):
                 raise ValueError('Coupon is expired or not yet valid.')
 
-
             total_usage = CouponUsage.objects.filter(coupon=coupon).count()
             if total_usage >= coupon.max_usage_total:
                 raise ValueError('Coupon usage limit exceeded.')

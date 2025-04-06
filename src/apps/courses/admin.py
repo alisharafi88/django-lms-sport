@@ -5,7 +5,8 @@ from django.utils.translation import gettext_lazy as _
 
 from jalali_date.admin import ModelAdminJalaliMixin, StackedInlineJalaliMixin, TabularInlineJalaliMixin
 
-from .models import Course, Coupon, CourseVideo, CourseMembership, CourseComments, Package, CourseSeason, CourseTelegramLink
+from .models import Course, Coupon, CourseVideo, CourseMembership, CourseComments, Package, CourseSeason, \
+    CourseTelegramLink, CouponUsage
 
 
 class CourseVideoInline(StackedInlineJalaliMixin, admin.StackedInline):
@@ -25,14 +26,24 @@ class CourseSeasonInline(TabularInlineJalaliMixin, admin.StackedInline):
 
 @admin.register(Coupon)
 class CouponAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ('discount_amount', 'date_valid_from', 'date_valid_to', 'status',)
+    list_display = ('code', 'date_valid_from', 'date_valid_to', 'status',)
+    search_fields = ('code',)
+    list_filter = ('status',)
+    date_hierarchy = 'date_valid_from'
 
     fieldsets = (
         (_('Coupon code'), {'fields': ('code',)}),
         (_('Discount amount'), {'fields': ('discount_amount',)}),
         (_('Date range'), {'fields': ('date_valid_from', 'date_valid_to',)}),
-        (_('Statuses'), {'fields': ('max_usage_per_user', 'status')}),
+        (_('Statuses'), {'fields': ('max_usage_total', 'max_usage_per_user', 'status')}),
     )
+
+
+@admin.register(CouponUsage)
+class CouponUsageAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
+    list_display = ('coupon', 'user')
+    search_fields = ('user', 'coupon')
+    date_hierarchy = 'usage_date'
 
 
 @admin.register(Course)
