@@ -194,7 +194,7 @@
                                                         <img src="{{ course.img.url }}" alt="course-thumb">
                                                     </a>
                                                     <div class="tpcourse__tag">
-                                                        {% if user.is_authenticated and course|is_enrolled:user %}
+                                                        {% if user.is_authenticated and course|is_enrolled:user_memberships %}
                                                             <!-- Enrolled State -->
                                                             <a href="{% url 'accounts:student_dashboards' %}" class="enrolled">
                                                                 <i class="fi fi-rr-check"></i>

@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 
 from .queries import get_latest_blogs, get_top_comment
 from ..carts.carts import Cart
+from ..courses.models import CourseMembership
 from ..courses.queries import get_combined_course_package_queryset
 from ..instructors.queries import get_all_instructor
 
@@ -20,6 +21,12 @@ class HomeView(View):
         cart = Cart(request)
         cart_items = [(item['id'], item['type']) for item in cart.cart]
 
+        if self.request.user.is_authenticated:
+            memberships = CourseMembership.objects.filter(user=self.request.user).select_related('content_type')
+            user_memberships = {(m.content_type_id, m.object_id): True for m in memberships}
+        else:
+            user_memberships = {}
+
         return render(
             request,
             self.template_name,
@@ -29,6 +36,7 @@ class HomeView(View):
                 'blogs': latest_blogs_query,
                 'comments': top_course_comment,
                 'carts': cart_items,
+                'user_memberships': user_memberships,
             }
         )
 

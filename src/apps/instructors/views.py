@@ -3,6 +3,7 @@ from django.views import generic
 from .queries import get_all_instructor, get_instructor_by_id_slug
 from .utils import get_master_instructor_social_media
 from ..carts.carts import Cart
+from ..courses.models import CourseMembership
 
 
 class InstructorListView(generic.ListView):
@@ -28,4 +29,13 @@ class InstructorDetailView(generic.DetailView):
         cart = Cart(self.request)
         cart_items = [(item['id'], item['type']) for item in cart.cart]
         context['carts'] = cart_items
+
+        # user enrollment
+        if self.request.user.is_authenticated:
+            memberships = CourseMembership.objects.filter(user=self.request.user).select_related('content_type')
+            user_memberships = {(m.content_type_id, m.object_id): True for m in memberships}
+        else:
+            user_memberships = {}
+
+        context['user_memberships'] = user_memberships
         return context

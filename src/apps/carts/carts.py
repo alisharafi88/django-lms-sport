@@ -22,6 +22,9 @@ class Cart:
         self.cart = cart
         self.products = None
 
+        self.course_ct = ContentType.objects.get_for_model(Course)
+        self.package_ct = ContentType.objects.get_for_model(Package)
+
     def add(self, product):
         """
         Add a product (either Course or Package) to the cart.
@@ -32,7 +35,7 @@ class Cart:
 
         user = self.request.user
         if user.is_authenticated:
-            content_type = ContentType.objects.get_for_model(product)
+            content_type = self.course_ct if product_type == COURSE_TYPE else self.package_ct
             if CourseMembership.objects.filter(
                     user=user,
                     content_type=content_type,
@@ -71,35 +74,29 @@ class Cart:
         items_removed = False
 
         if user.is_authenticated:
-            course_ct = ContentType.objects.get_for_model(Course)
-            package_ct = ContentType.objects.get_for_model(Package)
+            memberships = CourseMembership.objects.filter(user=user).select_related('content_type')
 
-            enrolled_course_ids = set(
-                CourseMembership.objects.filter(
-                    user=user,
-                    content_type=course_ct
-                ).values_list('object_id', flat=True)
-            )
-
-            enrolled_package_ids = set(
-                CourseMembership.objects.filter(
-                    user=user,
-                    content_type=package_ct
-                ).values_list('object_id', flat=True)
-            )
+            enrolled_course_ids = set()
+            enrolled_package_ids = set()
+            for membership in memberships:
+                if membership.content_type.model == 'course':
+                    enrolled_course_ids.add(membership.object_id)
+                elif membership.content_type.model == 'package':
+                    enrolled_package_ids.add(membership.object_id)
 
             items_to_remove = []
             for item in self.cart:
                 product_type = item['type']
                 product_id = int(item['id'])
                 if (product_type == COURSE_TYPE and product_id in enrolled_course_ids) or \
-                   (product_type == PACKAGE_TYPE and product_id in enrolled_package_ids):
+                        (product_type == PACKAGE_TYPE and product_id in enrolled_package_ids):
                     items_to_remove.append(item)
 
             if items_to_remove:
                 for item in items_to_remove:
                     self.cart.remove(item)
-                    product = Course.objects.get(id=item['id']) if item['type'] == COURSE_TYPE else Package.objects.get(id=item['id'])
+                    product = Course.objects.get(id=item['id']) if item['type'] == COURSE_TYPE else Package.objects.get(
+                        id=item['id'])
                     messages.warning(
                         self.request,
                         f'You\'re already enrolled in \'{product.title}\'. Removed from your cart.'
@@ -115,13 +112,17 @@ class Cart:
 
         self.products = {**courses, **packages}
 
+        self.product_types = {item['id']: item['type'] for item in self.cart}
+
     def __iter__(self):
         """
         Iterate over the items in the cart and yield the total price of each product.
         """
         self.load_products()
         for item in self.cart:
-            product_type, product_id = item['type'], int(item['id'])
+            product_id = int(item['id'])
+            product_type = self.product_types.get(item['id'])
+
             product = self.products.get(product_id)
 
             if product:
@@ -132,10 +133,8 @@ class Cart:
                     'is_enrolled': False,
                 }
             else:
-                product = Course.objects.get(id=product_id) if product_type == COURSE_TYPE else Package.objects.get(
-                    id=product_id)
                 yield {
-                    'product_obj': product,
+                    'product_obj': None,
                     'item_total_price': 0,
                     'type': product_type,
                     'is_enrolled': True,

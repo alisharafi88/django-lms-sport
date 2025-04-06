@@ -198,7 +198,7 @@
                                 <h3 class="pricing-video text-center mb-15">
                                     {{ package.discounted_price|to_persian_number:'humanize' }} {% translate 'Toman' %}</h3>
                                 <div class="cd-pricing-btn text-center mb-30">
-                                    {% if user.is_authenticated and package|is_enrolled:user %}
+                                    {% if user.is_authenticated and package|is_enrolled:user_memberships %}
                                         <a class="tp-vp-btn-green" href="{% url 'accounts:student_dashboards' %}">
                                             {% trans 'You are student of this course.' %}
                                         </a>
@@ -280,7 +280,7 @@
                                     <img src="{% get_media_prefix %}{{ course.img }}" alt="course-thumb">
                                 </a>
                                 <div class="tpcourse__tag">
-                                    {% if user.is_authenticated and course|is_enrolled:user %}
+                                    {% if user.is_authenticated and course|is_enrolled:user_memberships %}
                                         <!-- Enrolled State -->
                                         <a href="{% url 'accounts:student_dashboards' %}" class="enrolled">
                                             <i class="fi fi-rr-check"></i>
