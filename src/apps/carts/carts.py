@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 
 from apps.courses.models import Course, Package, CourseMembership
@@ -99,7 +100,7 @@ class Cart:
                         id=item['id'])
                     messages.warning(
                         self.request,
-                        f'You\'re already enrolled in \'{product.title}\'. Removed from your cart.'
+                        _(f'You\'re already enrolled in \'{product.title}\'. Removed from your cart.')
                     )
                 self.save()
                 items_removed = True

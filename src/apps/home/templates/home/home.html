@@ -83,9 +83,8 @@
                                                 <li><a href="{% url 'home:about_us' %}">{% trans 'About Us' %}</a></li>
                                                 <li><a href="{% url 'contacts:contact' %}">{% trans 'Contact Us' %}</a>
                                                 </li>
-                                                <li><a href="{% url 'orders:order_create' %}">{% trans 'Check Out' %}</a></li>
                                                 <li><a href="{% url 'faq:question_answer' %}">{% trans 'FAQ' %}</a></li>
-                                                <li><a href="{% url 'accounts:authenticate' %}">{% trans 'Register' %}</a></li>
+                                                <li><a href="{% if user.is_authenticated %}{% url 'accounts:student_dashboards' %}{% else %}{% url 'accounts:logout' %}{% endif %}">{% if user.is_authenticated %}{% trans 'LogOut' %}{% else %}{% trans 'Register' %}{% endif %}</a></li>
                                             </ul>
                                         </li>
                                     </ul>
