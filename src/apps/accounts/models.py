@@ -71,8 +71,19 @@ class CustomUser(AbstractUser):
 
         return static('assets/img/avatar/default-avatar-icon.jpg')
 
+    def get_full_name(self):
+        """
+        Return the first_name plus the last_name, with a space in between if it exists.
+        """
+        if self.first_name or self.last_name:
+            full_name = "%s %s" % (self.first_name, self.last_name)
+            return full_name.strip()
+        return _('Anonymous')
+
     @property
     def get_name(self):
         if self.first_name or self.last_name:
             return self.get_full_name()
         return self.phone_number
+
+

@@ -238,7 +238,7 @@
                             <div class="tp-testi__ava testi-ava-border d-flex align-items-center mb-20 pb-20">
                                 <img src="{{ comment.user.get_photo_url }}" alt="profile">
                                 <div class="tp-testi__avainfo ml-20">
-                                    <h3 class="tp-testi__title tp-title-meta mt-5">{{ comment.user.username }}</h3>
+                                    <h3 class="tp-testi__title tp-title-meta mt-5">{{ comment.user.get_full_name }}</h3>
                                     <i>{{ comment.course.title }}</i>
                                 </div>
                             </div>

@@ -604,7 +604,7 @@
                             </div>
                             <div class="tp-testi__avainfo">
                                 <p>{{ comment.text|truncatewords:80 }}</p>
-                                <h3 class="tp-testi__title">{{ comment.user.username }}</h3>
+                                <h3 class="tp-testi__title">{{ comment.user.get_full_name }}</h3>
                                 <i>{{ comment.course.title }}</i>
                             </div>
                         </div>
