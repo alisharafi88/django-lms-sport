@@ -1,4 +1,5 @@
 {% extends '-base.html' %}
+{% load persian_tags %}
 {% load i18n %}
 {% load static %}
 
@@ -103,9 +104,9 @@
                         <img src="{% static 'assets/img/about/aboutus-02.jpg' %}" alt="about-img">
                         <div class="tp-about-class-info tp-sub-about-info d-none d-md-block">
                             <ul>
-                                <li><span>235K</span>{% trans 'Worldwide Students' %}</li>
-                                <li><span>4.7<i class="fi fi-ss-star"></i></span>{% trans 'Worldwide Review' %}</li>
-                                <li><span>3.5K</span>{% trans 'Free Pro Courses' %}</li>
+                                <li><span>{{ counter.students|to_persian_number }}+</span>{% trans 'Worldwide Students' %}</li>
+                                <li><span>{{  counter.comments|to_persian_number }}+<i class="fi fi-ss-star"></i></span>{% trans 'Worldwide Review' %}</li>
+                                <li><span>{{ counter.professional_courses|to_persian_number }}+</span>{% trans 'Free Pro Course' %}</li>
                             </ul>
                         </div>
                     </div>
@@ -250,7 +251,7 @@
                                         <i class="fi fi-rs-star"></i>
                                     {% endif %}
                                 {% endfor %}
-                                <span>{{ comment.rate }}</span>
+                                <span>{{ comment.rate|to_persian_number }}</span>
                             </div>
                             <div class="testi-quote">
                                 <i class="fa-solid fa-quote-left"></i>
@@ -292,12 +293,12 @@
                                             <li class="d-flex align-items-center"><img
                                                     src="{% static 'assets/img/icon/c-meta-01.png' %}"
                                                     alt="meta-icon">
-                                                <i>{{ instructor.video_count }} {% trans 'Classes' context 'singular' %}</i>
+                                                <i>{{ instructor.video_count|to_persian_number }} {% trans 'Classes' context 'singular' %}</i>
                                             </li>
                                             <li class="d-flex align-items-center"><img
                                                     src="{% static 'assets/img/icon/c-meta-02.png' %}"
                                                     alt="meta-icon">
-                                                <i>{{ instructor.student_count }}+ {% trans 'Students' context 'singular' %}</i>
+                                                <i>{{ instructor.student_count|to_persian_number }}+ {% trans 'Students' context 'singular' %}</i>
                                             </li>
                                         </ul>
                                     </div>

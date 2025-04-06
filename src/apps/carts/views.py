@@ -5,6 +5,7 @@ from django.views.decorators.http import require_POST
 
 from .carts import Cart
 from apps.courses.models import Course, Package
+from apps.utils.numbers.convert_numbers import PersianNumberConverter
 
 
 def cart_view(request):
@@ -34,7 +35,7 @@ def add_to_cart_view(request, product_id, product_type):
     response_data = {
         'status': 'success',
         'message': _('Product added to cart!'),
-        'cart_count': cart.get_total_price(),
+        'cart_count': PersianNumberConverter.to_persian(cart.get_total_price(), humanize=True),
         'product_id': product_id,
         'product_type': product_type,
     }
@@ -58,8 +59,8 @@ def remove_from_cart_view(request, product_id, product_type):
     response_data = {
         'status': 'success',
         'message': _('Product removed from cart!'),
-        'total_price': total_price,
-        'total_discounted_price': total_discounted_price,
+        'total_price': PersianNumberConverter.to_persian(total_price, humanize=True),
+        'total_discounted_price': PersianNumberConverter.to_persian(total_discounted_price, humanize=True),
         'product_id': product_id,
         'product_type': product_type,
         'cart_empty': is_empty,

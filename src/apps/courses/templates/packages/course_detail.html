@@ -1,4 +1,5 @@
 {% extends '-base.html' %}
+{% load persian_tags %}
 {% load enrollment %}
 {% load cart_tags %}
 {% load tags %}
@@ -90,7 +91,7 @@
                                 <ul class="d-flex align-items-center">
                                     <li>
                                         <div class="rating-gold d-flex align-items-center">
-                                            <p>{{ course.avg_rate|default:0 }}</p>
+                                            <p>{{ course.avg_rate|default:0|to_persian_number }}</p>
                                             {% for _ in "12345" %}
                                                 {% if course.avg_rate >= forloop.counter %}
                                                     <i class="fi fi-ss-star"></i>
@@ -98,14 +99,14 @@
                                                     <i class="fi fi-rs-star"></i>
                                                 {% endif %}
                                             {% endfor %}
-                                            <span>({{ course.comments.count }})</span>
+                                            <span>({{ course.comments.count|to_persian_number }})</span>
                                         </div>
                                     </li>
                                     <li><img src="{% static 'assets/img/icon/c-meta-01.png' %}" alt="meta-icon">
-                                        <span>{{ course.num_videos }} {% translate 'Classes' context 'singular' %}</span>
+                                        <span>{{ course.num_videos|to_persian_number }} {% translate 'Classes' context 'singular' %}</span>
                                     </li>
                                     <li><img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
-                                        <span>{{ course.num_members }} {% translate 'Students' context 'singular' %}</span>
+                                        <span>{{ course.num_members|to_persian_number }} {% translate 'Students' context 'singular' %}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -147,7 +148,7 @@
                                         <ul class="d-flex align-items-center">
                                             <li>
                                                 <div class="rating-gold d-flex align-items-center">
-                                                    <p>{{ course.coach_avg_rate }}</p>
+                                                    <p>{{ course.coach_avg_rate|to_persian_number }}</p>
                                                     {% for i in "12345" %}
                                                         {% if course.coach_avg_rate >= i|add:"0" %}
                                                             <i class="fi fi-ss-star"></i>
@@ -155,11 +156,11 @@
                                                             <i class="fi fi-rs-star"></i>
                                                         {% endif %}
                                                     {% endfor %}
-                                                    <span>({{ course.coach_num_comment }})</span>
+                                                    <span>({{ course.coach_num_comment|to_persian_number }})</span>
                                                 </div>
                                             </li>
                                             <li><img src="{% static 'assets/img/icon/c-details-01.png' %}"
-                                                     alt="meta-icon"><span>{{ course.coach_video_count }} {% trans 'Classes' context 'singular' %}</span>
+                                                     alt="meta-icon"><span>{{ course.coach_video_count|to_persian_number }} {% trans 'Classes' context 'singular' %}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -168,7 +169,7 @@
                                             <li class="d-flex align-items-center"><img
                                                     src="{% static 'assets/img/icon/c-details-02.png' %}"
                                                     alt="meta-icon">
-                                                <span>{{ course.coach_student_count }} {% trans 'Students' context 'singular' %}</span>
+                                                <span>{{ course.coach_student_count|to_persian_number }} {% trans 'Students' context 'singular' %}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -178,7 +179,7 @@
                         <p>{{ course.coach.description }}</p>
                     </div>
                     <div class="postbox__comment mb-65">
-                        <h3 class="postbox__comment-title">{{ course.comments.all|length }} {% trans 'Comments' %}</h3>
+                        <h3 class="postbox__comment-title">{{ course.comments.all|length|to_persian_number }} {% trans 'Comment' %}</h3>
                         <ul>
                             {% for comment in course.comments.all %}
                                 <li>
@@ -189,7 +190,7 @@
                                             </div>
                                             <div class="postbox__comment-name">
                                                 <h5>{{ comment.user.username }}</h5>
-                                                <span class="post-meta"> {{ comment.date_created|to_jalali }}</span>
+                                                <span class="post-meta"> {{ comment.date_created|to_jalali|to_persian_number }}</span>
                                             </div>
                                         </div>
                                         <div class="postbox__comment-text ml-65">
@@ -215,7 +216,7 @@
                         <div class="course-details-widget">
                             <div class="cd-video-price">
                                 <h3 class="pricing-video text-center mb-15">
-                                    {% translate 'Toman' %}{{ course.discounted_price }}</h3>
+                                    {{ course.discounted_price|to_persian_number:'humanize' }} {% translate 'Toman' %}</h3>
                                 <div class="cd-pricing-btn text-center mb-30">
                                     {% if user.is_authenticated and course|is_enrolled:user %}
                                         <a class="tp-vp-btn-green" href="{% url 'accounts:student_dashboards' %}">
@@ -238,15 +239,15 @@
                                 <ul>
                                     <li><i class="fa-light fa-calendars"></i>
                                         <label>{% trans 'Lesson' context 'singular' %}</label>
-                                        <span class="value-left">{{ course.num_videos }}</span></li>
+                                        <span class="value-left">{{ course.num_videos|to_persian_number }}</span></li>
 
                                     <li><i class="fi fi-rr-user"></i>
                                         <label>{% trans 'Students' context 'singular' %}</label>
-                                        <span class="value-left">{{ course.num_members }}</span></li>
+                                        <span class="value-left">{{ course.num_members|to_persian_number }}</span></li>
                                     <li><i class="fa-light fa-clock-desk"></i> <label>{% trans 'Duration' %}</label>
-                                        <span class="value-left">{{ course.duration }}</span></li>
+                                        <span class="value-left">{{ course.duration|to_persian_number }}</span></li>
                                     <li><i class="fi fi-sr-stats"></i> <label>{% trans 'Age Range' %}</label>
-                                        <span class="value-left">{{ course.age_range }}</span>
+                                        <span class="value-left">{{ course.age_range|to_persian_number }}</span>
                                     </li>
                                     {% if course.certificate_status %}
                                         <li><i class="fi fi-rs-diploma"></i> <label>{% trans 'Certificate' %}</label>
@@ -336,17 +337,17 @@
                                         <li>
                                             <img src="{% static 'assets/img/icon/c-meta-01.png' %}"
                                                  alt="meta-icon">
-                                            <span> {{ course.num_videos }} {% trans 'Classes' context 'singular' %}</span>
+                                            <span> {{ course.num_videos|to_persian_number }} {% trans 'Classes' context 'singular' %}</span>
                                         </li>
                                         <li>
                                             <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
-                                            <span>{{ course.num_members }} {% trans 'Students' context 'singular' %}</span>
+                                            <span>{{ course.num_members|to_persian_number }} {% trans 'Students' context 'singular' %}</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="tpcourse__rating d-flex align-items-center justify-content-between">
                                     <div class="tpcourse__rating-icon">
-                                        <span>{{ course.avg_rate|default:0 }}</span>
+                                        <span>{{ course.avg_rate|default:0|to_persian_number }}</span>
                                         {% for i in "54321" %}
                                             {% if course.avg_rate >= i|add:"0" %}
                                                 <i class="fi fi-ss-star"></i>
@@ -354,10 +355,10 @@
                                                 <i class="fi fi-rs-star"></i>
                                             {% endif %}
                                         {% endfor %}
-                                        <p>({{ course.num_comment }})</p>
+                                        <p>({{ course.num_comment|to_persian_number }})</p>
                                     </div>
                                     <div class="tpcourse__pricing">
-                                        <h5 class="c-price-list">{{ course.discounted_price }} {% trans 'Toman' %}</h5>
+                                        <h5 class="c-price-list">{{ course.discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</h5>
                                     </div>
                                 </div>
                             </div>

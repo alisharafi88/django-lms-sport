@@ -1,3 +1,4 @@
+{% load persian_tags %}
 {% load i18n %}
 {% load static %}
 {% load jalali_tags %}
@@ -355,10 +356,10 @@
                                                 </a>
                                             </td>
                                             <td class="product-price">
-                                                <span class="amount price">{% trans 'Toman' %}{{ item.product_obj.price }}</span>
+                                                <span class="amount price">{{ item.product_obj.price|to_persian_number:'humanize' }} {% trans 'Toman' %}</span>
                                             </td>
                                             <td class="product-subtotal">
-                                                <span class="amount">{% trans 'Toman' %}{{ item.item_total_price }}</span>
+                                                <span class="amount">{{ item.item_total_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</span>
                                             </td>
                                             <td class="product-remove">
                                                 <a href="#" class="remove-from-cart-ajax">
@@ -389,10 +390,10 @@
                                         <h2>Cart totals</h2>
                                         <ul class="mb-20">
                                             <li class="total-price-item">{% trans 'Total price' %}
-                                                <span>{% trans 'Toman' %}{{ total_price }}</span>
+                                                <span>{{ total_price|to_persian_number:'humanize'  }} {% trans 'Toman' %}</span>
                                             </li>
                                             <li class="discounted-price-item">{% trans 'Total price after discount' %}
-                                                <span>{% trans 'Toman' %}{{ total_discounted_price }}</span></li>
+                                                <span>{{ total_discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</span></li>
                                         </ul>
                                         <a class="tp-btn"
                                            href="{% url 'orders:order_create' %}">{% trans 'Proceed to checkout' %}</a>
@@ -469,8 +470,8 @@
                                             <td colspan="5">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <strong>{% trans 'Order' %} #{{ order.id }}</strong>
-                                                        <small class="text-muted">{{ order.date_created|to_jalali }}</small>
+                                                        <strong>{% trans 'Order' %} {{ order.id|to_persian_number }}#</strong>
+                                                        <small class="text-muted">{{ order.date_created|to_jalali|to_persian_number }}</small>
                                                     </div>
                                                     {% if order.access_status == 'd' %}
                                                         <div>
@@ -487,7 +488,7 @@
                                                 <div class="row g-3">
                                                     <div class="col-md-3">
                                                         <strong>{% trans 'Total' %}:</strong><br>
-                                                        {{ order.total_price }} {% trans 'Toman' %}
+                                                        {{ order.total_price|to_persian_number:'humanize' }} {% trans 'Toman' %}
                                                     </div>
                                                     <div class="col-md-3">
                                                         <strong>{% trans 'Status' %}:</strong><br>
@@ -523,13 +524,13 @@
                                                                 <p>
                                                                     <strong>{% trans 'Address' %}:</strong><br>
                                                                     {{ order.dvd_detail.address }}, {{ order.dvd_detail.city }}<br>
-                                                                    {% trans 'Postal Code' %}: {{ order.dvd_detail.postal_code }}
+                                                                    {% trans 'Postal Code' %}: {{ order.dvd_detail.postal_code|to_persian_number }}
                                                                 </p>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <p>
                                                                     <strong>{% trans 'Contact' %}:</strong><br>
-                                                                    {% trans 'Phone' %}: {{ order.dvd_detail.phone_number }}<br>
+                                                                    {% trans 'Phone' %}: {{ order.dvd_detail.phone_number|to_persian_number }}<br>
                                                                     {% trans 'Email' %}: {{ order.dvd_detail.email }}
                                                                 </p>
                                                             </div>
@@ -610,7 +611,7 @@
                         <div class="ticket">
                             <div class="comment-details">
                                 <h4>{{ ticket.subject }} <span
-                                        class="place-name">{{ ticket.date_updated|to_jalali }}</span></h4>
+                                        class="place-name">{{ ticket.date_updated|to_jalali|to_persian_number }}</span></h4>
                                 <h5>{{ ticket.get_status_display }}</h5>
                                 <p>{{ ticket.message }}</p>
                             </div>
@@ -619,7 +620,7 @@
                                     <div class="reply">
                                         <div class="reply-details">
                                             <p>{{ reply.message }}</p>
-                                            <small>{{ reply.date_created|to_jalali }}</small>
+                                            <small>{{ reply.date_created|to_jalali|to_persian_number }}</small>
                                         </div>
                                     </div>
                                 {% empty %}
@@ -730,7 +731,7 @@
                                     type="tel"
                                     id="phoneNumber"
                                     name="phone_number"
-                                    value="{{ edit_profile_form.phone_number.value|default_if_none:request.user.phone_number }}"
+                                    value="{{ edit_profile_form.phone_number.value|default_if_none:request.user.phone_number|to_persian_number }}"
                                     placeholder="{% trans 'Enter your phone number' %}"
                                     readonly
 

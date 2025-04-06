@@ -1,4 +1,5 @@
 {% extends '-base.html' %}
+{% load persian_tags %}
 {% load widget_tweaks %}
 {% load i18n %}
 {% load static %}
@@ -10,7 +11,7 @@
 {% block content %}
     <!-- breadcrumb-area -->
     <section class="breadcrumb__area include-bg pt-150 pb-150 breadcrumb__overlay"
-             data-background="{% static 'assets/img/breadcrumb/breadcrumb-bg-1.jpg' %}">
+             data-background="{% static 'assets/img/breadcrumb/cart.jpg' %}">
         <div class="container">
             <div class="row">
                 <div class="col-xxl-12">
@@ -78,7 +79,7 @@
                                                 {{ item.product_obj.title }} <strong class="product-name"></strong>
                                             </td>
                                             <td class="product-total">
-                                                <span class="amount price">{{ item.product_obj.price }} {% trans 'Toman' %}</span>
+                                                <span class="amount price">{{ item.product_obj.price|to_persian_number:'humanize' }} {% trans 'Toman' %}</span>
                                             </td>
                                         </tr>
                                     {% endfor %}
@@ -86,7 +87,7 @@
                                     <tfoot>
                                     <tr class="cart-subtotal">
                                         <th>{% trans 'Cart Subtotal' %}</th>
-                                        <td><span class="amount">{{ total_price }} {% trans 'Toman' %}</span></td>
+                                        <td><span class="amount">{{ total_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</span></td>
                                     </tr>
                                     <tr class="shippings">
                                         <th>Shipping</th>
@@ -98,7 +99,7 @@
                                     </tr>
                                     <tr class="order-total">
                                         <th>{% trans 'Order Total' %}</th>
-                                        <td><strong><span class="amount">{{ total_discounted_price }} {% trans 'Toman' %}</span></strong>
+                                        <td><strong><span class="amount">{{ total_discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</span></strong>
                                         </td>
                                     </tr>
                                     </tfoot>
@@ -117,49 +118,49 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
-                                                <label>First Name <span class="required">*</span></label>
+                                                <label>{% trans 'First Name' %} <span class="required">*</span></label>
                                                 {% render_field form.first_name type="text" placeholder="" %}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
-                                                <label>Last Name <span class="required">*</span></label>
+                                                <label>{% trans 'Last Name' %} <span class="required">*</span></label>
                                                 {% render_field form.last_name type="text" placeholder="" %}
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
-                                                <label>Town / City <span class="required">*</span></label>
-                                                {% render_field form.shipping_city type="text" placeholder="Town / City" %}
+                                                <label>{% trans 'Town / City' %} <span class="required">*</span></label>
+                                                {% render_field form.shipping_city type="text" placeholder="" %}
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
-                                                <label>Address <span class="required">*</span></label>
-                                                {% render_field form.shipping_address type="text" placeholder="Address" %}
+                                                <label>{% trans 'Address' %} <span class="required">*</span></label>
+                                                {% render_field form.shipping_address type="text" placeholder="" %}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
-                                                <label>Postcode / Zip <span class="required">*</span></label>
-                                                {% render_field form.postal_code type="text" placeholder="Postcode / Zip" %}
+                                                <label>{% trans 'Postcode / Zip' %} <span class="required">*</span></label>
+                                                {% render_field form.postal_code type="text" placeholder="" %}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
-                                                <label>Email Address <span class="required">*</span></label>
+                                                <label>{% trans 'Email Address' %} <span class="required">*</span></label>
                                                 {% render_field form.email type="email" placeholder="" %}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
-                                                <label>Phone <span class="required">*</span></label>
-                                                {% render_field form.phone_number type="text" placeholder="Postcode / Zip" %}
+                                                <label>{% trans 'Phone' %} <span class="required">*</span></label>
+                                                {% render_field form.phone_number type="text" placeholder="" %}
                                             </div>
                                         </div>
                                         <div class="order-notes">
-                                            <div class="checkout-form-list"><label>Order Notes</label>
-                                                {% render_field form.order_note id="checkout-mess" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."%}
+                                            <div class="checkout-form-list"><label>{% trans 'Order Notes' %}</label>
+                                                {% render_field form.order_note id="checkout-mess" cols="30" rows="10" placeholder=""%}
                                             </div>
                                         </div>
                                     </div>

@@ -1,4 +1,5 @@
 {% extends '-base.html' %}
+{% load persian_tags %}
 {% load enrollment %}
 {% load cart_tags %}
 {% load static %}
@@ -82,7 +83,7 @@
                                                 <li><a href="{% url 'home:about_us' %}">{% trans 'About Us' %}</a></li>
                                                 <li><a href="{% url 'contacts:contact' %}">{% trans 'Contact Us' %}</a>
                                                 </li>
-                                                <li><a href="checkout.html">{% trans 'Check Out' %}</a></li>
+                                                <li><a href="{% url 'orders:order_create' %}">{% trans 'Check Out' %}</a></li>
                                                 <li><a href="{% url 'faq:question_answer' %}">{% trans 'FAQ' %}</a></li>
                                                 <li><a href="{% url 'accounts:authenticate' %}">{% trans 'Register' %}</a></li>
                                             </ul>
@@ -347,20 +348,20 @@
                                             <img {% if product.product_type == 2 %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
                                                  src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
                                                  alt="meta-icon">
-                                            <span>{% if product.product_type == 2 %}{{ product.num_courses|default:0 }}
+                                            <span>{% if product.product_type == 2 %}{{ product.num_courses|default:0|to_persian_number }}
                                                 {% trans 'Courses' context 'singular' %}
-                                                {% else %}{{ product.num_videos }}
+                                                {% else %}{{ product.num_videos|to_persian_number }}
                                                 {% trans 'Classes' context 'singular' %} {% endif %}</span>
                                         </li>
                                         <li>
                                             <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
-                                            <span>{{ product.num_members }} {% trans 'Students' context 'singular' %}</span>
+                                            <span>{{ product.num_members|to_persian_number }} {% trans 'Students' context 'singular' %}</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="tpcourse__rating d-flex align-items-center justify-content-between">
                                     <div class="tpcourse__rating-icon">
-                                        <span>{{ product.avg_rate|default:0 }}</span>
+                                        <span>{{ product.avg_rate|default:0|to_persian_number }}</span>
                                         {% for i in "54321" %}
                                             {% if product.avg_rate >= i|add:"0" %}
                                                 <i class="fi fi-ss-star"></i>
@@ -368,10 +369,10 @@
                                                 <i class="fi fi-rs-star"></i>
                                             {% endif %}
                                         {% endfor %}
-                                        <p>({{ product.num_comment }})</p>
+                                        <p>({{ product.num_comment|to_persian_number }})</p>
                                     </div>
                                     <div class="tpcourse__pricing">
-                                        <h5 class="c-price-list">{{ product.discounted_price }} {% trans 'Toman' %}</h5>
+                                        <h5 class="c-price-list">{{ product.discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -524,12 +525,12 @@
                                             <li class="d-flex align-items-center"><img
                                                     src="{% static 'assets/img/icon/c-meta-01.png' %}"
                                                     alt="meta-icon">
-                                                <i>{{ instructor.video_count }} {% trans 'Classes' context 'singular' %}</i>
+                                                <i>{{ instructor.video_count|to_persian_number }} {% trans 'Classes' context 'singular' %}</i>
                                             </li>
                                             <li class="d-flex align-items-center"><img
                                                     src="{% static 'assets/img/icon/c-meta-02.png' %}"
                                                     alt="meta-icon">
-                                                <i>{{ instructor.student_count }}+ {% trans 'Students' context 'singular' %}</i>
+                                                <i>{{ instructor.student_count|to_persian_number }}+ {% trans 'Students' context 'singular' %}</i>
                                             </li>
                                         </ul>
                                     </div>
@@ -640,7 +641,7 @@
                                     <span class="date-wrapper">
                                         <a href="{{ blog.get_absolute_url }}">
                                             <span class="icon" dir="ltr"><i class="fi fi-ss-calendar"></i></span>
-                                            <span class="date-text" dir="auto">{{ blog.date_created|timesince }}</span>
+                                            <span class="date-text" dir="auto">{{ blog.date_created|timesince|to_persian_number }}</span>
                                         </a>
                                     </span>
                                 </div>

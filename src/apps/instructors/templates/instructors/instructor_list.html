@@ -1,4 +1,5 @@
 {% extends '-base.html' %}
+{% load persian_tags %}
 {% load i18n %}
 {% load static %}
 
@@ -95,12 +96,12 @@
                                             <li class="d-flex align-items-center"><img
                                                     src="{% static 'assets/img/icon/c-meta-01.png' %}"
                                                     alt="meta-icon">
-                                                <i>{{ instructor.video_count }} {% trans 'Classes' context 'singular' %}</i>
+                                                <i>{{ instructor.video_count|to_persian_number }} {% trans 'Classes' context 'singular' %}</i>
                                             </li>
                                             <li class="d-flex align-items-center"><img
                                                     src="{% static 'assets/img/icon/c-meta-02.png' %}"
                                                     alt="meta-icon">
-                                                <i>{{ instructor.student_count }}+ {% trans 'Students' context 'singular' %}</i>
+                                                <i>{{ instructor.student_count|to_persian_number }}+ {% trans 'Students' context 'singular' %}</i>
                                             </li>
                                         </ul>
                                     </div>

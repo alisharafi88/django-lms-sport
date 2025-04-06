@@ -1,4 +1,5 @@
 {% extends '-base.html' %}
+{% load persian_tags %}
 {% load i18n %}
 {% load static %}
 {% load jalali_tags %}
@@ -45,12 +46,12 @@
                             </div>
                             <div class="postbox__content">
                                 <div class="postbox__meta">
-                                    <span><i class="fi fi-rr-calendar"></i> {{ blog.date_created|timesince }} </span>
+                                    <span><i class="fi fi-rr-calendar"></i> {{ blog.date_created|timesince|to_persian_number }} </span>
                                     <span><a
                                             href="{% url 'instructors:instructor_detail' blog.author.id blog.author.slug %}"><i
                                             class="fi fi-rr-user"></i> {{ blog.author }}</a></span>
                                     <span><i
-                                            class="fi fi-rr-comments"></i>{{ blog.comments.all|length }} {% trans 'Comments' %}</span>
+                                            class="fi fi-rr-comments"></i>{{ blog.comments.all|length|to_persian_number }} {% trans 'Comments' %}</span>
                                 </div>
                                 <h3 class="postbox__title">
                                     {{ blog.title }}
@@ -61,7 +62,7 @@
                             </div>
                         </article>
                         <div class="postbox__comment mb-65">
-                            <h3 class="postbox__comment-title">{{ blog.comments.all|length }} {% trans 'Comments' %}</h3>
+                            <h3 class="postbox__comment-title">{{ blog.comments.all|length|to_persian_number }} {% trans 'Comments' %}</h3>
                             <ul>
                                 {% for comment in blog.comments.all %}
                                     {% if comment.is_parent %}
@@ -74,7 +75,7 @@
                                                     </div>
                                                     <div class="postbox__comment-name">
                                                         <h5>{{ comment.author.username }}</h5>
-                                                        <span class="post-meta"> {{ comment.date_created|to_jalali }}</span>
+                                                        <span class="post-meta"> {{ comment.date_created|to_jalali|to_persian_number }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="postbox__comment-text mr-65">
@@ -98,7 +99,7 @@
                                                         </div>
                                                         <div class="postbox__comment-name">
                                                             <h5>{{ reply.author.username }}</h5>
-                                                            <span class="post-meta"> {{ reply.date_created|to_jalali }}</span>
+                                                            <span class="post-meta"> {{ reply.date_created|to_jalali|to_persian_number }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="postbox__comment-text mr-65">
@@ -160,7 +161,7 @@
                                                     <a href="{{ blog.get_absolute_url }}">{{ post.title }}</a>
                                                 </h3>
                                                 <div class="rc__meta">
-                                                    <span>{{ post.date_created|timesince }}</span>
+                                                    <span>{{ post.date_created|timesince|to_persian_number }}</span>
                                                 </div>
                                             </div>
                                         </div>

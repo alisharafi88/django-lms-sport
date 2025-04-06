@@ -1,4 +1,5 @@
 {% extends '-base.html' %}
+{% load persian_tags %}
 {% load static %}
 {% load i18n %}
 
@@ -53,7 +54,7 @@
                                     <span class="date-wrapper">
                                         <a href="{{ blog.get_absolute_url }}">
                                             <span class="icon" dir="ltr"><i class="fi fi-ss-calendar"></i></span>
-                                            <span class="date-text" dir="auto">{{ blog.date_created|timesince }}</span>
+                                            <span class="date-text" dir="auto">{{ blog.date_created|timesince|to_persian_number }}</span>
                                         </a>
                                     </span>
                                 </div>
@@ -74,7 +75,7 @@
                         {% if page_obj.has_previous %}
                             <li>
                                 <a href="?page={{ page_obj.previous_page_number }}">
-                                    <i class="far fa-angle-right"></i>
+                                    <i class="far fa-angle-left"></i>
                                 </a>
                             </li>
                             {% if page_obj.number > 3 %}
@@ -111,7 +112,7 @@
                             {% endif %}
                             <li>
                                 <a href="?page={{ page_obj.next_page_number }}">
-                                    <i class="far fa-angle-left"></i>
+                                    <i class="far fa-angle-right"></i>
                                 </a>
                             </li>
                         {% endif %}

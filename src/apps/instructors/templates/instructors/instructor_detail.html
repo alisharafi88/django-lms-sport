@@ -1,4 +1,5 @@
 {% extends '-base.html' %}
+{% load persian_tags %}
 {% load enrollment %}
 {% load cart_tags %}
 {% load tags %}
@@ -236,18 +237,18 @@
                                                             <li>
                                                                 <img src="{% static 'assets/img/icon/c-meta-01.png' %}"
                                                                      alt="meta-icon">
-                                                                <span>{{ course.num_videos }}{% trans 'Classes' context 'singular' %}</span>
+                                                                <span>{{ course.num_videos|to_persian_number }}{% trans 'Classes' context 'singular' %}</span>
                                                             </li>
                                                             <li>
                                                                 <img src="{% static 'assets/img/icon/c-meta-02.png' %}"
                                                                      alt="meta-icon">
-                                                                <span>{{ course.num_members }} {% trans 'Students' context 'singular' %}</span>
+                                                                <span>{{ course.num_members|to_persian_number }} {% trans 'Students' context 'singular' %}</span>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                     <div class="tpcourse__rating d-flex align-items-center justify-content-between">
                                                         <div class="tpcourse__rating-icon">
-                                                            <span>{{ course.avg_rate|default:0 }}</span>
+                                                            <span>{{ course.avg_rate|default:0|to_persian_number }}</span>
                                                             {% for i in "54321" %}
                                                                 {% if course.avg_rate >= i|add:"0" %}
                                                                     <i class="fi fi-ss-star"></i>
@@ -255,10 +256,7 @@
                                                                     <i class="fi fi-rs-star"></i>
                                                                 {% endif %}
                                                             {% endfor %}
-                                                            <p>({{ course.num_comment }})</p>
-                                                        </div>
-                                                        <div class="tpcourse__pricing">
-                                                            {#                                                            <h5 class="price-title">{% trans 'Toman' %} {{ course.discounted_price }}</h5>#}
+                                                            <p>({{ course.num_comment|to_persian_number }})</p>
                                                         </div>
                                                     </div>
                                                 </div>

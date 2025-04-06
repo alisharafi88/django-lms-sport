@@ -1,4 +1,5 @@
 {% extends '-base.html' %}
+{% load persian_tags %}
 {% load enrollment %}
 {% load cart_tags %}
 {% load static %}
@@ -180,20 +181,20 @@
                                             <img {% if product.product_type == 2 %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
                                                  src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
                                                  alt="meta-icon">
-                                            <span>{% if product.product_type == 2 %}{{ product.num_courses|default:0 }}
+                                            <span>{% if product.product_type == 2 %}{{ product.num_courses|default:0|to_persian_number }}
                                                 {% trans 'Courses' context 'singular' %}
-                                                {% else %}{{ product.num_videos }}
+                                                {% else %}{{ product.num_videos|to_persian_number }}
                                                 {% trans 'Classes' context 'singular' %} {% endif %}</span>
                                         </li>
                                         <li>
                                             <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
-                                            <span>{{ product.num_members }} {% trans 'Students' context 'singular' %}</span>
+                                            <span>{{ product.num_members|to_persian_number }} {% trans 'Students' context 'singular' %}</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="tpcourse__rating d-flex align-items-center justify-content-between">
                                     <div class="tpcourse__rating-icon">
-                                        <span>{{ product.avg_rate|default:0 }}</span>
+                                        <span>{{ product.avg_rate|default:0|to_persian_number }}</span>
                                         {% for i in "54321" %}
                                             {% if product.avg_rate >= i|add:"0" %}
                                                 <i class="fi fi-ss-star"></i>
@@ -201,10 +202,10 @@
                                                 <i class="fi fi-rs-star"></i>
                                             {% endif %}
                                         {% endfor %}
-                                        <p>({{ product.num_comment }})</p>
+                                        <p>({{ product.num_comment|to_persian_number }})</p>
                                     </div>
                                     <div class="tpcourse__pricing">
-                                        <h5 class="c-price-list">{{ product.discounted_price }} {% trans 'Toman' %}</h5>
+                                        <h5 class="c-price-list">{{ product.discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -218,7 +219,7 @@
                         {% if page_obj.has_previous %}
                             <li>
                                 <a href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}page={{ page_obj.previous_page_number }}">
-                                    <i class="far fa-angle-right"></i>
+                                    <i class="far fa-angle-left"></i>
                                 </a>
                             </li>
                         {% endif %}
@@ -238,7 +239,7 @@
                         {% if page_obj.has_next %}
                             <li>
                                 <a href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}page={{ page_obj.next_page_number }}">
-                                    <i class="far fa-angle-left"></i>
+                                    <i class="far fa-angle-right"></i>
                                 </a>
                             </li>
                         {% endif %}

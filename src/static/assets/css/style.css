@@ -193,14 +193,8 @@ p {
     line-height: 28px;
 }
 
-.price,
-.number,
 .counter,
-.amount,
-.total-price-item,
-.c-price-list,
-.pricing-video,
-.discounted-price-item {
+.basic-pagination {
     font-family: var(--tp-ff-digits);
     font-feature-settings: "lnum";
     direction: ltr;
