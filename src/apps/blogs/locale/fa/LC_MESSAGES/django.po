@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-05 00:19+0330\n"
+"POT-Creation-Date: 2025-04-08 17:25+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +23,8 @@ msgid "#comments"
 msgstr "#کامنت"
 
 #: src/apps/blogs/apps.py:8 src/apps/blogs/models.py:46
-#: src/apps/blogs/templates/blogs/blog_detail.html:25
-#: src/apps/blogs/templates/blogs/blog_list.html:22
+#: src/apps/blogs/templates/blogs/blog_detail.html:26
+#: src/apps/blogs/templates/blogs/blog_list.html:23
 msgid "Blogs"
 msgstr "وبلاگ‌ها"
 
@@ -79,8 +79,8 @@ msgid "Updated at"
 msgstr "به‌روزرسانی شده در"
 
 #: src/apps/blogs/models.py:45 src/apps/blogs/models.py:57
-#: src/apps/blogs/templates/blogs/blog_detail.html:21
-#: src/apps/blogs/templates/blogs/blog_list.html:18
+#: src/apps/blogs/templates/blogs/blog_detail.html:22
+#: src/apps/blogs/templates/blogs/blog_list.html:19
 msgid "Blog"
 msgstr "وبلاگ"
 
@@ -105,79 +105,77 @@ msgid "Comment"
 msgstr "کامنت"
 
 #: src/apps/blogs/models.py:85
-#: src/apps/blogs/templates/blogs/blog_detail.html:53
-#: src/apps/blogs/templates/blogs/blog_detail.html:64
+#: src/apps/blogs/templates/blogs/blog_detail.html:54
+#: src/apps/blogs/templates/blogs/blog_detail.html:65
 msgid "Comments"
 msgstr "کامنت‌ها"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:23
+#: src/apps/blogs/templates/blogs/blog_detail.html:24
 msgid "Home"
 msgstr "صفحه‌اصلی"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:73
-#: src/apps/blogs/templates/blogs/blog_detail.html:97
+#: src/apps/blogs/templates/blogs/blog_detail.html:74
+#: src/apps/blogs/templates/blogs/blog_detail.html:98
 msgid "profile"
 msgstr "پروفایل"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:85
+#: src/apps/blogs/templates/blogs/blog_detail.html:86
 msgid "Reply"
 msgstr "پاسخ"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:116
+#: src/apps/blogs/templates/blogs/blog_detail.html:117
 msgid "Write a comment"
 msgstr "یک کامنت بنویسید"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:131
+#: src/apps/blogs/templates/blogs/blog_detail.html:132
 msgid "Post Comment"
 msgstr "ارسال کامنت"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:138
+#: src/apps/blogs/templates/blogs/blog_detail.html:139
 msgid "If you wanna send commnet please "
 msgstr "اگر می‌خواهید کامنت ارسال کنید لطفاً "
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:139
+#: src/apps/blogs/templates/blogs/blog_detail.html:140
 msgid "LOGIN"
 msgstr "وارد شوید"
-
-#: src/apps/blogs/templates/blogs/blog_detail.html:139
-msgid " or "
-msgstr " یا "
-
-#: src/apps/blogs/templates/blogs/blog_detail.html:140
-msgid "SIGNUP."
-msgstr "ثبت نام کنید."
 
 #: src/apps/blogs/templates/blogs/blog_detail.html:149
 msgid "Recent Post"
 msgstr "پست‌های اخیر"
 
-#: src/apps/blogs/templates/blogs/blog_list.html:6
+#: src/apps/blogs/templates/blogs/blog_list.html:7
 msgid "Blog List"
 msgstr "لیست وبلاگ‌ها"
 
-#: src/apps/blogs/templates/blogs/blog_list.html:20
+#: src/apps/blogs/templates/blogs/blog_list.html:21
 msgid "HomePage"
 msgstr "صفحه‌اصلی"
 
-#: src/apps/blogs/templates/blogs/blog_list.html:37
+#: src/apps/blogs/templates/blogs/blog_list.html:38
 msgid "Latest Blogs"
 msgstr "آخرین وبلاگ‌ها"
 
-#: src/apps/blogs/templates/blogs/blog_list.html:137
+#: src/apps/blogs/templates/blogs/blog_list.html:138
 msgid "Worldwide Students"
 msgstr "دانش‌آموزان"
 
-#: src/apps/blogs/templates/blogs/blog_list.html:148
+#: src/apps/blogs/templates/blogs/blog_list.html:149
 msgid "Years Experience"
 msgstr "سال‌ها تجربه"
 
-#: src/apps/blogs/templates/blogs/blog_list.html:159
+#: src/apps/blogs/templates/blogs/blog_list.html:160
 msgid "Professional Courses"
 msgstr "دوره‌های حرفه‌ای"
 
-#: src/apps/blogs/templates/blogs/blog_list.html:170
+#: src/apps/blogs/templates/blogs/blog_list.html:171
 msgid "Beautiful Review"
 msgstr "نقد و بررسی زیبای شما"
+
+#~ msgid " or "
+#~ msgstr " یا "
+
+#~ msgid "SIGNUP."
+#~ msgstr "ثبت نام کنید."
 
 #~ msgid "Blog's title"
 #~ msgstr "عنوان وبلاگ"

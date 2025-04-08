@@ -103,11 +103,11 @@ class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     def get_coach(self, course):
         return course.coach or _('No Coach Assigned')
 
-    @admin.display(description=_('Total Links'))
+    @admin.display(description=_('#TotalLinks'))
     def telegram_link_count(self, obj):
         return obj.telegram_links.count()
 
-    @admin.display(description=_('Available Links'))
+    @admin.display(description=_('#AvailableLinks'))
     def available_links(self, obj):
         count = obj.telegram_links.filter(is_used=False).count()
         color = 'green' if count > 0 else 'red'

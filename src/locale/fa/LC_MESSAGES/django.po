@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-05 00:23+0330\n"
+"POT-Creation-Date: 2025-04-08 17:25+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: src/config/settings/base.py:317 src/config/settings/base.py:318
-msgid "Site Management"
-msgstr "مدیریت سایت"
-
-#: src/config/settings/base.py:319
-msgid "Admin Panel"
-msgstr "پنل مدیریت"
-
-#: src/config/settings/base.py:320
-msgid "Welcome to the Admin Panel"
-msgstr "به پنل مدیریت خوش آمدید"
-
-#: src/config/settings/base.py:323
-msgctxt "Navigation"
-msgid "Home"
-msgstr "صفحه‌اصلی"
-
-#: src/config/settings/base.py:325
-msgctxt "Action"
-msgid "Logout"
-msgstr "خروج"
 
 #: src/templates/admin/base_site.html:29
 msgid "View site"
@@ -88,23 +66,23 @@ msgstr "سبد خرید"
 msgid "BMI"
 msgstr "BMI"
 
-#: src/templates/inc/footer-area.html:32 src/templates/inc/header.html:48
+#: src/templates/inc/footer-area.html:33 src/templates/inc/header.html:48
 msgid "Coaches"
 msgstr "مربی‌ها"
 
-#: src/templates/inc/footer-area.html:40
+#: src/templates/inc/footer-area.html:42
 msgid "Support"
 msgstr "پشتیبانی"
 
-#: src/templates/inc/footer-area.html:44
+#: src/templates/inc/footer-area.html:46
 msgid "Contact us"
 msgstr "تماس با ما"
 
-#: src/templates/inc/footer-area.html:45
+#: src/templates/inc/footer-area.html:48
 msgid "Ticketing"
 msgstr "ارسال تیکت"
 
-#: src/templates/inc/footer-area.html:53
+#: src/templates/inc/footer-area.html:57
 msgid "SupportUs"
 msgstr "حمایت از ما"
 
@@ -123,6 +101,23 @@ msgstr "درباره ما"
 #: src/templates/inc/header.html:57
 msgid "Contact Us"
 msgstr "تماس با ما"
+
+#~ msgid "Site Management"
+#~ msgstr "مدیریت سایت"
+
+#~ msgid "Admin Panel"
+#~ msgstr "پنل مدیریت"
+
+#~ msgid "Welcome to the Admin Panel"
+#~ msgstr "به پنل مدیریت خوش آمدید"
+
+#~ msgctxt "Navigation"
+#~ msgid "Home"
+#~ msgstr "صفحه‌اصلی"
+
+#~ msgctxt "Action"
+#~ msgid "Logout"
+#~ msgstr "خروج"
 
 #~ msgid "Coches"
 #~ msgstr "مربی‌ها"

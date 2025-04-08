@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-05 00:19+0330\n"
+"POT-Creation-Date: 2025-04-08 17:25+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -185,50 +185,42 @@ msgstr "درست"
 msgid "False"
 msgstr "نادرست"
 
-#: src/apps/contacts/templates/contact/contact.html:6
+#: src/apps/contacts/templates/contact/contact.html:7
 msgid "Contact Page"
 msgstr "صفحه تماس"
 
-#: src/apps/contacts/templates/contact/contact.html:21
+#: src/apps/contacts/templates/contact/contact.html:22
 msgid "Contact Us"
 msgstr "با ما تماس بگیرید"
 
-#: src/apps/contacts/templates/contact/contact.html:23
+#: src/apps/contacts/templates/contact/contact.html:24
 msgid "HomePage"
 msgstr "صفحه‌اصلی"
 
-#: src/apps/contacts/templates/contact/contact.html:25
+#: src/apps/contacts/templates/contact/contact.html:26
 msgid "Contact"
 msgstr "تماس"
 
-#: src/apps/contacts/templates/contact/contact.html:90
-#: src/apps/contacts/templates/contact/contact.html:112
+#: src/apps/contacts/templates/contact/contact.html:91
+#: src/apps/contacts/templates/contact/contact.html:113
 msgid "Send Us Message"
 msgstr "پیام خود را برای ما ارسال کنید"
 
-#: src/apps/contacts/templates/contact/contact.html:98
+#: src/apps/contacts/templates/contact/contact.html:99
 msgid "Comments"
 msgstr "نظرات"
 
-#: src/apps/contacts/templates/contact/contact.html:101
+#: src/apps/contacts/templates/contact/contact.html:102
 msgid "Submit Now"
 msgstr "همین حالا ارسال کنید"
 
-#: src/apps/contacts/templates/contact/contact.html:116
+#: src/apps/contacts/templates/contact/contact.html:117
 msgid "If you wanna send us message please "
 msgstr "اگر می‌خواهید برای ما پیامی ارسال کنید لطفاً "
 
-#: src/apps/contacts/templates/contact/contact.html:117
+#: src/apps/contacts/templates/contact/contact.html:118
 msgid "LOGIN"
 msgstr "وارد شوید"
-
-#: src/apps/contacts/templates/contact/contact.html:117
-msgid " or "
-msgstr " یا "
-
-#: src/apps/contacts/templates/contact/contact.html:118
-msgid "SIGNUP."
-msgstr "ثبت نام کنید."
 
 #: src/apps/contacts/templates/contact/contact.html:143
 msgid "Worldwide Students"
@@ -257,6 +249,12 @@ msgstr "پیام شما ارسال نشد، لطفاً دوباره تلاش ک�
 #: src/apps/contacts/views.py:30
 msgid "You should be authenticated."
 msgstr "شما باید احراز هویت شده باشید."
+
+#~ msgid " or "
+#~ msgstr " یا "
+
+#~ msgid "SIGNUP."
+#~ msgstr "ثبت نام کنید."
 
 #~ msgid "Date sent"
 #~ msgstr "تاریخ ارسال"
