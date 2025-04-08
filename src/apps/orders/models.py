@@ -62,8 +62,11 @@ class Order(models.Model):
         return f'{self.total_price}'
 
     class Meta:
+        ordering = ('-date_created',)
+
         indexes = [
-            models.Index(fields=['status', 'zarinpal_authority']),
+            models.Index(fields=['status', 'zarinpal_authority'], name='status_zarinpal_authority_idx'),
+            models.Index(fields=['date_created'], name='date_created_idx'),
         ]
 
         verbose_name = _('Order')
