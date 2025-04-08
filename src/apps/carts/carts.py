@@ -11,6 +11,8 @@ PACKAGE_TYPE = 'package'
 
 class Cart:
     CART_SESSION_ID = 'cart'
+    CART_COUPON_CODE_ID = 'coupon_code'
+    CART_COUPON_DISCOUNT = 'coupon_discount'
 
     def __init__(self, request):
         """
@@ -24,8 +26,15 @@ class Cart:
         self.cart = cart
         self.products = None
 
-        self.coupon_code = self.session.get('coupon_code', None)
-        self.coupon_discount = 0
+        coupon_code = self.session.get(self.CART_COUPON_CODE_ID, None)
+        if not coupon_code:
+            coupon_code = None
+        self.coupon_code = coupon_code
+
+        coupon_discount = self.session.get(self.CART_COUPON_DISCOUNT, 0)
+        if not coupon_discount:
+            coupon_discount = 0
+        self.coupon_discount = coupon_discount
 
         self.course_ct = ContentType.objects.get_for_model(Course)
         self.package_ct = ContentType.objects.get_for_model(Package)
@@ -154,6 +163,18 @@ class Cart:
         del self.session[self.CART_SESSION_ID]
         self.save()
 
+    def clear_after_payment(self):
+        """Clear the cart."""
+        del self.session[self.CART_SESSION_ID]
+
+        if self.CART_COUPON_CODE_ID in self.session:
+            del self.session[self.CART_COUPON_CODE_ID]
+
+        if self.CART_COUPON_DISCOUNT in self.session:
+            del self.session[self.CART_COUPON_DISCOUNT]
+
+        self.save()
+
     def get_total_price(self):
         """
         Calculate the total price of all products in the cart, including the coupon discount.
@@ -171,26 +192,27 @@ class Cart:
             coupon = Coupon.objects.get(code=code, status=True)
             today = timezone.now().date()
             if not (coupon.date_valid_from <= today <= coupon.date_valid_to):
-                raise ValueError('Coupon is expired or not yet valid.')
+                raise ValueError(_('Coupon is expired or not yet valid.'))
 
             total_usage = CouponUsage.objects.filter(coupon=coupon).count()
             if total_usage >= coupon.max_usage_total:
-                raise ValueError('Coupon usage limit exceeded.')
+                raise ValueError(_('Coupon usage limit exceeded.'))
 
             user = self.request.user
             if user.is_authenticated:
                 user_usage = CouponUsage.objects.filter(coupon=coupon, user=user).count()
                 if user_usage >= coupon.max_usage_per_user:
-                    raise ValueError('You have exceeded the maximum usage limit for this coupon.')
+                    raise ValueError(_('You have exceeded the maximum usage limit for this coupon.'))
 
             self.coupon_code = code
             self.coupon_discount = coupon.discount_amount
             self.session['coupon_code'] = code
             self.session['coupon_discount'] = coupon.discount_amount
+
             self.save()
 
         except Coupon.DoesNotExist:
-            raise ValueError('Invalid coupon code.')
+            raise ValueError(_('Invalid coupon code.'))
         except ValueError as e:
             raise ValueError(e)
 
@@ -210,8 +232,9 @@ class Cart:
         user = self.request.user
         if self.coupon_code:
             try:
-                coupon = Coupon.objects.get(code=self.coupon_code, status=True)
+                coupon = Coupon.objects.get(code=str(self.coupon_code))
                 CouponUsage.objects.create(coupon=coupon, user=user)
             except Coupon.DoesNotExist:
                 pass
-        self.clear()
+
+        self.clear_after_payment()

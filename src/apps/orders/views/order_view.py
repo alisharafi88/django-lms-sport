@@ -14,6 +14,7 @@ from apps.courses.models import CourseMembership
 from apps.orders.models import Order, OrderItem, DVDOrderDetail
 from apps.orders.forms import CheckoutForm
 from apps.carts.carts import Cart
+from apps.utils.numbers.convert_numbers import PersianNumberConverter
 
 
 logger = logging.getLogger(__name__)
@@ -45,7 +46,7 @@ class OrderCreateView(View):
                 'cart': cart,
                 'total_price': total_price,
                 'total_discounted_price': total_discounted_price,
-                'form': self.form_class()
+                'form': self.form_class(),
             }
         )
 
@@ -154,9 +155,9 @@ def apply_coupon_view(request):
                 'success': True,
                 'message': _('Coupon applied successfully.'),
                 'coupon_code': coupon_code,
-                'coupon_discount': cart.coupon_discount,
-                'total_price': total_price,
-                'final_price': final_price,
+                'coupon_discount': PersianNumberConverter.to_persian(cart.coupon_discount, humanize='humanize'),
+                'total_price': PersianNumberConverter.to_persian(total_price, humanize='humanize'),
+                'final_price': PersianNumberConverter.to_persian(final_price, humanize='humanize'),
             })
         except ValueError as e:
             logger.error(f'Error applying coupon: {e}')
@@ -174,7 +175,7 @@ def remove_coupon_view(request):
         return JsonResponse({
             'success': True,
             'message': _('Coupon removed successfully.'),
-            'total_price': total_price,
-            'final_price': final_price,
+            'total_price': PersianNumberConverter.to_persian(total_price, humanize='humanize'),
+            'final_price': PersianNumberConverter.to_persian(final_price, humanize='humanize'),
         })
     return JsonResponse({'success': False, 'message': 'Invalid request.'})

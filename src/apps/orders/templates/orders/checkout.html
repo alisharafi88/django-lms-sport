@@ -60,13 +60,13 @@
                                                 type="button">{% trans 'Apply Coupon' %}</button>
                                     </p>
                                 </form>
-                                <div id="coupon-message"></div>
                             </div>
                         </div>
+                        <div id="coupon-message"></div>
 
                         {% if cart.coupon_code %}
                             <div id="applied-coupon">
-                                <p>{% trans 'Applied Coupon:' %} <strong>{{ cart.coupon_code }}</strong> ({% trans 'Discount:' %} {{ cart.coupon_discount }} {% trans 'Toman' %})</p>
+                                <p>{% trans 'Applied Coupon:' %} <strong>{{ cart.coupon_code }}</strong> ({% trans 'Discount:' %} {{ cart.coupon_discount|to_persian_number:'humanize' }} {% trans 'Toman' %})</p>
                                 <button id="remove-coupon-btn" class="tp-btn-3">{% trans 'Remove Coupon' %}</button>
                             </div>
                         {% endif %}
@@ -115,7 +115,7 @@
                                         </td>
                                     </tr>
                                     <tr class="shippings">
-                                        <th>Shipping</th>
+                                        <th>{% trans 'Shipping' %}</th>
                                         <td>
                                             <ul>
                                                 {% render_field form.status type="radio" name="status" class='radio' %}

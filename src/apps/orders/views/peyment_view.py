@@ -100,8 +100,9 @@ def payment_callback(request):
                                 assign_telegram_link(request, user, product)
 
                         # Clear cart
+
                         cart = Cart(request)
-                        cart.clear()
+                        cart.finalize_purchase()
                         messages.success(request, _('Payment successful! You are now enrolled in your courses.'))
                         return redirect('accounts:student_dashboards')
                     if payment_status == 101:

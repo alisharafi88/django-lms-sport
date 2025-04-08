@@ -313,8 +313,6 @@ msgid "Have a coupon?"
 msgstr "کدتخفیف دارید؟"
 
 #: src/apps/orders/templates/orders/checkout.html:53
-#, fuzzy
-#| msgid "Please enter your postal code"
 msgid "Click here to enter your code"
 msgstr "لطفاً کد خود را اینجا وارد کنید."
 
@@ -348,7 +346,7 @@ msgstr "تومان"
 #: src/apps/orders/templates/orders/checkout.html:70
 #: src/apps/orders/templates/orders/checkout.html:239
 msgid "Remove Coupon"
-msgstr "حدف کدتخفیف"
+msgstr "حذف کدتخفیف"
 
 #: src/apps/orders/templates/orders/checkout.html:89
 msgid "Your order"
@@ -364,7 +362,7 @@ msgstr "جمع سبدخرید"
 
 #: src/apps/orders/templates/orders/checkout.html:126
 msgid "Order Total"
-msgstr "یادداشت سفارش"
+msgstr "جمع سبدخرید بعد از تخفیف"
 
 #: src/apps/orders/templates/orders/checkout.html:134
 msgid "Place order"
