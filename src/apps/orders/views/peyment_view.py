@@ -1,15 +1,12 @@
 from django.contrib import messages
-from django.contrib.contenttypes.models import ContentType
 from django.db import transaction
 from django.shortcuts import get_object_or_404, redirect
 from django.http import HttpResponse
 from django.urls import reverse
-from django.utils import timezone
 from django.utils.translation import gettext as _
 
-from apps.carts.carts import Cart
-from apps.courses.models import CourseMembership, CourseTelegramLink, Package, Course
 from apps.orders.models import Order
+from apps.orders.enrollment import enrollment_process
 from apps.orders.zarinpal import send_request, verify, ZP_API_STARTPAY
 
 
@@ -19,6 +16,10 @@ def payment_process(request):
     order = get_object_or_404(Order, id=order_id)
 
     toman_total_price = order.total_price
+    if toman_total_price == 0:
+        enrollment_process(request, order)
+        return redirect('accounts:student_dashboards')
+
     rial_total_price = toman_total_price * 10
 
     description = f'#{order.id}: {order.customer.first_name} {order.customer.last_name}'
@@ -65,46 +66,9 @@ def payment_callback(request):
                     payment_code = data['code']
 
                     if payment_code == 100:
-                        # Update payment status
-                        order.status = Order.OrderStatus.PAID
-                        order.zarinpal_ref_id = data['ref_id']
-                        order.zarinpal_data = data
-                        order.save()
-                        # Enroll student in courses
-                        for item in order.items.all():
-                            product = item.product
-                            user = order.customer
-
-                            if isinstance(product, Package):  # package
-                                # package-level
-                                CourseMembership.objects.get_or_create(
-                                    user=user,
-                                    content_type=ContentType.objects.get_for_model(Package),
-                                    object_id=product.id
-                                )
-                                # course-level
-                                courses = product.courses.all()
-                                for course in courses:
-                                    CourseMembership.objects.get_or_create(
-                                        user=user,
-                                        content_type=ContentType.objects.get_for_model(Course),
-                                        object_id=course.id
-                                    )
-                                    assign_telegram_link(request, user, course)
-                            elif isinstance(product, Course):  # course
-                                CourseMembership.objects.get_or_create(
-                                    user=user,
-                                    content_type=ContentType.objects.get_for_model(Course),
-                                    object_id=product.id
-                                )
-                                assign_telegram_link(request, user, product)
-
-                        # Clear cart
-
-                        cart = Cart(request)
-                        cart.finalize_purchase()
-                        messages.success(request, _('Payment successful! You are now enrolled in your courses.'))
+                        enrollment_process(request, order, data)
                         return redirect('accounts:student_dashboards')
+
                     if payment_status == 101:
                         messages.info(request, _('Payment was already verified'))
                         return redirect('accounts:student_dashboard')
@@ -118,26 +82,7 @@ def payment_callback(request):
 
             return HttpResponse(response['error'])
 
-    messages.error(request, _('An unexpected error occurred during payment verification'))
+    order.status = Order.OrderStatus.CANCELED
+    order.save()
+    messages.error(request, _('The payment has been canceled.'))
     return redirect('carts:cart')
-
-
-def assign_telegram_link(request, user, course):
-    link = CourseTelegramLink.objects.filter(
-        course=course,
-        is_used=False
-    ).select_for_update().first()
-
-    if link:
-        link.user = user
-        link.is_used = True
-        link.date_used = timezone.now()
-        link.save()
-    else:
-        messages.warning(request,
-                         _('Some Telegram links couldn\'t be assigned. Please contact support or send ticket if you don\'t receive your invite links.'))
-
-        # sms_admins(
-        #     f"No Telegram links for course: {course.title}",
-        #     f"User {user} needs a link for course ID {course.id}"
-        # )
