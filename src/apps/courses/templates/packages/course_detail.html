@@ -186,7 +186,7 @@
                                     <div class="postbox__comment-box grey-bg">
                                         <div class="postbox__comment-info d-flex">
                                             <div class="postbox__comment-avater ml-20">
-                                                <img src="{% static 'assets/img/blog/comments/comment-1.jpg' %}" alt="">
+                                                <img src="{{ comment.user.get_photo_url }}" alt="{{ comment.user.get_full_name }}">
                                             </div>
                                             <div class="postbox__comment-name">
                                                 <h5>{{ comment.user.get_full_name }}</h5>
