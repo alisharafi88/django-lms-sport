@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 17:25+0330\n"
+"POT-Creation-Date: 2025-04-09 12:14+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,10 +22,26 @@ msgstr ""
 msgid "Carts"
 msgstr "سبدخرید"
 
-#: src/apps/carts/carts.py:107
+#: src/apps/carts/carts.py:116
 #, python-brace-format
 msgid "You're already enrolled in '{product.title}'. Removed from your cart."
 msgstr "شما عضو دوره‌ی '{product.title}' هستید. این دوره از سبدخرید شما حذف شد."
+
+#: src/apps/carts/carts.py:195
+msgid "Coupon is expired or not yet valid."
+msgstr "کدتخفیف منقضی شده است یا هنوز معتبر نیست."
+
+#: src/apps/carts/carts.py:199
+msgid "Coupon usage limit exceeded."
+msgstr "حداکثر امکان استفاده از کدتخفیف بیشتر شده است."
+
+#: src/apps/carts/carts.py:205
+msgid "You have exceeded the maximum usage limit for this coupon."
+msgstr "شما حداکثر امکان استفاده از این کدتخفیف را استفاده کرده‌اید."
+
+#: src/apps/carts/carts.py:215
+msgid "Invalid coupon code."
+msgstr "کدتخفیف نامعتبر است."
 
 #: src/apps/carts/templates/carts/cart.html:7
 #: src/apps/carts/templates/carts/cart.html:94

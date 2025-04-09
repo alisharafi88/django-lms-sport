@@ -263,7 +263,7 @@
             <div id="popup-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
                 <div class="modal-content" role="document">
                     <span class="close-button" aria-label="Close" onclick="closeModal()">&times;</span>
-                    <h2 id="modal-title">{% trans 'Feedback for Title' %}</h2>
+                    <h2 id="modal-title">{% trans 'Feedback for Title' %} "<span id="course-title"></span>"</h2>
                     <form id="comment-form" method="POST">
                         {% csrf_token %}
                         <div id="rate-error" class="error-message"></div>
@@ -848,7 +848,7 @@
             const courseId = element.dataset.courseId;
             const courseTitle = element.dataset.courseTitle;
 
-            modalTitle.textContent = `Feedback for ${courseTitle}`;
+            document.getElementById('course-title').textContent = courseTitle;
 
             commentForm.action = `/courses/${courseId}/`;
 
