@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 17:25+0330\n"
+"POT-Creation-Date: 2025-04-09 12:52+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,32 +114,27 @@ msgstr "کامنت‌ها"
 msgid "Home"
 msgstr "صفحه‌اصلی"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:74
-#: src/apps/blogs/templates/blogs/blog_detail.html:98
-msgid "profile"
-msgstr "پروفایل"
-
-#: src/apps/blogs/templates/blogs/blog_detail.html:86
+#: src/apps/blogs/templates/blogs/blog_detail.html:85
 msgid "Reply"
 msgstr "پاسخ"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:117
+#: src/apps/blogs/templates/blogs/blog_detail.html:115
 msgid "Write a comment"
 msgstr "یک کامنت بنویسید"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:132
+#: src/apps/blogs/templates/blogs/blog_detail.html:130
 msgid "Post Comment"
 msgstr "ارسال کامنت"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:139
+#: src/apps/blogs/templates/blogs/blog_detail.html:137
 msgid "If you wanna send commnet please "
 msgstr "اگر می‌خواهید کامنت ارسال کنید لطفاً "
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:140
+#: src/apps/blogs/templates/blogs/blog_detail.html:138
 msgid "LOGIN"
 msgstr "وارد شوید"
 
-#: src/apps/blogs/templates/blogs/blog_detail.html:149
+#: src/apps/blogs/templates/blogs/blog_detail.html:147
 msgid "Recent Post"
 msgstr "پست‌های اخیر"
 
@@ -170,6 +165,9 @@ msgstr "دوره‌های حرفه‌ای"
 #: src/apps/blogs/templates/blogs/blog_list.html:171
 msgid "Beautiful Review"
 msgstr "نقد و بررسی زیبای شما"
+
+#~ msgid "profile"
+#~ msgstr "پروفایل"
 
 #~ msgid " or "
 #~ msgstr " یا "
