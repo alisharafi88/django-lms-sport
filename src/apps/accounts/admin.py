@@ -15,6 +15,8 @@ class CustomUserAdmin(ModelAdminJalaliMixin, UserAdmin):
     list_display = ('phone_number', 'is_staff',)
     ordering = ('date_joined',)
     search_fields = ('phone_number', 'first_name', 'last_name', 'email')
+    list_per_page = 10
+
     fieldsets = (
         (_('Personal info'), {'fields': ('profile_photo', 'first_name', 'last_name', 'email', 'phone_number', 'bio')}),
         (
