@@ -23,6 +23,9 @@ class TicketAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_editable = ('status',)
     inlines = [TicketReplyInline]
     ordering = ('-date_created',)
+    date_hierarchy = 'date_created'
+
+    list_select_related = ('user',)
 
     actions = ['mark_as_resolved', 'mark_as_closed']
 
