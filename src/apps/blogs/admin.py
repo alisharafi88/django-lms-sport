@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from django.db.models import Count
+from django.db.models import Count, Prefetch
 from django.utils.translation import gettext_lazy as _
 
 from jalali_date.admin import ModelAdminJalaliMixin, TabularInlineJalaliMixin
@@ -15,6 +15,10 @@ class BlogCommentInline(TabularInlineJalaliMixin, admin.TabularInline):
     fields = ('author', 'text', 'date_created')
     extra = 0
 
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        return queryset.select_related('author')
+
 
 @admin.register(Blog)
 class BlogAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
@@ -22,7 +26,7 @@ class BlogAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         models.TextField: {'widget': CKEditor5Widget(config_name='default')},
     }
     list_display = ('title', 'author', 'status', 'num_of_comments')
-    list_filter = ('title', 'author', 'status',)
+    list_filter = ('status',)
     list_per_page = 10
     list_editable = ('status',)
     search_fields = ('title', 'author',)
@@ -49,12 +53,20 @@ class BlogAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
     def get_queryset(self, request):
         return super().get_queryset(request)\
-            .prefetch_related('comments')\
-            .annotate(num_of_comments=Count('comments'))
+            .prefetch_related(Prefetch('comments', queryset=BlogComment.objects.prefetch_related('author').select_related('parent').all()))\
+            .annotate(num_of_comments=Count('comments')) \
+            .select_related('author', 'author__user')
 
     @admin.display(description=_('#comments'), ordering='-num_of_comments')
     def num_of_comments(self, blog):
         return blog.comments.all().count()
 
 
-admin.site.register(BlogComment)
+@admin.register(BlogComment)
+class BlogCommentAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
+    list_display = ('blog', 'author', 'date_created', 'status')
+    list_filter = ('status',)
+    search_fields = ('blog__title', 'author__first_name', 'author__last_name', 'author__phone_number')
+    date_hierarchy = 'date_created'
+
+    list_select_related = ('author', 'blog', 'blog__author', 'parent')

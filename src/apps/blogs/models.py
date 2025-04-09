@@ -47,7 +47,7 @@ class Blog(models.Model):
         ordering = ('-date_updated',)
 
     def __str__(self):
-        return f'{self.title} - {self.author} - {self.status}'
+        return f'{self.title} - {self.author}'
 
     def get_absolute_url(self):
         return reverse('blogs:blog_detail', kwargs={'pk': self.pk, 'slug': self.slug})
@@ -59,7 +59,7 @@ class BlogComment(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='sent_blogs_comments',
-        verbose_name='author',
+        verbose_name=_('Author'),
     )
     text = models.CharField(_('Text'), max_length=500, )
 
