@@ -55,6 +55,7 @@ class Order(models.Model):
 
     date_created = models.DateTimeField(_('DateCreated'), auto_now_add=True)
 
+    coupon_code = models.CharField(_('Coupon Code'), max_length=50, null=True, blank=True)
     zarinpal_authority = models.CharField(_('Payment Authority'), max_length=255, null=True, blank=True)
     zarinpal_ref_id = models.CharField(max_length=150, null=True, blank=True)
     zarinpal_data = models.TextField(null=True, blank=True)

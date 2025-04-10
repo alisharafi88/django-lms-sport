@@ -11,16 +11,19 @@ from apps.orders.models import Order
 
 def enrollment_process(request, order, data=None):
     with transaction.atomic():
-        update_order_payment_status(order, data)
+        update_order_payment_status(request, order, data)
         enroll_student_in_courses(request, order)
         clear_cart(request)
         messages.success(request, _('Payment successful! You are now enrolled in your courses.'))
 
 
-def update_order_payment_status(order, data):
+def update_order_payment_status(request, order, data):
     if data is not None:
         order.zarinpal_ref_id = data['ref_id']
         order.zarinpal_data = data
+    if request.session['coupon_code']:
+        order.coupon_code = request.session['coupon_code']
+
     order.status = Order.OrderStatus.PAID
     order.save()
 
