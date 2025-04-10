@@ -87,7 +87,7 @@ class CouponUsage(models.Model):
     )
 
     def __str__(self):
-        return f'{self.user} used {self.coupon.code} on {self.usage_date}'
+        return f'{self.coupon.code} on {self.usage_date}'
 
     class Meta:
         verbose_name = _('Coupon Usage')
@@ -379,5 +379,5 @@ class CourseTelegramLink(models.Model):
 
     def __str__(self):
         if self.user:
-            return f"{self.course.title} - {self.invite_link}"
+            return f'{self.course.title} - {self.invite_link}'
         return self.course.title

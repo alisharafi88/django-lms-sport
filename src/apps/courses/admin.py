@@ -15,6 +15,10 @@ class CourseVideoInline(StackedInlineJalaliMixin, admin.StackedInline):
     fields = ('title', 'status')
     readonly_fields = ('created_at', 'updated_at')
 
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request).select_related('season__course')
+        return queryset
+
 
 class CourseSeasonInline(TabularInlineJalaliMixin, admin.StackedInline):
     model = CourseSeason
@@ -22,6 +26,10 @@ class CourseSeasonInline(TabularInlineJalaliMixin, admin.StackedInline):
     readonly_fields = ('created_at', 'updated_at')
 
     inlines = (CourseVideoInline,)
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request).prefetch_related('videos')
+        return queryset
 
 
 @admin.register(Coupon)
@@ -42,19 +50,22 @@ class CouponAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 @admin.register(CouponUsage)
 class CouponUsageAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('coupon', 'user')
-    search_fields = ('user', 'coupon')
+    search_fields = ('user__phone_number', 'coupon__code')
     date_hierarchy = 'usage_date'
+    list_select_related = ('user',)
 
 
 @admin.register(Course)
 class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('title', 'get_coach', 'price', 'date_modified', 'get_num_videos', 'get_num_members', 'telegram_link_count', 'available_links', 'status')
-    list_filter = ('price', 'status', 'date_modified', 'coach')
-    search_fields = ('title',)
+    list_filter = ('status', 'date_modified')
+    search_fields = ('title', 'coach__user__first_name', 'coach__user__last_name')
     date_hierarchy = 'date_modified'
     readonly_fields = ('date_created', 'date_modified',)
     list_select_related = ('coach__user',)
     prepopulated_fields = {'slug': ('title',)}
+
+    list_per_page = 5
 
     inlines = (CourseSeasonInline,)
 
@@ -89,7 +100,16 @@ class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         return super().get_queryset(request).annotate(
             num_videos=Subquery(video_count_subquery, output_field=IntegerField()),
             num_members=Count('memberships')
-        ).prefetch_related('memberships', Prefetch('seasons', queryset=CourseSeason.objects.prefetch_related('videos').all()))
+        ).prefetch_related(
+            'memberships',
+            'telegram_links',
+            Prefetch(
+                'seasons',
+                queryset=CourseSeason.objects.prefetch_related('videos').all()
+            )
+        ).select_related(
+            'coach__user',
+        ).distinct()
 
     @admin.display(description=_('#Videos'), ordering='num_videos')
     def get_num_videos(self, course):
@@ -117,7 +137,7 @@ class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 @admin.register(Package)
 class PackageAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('title', 'price', 'date_modified', 'num_courses', 'num_members', 'status')
-    list_filter = ('price', 'status', 'date_modified')
+    list_filter = ('status', 'date_modified')
     search_fields = ('title',)
     date_hierarchy = 'date_modified'
     readonly_fields = ('date_created', 'date_modified',)
@@ -187,6 +207,10 @@ class CourseSeasonAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
     readonly_fields = ('created_at', 'updated_at')
 
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request).prefetch_related('videos')
+        return queryset
+
 
 @admin.register(CourseVideo)
 class CourseVideoAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
@@ -226,8 +250,8 @@ class CourseVideoAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 class CourseMembershipAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('user', 'product_type', 'product_title', 'date_modified')
     list_filter = ('content_type', 'date_modified')
-    search_fields = ('user__username', 'object_id')
-    list_select_related = ['user']
+    search_fields = ('user__phone_number', 'object_id')
+    list_select_related = ['user', 'content_type']
     date_hierarchy = 'date_created'
     readonly_fields = ('date_modified', 'date_created',)
     list_per_page = 10
@@ -241,6 +265,10 @@ class CourseMembershipAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         (_('User Information'), {'fields': ('user',)}),
         (_('Product Information'), {'fields': ('content_type', 'object_id')}),
     )
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request).prefetch_related('product')
+        return queryset
 
     def get_fieldsets(self, request, obj=None):
         if obj is None:
@@ -262,6 +290,14 @@ class TelegramLinkAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_filter = ('course', 'is_used')
     search_fields = ('course__title', 'invite_link')
     readonly_fields = ('date_created', 'date_used')
+    list_select_related = ('user', 'course')
 
 
-admin.site.register(CourseComments)
+@admin.register(CourseComments)
+class CourseCommentsAdmin(admin.ModelAdmin):
+    list_display = ('course', 'user', 'rate', 'status')
+    date_hierarchy = 'date_created'
+    search_fields = ('course__title', 'user__phone_number')
+    select_related = ('user', 'course')
+
+
