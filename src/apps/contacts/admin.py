@@ -34,10 +34,10 @@ class ContactInfoAdmin(ModelAdminJalaliMixin, AdminConfirmMixin, admin.ModelAdmi
 @admin.register(Message)
 class MessageAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('user', 'date_sent',)
-    list_filter = ('user',)
     search_fields = ('user',)
     date_hierarchy = 'date_sent'
     readonly_fields = ('date_sent',)
+    list_select_related = ('user',)
 
     fieldsets = (
         (_('user information'), {'fields': ('user',)}),
