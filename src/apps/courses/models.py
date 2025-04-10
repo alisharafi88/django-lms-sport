@@ -174,6 +174,12 @@ class Course(Product):
         db_index=True,
     )
 
+    free_leasson_link = models.URLField(
+        _('Free leasson link'),
+        unique=True,
+        null=True,
+        blank=True,
+    )
     memberships = GenericRelation('CourseMembership', related_query_name='course')
 
     def get_absolute_url(self):
@@ -257,6 +263,11 @@ class CourseVideo(models.Model):
 
     created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('Updated at'), auto_now=True)
+
+    def is_free(self):
+        if self.status == self.VideoStatus.FREE:
+            return True
+        return False
 
     def __str__(self):
         return f'{self.season} - {self.title}'

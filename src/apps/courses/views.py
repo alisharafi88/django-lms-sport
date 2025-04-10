@@ -58,16 +58,18 @@ class CourseDetailView(generic.DetailView):
         ).values('coach').annotate(
             total_comments=Count(
                 'comments',
-                output_field=IntegerField()
+                output_field=IntegerField(),
+                distinct=True,
             ),
             total_students=Count(
                 'memberships__user',
                 distinct=True,
-                output_field=IntegerField()
+                output_field=IntegerField(),
             ),
             total_videos=Count(
                 'seasons__videos',
-                output_field=IntegerField()
+                output_field=IntegerField(),
+                distinct=True,
             ),
             avg_rating=Coalesce(
                 Avg('comments__rate'),

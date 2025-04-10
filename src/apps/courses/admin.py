@@ -71,7 +71,7 @@ class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
     fieldsets = (
         (_('Details'), {'fields': ('title', 'coach', 'description', 'img', 'slug',)}),
-        (_('Specifications'), {'fields': ('age_range', 'duration',)}),
+        (_('Specifications'), {'fields': ('age_range', 'duration', 'free_leasson_link')}),
         (_('Price Information'), {'fields': ('price', 'discount_amount',)}),
         (_('Statuses'), {'fields': (
             'status', 'certificate_status', 'analysis_room_status', 'extra_movments_status',
@@ -80,7 +80,7 @@ class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     )
     add_fieldsets = (
         (_('Details'), {'fields': ('title', 'coach', 'description', 'img', 'slug',)}),
-        (_('Specifications'), {'fields': ('age_range', 'duration',)}),
+        (_('Specifications'), {'fields': ('age_range', 'duration', 'free_leasson_link')}),
         (_('Statuses'), {'fields': (
             'status', 'certificate_status', 'analysis_room_status', 'extra_movments_status',
             'injury_prevention_status')}),
