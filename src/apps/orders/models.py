@@ -9,6 +9,7 @@ from phonenumbers import parse, is_valid_number, NumberParseException, region_co
 from phonenumber_field.modelfields import PhoneNumberField
 
 from apps.courses.models import Course
+from apps.utils.numbers.convert_numbers import PersianNumberConverter
 
 
 def phone_number_validator_for_iran(value):
@@ -59,7 +60,7 @@ class Order(models.Model):
     zarinpal_data = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return f'{self.total_price}'
+        return str(self.id)
 
     class Meta:
         ordering = ('-date_created',)
@@ -110,7 +111,7 @@ class DVDOrderDetail(models.Model):
     date_created = models.DateTimeField(_('Created Date'), auto_now_add=True)
 
     def __str__(self):
-        return _(f'{self.order} - DVD Details')
+        return str(_(f'{self.order} - DVD Details'))
 
     def save(self, *args, **kwargs):
         super().save()

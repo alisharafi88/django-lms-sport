@@ -1,7 +1,7 @@
 from django.contrib import admin, messages
 from django.utils.translation import gettext_lazy as _
 
-from jalali_date.admin import ModelAdminJalaliMixin, TabularInlineJalaliMixin
+from jalali_date.admin import ModelAdminJalaliMixin, TabularInlineJalaliMixin, StackedInlineJalaliMixin
 
 from .models import Order, OrderItem, DVDOrderDetail
 
@@ -10,8 +10,12 @@ class OrderItemInline(TabularInlineJalaliMixin, admin.TabularInline):
     model = OrderItem
     extra = 0
 
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request).select_related('content_type')
+        return queryset
 
-class DVDOrderDetailInline(TabularInlineJalaliMixin, admin.TabularInline):
+
+class DVDOrderDetailInline(StackedInlineJalaliMixin, admin.StackedInline):
     model = DVDOrderDetail
     extra = 0
 
@@ -20,7 +24,7 @@ class DVDOrderDetailInline(TabularInlineJalaliMixin, admin.TabularInline):
 class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('customer', 'date_created', 'access_status', 'status',)
     list_filter = ('access_status', 'status',)
-    search_fields = ('customer', 'date_created',)
+    search_fields = ('date_created', 'customer__phone_number')
     date_hierarchy = 'date_created'
     list_per_page = 20
     ordering = ('-date_created',)
@@ -73,6 +77,10 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
             messages.SUCCESS
         )
 
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request).prefetch_related('dvd_detail', 'items').select_related('customer')
+        return queryset
+
 
 @admin.register(OrderItem)
 class OrderItemAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
@@ -116,7 +124,7 @@ class DVDOrderDetailAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
     @admin.action(description=_('Update delivery_status to PENDING'))
     def delivery_status_pending(self, request, queryset):
-        update_count = queryset.update(delivery_status=DVDOrderDetail.delivery_status.PENDING)
+        update_count = queryset.update(delivery_status=DVDOrderDetail.DeliveryStatus.PENDING)
         self.message_user(
             request,
             _(f'{update_count} of orders delivery_status has been updated to pending.'),
@@ -125,7 +133,7 @@ class DVDOrderDetailAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
     @admin.action(description=_('Update delivery_status to SENT'))
     def delivery_status_sent(self, request, queryset):
-        update_count = queryset.update(delivery_status=DVDOrderDetail.delivery_status.SENT)
+        update_count = queryset.update(delivery_status=DVDOrderDetail.DeliveryStatus.SENT)
         self.message_user(
             request,
             _(f'{update_count} of orders delivery_status has been updated to sent.'),
@@ -134,7 +142,7 @@ class DVDOrderDetailAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
     @admin.action(description=_('Update delivery_status to REJECTD'))
     def delivery_status_rejectd(self, request, queryset):
-        update_count = queryset.update(delivery_status=DVDOrderDetail.delivery_status.REJECTED)
+        update_count = queryset.update(delivery_status=DVDOrderDetail.DeliveryStatus.REJECTED)
         self.message_user(
             request,
             _(f'{update_count} of orders delivery_status has been updated to rejectd.'),
@@ -143,7 +151,7 @@ class DVDOrderDetailAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
     @admin.action(description=_('Update delivery_status to CANCELED'))
     def delivery_status_canceled(self, request, queryset):
-        update_count = queryset.update(delivery_status=DVDOrderDetail.delivery_status.CANCELED)
+        update_count = queryset.update(delivery_status=DVDOrderDetail.DeliveryStatus.CANCELED)
         self.message_user(
             request,
             _(f'{update_count} of orders delivery_status has been updated to canceled.'),
