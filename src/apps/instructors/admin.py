@@ -28,7 +28,8 @@ class InstructorAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_editable = ('is_active',)
     inlines = (InstructorWidjetInline, InstructorHonorInline,)
 
-    # search_fields = ('full_name',)
+    search_fields = ('user__first_name', 'user__last_name', 'user__phone_number')
+
     def get_search_results(self, request, queryset, search_term):
         queryset, use_distinct = super().get_search_results(request, queryset, search_term)
         try:
@@ -60,15 +61,16 @@ class InstructorAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 @admin.register(InstructorHonor)
 class InstructorHonorAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('instructor', 'status',)
-    search_fields = ('instructor', 'text',)
+    search_fields = ('instructor__user__first_name', 'instructor__user__last_name', 'instructor__user__phone_number', 'text',)
     list_editable = ('status',)
-    list_filter = ('instructor',)
+    list_select_related = ('instructor__user',)
 
 
 @admin.register(InstructorWidjet)
 class InstructorWidjetAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ('instructor',)
-    search_fields = ('instructor', 'widjet')
+    search_fields = ('instructor__user__first_name', 'instructor__user__last_name', 'instructor__user__phone_number', 'widjet')
+    list_select_related = ('instructor__user',)
 
 
 
