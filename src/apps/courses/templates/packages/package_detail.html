@@ -125,7 +125,13 @@
                                             <div class="accordion-content">
                                                 <ul>
                                                     {% for video in season.videos.all %}
-                                                        <li data-id="{{ video.title }}">{{ video.title }}</li>
+                                                        <li data-id="{{ video.title }}">
+                                                        {% if video.is_free %}
+                                                            <i class="fa-solid fa-lock-open" style="color: green;" title="Free"></i>
+                                                        {% else %}
+                                                            <i class="fa-solid fa-lock" style="color: darkgreen;" title="Paid"></i>
+                                                        {% endif %}
+                                                        {{ video.title }}
                                                     {% endfor %}
                                                 </ul>
                                             </div>
