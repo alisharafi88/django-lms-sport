@@ -72,7 +72,7 @@
                 <div class="col-xl-4 col-lg-5">
                     <div class="instruc-sidebar mb-40">
                         <div class="isntruc-side-thumb mb-30">
-                            <img src="{{ instructor.user.get_photo_url }}" alt="instructor-thumb">
+                            <img src="{{ instructor.user.get_photo_url }}" alt="{{ instructor.full_name }}">
                         </div>
                         <div class="instructor-sidebar-widget">
                             <div class="isntruc-side-content text-center">
@@ -160,7 +160,7 @@
                                             <div class="tpcourse mb-40">
                                                 <div class="tpcourse__thumb p-relative w-img fix">
                                                     <img src="{{ honor.img.url }}"
-                                                         alt="course-thumb">
+                                                         alt="{{ instructor.full_name }}">
                                                 </div>
                                                 <div class="tpcourse__content-2">
                                                     <div class="tpcourse__ava-title mb-15">
@@ -191,7 +191,7 @@
                                             <div class="tpcourse mb-40">
                                                 <div class="tpcourse__thumb p-relative w-img fix">
                                                     <a href="{{ course.get_absolute_url }}">
-                                                        <img src="{{ course.img.url }}" alt="course-thumb">
+                                                        <img src="{{ course.img.url }}" alt="{{ course.title }}">
                                                     </a>
                                                     <div class="tpcourse__tag">
                                                         {% if user.is_authenticated and course|is_enrolled:user_memberships %}

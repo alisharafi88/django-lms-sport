@@ -52,7 +52,7 @@
                             <div class="logo-area d-flex align-items-center">
                                 <div class="logo">
                                     <a href="{% url 'home:home' %}">
-                                        <img src="{% static 'assets/img/logo/logo-fastball.png' %}" alt="logo">
+                                        <img src="{% static 'assets/img/logo/logo-fastball.png' %}" alt="{% trans 'fastball logo' %}">
                                     </a>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@
                         </div>
                     </div>
                     <div class="banner-shape d-none d-lg-block">
-                        <img src="{% static 'assets/img/banner/home-banner-shape-01.jpg' %}" alt="banner-shape"
+                        <img src="{% static 'assets/img/banner/home-banner-shape-01.jpg' %}" alt="{% trans 'fastball baner' %}"
                              class="b-shape">
                     </div>
                 </div>
@@ -232,7 +232,7 @@
             <div class="row align-items-center">
                 <div class="col-xxl-7 col-xl-6 col-lg-6 col-md-6">
                     <div class="tp-about-img p-relative pb-30 ml-10">
-                        <img src="{% static 'assets/img/about/home-pishro-main.jpg' %}" alt="pishro-img">
+                        <img src="{% static 'assets/img/about/home-pishro-main.jpg' %}" alt="{% trans 'pishro plus' %}">
                         <div class="tp-about-line-shape d-none d-md-block">
                             <img src="{% static 'assets/img/about/about-shape-03.png' %}" alt="about-shape"
                                  class="tp-aline-one">
@@ -242,10 +242,10 @@
                                  class="tp-aline-three">
                         </div>
                         <div class="tp-about-shape  d-none d-xl-block">
-                            <img src="{% static 'assets/img/about/home-pishro-left-shape-01.png' %}" alt="about-shape"
+                            <img src="{% static 'assets/img/about/home-pishro-left-shape-01.png' %}" alt="{% trans 'pishro plus' %}"
                                  class="a-shape-one">
                             <img src="{% static 'assets/img/about/home-herfee-left-shape-02.png' %}"
-                                 alt="about-shape"
+                                 alt="{% trans 'become a professional' %}"
                                  class="a-shape-two">
                         </div>
                     </div>
@@ -295,7 +295,7 @@
                         <div class="tpcourse mb-40">
                             <div class="tpcourse__thumb p-relative w-img fix">
                                 <a href="{{ product.get_absolute_url }}">
-                                    <img src="{% get_media_prefix %}{{ product.img }}" alt="course-thumb">
+                                    <img src="{% get_media_prefix %}{{ product.img }}" alt="{{ product.title }}">
                                 </a>
                                 <div class="tpcourse__tag">
                                     {% if user.is_authenticated and product|is_enrolled:user_memberships %}
@@ -330,7 +330,7 @@
                                 </div>
                                 {% if product.product_type == 1 and product.coach_profile %}
                                     <div class="tpcourse__img-icon">
-                                        <img src="{{ product.coach_profile }}" alt="course-avata">
+                                        <img src="{{ product.coach_profile }}" alt="{{ product.title }}">
                                     </div>
                                 {% endif %}
                             </div>
@@ -346,14 +346,14 @@
                                         <li>
                                             <img {% if product.product_type == 2 %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
                                                  src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
-                                                 alt="meta-icon">
+                                                 alt="fastball-icon">
                                             <span>{% if product.product_type == 2 %}{{ product.num_courses|default:0|to_persian_number }}
                                                 {% trans 'Courses' context 'singular' %}
                                                 {% else %}{{ product.num_videos|to_persian_number }}
                                                 {% trans 'Classes' context 'singular' %} {% endif %}</span>
                                         </li>
                                         <li>
-                                            <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
+                                            <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="fastball-icon">
                                             <span>{{ product.num_members|to_persian_number }} {% trans 'Students' context 'singular' %}</span>
                                         </li>
                                     </ul>
@@ -396,7 +396,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-7 col-lg-6 col-md-6">
                     <div class="tp-choose-img p-relative mb-30 ml-25">
-                        <img src="{% static 'assets/img/bg/home-bg-03.jpg' %}" alt="choose-img">
+                        <img src="{% static 'assets/img/bg/home-bg-03.jpg' %}" alt="{% trans 'fastball baner' %}">
                         <div class="tpchoose-img-text d-none d-md-block">
                             <ul>
                                 <li>
@@ -514,7 +514,7 @@
                         <div class="tp-instruc-item">
                             <div class="tp-instructor text-center p-relative mb-40">
                                 <div class="tp-instructor__thumb mb-25">
-                                    <img src="{{ instructor.user.get_photo_url }}" alt="instructor-profile">
+                                    <img src="{{ instructor.user.get_photo_url }}" alt="{{ instructor.full_name }}">
                                 </div>
                                 <div class="tp-instructor__content">
                                     <h4 class="tp-instructor__title tp-instructor__title-info p-relative mb-35 mt-5"><a
@@ -632,7 +632,7 @@
                             <div class="tp-blog__thumb">
                                 <div class="fix blog-round">
                                     <a href="{{ blog.get_absolute_url }}"><img src="{{ blog.img.url }}"
-                                                                               alt="{% static 'assets/img/blog/blog-thumb-3-01.jpg' %}"></a>
+                                                                               alt="{{ blog.title }}"></a>
                                 </div>
                             </div>
                             <div class="tp-blog__content blog-edu p-relative">

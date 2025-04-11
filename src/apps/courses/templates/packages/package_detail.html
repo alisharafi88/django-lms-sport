@@ -74,7 +74,7 @@
                 <div class="col-lg-8 col-md-12">
                     <div class="c-details-wrapper mr-25">
                         <div class="c-details-thumb p-relative mb-40">
-                            <img src="{{ package.img.url }}" alt="details-bg">
+                            <img src="{{ package.img.url }}" alt="{{ package.title }}">
                         </div>
                         <div class="course-details-content mb-45">
                             <div class="tpcourse__ava-title mb-25">
@@ -95,11 +95,11 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <img src="{% static 'assets/img/icon/c-meta-01.png' %}" alt="meta-icon">
+                                        <img src="{% static 'assets/img/icon/c-meta-01.png' %}" alt="fastball-icon">
                                         <span>{{ package.num_videos|to_persian_number }} {% translate 'Classes' context 'singular' %}</span>
                                     </li>
                                     <li>
-                                        <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
+                                        <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="fastball-icon">
                                         <span>{{ package.num_members|to_persian_number }} {% translate 'Students' context 'singular' %}</span>
                                     </li>
                                 </ul>
@@ -141,7 +141,7 @@
                                     <div class="course-instructor-details d-flex f-wrap align-items-center">
                                         <div class="course-avata ml-30 mb-20">
                                             <img src="{{ coach.user.get_photo_url }}"
-                                                 alt="avata-thumb">
+                                                 alt="{{ coach.full_name }}">
                                         </div>
                                         <div class="course-avatar-details mb-20">
                                             <h5 class="c-avata-title mb-10">{{ coach.full_name }}</h5>
@@ -161,7 +161,7 @@
                                                         </div>
                                                     </li>
                                                     <li><img src="{% static 'assets/img/icon/c-details-01.png' %}"
-                                                             alt="meta-icon"><span>{{ coach.coach_video_count|to_persian_number }} {% trans 'Classes' context 'singular' %}</span>
+                                                             alt="fastball-icon"><span>{{ coach.coach_video_count|to_persian_number }} {% trans 'Classes' context 'singular' %}</span>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -169,7 +169,7 @@
                                                 <ul>
                                                     <li class="d-flex align-items-center"><img
                                                             src="{% static 'assets/img/icon/c-details-02.png' %}"
-                                                            alt="meta-icon">
+                                                            alt="fastball-icon">
                                                         <span>{{ coach.coach_student_count|to_persian_number }} {% trans 'Students' context 'singular' %}</span>
                                                     </li>
                                                 </ul>
@@ -186,7 +186,7 @@
                     <div class="c-details-sidebar">
                         {% if package.introduce_video_url %}
                             <div class="c-video-thumb p-relative mb-25">
-                                <img src="{{ package.introduce_video_cover.url }}" alt="video-bg">
+                                <img src="{{ package.introduce_video_cover.url }}" alt="{{ package.title }}">
                                 <div class="c-video-icon">
                                     <a class="popup-video" href="{{ package.introduce_video_url }}"><i
                                             class="fi fi-sr-play"></i></a>
@@ -277,7 +277,7 @@
                         <div class="tpcourse mb-40">
                             <div class="tpcourse__thumb p-relative w-img fix">
                                 <a href="{{ course.get_absolute_url }}">
-                                    <img src="{% get_media_prefix %}{{ course.img }}" alt="course-thumb">
+                                    <img src="{% get_media_prefix %}{{ course.img }}" alt="{{ course.title }}">
                                 </a>
                                 <div class="tpcourse__tag">
                                     {% if user.is_authenticated and course|is_enrolled:user_memberships %}
@@ -312,7 +312,7 @@
                                 </div>
                                 {% if course.product_type == 1 and course.coach_profile %}
                                     <div class="tpcourse__img-icon">
-                                        <img src="{{ course.coach_profile }}" alt="course-avata">
+                                        <img src="{{ course.coach_profile }}" alt="{{ course.title }}">
                                     </div>
                                 {% endif %}
                             </div>
@@ -327,14 +327,14 @@
                                         <li>
                                             <img {% if course.product_type == 2 %}src="{% static 'assets/img/icon/c-meta-03.png' %}" {% else %}
                                                  src="{% static 'assets/img/icon/c-meta-01.png' %}" {% endif %}
-                                                 alt="meta-icon">
+                                                 alt="fastball-icon">
                                             <span>{% if course.product_type == 2 %}{{ course.num_courses|default:0|to_persian_number }}
                                                 {% trans 'Courses' context 'singular' %}
                                                 {% else %}{{ course.num_videos|to_persian_number }}
                                                 {% trans 'Classes' context 'singular' %} {% endif %}</span>
                                         </li>
                                         <li>
-                                            <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="meta-icon">
+                                            <img src="{% static 'assets/img/icon/c-meta-02.png' %}" alt="fastball-icon">
                                             <span>{{ course.num_members|to_persian_number }} {% trans 'Students' context 'singular' %}</span>
                                         </li>
                                     </ul>

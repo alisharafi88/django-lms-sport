@@ -194,7 +194,7 @@
                 <div class="col-lg-8 col-md-12">
                     <div class="c-details-wrapper mr-25">
                         <div class="c-details-thumb p-relative mb-40">
-                            <img src="{{ course.img.url }}" alt="details-bg" class="course-image">
+                            <img src="{{ course.img.url }}" alt="details-bg" class="{{ course.title }}">
                             <div class="c-details-ava d-flex align-items-center">
                                 <img src="{{ course.coach.user.get_photo_url }}" alt="avatar" class="coach-image">
                                 <span>
@@ -266,7 +266,7 @@
                             <div class="course-instructor-details d-flex f-wrap align-items-center">
                                 <div class="course-avata ml-30 mb-20">
                                     <img src="{{ course.coach.user.get_photo_url }}"
-                                         alt="avata-thumb">
+                                         alt="{{ course.coach.full_name }}">
                                 </div>
                                 <div class="course-avatar-details mb-20">
                                     <h5 class="c-avata-title mb-10">{{ course.coach.full_name }}</h5>
@@ -441,7 +441,7 @@
                         <div class="tpcourse mb-40">
                             <div class="tpcourse__thumb p-relative w-img fix">
                                 <a href="{{ course.get_absolute_url }}">
-                                    <img src="{% get_media_prefix %}{{ course.img }}" alt="course-thumb">
+                                    <img src="{% get_media_prefix %}{{ course.img }}" alt="{{ course.title }}">
                                 </a>
                                 <div class="tpcourse__tag">
                                     {% if user.is_authenticated and course|is_enrolled:user_memberships %}
@@ -476,7 +476,7 @@
                                 </div>
                                 {% if course.coach_profile %}
                                     <div class="tpcourse__img-icon">
-                                        <img src="{{ course.coach_profile }}" alt="course-avata">
+                                        <img src="{{ course.coach_profile }}" alt="{{ course.title }}">
                                     </div>
                                 {% endif %}
                             </div>

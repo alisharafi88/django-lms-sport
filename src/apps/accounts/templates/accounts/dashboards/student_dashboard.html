@@ -156,7 +156,7 @@
 <div class="sidebar" id="sidebar">
     <!-- Profile Section -->
     <div class="profile">
-        <img src="{{ user.get_photo_url }}" alt="" id="sidebarProfileImage"/>
+        <img src="{{ user.get_photo_url }}" alt="" id="{{ user.get_name }}"/>
         <div class="name" id="sidebarProfileName">{{ user.get_name }}</div>
     </div>
 
