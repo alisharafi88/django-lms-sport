@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-09 12:52+0330\n"
+"POT-Creation-Date: 2025-04-11 18:27+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/apps/blogs/admin.py:55
+#: src/apps/blogs/admin.py:60
 msgid "#comments"
 msgstr "#کامنت"
 
@@ -40,7 +40,7 @@ msgstr "منتشر شده"
 msgid "Rejected"
 msgstr "رد شده"
 
-#: src/apps/blogs/models.py:21
+#: src/apps/blogs/models.py:21 src/apps/blogs/models.py:62
 msgid "Author"
 msgstr "نویسنده"
 

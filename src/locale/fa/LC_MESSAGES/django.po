@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-09 12:52+0330\n"
+"POT-Creation-Date: 2025-04-11 18:27+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/templates/admin/base_site.html:17 src/templates/inc/footer-area.html:95
+#: src/templates/inc/header.html:13 src/templates/inc/header.html:87
+msgid "fastball logo"
+msgstr "لوگوی فستبال"
 
 #: src/templates/admin/base_site.html:29
 msgid "View site"

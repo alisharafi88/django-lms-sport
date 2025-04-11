@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 17:25+0330\n"
+"POT-Creation-Date: 2025-04-11 18:27+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,15 +26,15 @@ msgstr "اطلاعات مدرس"
 msgid "status info"
 msgstr "اطلاعات وضعیت"
 
-#: src/apps/instructors/admin.py:41
+#: src/apps/instructors/admin.py:42
 msgid "FullName"
 msgstr "نام"
 
-#: src/apps/instructors/admin.py:45
+#: src/apps/instructors/admin.py:46
 msgid "PhoneNumber"
 msgstr "تلفن‌همراه"
 
-#: src/apps/instructors/admin.py:55
+#: src/apps/instructors/admin.py:56
 msgid "#courses"
 msgstr "#دوره‌ها"
 

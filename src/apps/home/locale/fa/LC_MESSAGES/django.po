@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 17:25+0330\n"
+"POT-Creation-Date: 2025-04-11 18:27+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Persian <LL@li.org>\n"
@@ -66,6 +66,10 @@ msgstr "آنچه ارائه می‌دهیم"
 msgid "For Your Future Learning."
 msgstr "برای یادگیری آینده شما."
 
+#: src/apps/home/templates/home/aboutus.html:104
+msgid "fstball baner"
+msgstr "بنر فستبال"
+
 #: src/apps/home/templates/home/aboutus.html:107
 #: src/apps/home/templates/home/aboutus.html:355
 #: src/apps/home/templates/home/home.html:456
@@ -79,6 +83,12 @@ msgstr "نقد و بررسی جهانی"
 #: src/apps/home/templates/home/aboutus.html:109
 msgid "Free Pro Course"
 msgstr "دوره‌های حرفه‌ای رایگان"
+
+#: src/apps/home/templates/home/aboutus.html:198
+#: src/apps/home/templates/home/home.html:153
+#: src/apps/home/templates/home/home.html:399
+msgid "fastball baner"
+msgstr "بنر فستبال"
 
 #: src/apps/home/templates/home/aboutus.html:230
 #: src/apps/home/templates/home/home.html:579
@@ -117,6 +127,10 @@ msgstr "نقد و بررسی زیبای شما"
 #: src/apps/home/templates/home/home.html:9
 msgid "Home Page"
 msgstr "صفحه‌اصلی"
+
+#: src/apps/home/templates/home/home.html:55
+msgid "fastball logo"
+msgstr "لوگوی فستبال"
 
 #: src/apps/home/templates/home/home.html:69
 msgid "Courses"
@@ -161,6 +175,15 @@ msgstr "جستجوی‌دوره‌ها"
 #: src/apps/home/templates/home/home.html:148
 msgid "Explore Courses"
 msgstr "مشاهده دوره‌ها"
+
+#: src/apps/home/templates/home/home.html:235
+#: src/apps/home/templates/home/home.html:245
+msgid "pishro plus"
+msgstr "پیشرو پلاس"
+
+#: src/apps/home/templates/home/home.html:248
+msgid "become a professional"
+msgstr "حرفه‌ای شو"
 
 #: src/apps/home/templates/home/home.html:273
 msgid "Read More"

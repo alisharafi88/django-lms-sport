@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-08 17:55+0330\n"
+"POT-Creation-Date: 2025-04-11 18:27+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,122 +18,122 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/apps/courses/admin.py:35
+#: src/apps/courses/admin.py:43
 msgid "Coupon code"
 msgstr "کد کوپن"
 
-#: src/apps/courses/admin.py:36 src/apps/courses/models.py:118
+#: src/apps/courses/admin.py:44 src/apps/courses/models.py:118
 msgid "Discount amount"
 msgstr "مقدار تخفیف"
 
-#: src/apps/courses/admin.py:37
+#: src/apps/courses/admin.py:45
 msgid "Date range"
 msgstr "محدوده تاریخ"
 
-#: src/apps/courses/admin.py:38 src/apps/courses/admin.py:65
-#: src/apps/courses/admin.py:73 src/apps/courses/admin.py:133
-#: src/apps/courses/admin.py:141
+#: src/apps/courses/admin.py:46 src/apps/courses/admin.py:76
+#: src/apps/courses/admin.py:84 src/apps/courses/admin.py:153
+#: src/apps/courses/admin.py:161
 msgid "Statuses"
 msgstr "وضعیت‌ها"
 
-#: src/apps/courses/admin.py:62 src/apps/courses/admin.py:71
-#: src/apps/courses/admin.py:128 src/apps/courses/admin.py:139
+#: src/apps/courses/admin.py:73 src/apps/courses/admin.py:82
+#: src/apps/courses/admin.py:148 src/apps/courses/admin.py:159
 msgid "Details"
 msgstr "جزئیات"
 
-#: src/apps/courses/admin.py:63 src/apps/courses/admin.py:72
-#: src/apps/courses/admin.py:130
+#: src/apps/courses/admin.py:74 src/apps/courses/admin.py:83
+#: src/apps/courses/admin.py:150
 msgid "Specifications"
 msgstr "مشخصات"
 
-#: src/apps/courses/admin.py:64 src/apps/courses/admin.py:76
-#: src/apps/courses/admin.py:132 src/apps/courses/admin.py:144
+#: src/apps/courses/admin.py:75 src/apps/courses/admin.py:87
+#: src/apps/courses/admin.py:152 src/apps/courses/admin.py:164
 msgid "Price Information"
 msgstr "اطلاعات قیمت"
 
-#: src/apps/courses/admin.py:68 src/apps/courses/admin.py:136
-#: src/apps/courses/admin.py:238
+#: src/apps/courses/admin.py:79 src/apps/courses/admin.py:156
+#: src/apps/courses/admin.py:262
 msgid "Date Information"
 msgstr "اطلاعات تاریخ"
 
-#: src/apps/courses/admin.py:94
+#: src/apps/courses/admin.py:114
 msgid "#Videos"
 msgstr "ویدیوها"
 
-#: src/apps/courses/admin.py:98 src/apps/courses/admin.py:162
+#: src/apps/courses/admin.py:118 src/apps/courses/admin.py:182
 msgid "#Members"
 msgstr "دانشجو‌ها"
 
-#: src/apps/courses/admin.py:102 src/apps/courses/models.py:173
-#: src/apps/courses/templates/packages/course_detail.html:139
+#: src/apps/courses/admin.py:122 src/apps/courses/models.py:173
+#: src/apps/courses/templates/packages/course_detail.html:256
 msgid "Coach"
 msgstr "مربی"
 
-#: src/apps/courses/admin.py:104
+#: src/apps/courses/admin.py:124
 msgid "No Coach Assigned"
 msgstr "مربی اختصاص داده نشده است"
 
-#: src/apps/courses/admin.py:106
+#: src/apps/courses/admin.py:126
 msgid "#TotalLinks"
 msgstr "#لینک‌ها"
 
-#: src/apps/courses/admin.py:110
+#: src/apps/courses/admin.py:130
 msgid "#AvailableLinks"
 msgstr "#لینک‌های‌ـ‌قابل‌استفاده"
 
-#: src/apps/courses/admin.py:129
+#: src/apps/courses/admin.py:149
 msgid "Media"
 msgstr "رسانه"
 
-#: src/apps/courses/admin.py:131 src/apps/courses/admin.py:140
-#: src/apps/courses/models.py:191
+#: src/apps/courses/admin.py:151 src/apps/courses/admin.py:160
+#: src/apps/courses/models.py:197
 #: src/apps/courses/templates/packages/courses_list.html:52
 #: src/apps/courses/templates/packages/courses_list.html:56
 msgid "Courses"
 msgstr "دوره‌ها"
 
-#: src/apps/courses/admin.py:158
+#: src/apps/courses/admin.py:178
 msgid "#Courses"
 msgstr "دوره‌ها"
 
-#: src/apps/courses/admin.py:179 src/apps/courses/admin.py:204
+#: src/apps/courses/admin.py:199 src/apps/courses/admin.py:228
 msgid "General Information"
 msgstr "اطلاعات عمومی"
 
-#: src/apps/courses/admin.py:182 src/apps/courses/admin.py:207
+#: src/apps/courses/admin.py:202 src/apps/courses/admin.py:231
 msgid "Timestamps"
 msgstr "زمان‌ها"
 
-#: src/apps/courses/admin.py:216 src/apps/courses/models.py:190
-#: src/apps/courses/models.py:219 src/apps/courses/models.py:314
-#: src/apps/courses/models.py:357
+#: src/apps/courses/admin.py:240 src/apps/courses/models.py:196
+#: src/apps/courses/models.py:225 src/apps/courses/models.py:325
+#: src/apps/courses/models.py:368
 #: src/apps/courses/templates/packages/package_detail.html:55
 msgid "Course"
 msgstr "دوره"
 
-#: src/apps/courses/admin.py:220 src/apps/courses/models.py:45
-#: src/apps/courses/models.py:134 src/apps/courses/models.py:252
-#: src/apps/courses/models.py:331
+#: src/apps/courses/admin.py:244 src/apps/courses/models.py:45
+#: src/apps/courses/models.py:134 src/apps/courses/models.py:258
+#: src/apps/courses/models.py:342
 msgid "Status"
 msgstr "وضعیت"
 
-#: src/apps/courses/admin.py:236 src/apps/courses/admin.py:241
+#: src/apps/courses/admin.py:260 src/apps/courses/admin.py:265
 msgid "User Information"
 msgstr "اطلاعات کاربر"
 
-#: src/apps/courses/admin.py:237 src/apps/courses/admin.py:242
+#: src/apps/courses/admin.py:261 src/apps/courses/admin.py:266
 msgid "Product Information"
 msgstr "اطلاعات محصول"
 
-#: src/apps/courses/admin.py:250
+#: src/apps/courses/admin.py:278
 msgid "Product Type"
-msgstr " نوع محصول"
+msgstr "نوع محصول"
 
-#: src/apps/courses/admin.py:254
+#: src/apps/courses/admin.py:282
 msgid "Product Title"
 msgstr "عنوان محصول"
 
-#: src/apps/courses/admin.py:256
+#: src/apps/courses/admin.py:284
 msgid "Unknown Product"
 msgstr "محصول ناشناخته"
 
@@ -213,7 +213,7 @@ msgstr "کوپن"
 msgid "Coupons"
 msgstr "کوپن‌ها"
 
-#: src/apps/courses/models.py:82 src/apps/courses/models.py:308
+#: src/apps/courses/models.py:82 src/apps/courses/models.py:319
 msgid "User"
 msgstr "کاربر"
 
@@ -229,7 +229,7 @@ msgstr "میزان استفاده از کدتخفیف"
 msgid "Coupon Usages"
 msgstr "میزان استفاده از کدهای‌تخفیف"
 
-#: src/apps/courses/models.py:99 src/apps/courses/models.py:222
+#: src/apps/courses/models.py:99 src/apps/courses/models.py:228
 msgid "Title"
 msgstr "عنوان"
 
@@ -274,8 +274,8 @@ msgid "Age range for users."
 msgstr "محدوده سنی برای کاربران."
 
 #: src/apps/courses/models.py:129
-#: src/apps/courses/templates/packages/course_detail.html:247
-#: src/apps/courses/templates/packages/package_detail.html:226
+#: src/apps/courses/templates/packages/course_detail.html:381
+#: src/apps/courses/templates/packages/package_detail.html:232
 msgid "Duration"
 msgstr "مدت‌زمان"
 
@@ -296,8 +296,8 @@ msgid "Show that this product is active or not."
 msgstr "نشان دهید که آیا این محصول فعال است یا خیر."
 
 #: src/apps/courses/models.py:136
-#: src/apps/courses/templates/packages/course_detail.html:253
-#: src/apps/courses/templates/packages/package_detail.html:232
+#: src/apps/courses/templates/packages/course_detail.html:387
+#: src/apps/courses/templates/packages/package_detail.html:238
 msgid "Certificate"
 msgstr "گواهی"
 
@@ -317,287 +317,299 @@ msgstr "حرکات اضافی"
 msgid "Injury prevention"
 msgstr "پیشگیری از آسیب"
 
-#: src/apps/courses/models.py:195
+#: src/apps/courses/models.py:178
+msgid "Free leasson link"
+msgstr "لینک جلسات رایگان"
+
+#: src/apps/courses/models.py:201
 msgid "Courses in this package"
 msgstr "دوره‌های موجود در این بسته"
 
-#: src/apps/courses/models.py:210
+#: src/apps/courses/models.py:216
 msgid "Package"
 msgstr "پکیج"
 
-#: src/apps/courses/models.py:211
+#: src/apps/courses/models.py:217
 msgid "Packages"
 msgstr "پکیج‌ها"
 
-#: src/apps/courses/models.py:224
+#: src/apps/courses/models.py:230
 msgid "Creat Date"
 msgstr "تاریخ ایجاد"
 
-#: src/apps/courses/models.py:225 src/apps/courses/models.py:374
+#: src/apps/courses/models.py:231 src/apps/courses/models.py:385
 msgid "Update Date"
 msgstr "تاریخ بروزرسانی"
 
-#: src/apps/courses/models.py:233 src/apps/courses/models.py:246
+#: src/apps/courses/models.py:239 src/apps/courses/models.py:252
 msgid "Season"
 msgstr "فصل"
 
-#: src/apps/courses/models.py:234
+#: src/apps/courses/models.py:240
 msgid "Seasons"
 msgstr "فصول"
 
-#: src/apps/courses/models.py:239
+#: src/apps/courses/models.py:245
 msgid "Free"
 msgstr "رایگان"
 
-#: src/apps/courses/models.py:240
+#: src/apps/courses/models.py:246
 msgid "Monetary"
 msgstr "پولی"
 
-#: src/apps/courses/models.py:249
+#: src/apps/courses/models.py:255
 msgid "title"
 msgstr "عنوان"
 
-#: src/apps/courses/models.py:255
+#: src/apps/courses/models.py:261
 msgid "Show that this video is free or not."
 msgstr "نشان می‌دهد که آیا این محصول فعال است یا خیر."
 
-#: src/apps/courses/models.py:258
+#: src/apps/courses/models.py:264
 msgid "Created at"
 msgstr "تاریخ ایجاد"
 
-#: src/apps/courses/models.py:259
+#: src/apps/courses/models.py:265
 msgid "Updated at"
 msgstr "تاریخ بروزرسانی"
 
-#: src/apps/courses/models.py:271
+#: src/apps/courses/models.py:282
 msgid "Video"
 msgstr "ویدیو"
 
-#: src/apps/courses/models.py:272
+#: src/apps/courses/models.py:283
 msgid "Videos"
 msgstr "ویدیوها"
 
-#: src/apps/courses/models.py:280
+#: src/apps/courses/models.py:291
 msgid "User Membership"
 msgstr "عضویت کاربر"
 
-#: src/apps/courses/models.py:286
+#: src/apps/courses/models.py:297
 msgid "Content Type"
 msgstr "نوع محتوا"
 
-#: src/apps/courses/models.py:288
+#: src/apps/courses/models.py:299
 msgid "Object ID"
 msgstr "شناسه شیء"
 
-#: src/apps/courses/models.py:290
+#: src/apps/courses/models.py:301
 msgid "Created Date"
 msgstr "تاریخ ایجاد"
 
-#: src/apps/courses/models.py:291
+#: src/apps/courses/models.py:302
 msgid "Modified Date"
 msgstr "تاریخ ویرایش"
 
-#: src/apps/courses/models.py:296
+#: src/apps/courses/models.py:307
 msgid "Course Membership"
 msgstr "عضو دوره"
 
-#: src/apps/courses/models.py:297
+#: src/apps/courses/models.py:308
 msgid "Course Memberships"
 msgstr "عضو دوره"
 
-#: src/apps/courses/models.py:316
+#: src/apps/courses/models.py:327
 msgid "Text of the comment"
 msgstr "متن کامنت"
 
-#: src/apps/courses/models.py:318
+#: src/apps/courses/models.py:329
 msgid "Rate"
 msgstr "امتیاز"
 
-#: src/apps/courses/models.py:326
+#: src/apps/courses/models.py:337
 msgid "Created date"
 msgstr "تاریخ ایجاد"
 
-#: src/apps/courses/models.py:333
+#: src/apps/courses/models.py:344
 msgid "If the comment is not appropriate, set it to false."
 msgstr "اگر کامنت مناسب نیست، آن را به نادرست تنظیم کنید."
 
-#: src/apps/courses/models.py:339
+#: src/apps/courses/models.py:350
 msgid "course's comment"
 msgstr "کامنت‌دوره‌"
 
-#: src/apps/courses/models.py:340
+#: src/apps/courses/models.py:351
 msgid "course's comments"
 msgstr "کامنت‌دوره‌ها"
 
-#: src/apps/courses/models.py:360
+#: src/apps/courses/models.py:371
 msgid "Telegram Invite Link"
 msgstr "لینک دعوت تلگرام"
 
-#: src/apps/courses/models.py:369
+#: src/apps/courses/models.py:380
 msgid "Assigned User"
 msgstr "کاربر اختصاص داده شده"
 
-#: src/apps/courses/models.py:371
+#: src/apps/courses/models.py:382
 msgid "Used"
 msgstr "استفاده شده"
 
-#: src/apps/courses/models.py:373
+#: src/apps/courses/models.py:384
 msgid "Create Date"
 msgstr "تاریخ ایجاد"
 
-#: src/apps/courses/models.py:377
+#: src/apps/courses/models.py:388
 msgid "Telegram Link"
 msgstr "لینک تلگرام"
 
-#: src/apps/courses/models.py:378
+#: src/apps/courses/models.py:389
 msgid "Telegram Links"
 msgstr "لینک‌های تلگرام"
 
-#: src/apps/courses/templates/packages/course_detail.html:58
+#: src/apps/courses/templates/packages/course_detail.html:168
 #: src/apps/courses/templates/packages/courses_list.html:54
 #: src/apps/courses/templates/packages/package_detail.html:57
 msgid "HomePage"
 msgstr "صفحه‌اصلی"
 
-#: src/apps/courses/templates/packages/course_detail.html:60
+#: src/apps/courses/templates/packages/course_detail.html:170
 #: src/apps/courses/templates/packages/package_detail.html:59
 msgid "Products"
 msgstr "محصولات"
 
-#: src/apps/courses/templates/packages/course_detail.html:106
-#: src/apps/courses/templates/packages/course_detail.html:163
-#: src/apps/courses/templates/packages/course_detail.html:351
+#: src/apps/courses/templates/packages/course_detail.html:216
+#: src/apps/courses/templates/packages/course_detail.html:280
+#: src/apps/courses/templates/packages/course_detail.html:485
 #: src/apps/courses/templates/packages/courses_list.html:187
 #: src/apps/courses/templates/packages/package_detail.html:99
-#: src/apps/courses/templates/packages/package_detail.html:164
-#: src/apps/courses/templates/packages/package_detail.html:334
+#: src/apps/courses/templates/packages/package_detail.html:170
+#: src/apps/courses/templates/packages/package_detail.html:340
 msgctxt "singular"
 msgid "Classes"
 msgstr "کلاس‌"
 
-#: src/apps/courses/templates/packages/course_detail.html:109
-#: src/apps/courses/templates/packages/course_detail.html:172
-#: src/apps/courses/templates/packages/course_detail.html:245
-#: src/apps/courses/templates/packages/course_detail.html:355
+#: src/apps/courses/templates/packages/course_detail.html:219
+#: src/apps/courses/templates/packages/course_detail.html:289
+#: src/apps/courses/templates/packages/course_detail.html:379
+#: src/apps/courses/templates/packages/course_detail.html:489
 #: src/apps/courses/templates/packages/courses_list.html:191
 #: src/apps/courses/templates/packages/package_detail.html:103
-#: src/apps/courses/templates/packages/package_detail.html:173
-#: src/apps/courses/templates/packages/package_detail.html:224
-#: src/apps/courses/templates/packages/package_detail.html:338
+#: src/apps/courses/templates/packages/package_detail.html:179
+#: src/apps/courses/templates/packages/package_detail.html:230
+#: src/apps/courses/templates/packages/package_detail.html:344
 msgctxt "singular"
 msgid "Students"
 msgstr "دانش‌آموز"
 
-#: src/apps/courses/templates/packages/course_detail.html:115
+#: src/apps/courses/templates/packages/course_detail.html:225
 #: src/apps/courses/templates/packages/package_detail.html:109
 msgid "About This Course"
 msgstr "درباره این دوره"
 
-#: src/apps/courses/templates/packages/course_detail.html:121
+#: src/apps/courses/templates/packages/course_detail.html:231
 #: src/apps/courses/templates/packages/package_detail.html:115
 msgid "Lectures"
 msgstr "درس‌ها"
 
-#: src/apps/courses/templates/packages/course_detail.html:182
+#: src/apps/courses/templates/packages/course_detail.html:299
 msgid "Comment"
 msgstr "کامنت‌"
 
-#: src/apps/courses/templates/packages/course_detail.html:219
-#: src/apps/courses/templates/packages/course_detail.html:372
+#: src/apps/courses/templates/packages/course_detail.html:336
+#: src/apps/courses/templates/packages/course_detail.html:506
 #: src/apps/courses/templates/packages/courses_list.html:208
-#: src/apps/courses/templates/packages/package_detail.html:199
-#: src/apps/courses/templates/packages/package_detail.html:355
+#: src/apps/courses/templates/packages/package_detail.html:205
+#: src/apps/courses/templates/packages/package_detail.html:361
 msgid "Toman"
 msgstr "تومان"
 
-#: src/apps/courses/templates/packages/course_detail.html:223
-#: src/apps/courses/templates/packages/package_detail.html:203
+#: src/apps/courses/templates/packages/course_detail.html:340
+#: src/apps/courses/templates/packages/package_detail.html:209
 msgid "You are student of this course."
 msgstr "شما دانشجوی این دوره هستید."
 
-#: src/apps/courses/templates/packages/course_detail.html:230
-#: src/apps/courses/templates/packages/course_detail.html:546
-#: src/apps/courses/templates/packages/course_detail.html:573
-#: src/apps/courses/templates/packages/package_detail.html:210
-#: src/apps/courses/templates/packages/package_detail.html:529
-#: src/apps/courses/templates/packages/package_detail.html:556
+#: src/apps/courses/templates/packages/course_detail.html:347
+#: src/apps/courses/templates/packages/course_detail.html:680
+#: src/apps/courses/templates/packages/course_detail.html:707
+#: src/apps/courses/templates/packages/package_detail.html:216
+#: src/apps/courses/templates/packages/package_detail.html:535
+#: src/apps/courses/templates/packages/package_detail.html:562
 msgid "Remove from Cart"
 msgstr "حذف از سبد خرید"
 
-#: src/apps/courses/templates/packages/course_detail.html:232
-#: src/apps/courses/templates/packages/course_detail.html:520
-#: src/apps/courses/templates/packages/course_detail.html:546
-#: src/apps/courses/templates/packages/course_detail.html:574
-#: src/apps/courses/templates/packages/package_detail.html:212
-#: src/apps/courses/templates/packages/package_detail.html:503
-#: src/apps/courses/templates/packages/package_detail.html:529
-#: src/apps/courses/templates/packages/package_detail.html:557
+#: src/apps/courses/templates/packages/course_detail.html:349
+#: src/apps/courses/templates/packages/course_detail.html:654
+#: src/apps/courses/templates/packages/course_detail.html:680
+#: src/apps/courses/templates/packages/course_detail.html:708
+#: src/apps/courses/templates/packages/package_detail.html:218
+#: src/apps/courses/templates/packages/package_detail.html:509
+#: src/apps/courses/templates/packages/package_detail.html:535
+#: src/apps/courses/templates/packages/package_detail.html:563
 msgid "Add To Cart"
 msgstr "افزودن به سبد خرید"
 
-#: src/apps/courses/templates/packages/course_detail.html:241
+#: src/apps/courses/templates/packages/course_detail.html:355
+msgid "Copied!"
+msgstr "کپی شد!"
+
+#: src/apps/courses/templates/packages/course_detail.html:355
+msgid "Free course link"
+msgstr "لینک جلسات رایگان"
+
+#: src/apps/courses/templates/packages/course_detail.html:375
 msgctxt "singular"
 msgid "Lesson"
 msgstr "درس"
 
-#: src/apps/courses/templates/packages/course_detail.html:249
-#: src/apps/courses/templates/packages/package_detail.html:228
+#: src/apps/courses/templates/packages/course_detail.html:383
+#: src/apps/courses/templates/packages/package_detail.html:234
 msgid "Age Range"
 msgstr "محدوده سنی"
 
-#: src/apps/courses/templates/packages/course_detail.html:254
-#: src/apps/courses/templates/packages/package_detail.html:233
+#: src/apps/courses/templates/packages/course_detail.html:388
+#: src/apps/courses/templates/packages/package_detail.html:239
 msgid "Yes"
 msgstr "بله"
 
-#: src/apps/courses/templates/packages/course_detail.html:261
-#: src/apps/courses/templates/packages/package_detail.html:240
+#: src/apps/courses/templates/packages/course_detail.html:395
+#: src/apps/courses/templates/packages/package_detail.html:246
 msgid "Support Us:"
 msgstr "مارو حمایت کنید:"
 
-#: src/apps/courses/templates/packages/course_detail.html:291
+#: src/apps/courses/templates/packages/course_detail.html:425
 msgid "Related Courses"
 msgstr "دوره‌های مرتبط"
 
-#: src/apps/courses/templates/packages/course_detail.html:397
+#: src/apps/courses/templates/packages/course_detail.html:531
 #: src/apps/courses/templates/packages/courses_list.html:266
-#: src/apps/courses/templates/packages/package_detail.html:380
+#: src/apps/courses/templates/packages/package_detail.html:386
 msgid "Worldwide Students"
 msgstr "دانش‌آموزان"
 
-#: src/apps/courses/templates/packages/course_detail.html:410
+#: src/apps/courses/templates/packages/course_detail.html:544
 #: src/apps/courses/templates/packages/courses_list.html:279
-#: src/apps/courses/templates/packages/package_detail.html:393
+#: src/apps/courses/templates/packages/package_detail.html:399
 msgid "Years Experience"
 msgstr "سال‌ها تجربه"
 
-#: src/apps/courses/templates/packages/course_detail.html:423
+#: src/apps/courses/templates/packages/course_detail.html:557
 #: src/apps/courses/templates/packages/courses_list.html:292
-#: src/apps/courses/templates/packages/package_detail.html:406
+#: src/apps/courses/templates/packages/package_detail.html:412
 msgid "Professional Courses"
 msgstr "دوره‌های حرفه‌ای"
 
-#: src/apps/courses/templates/packages/course_detail.html:435
+#: src/apps/courses/templates/packages/course_detail.html:569
 #: src/apps/courses/templates/packages/courses_list.html:304
-#: src/apps/courses/templates/packages/package_detail.html:418
+#: src/apps/courses/templates/packages/package_detail.html:424
 msgid "Beautiful Review"
 msgstr "نقد و بررسی زیبای شما"
 
-#: src/apps/courses/templates/packages/course_detail.html:531
+#: src/apps/courses/templates/packages/course_detail.html:665
 #: src/apps/courses/templates/packages/courses_list.html:347
-#: src/apps/courses/templates/packages/package_detail.html:514
+#: src/apps/courses/templates/packages/package_detail.html:520
 msgid "Adding..."
 msgstr "افزودن..."
 
-#: src/apps/courses/templates/packages/course_detail.html:531
+#: src/apps/courses/templates/packages/course_detail.html:665
 #: src/apps/courses/templates/packages/courses_list.html:347
-#: src/apps/courses/templates/packages/package_detail.html:514
+#: src/apps/courses/templates/packages/package_detail.html:520
 msgid "Removing..."
 msgstr "حذف..."
 
-#: src/apps/courses/templates/packages/course_detail.html:568
+#: src/apps/courses/templates/packages/course_detail.html:702
 #: src/apps/courses/templates/packages/courses_list.html:375
-#: src/apps/courses/templates/packages/package_detail.html:551
+#: src/apps/courses/templates/packages/package_detail.html:557
 msgid "An error occurred. Please try again."
 msgstr "خطایی رخ داد. لطفا دوباره امتحان کنید."
 
@@ -614,25 +626,25 @@ msgid "Explore Courses"
 msgstr "مشاهده دوره‌ها"
 
 #: src/apps/courses/templates/packages/courses_list.html:185
-#: src/apps/courses/templates/packages/package_detail.html:221
-#: src/apps/courses/templates/packages/package_detail.html:332
+#: src/apps/courses/templates/packages/package_detail.html:227
+#: src/apps/courses/templates/packages/package_detail.html:338
 msgctxt "singular"
 msgid "Courses"
 msgstr "دوره‌"
 
-#: src/apps/courses/templates/packages/package_detail.html:138
+#: src/apps/courses/templates/packages/package_detail.html:144
 msgid "Coaches"
 msgstr "مربی‌ها"
 
-#: src/apps/courses/templates/packages/package_detail.html:270
+#: src/apps/courses/templates/packages/package_detail.html:276
 msgid "Included Courses"
 msgstr "دوره‌های شامل"
 
-#: src/apps/courses/views.py:240
+#: src/apps/courses/views.py:242
 msgid "You must be enrolled in this course to submit a comment."
 msgstr "شما باید در این دوره ثبت‌نام کرده باشید تا کامنت ارسال کنید."
 
-#: src/apps/courses/views.py:252
+#: src/apps/courses/views.py:254
 msgid "Your comment has been submitted successfully!"
 msgstr "کامنت شما با موفقیت ارسال شد!"
 

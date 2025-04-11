@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-05 00:19+0330\n"
+"POT-Creation-Date: 2025-04-11 18:27+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,20 +26,20 @@ msgstr "پاسخ"
 msgid "Replies"
 msgstr "پاسخ‌ها"
 
-#: src/apps/tickets/admin.py:29
+#: src/apps/tickets/admin.py:32
 msgid "Mark selected tickets as Resolved"
 msgstr "تیکت‌های انتخاب شده را به عنوان حل شده علامت‌گذاری کنید"
 
-#: src/apps/tickets/admin.py:34
+#: src/apps/tickets/admin.py:37
 #, python-brace-format
 msgid "{update_count} of tickets status has been updated to pending."
 msgstr "{update_count} از وضعیت تیکت‌ها به حالت معلق تغییر یافته است."
 
-#: src/apps/tickets/admin.py:38
+#: src/apps/tickets/admin.py:41
 msgid "Mark selected tickets as Closed"
 msgstr "تیکت‌های انتخاب شده را به عنوان بسته شده علامت‌گذاری کنید"
 
-#: src/apps/tickets/admin.py:43
+#: src/apps/tickets/admin.py:46
 #, python-brace-format
 msgid "{update_count} of tickets status has been updated to closed."
 msgstr "{update_count} از وضعیت تیکت‌ها به حالت بسته شده تغییر یافته است."

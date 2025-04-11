@@ -3,16 +3,26 @@ version: '3.9'
 services:
   web:
     build: .
-    volumes:
-      - ./src:/src
-      - static-volume:/src/staticfiles
-      - media-volume:/src/media
-    container_name: fastball-web-container
     depends_on:
       db:
         condition: service_healthy
-    env_file:
-      - .env
+    volumes:
+      - static-volume:/src/staticfiles
+      - media-volume:/src/media
+    container_name: fastball-web-container
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - DJANGO_DEBUG_STATUS=${DJANGO_DEBUG_STATUS}
+      - DB_USER=${DB_USER}
+      - DB_NAME=${DB_NAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - SMS_API_KEY=${SMS_API_KEY}
+      - SMS_SENDER=${SMS_SENDER}
+      - SMS_PATTERN_CODE=${SMS_PATTERN_CODE}
+      - MERCHANT=${MERCHANT}
+      - DJANGO_ENV=${DJANGO_ENV}
     restart: unless-stopped
 
   db:
@@ -30,7 +40,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -45,7 +55,8 @@ services:
     volumes:
       - static-volume:/src/staticfiles
       - media-volume:/src/media
-      - ./nginx/certs:/etc/nginx/certs
+      - /etc/letsencrypt/live/fastball.ir:/etc/nginx/certs
+      - ./certbot-webroot:/var/www/certbot
     depends_on:
       - web
     restart: unless-stopped
