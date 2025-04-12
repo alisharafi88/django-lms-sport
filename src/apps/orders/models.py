@@ -23,6 +23,30 @@ def phone_number_validator_for_iran(value):
         raise ValidationError(_('Invalid phone number format.'))
 
 
+class ShippingSettings(models.Model):
+    dvd_shipping_price = models.PositiveIntegerField(_('DVD Shipping Price'), default=0)
+
+    date_created = models.DateTimeField(_('Date Created'), auto_now_add=True)
+    date_updated = models.DateTimeField(_('Date Updated'), auto_now=True)
+
+    class Meta:
+        verbose_name = _('Shipping Settings')
+        verbose_name_plural = _('Shipping Settings')
+        ordering = ('-date_updated',)
+
+    def save(self, *args, **kwargs):
+        self.id = 1
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        pass
+
+    @classmethod
+    def load(cls):
+        obj, created = cls.objects.get_or_create(id=1)
+        return obj
+
+
 class Order(models.Model):
     class OrderStatus(models.TextChoices):
         PAID = 'p', _('Paid')
@@ -59,6 +83,8 @@ class Order(models.Model):
     zarinpal_authority = models.CharField(_('Payment Authority'), max_length=255, null=True, blank=True)
     zarinpal_ref_id = models.CharField(max_length=150, null=True, blank=True)
     zarinpal_data = models.TextField(null=True, blank=True)
+
+    dvd_shipping_price = models.PositiveIntegerField(_('DVD Shipping Price'), default=0)
 
     def __str__(self):
         return str(self.id)

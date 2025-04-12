@@ -73,6 +73,7 @@ def payment_callback(request):
                         messages.info(request, _('Payment was already verified'))
                         return redirect('accounts:student_dashboard')
 
+                    request.session['dvd_shipping_price'] = 0
                     messages.error(
                         request,
                         _('Payment verification failed: %(message)s') % {
@@ -84,5 +85,6 @@ def payment_callback(request):
 
     order.status = Order.OrderStatus.CANCELED
     order.save()
+    request.session['dvd_shipping_price'] = 0
     messages.error(request, _('The payment has been canceled.'))
     return redirect('carts:cart')

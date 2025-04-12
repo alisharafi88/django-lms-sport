@@ -13,6 +13,7 @@ class Cart:
     CART_SESSION_ID = 'cart'
     CART_COUPON_CODE_ID = 'coupon_code'
     CART_COUPON_DISCOUNT = 'coupon_discount'
+    CART_DVD_SHIPPING_PRICE = 'dvd_shipping_price'
 
     def __init__(self, request):
         """
@@ -35,6 +36,9 @@ class Cart:
         if not coupon_discount:
             coupon_discount = 0
         self.coupon_discount = coupon_discount
+
+        dvd_shipping_price = self.session.get(self.CART_DVD_SHIPPING_PRICE, 0)
+        self.dvd_shipping_price = dvd_shipping_price
 
         self.course_ct = ContentType.objects.get_for_model(Course)
         self.package_ct = ContentType.objects.get_for_model(Package)
@@ -166,12 +170,17 @@ class Cart:
     def clear_after_payment(self):
         """Clear the cart."""
         del self.session[self.CART_SESSION_ID]
-
+        self.coupon_code = None
         if self.CART_COUPON_CODE_ID in self.session:
             del self.session[self.CART_COUPON_CODE_ID]
 
+        self.coupon_discount = 0
         if self.CART_COUPON_DISCOUNT in self.session:
             del self.session[self.CART_COUPON_DISCOUNT]
+
+        self.dvd_shipping_price = 0
+        if self.CART_DVD_SHIPPING_PRICE in self.session:
+            del self.session[self.CART_DVD_SHIPPING_PRICE]
 
         self.save()
 
@@ -184,7 +193,9 @@ class Cart:
         total_price = sum(product.price for product in self.products.values())
         total_discounted_price = sum(product.discounted_price() for product in self.products.values())
 
-        final_price = max(total_discounted_price - self.coupon_discount, 0)
+        discounted_total = max(total_discounted_price - self.coupon_discount, 0)
+
+        final_price = discounted_total + self.dvd_shipping_price
         return total_price, final_price
 
     def apply_coupon(self, code):
@@ -223,6 +234,12 @@ class Cart:
             del self.session['coupon_code']
         if 'coupon_discount' in self.session:
             del self.session['coupon_discount']
+        self.save()
+
+    def set_dvd_shipping_price(self, price):
+        """Set the DVD shipping price in the session."""
+        self.dvd_shipping_price = price
+        self.session[self.CART_DVD_SHIPPING_PRICE] = price
         self.save()
 
     def finalize_purchase(self):

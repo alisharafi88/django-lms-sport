@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 from jalali_date.admin import ModelAdminJalaliMixin, TabularInlineJalaliMixin, StackedInlineJalaliMixin
 
-from .models import Order, OrderItem, DVDOrderDetail
+from .models import Order, OrderItem, DVDOrderDetail, ShippingSettings
 
 
 class OrderItemInline(TabularInlineJalaliMixin, admin.TabularInline):
@@ -18,6 +18,17 @@ class OrderItemInline(TabularInlineJalaliMixin, admin.TabularInline):
 class DVDOrderDetailInline(StackedInlineJalaliMixin, admin.StackedInline):
     model = DVDOrderDetail
     extra = 0
+
+
+@admin.register(ShippingSettings)
+class ShippingSettingsAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
+    list_display = ('dvd_shipping_price', 'date_updated')
+
+    def has_add_permission(self, request):
+        return not ShippingSettings.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 @admin.register(Order)
@@ -36,7 +47,7 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     fieldsets = (
         (_('custome information'), {'fields': ('customer',)}),
         (_('status'), {'fields': ('status', 'access_status',)}),
-        (_('Payment'), {'fields': ('zarinpal_authority', 'zarinpal_ref_id', 'zarinpal_data', 'coupon_code')}),
+        (_('Payment'), {'fields': ('zarinpal_authority', 'zarinpal_ref_id', 'zarinpal_data', 'coupon_code', 'dvd_shipping_price')}),
         (_('date'), {'fields': ('date_created',)}),
     )
 

@@ -11,7 +11,7 @@ from django.db import transaction
 import logging
 
 from apps.courses.models import CourseMembership
-from apps.orders.models import Order, OrderItem, DVDOrderDetail
+from apps.orders.models import Order, OrderItem, DVDOrderDetail, ShippingSettings
 from apps.orders.forms import CheckoutForm
 from apps.carts.carts import Cart
 from apps.utils.numbers.convert_numbers import PersianNumberConverter
@@ -37,6 +37,7 @@ class OrderCreateView(View):
     def get(self, request):
         cart = Cart(request)
         total_price, total_discounted_price = cart.get_total_price()
+        dvd_shipping_price = ShippingSettings.objects.first().dvd_shipping_price if ShippingSettings.objects.exists() else 0
 
         logger.debug('Rendering checkout page for user %s with cart items: %s', request.user.username, cart)
         return render(
@@ -47,6 +48,7 @@ class OrderCreateView(View):
                 'total_price': total_price,
                 'total_discounted_price': total_discounted_price,
                 'form': self.form_class(),
+                'dvd_shipping_price': dvd_shipping_price,
             }
         )
 
@@ -90,10 +92,18 @@ class OrderCreateView(View):
                             )
                         if not valid_items:
                             return redirect('courses:course_list')
+                    dvd_shipping_price = ShippingSettings.objects.first().dvd_shipping_price if ShippingSettings.objects.exists() else 0
+                    if form.cleaned_data['status'] == Order.AccessStatus.DVD:
+                        cart.set_dvd_shipping_price(dvd_shipping_price)
+                    else:
+                        cart.set_dvd_shipping_price(0)
+
+                    total_price, total_discounted_price = cart.get_total_price()
 
                     order = Order.objects.create(
                         customer=request.user,
                         total_price=total_discounted_price,
+                        dvd_shipping_price=dvd_shipping_price if form.cleaned_data['status'] == Order.AccessStatus.DVD else 0,
                     )
                     logger.info('Order created for user %s with order ID: %s', request.user.username, order.id)
 

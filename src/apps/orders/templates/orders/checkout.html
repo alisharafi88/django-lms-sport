@@ -119,6 +119,7 @@
                                         <td>
                                             <ul>
                                                 {% render_field form.status type="radio" name="status" class='radio' %}
+                                                (<span id="dvd-shipping-price">{{ dvd_shipping_price|to_persian_number:'humanize' }}</span> {% trans 'Toman' %})+
                                             </ul>
                                         </td>
                                     </tr>
