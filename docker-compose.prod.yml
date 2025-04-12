@@ -10,30 +10,16 @@ services:
       - static-volume:/src/staticfiles
       - media-volume:/src/media
     container_name: fastball-web-container
-    environment:
-      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
-      - DJANGO_DEBUG_STATUS=${DJANGO_DEBUG_STATUS}
-      - DB_USER=${DB_USER}
-      - DB_NAME=${DB_NAME}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT}
-      - SMS_API_KEY=${SMS_API_KEY}
-      - SMS_SENDER=${SMS_SENDER}
-      - SMS_PATTERN_CODE=${SMS_PATTERN_CODE}
-      - MERCHANT=${MERCHANT}
-      - DJANGO_ENV=${DJANGO_ENV}
+    env_file:
+      - .env
     restart: unless-stopped
 
   db:
     image: mysql:8.0
     volumes:
       - mysql-data:/var/lib/mysql
-    environment:
-      - MYSQL_DATABASE=${DB_NAME}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_PASSWORD=${DB_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+    env_file:
+      - .env
     ports:
       - "3306:3306"
     container_name: fastball-mysql-container
