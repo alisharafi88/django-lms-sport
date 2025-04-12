@@ -21,13 +21,13 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls,),
+    path('sffastballadminmt3/', admin.site.urls,),
     path('', include('apps.home.urls', namespace='home'),),
     path('courses/', include('apps.courses.urls', namespace='courses'),),
     path('blogs/', include('apps.blogs.urls', namespace='blogs'),),
     path('faq/', include('apps.faq.urls', namespace='faq'),),
     path('contact/', include('apps.contacts.urls', namespace='contacts'),),
-    path('instructors/', include('apps.instructors.urls', namespace='instructors'),),
+    path('coaches/', include('apps.instructors.urls', namespace='instructors'),),
     path('carts/', include('apps.carts.urls', namespace='carts'),),
     path('orders/', include('apps.orders.urls', namespace='orders'),),
     path('accounts/', include('apps.accounts.urls', namespace='accounts')),
