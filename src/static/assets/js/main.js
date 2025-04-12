@@ -240,7 +240,8 @@
 
 	$('.testimonial--active').slick({
 		infinite: true,
-		slidesToShow: 2,
+		autoplay:true,
+		slidesToShow: 3,
 		slidesToScroll: 1,
 		prevArrow: prevArrow,
 		nextArrow: nextArrow,
