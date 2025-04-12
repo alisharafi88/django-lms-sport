@@ -2,20 +2,3 @@ venv
 data
 .env
 src/media
-
-
-export DJANGO_SECRET_KEY=ksGf3CRANaBJDUBY6XbM34xSQiLrI2u2UI7UjrNfLvZ1zi3Carp2G-kcRevYMhYyV4U
-export DJANGO_DEBUG_STATUS=False
-export DB_USER=fastball_user
-export DB_NAME=fastball_db
-export DB_PASSWORD=Z.cP$8rjCRUAH:J#Q+a
-export DB_ROOT_PASSWORD=Z.cP$8rjCRUAH:J#Q+a
-export DB_HOST=db
-export DB_PORT=3306
-export MYSQL_AUTH_PLUGIN=caching_sha2_password
-export SMS_API_KEY=OWU5OGQ0NzQtNTMzMS00ZjYzLWI3MTgtMGM1Y2E5NWZkZTZkZjhiNTcyOWU4NDVlZDRkZTIyMjkyNDYzZTY1MDBlNDg=
-export SMS_SENDER=+983000505
-export SMS_PATTERN_CODE=28eteuetsfmh45y
-export MERCHANT=322473a0-17dd-4101-a434-00418456f258
-export DJANGO_ENV=production
-
