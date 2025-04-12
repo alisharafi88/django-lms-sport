@@ -89,15 +89,21 @@
         <div class="f-copyright pt-60 pb-30">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5">
-                        <div class="f-copyright__logo mb-30">
-                            <a href="{% url 'home:home' %}"><img src="{% static 'assets/img/logo/logo-fastball.png' %}"
-                                                                 alt="{% trans 'fastball logo' %}"></a>
+                    <div class="col-md-7 text-end">
+                        <div class="f-copyright__text mb-30">
+                            <p class="mb-2">{% trans 'This website was developed collaboratively by the following team:' %}</p>
+                            <ul class="list-inline list-unstyled justify-content-start d-flex flex-wrap">
+                                <li class="me-2"><a href="https://github.com/alisharafi88" target="_blank">{% trans 'Ali Sharafi' %}</a></li>
+                                <li class="me-2"><a href="https://github.com/aliwwwmo" target="_blank">{% trans 'Ali Moghimi' %}</a></li>
+                                <li class="me-2"><a href="https://github.com/rezaazimibar" target="_blank">{% trans 'Reza Azimi' %}</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-md-7">
-                        <div class="f-copyright__text text-md-end mb-30">
-                            <span>'...'</span>
+                    <div class="col-md-5 text-start">
+                        <div class="f-copyright__logo mb-30">
+                            <a href="{% url 'home:home' %}">
+                                <img src="{% static 'assets/img/logo/logo-fastball.png' %}" alt="{% trans 'fastball logo' %}">
+                            </a>
                         </div>
                     </div>
                 </div>
