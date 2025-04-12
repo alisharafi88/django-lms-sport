@@ -109,7 +109,7 @@ class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
             )
         ).select_related(
             'coach__user',
-        ).distinct()
+        )
 
     @admin.display(description=_('#Videos'), ordering='num_videos')
     def get_num_videos(self, course):

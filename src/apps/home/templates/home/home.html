@@ -280,6 +280,7 @@
     <!-- about-area-end -->
 
     <!-- course-area -->
+    {% if products %}
     <section class="course-area pt-115 pb-110">
         <div class="container">
             <div class="row">
@@ -388,6 +389,7 @@
             </div>
         </div>
     </section>
+    {% endif %}
     <!-- course-area-end -->
 
     <!-- choose-area -->
@@ -496,78 +498,80 @@
     <!-- counter-area-end -->
 
     <!-- instructor-area -->
-    <section class="instructor-area pt-110 pb-110">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-8 col-md-7 col-12">
-                    <div class="section-title mb-65">
-                        <h2 class="tp-section-title mb-20">{% trans 'Coach' %}</h2>
+    {% if instructors %}
+        <section class="instructor-area pt-110 pb-110">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-8 col-md-7 col-12">
+                        <div class="section-title mb-65">
+                            <h2 class="tp-section-title mb-20">{% trans 'Coach' %}</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-4 col-md-5 col-6">
+                        <div class="tp-instruc-arrow d-flex justify-content-md-end"></div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-4 col-md-5 col-6">
-                    <div class="tp-instruc-arrow d-flex justify-content-md-end"></div>
-                </div>
-            </div>
-            <div class="intruc-active mb-15 tp-slide-space">
-                {% for instructor in instructors %}
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="tp-instruc-item">
-                            <div class="tp-instructor text-center p-relative mb-40">
-                                <div class="tp-instructor__thumb mb-25">
-                                    <img src="{{ instructor.user.get_photo_url }}" alt="{{ instructor.full_name }}">
-                                </div>
-                                <div class="tp-instructor__content">
-                                    <h4 class="tp-instructor__title tp-instructor__title-info p-relative mb-35 mt-5"><a
-                                            href="{{ instructor.get_absolute_url }}">{{ instructor.full_name }}</a></h4>
-                                    <div class="tp-instructor__stu-info">
-                                        <ul class="d-flex align-items-center justify-content-center">
-                                            <li class="d-flex align-items-center"><img
-                                                    src="{% static 'assets/img/icon/c-meta-01.png' %}"
-                                                    alt="meta-icon">
-                                                <i>{{ instructor.video_count|to_persian_number }} {% trans 'Classes' context 'singular' %}</i>
-                                            </li>
-                                            <li class="d-flex align-items-center"><img
-                                                    src="{% static 'assets/img/icon/c-meta-02.png' %}"
-                                                    alt="meta-icon">
-                                                <i>{{ instructor.student_count|to_persian_number }}+ {% trans 'Students' context 'singular' %}</i>
-                                            </li>
-                                        </ul>
+                <div class="intruc-active mb-15 tp-slide-space">
+                    {% for instructor in instructors %}
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="tp-instruc-item">
+                                <div class="tp-instructor text-center p-relative mb-40">
+                                    <div class="tp-instructor__thumb mb-25">
+                                        <img src="{{ instructor.user.get_photo_url }}" alt="{{ instructor.full_name }}">
                                     </div>
-                                    <div class="tp-instructor__social">
-                                        <ul>
-                                            {% if primary_contact.youtube_id %}
-                                                <li><a href="https://www.youtube.com/@{{ primary_contact.youtube_id }}"
-                                                   target="_blank"><i
-                                                        class="fa-brands fa-youtube"></i></a></li>
-                                            {% endif %}
-                                            {% if primary_contact.instagram_id %}
-                                                <li><a href="https://www.instagram.com/{{ primary_contact.instagram_id }}"
-                                                   target="_blank"><i
-                                                        class="fa-brands fa-instagram"></i></a></li>
-                                            {% endif %}
-                                            {% if primary_contact.telegram_id %}
-                                                <li><a href="https://t.me/{{ primary_contact.telegram_id }}"
-                                                   target="_blank"><i
-                                                        class="fa-brands fa-telegram-plane"></i></a></li>
-                                            {% endif %}
-                                        </ul>
+                                    <div class="tp-instructor__content">
+                                        <h4 class="tp-instructor__title tp-instructor__title-info p-relative mb-35 mt-5"><a
+                                                href="{{ instructor.get_absolute_url }}">{{ instructor.full_name }}</a></h4>
+                                        <div class="tp-instructor__stu-info">
+                                            <ul class="d-flex align-items-center justify-content-center">
+                                                <li class="d-flex align-items-center"><img
+                                                        src="{% static 'assets/img/icon/c-meta-01.png' %}"
+                                                        alt="meta-icon">
+                                                    <i>{{ instructor.video_count|to_persian_number }} {% trans 'Classes' context 'singular' %}</i>
+                                                </li>
+                                                <li class="d-flex align-items-center"><img
+                                                        src="{% static 'assets/img/icon/c-meta-02.png' %}"
+                                                        alt="meta-icon">
+                                                    <i>{{ instructor.student_count|to_persian_number }}+ {% trans 'Students' context 'singular' %}</i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tp-instructor__social">
+                                            <ul>
+                                                {% if primary_contact.youtube_id %}
+                                                    <li><a href="https://www.youtube.com/@{{ primary_contact.youtube_id }}"
+                                                       target="_blank"><i
+                                                            class="fa-brands fa-youtube"></i></a></li>
+                                                {% endif %}
+                                                {% if primary_contact.instagram_id %}
+                                                    <li><a href="https://www.instagram.com/{{ primary_contact.instagram_id }}"
+                                                       target="_blank"><i
+                                                            class="fa-brands fa-instagram"></i></a></li>
+                                                {% endif %}
+                                                {% if primary_contact.telegram_id %}
+                                                    <li><a href="https://t.me/{{ primary_contact.telegram_id }}"
+                                                       target="_blank"><i
+                                                            class="fa-brands fa-telegram-plane"></i></a></li>
+                                                {% endif %}
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="instructor-btn text-center">
-                        <a class="tp-btn"
-                           href="{% url 'instructors:instructor_list' %}">{% trans 'All Coaches' %}</a>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="instructor-btn text-center">
+                            <a class="tp-btn"
+                               href="{% url 'instructors:instructor_list' %}">{% trans 'All Coaches' %}</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
     <!-- instructor-area-enfd -->
 
     <!-- testimonial-area -->
@@ -617,52 +621,54 @@
     <!-- testimonial-area-end -->
 
     <!-- blog-area -->
-    <section class="blog-area pt-110 pb-110">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title mb-65 text-center">
-                        <h2 class="tp-section-title mb-20">{% trans 'Latest Blogs & News' %}</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                {% for blog in blogs %}
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div class="tp-blog tp-blog-parent mb-40">
-                            <div class="tp-blog__thumb">
-                                <div class="fix blog-round">
-                                    <a href="{{ blog.get_absolute_url }}"><img src="{{ blog.img.url }}"
-                                                                               alt="{{ blog.title }}"></a>
-                                </div>
-                            </div>
-                            <div class="tp-blog__content blog-edu p-relative">
-                                <div class="tp-blog__meta-list mb-10">
-                                    <span class="date-wrapper">
-                                        <a href="{{ blog.get_absolute_url }}">
-                                            <span class="icon" dir="ltr"><i class="fi fi-ss-calendar"></i></span>
-                                            <span class="date-text" dir="auto">{{ blog.date_created|timesince|to_persian_number }}</span>
-                                        </a>
-                                    </span>
-                                </div>
-                                <h3 class="tp-blog__title mb-15"><a
-                                        href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h3>
-                                <span><a href="{{ blog.get_absolute_url }}"><i
-                                        class="fi fi-sr-user"></i>{{ blog.author }}</a></span>
-                            </div>
+    {% if blogs %}
+        <section class="blog-area pt-110 pb-110">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title mb-65 text-center">
+                            <h2 class="tp-section-title mb-20">{% trans 'Latest Blogs & News' %}</h2>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="blog-btn text-center">
-                        <a href="{% url 'blogs:blog_list' %}" class="tp-btn">{% trans 'All Blog' %}</a>
+                </div>
+                <div class="row">
+                    {% for blog in blogs %}
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <div class="tp-blog tp-blog-parent mb-40">
+                                <div class="tp-blog__thumb">
+                                    <div class="fix blog-round">
+                                        <a href="{{ blog.get_absolute_url }}"><img src="{{ blog.img.url }}"
+                                                                                   alt="{{ blog.title }}"></a>
+                                    </div>
+                                </div>
+                                <div class="tp-blog__content blog-edu p-relative">
+                                    <div class="tp-blog__meta-list mb-10">
+                                        <span class="date-wrapper">
+                                            <a href="{{ blog.get_absolute_url }}">
+                                                <span class="icon" dir="ltr"><i class="fi fi-ss-calendar"></i></span>
+                                                <span class="date-text" dir="auto">{{ blog.date_created|timesince|to_persian_number }}</span>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <h3 class="tp-blog__title mb-15"><a
+                                            href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h3>
+                                    <span><a href="{{ blog.get_absolute_url }}"><i
+                                            class="fi fi-sr-user"></i>{{ blog.author }}</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="blog-btn text-center">
+                            <a href="{% url 'blogs:blog_list' %}" class="tp-btn">{% trans 'All Blog' %}</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
     <!-- blog-area-end -->
 {% endblock %}
 
