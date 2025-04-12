@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-11 18:27+0330\n"
+"POT-Creation-Date: 2025-04-12 18:45+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Persian <LL@li.org>\n"
@@ -186,8 +186,8 @@ msgid "become a professional"
 msgstr "حرفه‌ای شو"
 
 #: src/apps/home/templates/home/home.html:273
-msgid "Read More"
-msgstr "بیشتر بخوانید"
+msgid "Explore"
+msgstr "مشاهده"
 
 #: src/apps/home/templates/home/home.html:288
 msgid "Explore Popular Courses"
@@ -237,6 +237,9 @@ msgstr "حذف..."
 #: src/apps/home/templates/home/home.html:727
 msgid "An error occurred. Please try again."
 msgstr "خطایی رخ داد. لطفا دوباره امتحان کنید."
+
+#~ msgid "Read More"
+#~ msgstr "بیشتر بخوانید"
 
 #~ msgid "Check Out"
 #~ msgstr "تسویه‌حساب"

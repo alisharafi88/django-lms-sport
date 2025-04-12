@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-11 18:27+0330\n"
+"POT-Creation-Date: 2025-04-12 18:45+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Persian <LL@li.org>\n"
@@ -19,112 +19,112 @@ msgstr ""
 "POT-Creation-DDate: 2025-02-07 20:57+0330\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/apps/orders/admin.py:37 src/apps/orders/admin.py:44
+#: src/apps/orders/admin.py:48 src/apps/orders/admin.py:55
 msgid "custome information"
 msgstr "اطلاعات مشتری"
 
-#: src/apps/orders/admin.py:38 src/apps/orders/admin.py:45
+#: src/apps/orders/admin.py:49 src/apps/orders/admin.py:56
 msgid "status"
 msgstr "وضعیت"
 
-#: src/apps/orders/admin.py:39
+#: src/apps/orders/admin.py:50
 msgid "Payment"
 msgstr "پرداخت"
 
-#: src/apps/orders/admin.py:40
+#: src/apps/orders/admin.py:51
 msgid "date"
 msgstr "تاریخ"
 
-#: src/apps/orders/admin.py:53
+#: src/apps/orders/admin.py:64
 msgid "Update status to PAID"
 msgstr "به‌روزرسانی وضعیت به پرداخت شده"
 
-#: src/apps/orders/admin.py:58
+#: src/apps/orders/admin.py:69
 #, python-brace-format
 msgid "{update_count} of orders status has been updated to paid."
 msgstr "{update_count} سفارش به وضعیت پرداخت شده به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:62
+#: src/apps/orders/admin.py:73
 msgid "Update status to CANCELED"
 msgstr "به‌روزرسانی وضعیت به لغو شده"
 
-#: src/apps/orders/admin.py:67
+#: src/apps/orders/admin.py:78
 #, python-brace-format
 msgid "{update_count} of orders status has been updated to canceled."
 msgstr "{update_count} سفارش به وضعیت لغو شده به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:71
+#: src/apps/orders/admin.py:82
 msgid "Update status to UNPAID"
 msgstr "به‌روزرسانی وضعیت به پرداخت نشده"
 
-#: src/apps/orders/admin.py:76
+#: src/apps/orders/admin.py:87
 #, python-brace-format
 msgid "{update_count} of orders status has been updated to unpaid."
 msgstr "{update_count} سفارش به وضعیت پرداخت نشده به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:92 src/apps/orders/models.py:74
-#: src/apps/orders/models.py:89 src/apps/orders/models.py:131
+#: src/apps/orders/admin.py:103 src/apps/orders/models.py:100
+#: src/apps/orders/models.py:115 src/apps/orders/models.py:157
 msgid "Order"
 msgstr "سفارش"
 
-#: src/apps/orders/admin.py:93
+#: src/apps/orders/admin.py:104
 msgid "product information"
 msgstr "اطلاعات محصولات"
 
-#: src/apps/orders/admin.py:96
+#: src/apps/orders/admin.py:107
 msgid "Type"
 msgstr "نوع"
 
-#: src/apps/orders/admin.py:100
+#: src/apps/orders/admin.py:111
 #: src/apps/orders/templates/orders/checkout.html:94
 msgid "Product"
 msgstr "محصول"
 
-#: src/apps/orders/admin.py:117 src/apps/orders/admin.py:121
+#: src/apps/orders/admin.py:128 src/apps/orders/admin.py:132
 msgid "order"
 msgstr "سفارش"
 
-#: src/apps/orders/admin.py:118 src/apps/orders/admin.py:122
+#: src/apps/orders/admin.py:129 src/apps/orders/admin.py:133
 msgid "delivery information"
 msgstr "اطلاعات تحویل"
 
-#: src/apps/orders/admin.py:125
+#: src/apps/orders/admin.py:136
 msgid "Update delivery_status to PENDING"
 msgstr "به‌روزرسانی وضعیت تحویل به در انتظار"
 
-#: src/apps/orders/admin.py:130
+#: src/apps/orders/admin.py:141
 #, python-brace-format
 msgid "{update_count} of orders delivery_status has been updated to pending."
 msgstr "{update_count} سفارش به وضعیت تحویل در انتظار به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:134
+#: src/apps/orders/admin.py:145
 msgid "Update delivery_status to SENT"
 msgstr "به‌روزرسانی وضعیت تحویل به ارسال شده"
 
-#: src/apps/orders/admin.py:139
+#: src/apps/orders/admin.py:150
 #, python-brace-format
 msgid "{update_count} of orders delivery_status has been updated to sent."
 msgstr "{update_count} سفارش به وضعیت تحویل ارسال شده به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:143
+#: src/apps/orders/admin.py:154
 msgid "Update delivery_status to REJECTD"
 msgstr "به روزرسانی وضعیت تحویل به رد شده"
 
-#: src/apps/orders/admin.py:148
+#: src/apps/orders/admin.py:159
 #, python-brace-format
 msgid "{update_count} of orders delivery_status has been updated to rejectd."
 msgstr "{update_count} سفارش به وضعیت تحویل رد شده به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:152
+#: src/apps/orders/admin.py:163
 msgid "Update delivery_status to CANCELED"
 msgstr "به‌روزرسانی وضعیت تحویل به لغو شده"
 
-#: src/apps/orders/admin.py:157
+#: src/apps/orders/admin.py:168
 #, python-brace-format
 msgid "{update_count} of orders delivery_status has been updated to canceled."
 msgstr "{update_count} سفارش به وضعیت تحویل لغو شده به‌روزرسانی شد."
 
-#: src/apps/orders/apps.py:8 src/apps/orders/models.py:75
+#: src/apps/orders/apps.py:8 src/apps/orders/models.py:101
 msgid "Orders"
 msgstr "سفارش‌ها"
 
@@ -180,138 +180,154 @@ msgstr "شماره‌تلفن باید از ایران باشد."
 msgid "Invalid phone number format."
 msgstr "فرمت شماره‌تلفن نامعتبر است."
 
-#: src/apps/orders/models.py:28
+#: src/apps/orders/models.py:27 src/apps/orders/models.py:87
+msgid "DVD Shipping Price"
+msgstr "هزینه ارسال دی‌وی‌دی"
+
+#: src/apps/orders/models.py:29
+msgid "Date Created"
+msgstr "تاریخ ایجاد"
+
+#: src/apps/orders/models.py:30
+msgid "Date Updated"
+msgstr "تاریخ بروزرسانی"
+
+#: src/apps/orders/models.py:33 src/apps/orders/models.py:34
+msgid "Shipping Settings"
+msgstr "تنظیمات ارسال"
+
+#: src/apps/orders/models.py:52
 msgid "Paid"
 msgstr "پرداخت شده"
 
-#: src/apps/orders/models.py:29
+#: src/apps/orders/models.py:53
 msgid "Unpaid"
 msgstr "پرداخت نشده"
 
-#: src/apps/orders/models.py:30 src/apps/orders/models.py:83
+#: src/apps/orders/models.py:54 src/apps/orders/models.py:109
 msgid "Canceled"
 msgstr "لغو شده"
 
-#: src/apps/orders/models.py:33
+#: src/apps/orders/models.py:57
 msgid "Online"
 msgstr "آنلاین"
 
-#: src/apps/orders/models.py:34
+#: src/apps/orders/models.py:58
 msgid "DVD"
 msgstr "دی‌وی‌دی"
 
-#: src/apps/orders/models.py:40
+#: src/apps/orders/models.py:64
 msgid "Customer"
 msgstr "مشتری"
 
-#: src/apps/orders/models.py:43
+#: src/apps/orders/models.py:67
 msgid "Status"
 msgstr "وضعیت"
 
-#: src/apps/orders/models.py:49
+#: src/apps/orders/models.py:73
 msgid "AccessStatus"
 msgstr "وضعیت دسترسی"
 
-#: src/apps/orders/models.py:54
+#: src/apps/orders/models.py:78
 msgid "TotalPrice"
 msgstr "قیمت کل"
 
-#: src/apps/orders/models.py:56
+#: src/apps/orders/models.py:80
 msgid "DateCreated"
 msgstr "تاریخ ایجاد"
 
-#: src/apps/orders/models.py:58
+#: src/apps/orders/models.py:82
 #: src/apps/orders/templates/orders/checkout.html:58
 msgid "Coupon Code"
 msgstr "کدتخفیف"
 
-#: src/apps/orders/models.py:59
+#: src/apps/orders/models.py:83
 msgid "Payment Authority"
 msgstr "سازمان پرداخت"
 
-#: src/apps/orders/models.py:80
+#: src/apps/orders/models.py:106
 msgid "Pending"
 msgstr "در انتظار"
 
-#: src/apps/orders/models.py:81
+#: src/apps/orders/models.py:107
 msgid "Sent"
 msgstr "ارسال شده"
 
-#: src/apps/orders/models.py:82
+#: src/apps/orders/models.py:108
 msgid "Rejected"
 msgstr "رد شده"
 
-#: src/apps/orders/models.py:92
+#: src/apps/orders/models.py:118
 msgid "City"
 msgstr "شهر"
 
-#: src/apps/orders/models.py:93
-#: src/apps/orders/templates/orders/checkout.html:165
+#: src/apps/orders/models.py:119
+#: src/apps/orders/templates/orders/checkout.html:166
 msgid "Address"
 msgstr "آدرس"
 
-#: src/apps/orders/models.py:94
+#: src/apps/orders/models.py:120
 msgid "PostalCode"
 msgstr "کدپستی"
 
-#: src/apps/orders/models.py:95
+#: src/apps/orders/models.py:121
 msgid "firstName"
 msgstr "نام"
 
-#: src/apps/orders/models.py:96
+#: src/apps/orders/models.py:122
 msgid "LastName"
 msgstr "نام‌خانوادگی"
 
-#: src/apps/orders/models.py:97
+#: src/apps/orders/models.py:123
 msgid "Email"
 msgstr "ایمیل"
 
-#: src/apps/orders/models.py:99
+#: src/apps/orders/models.py:125
 msgid "Phonenumber"
 msgstr "شماره‌تلفن"
 
-#: src/apps/orders/models.py:103
+#: src/apps/orders/models.py:129
 msgid "Order'sNote"
 msgstr "یادداشت سفارش"
 
-#: src/apps/orders/models.py:106
+#: src/apps/orders/models.py:132
 msgid "DeliveryStatus"
 msgstr "وضعیت تحویل"
 
-#: src/apps/orders/models.py:112
+#: src/apps/orders/models.py:138
 msgid "Created Date"
 msgstr "تاریخ ایجاد"
 
-#: src/apps/orders/models.py:115
+#: src/apps/orders/models.py:141
 #, python-brace-format
 msgid "{self.order} - DVD Details"
 msgstr "{self.order} - جزئیات DVD"
 
-#: src/apps/orders/models.py:122
+#: src/apps/orders/models.py:148
 msgid "DVD's Order"
 msgstr "سفارش DVD"
 
-#: src/apps/orders/models.py:123
+#: src/apps/orders/models.py:149
 msgid "DVD's Orders"
 msgstr "سفارش‌های DVD"
 
-#: src/apps/orders/models.py:137
+#: src/apps/orders/models.py:163
 msgid "Content Type"
 msgstr "نوع محتوا"
 
-#: src/apps/orders/models.py:141
+#: src/apps/orders/models.py:167
 msgid "Object ID"
 msgstr "شناسه شیء"
 
-#: src/apps/orders/models.py:143
+#: src/apps/orders/models.py:169
 msgid "Unit Price"
 msgstr "قیمت واحد"
 
-#: src/apps/orders/models.py:148
+#: src/apps/orders/models.py:174
 msgid "Order's Item"
 msgstr "آیتم سفارش"
 
-#: src/apps/orders/models.py:149
+#: src/apps/orders/models.py:175
 msgid "Order's Items"
 msgstr "آیتم‌های سفارش"
 
@@ -338,7 +354,7 @@ msgid "Apply Coupon"
 msgstr "ثبت کدتخفیف"
 
 #: src/apps/orders/templates/orders/checkout.html:69
-#: src/apps/orders/templates/orders/checkout.html:238
+#: src/apps/orders/templates/orders/checkout.html:239
 msgid "Applied Coupon:"
 msgstr "کدتخفیف ثبت شده:"
 
@@ -349,15 +365,16 @@ msgstr "تخفیف:"
 #: src/apps/orders/templates/orders/checkout.html:69
 #: src/apps/orders/templates/orders/checkout.html:105
 #: src/apps/orders/templates/orders/checkout.html:114
-#: src/apps/orders/templates/orders/checkout.html:128
-#: src/apps/orders/templates/orders/checkout.html:238
-#: src/apps/orders/templates/orders/checkout.html:276
+#: src/apps/orders/templates/orders/checkout.html:122
+#: src/apps/orders/templates/orders/checkout.html:129
+#: src/apps/orders/templates/orders/checkout.html:239
 #: src/apps/orders/templates/orders/checkout.html:277
+#: src/apps/orders/templates/orders/checkout.html:278
 msgid "Toman"
 msgstr "تومان"
 
 #: src/apps/orders/templates/orders/checkout.html:70
-#: src/apps/orders/templates/orders/checkout.html:239
+#: src/apps/orders/templates/orders/checkout.html:240
 msgid "Remove Coupon"
 msgstr "حذف کدتخفیف"
 
@@ -377,56 +394,56 @@ msgstr "جمع سبدخرید"
 msgid "Shipping"
 msgstr "نوع خرید"
 
-#: src/apps/orders/templates/orders/checkout.html:126
+#: src/apps/orders/templates/orders/checkout.html:127
 msgid "Order Total"
 msgstr "جمع سبدخرید بعد از تخفیف"
 
-#: src/apps/orders/templates/orders/checkout.html:134
+#: src/apps/orders/templates/orders/checkout.html:135
 msgid "Place order"
 msgstr "ثبت سفارش"
 
-#: src/apps/orders/templates/orders/checkout.html:142
+#: src/apps/orders/templates/orders/checkout.html:143
 msgid "Buy DVD"
 msgstr "خرید DVD"
 
-#: src/apps/orders/templates/orders/checkout.html:147
+#: src/apps/orders/templates/orders/checkout.html:148
 msgid "First Name"
 msgstr "نام"
 
-#: src/apps/orders/templates/orders/checkout.html:153
+#: src/apps/orders/templates/orders/checkout.html:154
 msgid "Last Name"
 msgstr "نام‌خانوادگی"
 
-#: src/apps/orders/templates/orders/checkout.html:159
+#: src/apps/orders/templates/orders/checkout.html:160
 msgid "Town / City"
 msgstr "شهر"
 
-#: src/apps/orders/templates/orders/checkout.html:171
+#: src/apps/orders/templates/orders/checkout.html:172
 msgid "Postcode / Zip"
 msgstr "کدپستی"
 
-#: src/apps/orders/templates/orders/checkout.html:178
+#: src/apps/orders/templates/orders/checkout.html:179
 msgid "Email Address"
 msgstr "آدرس ایمیل"
 
-#: src/apps/orders/templates/orders/checkout.html:185
+#: src/apps/orders/templates/orders/checkout.html:186
 msgid "Phone"
 msgstr "شماره‌تلفن"
 
-#: src/apps/orders/templates/orders/checkout.html:190
+#: src/apps/orders/templates/orders/checkout.html:191
 msgid "Order Notes"
 msgstr "یادداشت سفارش"
 
-#: src/apps/orders/templates/orders/checkout.html:223
+#: src/apps/orders/templates/orders/checkout.html:224
 msgid "Please enter a coupon code."
 msgstr "لطفاً کدتخفیف خود را وارد کنید."
 
-#: src/apps/orders/templates/orders/checkout.html:238
+#: src/apps/orders/templates/orders/checkout.html:239
 msgid "Discount"
 msgstr "تخفیف"
 
-#: src/apps/orders/templates/orders/checkout.html:248
-#: src/apps/orders/templates/orders/checkout.html:270
+#: src/apps/orders/templates/orders/checkout.html:249
+#: src/apps/orders/templates/orders/checkout.html:271
 msgid "An error occurred. Please try again later."
 msgstr "یک خطا رخ داده است. لطفاً بعداً دوباره تلاش کنید."
 
@@ -434,24 +451,24 @@ msgstr "یک خطا رخ داده است. لطفاً بعداً دوباره ت�
 msgid "You cannot proceed to the checkout page because your cart is empty."
 msgstr "شما نمی‌توانید به صفحه تسویه حساب بروید زیرا سبد خرید شما خالی است."
 
-#: src/apps/orders/views/order_view.py:88
+#: src/apps/orders/views/order_view.py:90
 #, python-brace-format
 msgid "You're already enrolled in {product.title}. Removed from order."
 msgstr "شما قبلاً در {product.title} ثبت‌نام کرده‌اید. از سفارش حذف شد."
 
-#: src/apps/orders/views/order_view.py:134
+#: src/apps/orders/views/order_view.py:144
 msgid "Something went wrong. Please try again."
 msgstr "مشکلی پیش آمده است. لطفاً دوباره تلاش کنید."
 
-#: src/apps/orders/views/order_view.py:138
+#: src/apps/orders/views/order_view.py:148
 msgid "Please correct the errors below:"
 msgstr "لطفاً خطاهای زیر را اصلاح کنید:"
 
-#: src/apps/orders/views/order_view.py:156
+#: src/apps/orders/views/order_view.py:166
 msgid "Coupon applied successfully."
 msgstr "کدتخفیف با موفقیت اعمال شد."
 
-#: src/apps/orders/views/order_view.py:177
+#: src/apps/orders/views/order_view.py:187
 msgid "Coupon removed successfully."
 msgstr "کدتخفیف با موفقیت حذف شد."
 
@@ -459,18 +476,18 @@ msgstr "کدتخفیف با موفقیت حذف شد."
 msgid "Payment was already verified"
 msgstr "پرداخت قبلاً تأیید شده است"
 
-#: src/apps/orders/views/peyment_view.py:78
+#: src/apps/orders/views/peyment_view.py:79
 #, python-format
 msgid "Payment verification failed: %(message)s"
 msgstr "خطا در تأیید پرداخت: %(message)s"
 
-#: src/apps/orders/views/peyment_view.py:79
+#: src/apps/orders/views/peyment_view.py:80
 msgid "Unknown error"
 msgstr "خطای ناشناخته"
 
-#: src/apps/orders/views/peyment_view.py:87
+#: src/apps/orders/views/peyment_view.py:89
 msgid "The payment has been canceled."
-msgstr ""
+msgstr "پرداخت لغو شده است."
 
 #~ msgid "An unexpected error occurred during payment verification"
 #~ msgstr "خطای غیرمنتظره در حین تأیید پرداخت رخ داد"
