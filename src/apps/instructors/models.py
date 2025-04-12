@@ -33,18 +33,23 @@ class Instructor(models.Model):
     )
 
     def __str__(self):
-        return self.full_name
+        return str(self.full_name)
 
     @property
     def full_name(self):
-        return f'{self.user.first_name} {self.user.last_name}'
+        if self.user.first_name or self.user.last_name:
+            return f'{self.user.first_name} {self.user.last_name}'
+        return _('Anonymous')
 
     def get_absolute_url(self):
         return reverse('instructors:instructor_detail', kwargs={'pk': self.pk, 'slug': self.slug},)
 
     def save(self, *args, **kwargs):
         # Generate a URL-friendly slug from the instructor's full name
-        self.slug = slugify(self.full_name, allow_unicode=True)
+        if self.user.first_name or self.user.last_name:
+            self.slug = slugify(self.full_name, allow_unicode=True)
+        else:
+            self.slug = slugify(self.user.phone_number, allow_unicode=True)
         super(Instructor, self).save(*args, **kwargs)
 
     class Meta:
