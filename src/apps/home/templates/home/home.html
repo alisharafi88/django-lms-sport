@@ -372,7 +372,12 @@
                                         <p>({{ product.num_comment|to_persian_number }})</p>
                                     </div>
                                     <div class="tpcourse__pricing">
-                                        <h5 class="c-price-list">{{ product.discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</h5>
+                                        {% if product.price > product.discounted_price %}
+                                            <h5 class="c-price-list original-price">{{ product.price|to_persian_number:'humanize' }} {% trans 'Toman' %}</h5>
+                                            <h5 class="c-price-list discounted-price">{{ product.discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</h5>
+                                        {% else %}
+                                            <h5 class="c-price-list">{{ product.discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</h5>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

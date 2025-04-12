@@ -201,8 +201,20 @@
                         {% endif %}
                         <div class="course-details-widget">
                             <div class="cd-video-price">
-                                <h3 class="pricing-video text-center mb-15">
-                                    {{ package.discounted_price|to_persian_number:'humanize' }} {% translate 'Toman' %}</h3>
+                                {% if package.price > package.discounted_price %}
+                                    <h3 class="text-center">
+                                        <span class="original-price">
+                                            {{ package.price|to_persian_number:'humanize' }} {% translate 'Toman' %}
+                                        </span><br>
+                                        <span class="discounted-price">
+                                            {{ package.discounted_price|to_persian_number:'humanize' }} {% translate 'Toman' %}
+                                        </span>
+                                    </h3>
+                                {% else %}
+                                    <h3 class="text-center">
+                                        {{ package.price|to_persian_number:'humanize' }} {% translate 'Toman' %}
+                                    </h3>
+                                {% endif %}
                                 <div class="cd-pricing-btn text-center mb-30">
                                     {% if user.is_authenticated and package|is_enrolled:user_memberships %}
                                         <a class="tp-vp-btn-green" href="{% url 'accounts:student_dashboards' %}">
@@ -358,7 +370,12 @@
                                         <p>({{ course.num_comment|to_persian_number }})</p>
                                     </div>
                                     <div class="tpcourse__pricing">
-                                        <h5 class="c-price-list">{{ course.discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</h5>
+                                        {% if course.price > course.discounted_price %}
+                                            <h5 class="c-price-list original-price">{{ course.price|to_persian_number:'humanize' }} {% trans 'Toman' %}</h5>
+                                            <h5 class="c-price-list discounted-price">{{ course.discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</h5>
+                                        {% else %}
+                                            <h5 class="c-price-list">{{ course.discounted_price|to_persian_number:'humanize' }} {% trans 'Toman' %}</h5>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

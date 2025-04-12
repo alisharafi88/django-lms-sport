@@ -3742,6 +3742,16 @@ div.choose-sub-color {
     }
 }
 
+.original-price {
+    text-decoration: line-through;
+    color: var(--tp-text-2);
+    font-size: 0.9em;
+}
+.discounted-price {
+    color: var(--tp-heading-secondary);
+    font-weight: bold;
+}
+
 .tp-cours-title-color {
     font-size: 22px;
     margin-left: 0;

@@ -21,7 +21,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('sffastballadminmt3/', admin.site.urls,),
+    path('footballfastballadminmt3/', admin.site.urls,),
     path('', include('apps.home.urls', namespace='home'),),
     path('courses/', include('apps.courses.urls', namespace='courses'),),
     path('blogs/', include('apps.blogs.urls', namespace='blogs'),),
