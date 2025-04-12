@@ -35,3 +35,7 @@ SECURE_HSTS_PRELOAD = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
+
+
+# === Faraz sms ===
+SANDBOX = True
