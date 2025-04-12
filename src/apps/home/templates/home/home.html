@@ -571,48 +571,49 @@
     <!-- instructor-area-enfd -->
 
     <!-- testimonial-area -->
-    <section class="testimonial-area bg-bottom pt-110 pb-90 " data-background="assets/img/bg/shape-bg-1.png">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-xl-6 col-lg-8 col-md-8 col-12">
-                    <div class="section-title mb-65">
-                        <h2 class="tp-section-title mb-20">{% trans 'What Our Happy Users Says' %}</h2>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-4 col-md-4 col-6">
-                    <div class="tp-section-arrow d-flex justify-content-md-end mb-40"></div>
-                </div>
-            </div>
-            <div class="testimonial-active tp-slide-space">
-                {% for comment in comments %}
-                    <div class="tp-test-slide-item">
-                        <div class="tp-testi p-relative mt-65">
-                            <div class="tp-testi__avatar">
-                                <img src="{{ comment.user.get_photo_url }}" alt="profile">
-                            </div>
-                            <div class="tp-testi__rating pb-5">
-                                <ul class="d-flex align-items-center justify-content-end mr-5 mb-25">
-                                    {% for i in "12345" %}
-                                        {% if comment.rate >= i|add:"0" %}
-                                            <i class="fi fi-ss-star"></i>
-                                        {% else %}
-                                            <i class="fi fi-rs-star"></i>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            <div class="tp-testi__avainfo">
-                                <p>{{ comment.text|truncatewords:80 }}</p>
-                                <h3 class="tp-testi__title">{{ comment.user.get_full_name }}</h3>
-                                <i>{{ comment.course.title }}</i>
-                            </div>
+    {% if comments %}
+        <section class="testimonial-area bg-bottom pt-110 pb-90 " data-background="assets/img/bg/shape-bg-1.png">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-xl-6 col-lg-8 col-md-8 col-12">
+                        <div class="section-title mb-65">
+                            <h2 class="tp-section-title mb-20">{% trans 'What Our Happy Users Says' %}</h2>
                         </div>
                     </div>
-                {% endfor %}
+                    <div class="col-xl-6 col-lg-4 col-md-4 col-6">
+                        <div class="tp-section-arrow d-flex justify-content-md-end mb-40"></div>
+                    </div>
+                </div>
+                <div class="testimonial-active tp-slide-space">
+                    {% for comment in comments %}
+                        <div class="tp-test-slide-item">
+                            <div class="tp-testi p-relative mt-65">
+                                <div class="tp-testi__avatar">
+                                    <img src="{{ comment.user.get_photo_url }}" alt="profile">
+                                </div>
+                                <div class="tp-testi__rating pb-5">
+                                    <ul class="d-flex align-items-center justify-content-end mr-5 mb-25">
+                                        {% for i in "12345" %}
+                                            {% if comment.rate >= i|add:"0" %}
+                                                <i class="fi fi-ss-star"></i>
+                                            {% else %}
+                                                <i class="fi fi-rs-star"></i>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="tp-testi__avainfo">
+                                    <p>{{ comment.text|truncatewords:80 }}</p>
+                                    <h3 class="tp-testi__title">{{ comment.user.get_full_name }}</h3>
+                                    <i>{{ comment.course.title }}</i>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+    {% endif %}
     <!-- testimonial-area-end -->
 
     <!-- blog-area -->

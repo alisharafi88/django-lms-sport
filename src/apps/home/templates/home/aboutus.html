@@ -220,48 +220,50 @@
     <!-- choose-area-end -->
 
     <!-- testimonial-area -->
-    <section class="testimonial-area bg-bottom pt-120 pb-90 "
-             data-background="{% static 'assets/img/bg/shape-bg-1.png' %}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center mb-65">
-                        <span class="tp-sub-title-box mb-15">{% trans 'Comments' %}</span>
-                        <h2 class="tp-section-title mb-20">{% trans 'What Our Happy Users Says' %}</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-active-box tp-slide-space-white" style="width: 99%; margin: auto;">
-                {% for comment in comments %}
-                    <div class="tp-test-s-item">
-                        <div class="tp-testi tp-testi-round p-relative">
-                            <div class="tp-testi__ava testi-ava-border d-flex align-items-center mb-20 pb-20">
-                                <img src="{{ comment.user.get_photo_url }}" alt="{{ comment.user.get_full_name }}">
-                                <div class="tp-testi__avainfo ml-20">
-                                    <h3 class="tp-testi__title tp-title-meta mt-5">{{ comment.user.get_full_name }}</h3>
-                                    <i>{{ comment.course.title }}</i>
-                                </div>
-                            </div>
-                            <p>{{ comment.text|truncatewords:80 }}</p>
-                            <div class="tp-testi__rating mb-5">
-                                {% for i in "54321" %}
-                                    {% if comment.rate >= i|add:"0" %}
-                                        <i class="fi fi-ss-star"></i>
-                                    {% else %}
-                                        <i class="fi fi-rs-star"></i>
-                                    {% endif %}
-                                {% endfor %}
-                                <span>{{ comment.rate|to_persian_number }}</span>
-                            </div>
-                            <div class="testi-quote">
-                                <i class="fa-solid fa-quote-left"></i>
-                            </div>
+    {% if comments %}
+        <section class="testimonial-area bg-bottom pt-120 pb-90 "
+                 data-background="{% static 'assets/img/bg/shape-bg-1.png' %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center mb-65">
+                            <span class="tp-sub-title-box mb-15">{% trans 'Comments' %}</span>
+                            <h2 class="tp-section-title mb-20">{% trans 'What Our Happy Users Says' %}</h2>
                         </div>
                     </div>
-                {% endfor %}
+                </div>
+                <div class="testimonial-active-box tp-slide-space-white" style="width: 99%; margin: auto;">
+                    {% for comment in comments %}
+                        <div class="tp-test-s-item">
+                            <div class="tp-testi tp-testi-round p-relative">
+                                <div class="tp-testi__ava testi-ava-border d-flex align-items-center mb-20 pb-20">
+                                    <img src="{{ comment.user.get_photo_url }}" alt="{{ comment.user.get_full_name }}">
+                                    <div class="tp-testi__avainfo ml-20">
+                                        <h3 class="tp-testi__title tp-title-meta mt-5">{{ comment.user.get_full_name }}</h3>
+                                        <i>{{ comment.course.title }}</i>
+                                    </div>
+                                </div>
+                                <p>{{ comment.text|truncatewords:80 }}</p>
+                                <div class="tp-testi__rating mb-5">
+                                    {% for i in "54321" %}
+                                        {% if comment.rate >= i|add:"0" %}
+                                            <i class="fi fi-ss-star"></i>
+                                        {% else %}
+                                            <i class="fi fi-rs-star"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <span>{{ comment.rate|to_persian_number }}</span>
+                                </div>
+                                <div class="testi-quote">
+                                    <i class="fa-solid fa-quote-left"></i>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
     <!-- testimonial-area-end -->
 
     <!-- instructor-area -->
