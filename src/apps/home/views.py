@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import TemplateView
 
 from .queries import get_latest_blogs, get_top_comment
 from ..carts.carts import Cart
-from ..courses.models import CourseMembership
+from ..courses.models import CourseMembership, Course
 from ..courses.queries import get_combined_course_package_queryset
 from ..instructors.queries import get_all_instructor
 
@@ -59,3 +59,13 @@ class AboutUsView(View):
 
 class BMIView(TemplateView):
     template_name = 'BMI/BMI.html'
+
+
+class PishroView(View):
+    def get(self, request):
+        featured_course = Course.objects.filter(is_featured_on_homepage=True).first()
+
+        if featured_course:
+            return redirect(featured_course.get_absolute_url())
+        else:
+            return redirect('courses:course_list')

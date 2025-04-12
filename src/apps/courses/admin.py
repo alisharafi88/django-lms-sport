@@ -71,7 +71,7 @@ class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
     fieldsets = (
         (_('Details'), {'fields': ('title', 'coach', 'description', 'img', 'slug',)}),
-        (_('Specifications'), {'fields': ('age_range', 'duration', 'free_leasson_link')}),
+        (_('Specifications'), {'fields': ('age_range', 'duration', 'free_leasson_link', 'is_featured_on_homepage')}),
         (_('Price Information'), {'fields': ('price', 'discount_amount',)}),
         (_('Statuses'), {'fields': (
             'status', 'certificate_status', 'analysis_room_status', 'extra_movments_status',
@@ -80,7 +80,7 @@ class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     )
     add_fieldsets = (
         (_('Details'), {'fields': ('title', 'coach', 'description', 'img', 'slug',)}),
-        (_('Specifications'), {'fields': ('age_range', 'duration', 'free_leasson_link')}),
+        (_('Specifications'), {'fields': ('age_range', 'duration', 'free_leasson_link', 'is_featured_on_homepage')}),
         (_('Statuses'), {'fields': (
             'status', 'certificate_status', 'analysis_room_status', 'extra_movments_status',
             'injury_prevention_status')}),
@@ -132,6 +132,12 @@ class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         count = obj.telegram_links.filter(is_used=False).count()
         color = 'green' if count > 0 else 'red'
         return format_html(f'<span style="color:{color}">{count}</span>')
+
+    def save_model(self, request, obj, form, change):
+
+        if obj.is_featured_on_homepage:
+            Course.objects.filter(is_featured_on_homepage=True).exclude(pk=obj.pk).update(is_featured_on_homepage=False)
+        super().save_model(request, obj, form, change)
 
 
 @admin.register(Package)

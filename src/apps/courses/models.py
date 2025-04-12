@@ -1,5 +1,6 @@
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.conf import settings
@@ -182,8 +183,22 @@ class Course(Product):
     )
     memberships = GenericRelation('CourseMembership', related_query_name='course')
 
+    is_featured_on_homepage = models.BooleanField(
+        _('Featured on Homepage'),
+        default=False,
+        help_text=_('Only one course can be featured on the homepage at a time.')
+    )
+
     def get_absolute_url(self):
         return reverse('courses:course_detail', kwargs={'slug': self.slug})
+
+    def clean(self):
+        """
+        Ensure only one course can be featured on the homepage at a time.
+        """
+        if self.is_featured_on_homepage:
+            if Course.objects.filter(is_featured_on_homepage=True).exclude(pk=self.pk).exists():
+                raise ValidationError(_('Only one course can be featured on the homepage at a time.'))
 
     class Meta(Product.Meta):
         indexes = Product.Meta.indexes + [
