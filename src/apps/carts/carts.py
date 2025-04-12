@@ -128,6 +128,23 @@ class Cart:
         courses = Course.objects.in_bulk(course_ids) if course_ids else {}
         packages = Package.objects.in_bulk(package_ids) if package_ids else {}
 
+        missing_items = [
+            item for item in self.cart
+            if (item['type'] == COURSE_TYPE and int(item['id']) not in courses) or
+               (item['type'] == PACKAGE_TYPE and int(item['id']) not in packages)
+        ]
+
+        if missing_items:
+            for item in missing_items:
+                product_id = int(item['id'])
+                messages.warning(
+                    self.request,
+                    _(f"Product with ID '{product_id}' is no longer available and has been removed from your cart.")
+                )
+                self.cart.remove(item)
+            self.save()
+            items_removed = True
+
         self.products = {**courses, **packages}
 
         self.product_types = {item['id']: item['type'] for item in self.cart}
