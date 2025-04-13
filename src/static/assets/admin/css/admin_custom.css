@@ -63,6 +63,9 @@ body {
 h1{
     color: white !important;
 }
+h2{
+    color: white!important;
+}
 
 table {
      caption-side: top !important;
@@ -117,4 +120,13 @@ div.breadcrumbs {
 }
 .theme-toggle svg.theme-icon-when-auto, .theme-toggle svg.theme-icon-when-dark, .theme-toggle svg.theme-icon-when-light {
      color: #141414;
+}
+
+body.login a:visited,
+body.login button {
+    color: inherit !important;
+}
+
+body.login .logo-area.d-flex.align-items-center {
+    display: none !important;
 }
