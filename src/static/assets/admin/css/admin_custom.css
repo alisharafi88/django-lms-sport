@@ -2,18 +2,22 @@ html[data-theme="light"], :root {
     --tp-theme: #CCD5C0 ;
     --tp-g-theme: #6E7753;
     --tp-btn: #D47F6A;
+    --tp-h2: #4a545980;
 }
 
 html[data-theme="dark"] {
     --tp-theme: #4a545980;
     --tp-g-theme: #172B23;
     --tp-btn: #E2583E;
+    --tp-h2: #CCD5C0;
 }
 @media (prefers-color-scheme: dark) {
     :root {
         --tp-theme: #4a545980;
         --tp-g-theme: #172B23;
         --tp-btn: #E2583E;
+        --tp-h2: #CCD5C0;
+
     }
 }
 
@@ -64,7 +68,7 @@ h1{
     color: white !important;
 }
 h2{
-    color: white!important;
+    color: var(--tp-h2)!important;
 }
 
 table {
