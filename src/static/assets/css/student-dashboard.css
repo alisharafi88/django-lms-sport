@@ -622,7 +622,7 @@ body {
     .commentFormContainer .comment {
         flex-direction: column;
         align-items: center;
-        text-align: center;
+        text-align: right;
     }
 
     .commentFormContainer .comment img {
@@ -632,7 +632,7 @@ body {
     .commentFormContainer .comment-details h4,
     .commentFormContainer .comment-details h5,
     .commentFormContainer .comment-details p {
-        text-align: center;
+        text-align: right;
     }
 
     .commentFormContainer button {
@@ -659,7 +659,7 @@ body {
     .commentFormContainer .comment {
         flex-direction: column;
         align-items: flex-start;
-        text-align: left;
+        text-align: right;
     }
 
     .commentFormContainer .comment img {
@@ -670,12 +670,13 @@ body {
 
     .commentFormContainer .comment-details {
         width: 100%;
+        text-align: right;
     }
 
     .commentFormContainer .comment-details h4,
     .commentFormContainer .comment-details h5,
     .commentFormContainer .comment-details p {
-        text-align: left;
+        text-align: right;
     }
 }
 
