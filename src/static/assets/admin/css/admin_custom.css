@@ -134,3 +134,84 @@ body.login button {
 body.login .logo-area.d-flex.align-items-center {
     display: none !important;
 }
+
+.header__transparent {
+    padding: 10px;
+}
+
+.logo img {
+    max-height: 40px;
+}
+
+.main-menu ul {
+    display: flex;
+    flex-wrap: inherit;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-link {
+    font-size: 14px !important;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    font-size: 14px !important;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .nav-link {
+        font-size: 12px !important;
+    }
+
+    .main-menu ul {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .nav-link {
+        font-size: 10px !important;
+    }
+
+    .main-menu ul {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .header__area {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.main-menu ul > li {
+    margin-left: 0px !important;
+}
+
+@media (max-width: 270px) {
+    .logo {
+        display: none;
+    }
+    .justify-content-end {
+        justify-content: flex-start !important;
+    }
+
+    .main-menu ul {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .nav-link {
+        font-size: 9px !important;
+    }
+}
