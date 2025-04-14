@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-11 18:27+0330\n"
+"POT-Creation-Date: 2025-04-14 10:02+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgstr "تلفن‌همراه"
 msgid "#courses"
 msgstr "#دوره‌ها"
 
-#: src/apps/instructors/apps.py:8 src/apps/instructors/models.py:52
+#: src/apps/instructors/apps.py:8 src/apps/instructors/models.py:57
 #: src/apps/instructors/templates/instructors/instructor_list.html:18
 #: src/apps/instructors/templates/instructors/instructor_list.html:22
 msgid "Coaches"
@@ -76,52 +76,56 @@ msgstr "آیا فعال است"
 msgid "Check this box to set this instructor as active."
 msgstr "این کادر را علامت بزنید تا این مدرس فعال تنظیم شود."
 
-#: src/apps/instructors/models.py:51
+#: src/apps/instructors/models.py:42
+msgid "Anonymous"
+msgstr "ناشناس"
+
+#: src/apps/instructors/models.py:56
 #: src/apps/instructors/templates/instructors/instructor_list.html:78
 msgid "Coach"
 msgstr "مربی"
 
-#: src/apps/instructors/models.py:59
+#: src/apps/instructors/models.py:64
 msgid "instructor widjet"
 msgstr "ویجت مدرس"
 
-#: src/apps/instructors/models.py:62 src/apps/instructors/models.py:68
+#: src/apps/instructors/models.py:67 src/apps/instructors/models.py:73
 msgid "widjet"
 msgstr "ویجت"
 
-#: src/apps/instructors/models.py:62
+#: src/apps/instructors/models.py:67
 msgid "short Widjet"
 msgstr "ویجت کوتاه"
 
-#: src/apps/instructors/models.py:69
+#: src/apps/instructors/models.py:74
 msgid "widjets"
 msgstr "ویجت‌ها"
 
-#: src/apps/instructors/models.py:76
+#: src/apps/instructors/models.py:81
 msgid "coach"
 msgstr "مربی"
 
-#: src/apps/instructors/models.py:78
+#: src/apps/instructors/models.py:83
 msgid "add your honor here, with one related photo"
 msgstr "افتخارات خود را اینجا اضافه کنید، با یک عکس مرتبط"
 
-#: src/apps/instructors/models.py:80
+#: src/apps/instructors/models.py:85
 msgid "honor"
 msgstr "افتخار"
 
-#: src/apps/instructors/models.py:81
+#: src/apps/instructors/models.py:86
 msgid "photo"
 msgstr "عکس"
 
-#: src/apps/instructors/models.py:83
+#: src/apps/instructors/models.py:88
 msgid "status"
 msgstr "وضعیت"
 
-#: src/apps/instructors/models.py:86
+#: src/apps/instructors/models.py:91
 msgid "Honor"
 msgstr "افتخار"
 
-#: src/apps/instructors/models.py:87
+#: src/apps/instructors/models.py:92
 #: src/apps/instructors/templates/instructors/instructor_detail.html:153
 msgid "Honors"
 msgstr "افتخارات"

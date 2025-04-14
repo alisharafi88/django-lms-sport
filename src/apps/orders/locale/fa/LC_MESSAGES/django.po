@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-12 18:45+0330\n"
+"POT-Creation-Date: 2025-04-14 10:02+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Persian <LL@li.org>\n"
@@ -80,46 +80,50 @@ msgstr "نوع"
 msgid "Product"
 msgstr "محصول"
 
-#: src/apps/orders/admin.py:128 src/apps/orders/admin.py:132
+#: src/apps/orders/admin.py:115
+msgid "has been removed"
+msgstr "پاک شده"
+
+#: src/apps/orders/admin.py:130 src/apps/orders/admin.py:134
 msgid "order"
 msgstr "سفارش"
 
-#: src/apps/orders/admin.py:129 src/apps/orders/admin.py:133
+#: src/apps/orders/admin.py:131 src/apps/orders/admin.py:135
 msgid "delivery information"
 msgstr "اطلاعات تحویل"
 
-#: src/apps/orders/admin.py:136
+#: src/apps/orders/admin.py:138
 msgid "Update delivery_status to PENDING"
 msgstr "به‌روزرسانی وضعیت تحویل به در انتظار"
 
-#: src/apps/orders/admin.py:141
+#: src/apps/orders/admin.py:143
 #, python-brace-format
 msgid "{update_count} of orders delivery_status has been updated to pending."
 msgstr "{update_count} سفارش به وضعیت تحویل در انتظار به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:145
+#: src/apps/orders/admin.py:147
 msgid "Update delivery_status to SENT"
 msgstr "به‌روزرسانی وضعیت تحویل به ارسال شده"
 
-#: src/apps/orders/admin.py:150
+#: src/apps/orders/admin.py:152
 #, python-brace-format
 msgid "{update_count} of orders delivery_status has been updated to sent."
 msgstr "{update_count} سفارش به وضعیت تحویل ارسال شده به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:154
+#: src/apps/orders/admin.py:156
 msgid "Update delivery_status to REJECTD"
 msgstr "به روزرسانی وضعیت تحویل به رد شده"
 
-#: src/apps/orders/admin.py:159
+#: src/apps/orders/admin.py:161
 #, python-brace-format
 msgid "{update_count} of orders delivery_status has been updated to rejectd."
 msgstr "{update_count} سفارش به وضعیت تحویل رد شده به‌روزرسانی شد."
 
-#: src/apps/orders/admin.py:163
+#: src/apps/orders/admin.py:165
 msgid "Update delivery_status to CANCELED"
 msgstr "به‌روزرسانی وضعیت تحویل به لغو شده"
 
-#: src/apps/orders/admin.py:168
+#: src/apps/orders/admin.py:170
 #, python-brace-format
 msgid "{update_count} of orders delivery_status has been updated to canceled."
 msgstr "{update_count} سفارش به وضعیت تحویل لغو شده به‌روزرسانی شد."

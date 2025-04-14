@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-12 13:47+0330\n"
+"POT-Creation-Date: 2025-04-14 10:02+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/templates/admin/base_site.html:17 src/templates/inc/footer-area.html:105
-#: src/templates/inc/header.html:13 src/templates/inc/header.html:87
+#: src/templates/inc/header.html:13 src/templates/inc/header.html:88
 msgid "fastball logo"
 msgstr "لوگوی فستبال"
 
@@ -130,6 +130,14 @@ msgstr "درباره ما"
 #: src/templates/inc/header.html:57
 msgid "Contact Us"
 msgstr "تماس با ما"
+
+#: src/templates/inc/header.html:59
+msgid "Dashboard"
+msgstr "پنل‌دانشجو"
+
+#: src/templates/inc/header.html:59
+msgid "Register"
+msgstr "ثبت‌نام"
 
 #~ msgid "Site Management"
 #~ msgstr "مدیریت سایت"
