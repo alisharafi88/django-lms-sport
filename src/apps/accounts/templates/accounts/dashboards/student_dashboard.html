@@ -401,14 +401,11 @@
                                 </div>
                             </div>
                         {% else %}
-                            <div class="col-12">
-                                <div class="coupon1">
-                                    <p>{% trans 'Your cart is empty!' %}</p>
-                                    <a href="{% url 'courses:course_list' %}">
-                                        <button class="tp-btn" type="submit">{% trans 'Add course' %}
-                                        </button>
-                                    </a>
-                                </div>
+                            <div>
+                                <p>{% trans 'Your cart is empty!' %}</p>
+                                <a href="{% url 'courses:course_list' %}" class="tp-btn">
+                                     {% trans 'Add course' %}
+                                </a>
                             </div>
                         {% endif %}
                     </div>
@@ -553,9 +550,9 @@
                                 </table>
                             </div>
                         {% else %}
-                            <div class="text-center">
+                            <div>
                                 <p>{% trans 'No orders found' %}</p>
-                                <a href="{% url 'courses:course_list' %}" class="btn btn-primary">
+                                <a href="{% url 'courses:course_list' %}" class="tp-btn">
                                     {% trans 'Browse Courses' %}
                                 </a>
                             </div>

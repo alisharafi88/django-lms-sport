@@ -110,7 +110,9 @@ class OrderItemAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
     @admin.display(description=_('Product'))
     def product_title(self, obj):
-        return obj.product.title
+        if obj.product:
+            return obj.product.title
+        return _('has been removed')
 
 
 @admin.register(DVDOrderDetail)
