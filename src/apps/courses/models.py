@@ -114,6 +114,7 @@ class Product(models.Model):
     price = models.PositiveIntegerField(
         _('Price'),
         default=0,
+        validators=[MaxValueValidator(200000000)]
     )
     discount_amount = models.PositiveIntegerField(
         _('Discount amount'),

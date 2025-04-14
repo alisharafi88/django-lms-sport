@@ -21,7 +21,7 @@ def update_order_payment_status(request, order, data):
     if data is not None:
         order.zarinpal_ref_id = data['ref_id']
         order.zarinpal_data = data
-    if request.session['coupon_code']:
+    if 'coupon_code' in request.session:
         order.coupon_code = request.session['coupon_code']
 
     order.status = Order.OrderStatus.PAID
