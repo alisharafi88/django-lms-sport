@@ -215,3 +215,7 @@ body.login .logo-area.d-flex.align-items-center {
         font-size: 9px !important;
     }
 }
+
+.delete-confirmation form .cancel-link {
+        height: unset !important;
+}
