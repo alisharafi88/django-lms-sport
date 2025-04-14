@@ -84,7 +84,7 @@
                                                 <li><a href="{% url 'contacts:contact' %}">{% trans 'Contact Us' %}</a>
                                                 </li>
                                                 <li><a href="{% url 'faq:question_answer' %}">{% trans 'FAQ' %}</a></li>
-                                                <li><a href="{% if user.is_authenticated %}{% url 'accounts:student_dashboards' %}{% else %}{% url 'accounts:logout' %}{% endif %}">{% if user.is_authenticated %}{% trans 'LogOut' %}{% else %}{% trans 'Register' %}{% endif %}</a></li>
+                                                <li><a href="{% if user.is_authenticated %}{% url 'accounts:student_dashboards' %}{% else %}{% url 'accounts:authenticate' %}{% endif %}">{% if user.is_authenticated %}{% trans 'Dashboard' %}{% else %}{% trans 'Register' %}{% endif %}</a></li>
                                             </ul>
                                         </li>
                                     </ul>
