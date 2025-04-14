@@ -156,7 +156,7 @@
 <div class="sidebar" id="sidebar">
     <!-- Profile Section -->
     <div class="profile">
-        <img src="{{ user.get_photo_url }}" alt="" id="{{ user.get_name }}"/>
+        <img src="{{ user.get_photo_url }}" alt="{{ user.get_name }}" id="sidebarProfileImage"/>
         <div class="name" id="sidebarProfileName">{{ user.get_name }}</div>
     </div>
 
@@ -1108,9 +1108,8 @@
     });
 
     //------------------------------------------------پایان--------------------------------------
-
+    //-------------------------------------------------بخش ادیت-------------------------
     document.addEventListener("DOMContentLoaded", function () {
-        //-------------------------------------------------بخش ادیت-------------------------
         const editProfileForm = document.getElementById("editProfileForm");
         const profileImageInput = document.getElementById("profileImageInput");
         const profileImageDisplay = document.getElementById("profileImageDisplay");
