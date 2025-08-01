@@ -23,7 +23,7 @@ def get_courses_queryset():
             output_field=CharField(),
         ),
         num_members=Count('memberships', filter=Q(memberships__content_type=course_content_type), distinct=True),
-        num_videos=Count('seasons__videos'),
+        num_videos=Count('seasons__videos', distinct=True),
         product_type=Value(1, output_field=IntegerField()),  # 1 = course
         num_courses=Value(0, output_field=IntegerField()),
         discounted_price=F('price') - F('discount_amount'),
@@ -71,7 +71,7 @@ def get_packages_queryset():
         num_members=Count('memberships', filter=Q(memberships__content_type=package_content_type), distinct=True),
         num_videos=Value(0, output_field=IntegerField()),
         product_type=Value(2, output_field=IntegerField()),  # 2 = package
-        num_courses=Count('courses'),
+        num_courses=Count('courses', distinct=True),
         discounted_price=F('price') - F('discount_amount'),
         avg_rate=Avg('courses__comments__rate'),
         num_comment=Count('courses__comments', distinct=True),
