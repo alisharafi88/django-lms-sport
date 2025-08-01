@@ -23,7 +23,7 @@ from django.urls import path, include
 urlpatterns = [
     path('footballfastballadminmt3/', admin.site.urls,),
     path('', include('apps.home.urls', namespace='home'),),
-    path('courses/', include('apps.courses.urls', namespace='courses'),),
+    path('products/', include('apps.courses.urls', namespace='courses'),),
     path('blogs/', include('apps.blogs.urls', namespace='blogs'),),
     path('faq/', include('apps.faq.urls', namespace='faq'),),
     path('contact/', include('apps.contacts.urls', namespace='contacts'),),
