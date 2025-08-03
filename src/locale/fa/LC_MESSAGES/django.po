@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-14 10:02+0330\n"
+"POT-Creation-Date: 2025-08-03 17:00+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/templates/admin/base_site.html:17 src/templates/inc/footer-area.html:105
+#: src/templates/admin/base_site.html:17 src/templates/inc/footer-area.html:113
 #: src/templates/inc/header.html:13 src/templates/inc/header.html:88
 msgid "fastball logo"
 msgstr "لوگوی فستبال"
@@ -91,19 +91,23 @@ msgstr "ارسال تیکت"
 msgid "SupportUs"
 msgstr "حمایت از ما"
 
-#: src/templates/inc/footer-area.html:94
+#: src/templates/inc/footer-area.html:96
+msgid "Show Team Details"
+msgstr "نمایش جزئیات تیم توسعه‌دهنده"
+
+#: src/templates/inc/footer-area.html:101
 msgid "This website was developed collaboratively by the following team:"
 msgstr "این وب‌سایت با همکاری تیم زیر توسعه یافته است:"
 
-#: src/templates/inc/footer-area.html:96
+#: src/templates/inc/footer-area.html:103
 msgid "Ali Sharafi"
 msgstr "علی شرفی"
 
-#: src/templates/inc/footer-area.html:97
+#: src/templates/inc/footer-area.html:104
 msgid "Ali Moghimi"
 msgstr "علی مقیمی"
 
-#: src/templates/inc/footer-area.html:98
+#: src/templates/inc/footer-area.html:105
 msgid "Reza Azimi"
 msgstr "رضا عظیمی"
 
