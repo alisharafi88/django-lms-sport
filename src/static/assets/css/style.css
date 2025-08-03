@@ -7750,5 +7750,37 @@ p.checkout-coupon input[type=text]:focus {
 .footer-3-col-5 {
     margin-left: 0;
 }
+.custom-accordion-button {
+    background-color: transparent;
+    border: none;
+    color: black;
+    box-shadow: none;
+    width: auto !important;
+}
 
+.custom-accordion-button:hover,
+.custom-accordion-button:focus {
+    background-color: transparent !important;
+    color: black !important;
+}
+
+.custom-accordion-button:not(.collapsed) {
+    text-decoration: underline;
+    color: none !important;
+    background-color: transparent !important;
+    color: black !important;
+}
+
+.accordion-collapse {
+    background-color: transparent !important;
+    color: black !important;
+}
+
+.f-copyright__text {
+    width: auto !important;
+}
+
+.custom-accordion-button::after {
+    color: black !important;
+}
 /*# sourceMappingURL=style.css.map */
